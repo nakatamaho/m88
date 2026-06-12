@@ -88,6 +88,9 @@ x86_64-w64-mingw32-g++ -c /tmp/m88_ifcommon_include.cpp -Isrc -Isrc/win32 -finpu
     - `src/common/schedule.cpp`
   - Post-build `writetag`: success.
   - Reported CRC: `42516106`.
+- Manual runtime smoke:
+  - `M88.exe` launched successfully after placing ROM files in the same directory as the executable.
+  - A test game was loaded and ran.
 - Current `src/common` include state:
   - `core_headers.h`: `6` files.
   - `headers.h`: `3` files (`soundbuf.cpp`, `sndbuf2.cpp`, `srcbuf.cpp`).
@@ -107,10 +110,11 @@ These warnings match the known baseline warning pattern and were not introduced 
 - No runtime logic changed.
 - No plugin factory or module loading behavior changed.
 - Existing Win32 PCH behavior remains for files that still include `headers.h`.
+- Basic startup and game execution still work in the tested `Release|Win32` build.
 
 ## Not Verified
 
-- Runtime behavior has not been manually checked.
+- Full `docs/verification.md` checklist has not been completed.
 
 ## Risks / Unknowns
 
