@@ -67,6 +67,26 @@ python3 tools/refactor/phase0_inventory.py --root . --output /tmp/m88_phase5_ste
 - Phase 0 inventory:
   - include case mismatch count: `0`.
   - vcproj missing references: `2` (`m88dev.html`, `memo.txt`, unchanged).
+- VS2008 / VC8 Express rebuild:
+  - Configuration: `Release|Win32`.
+  - Projects: `diskdrv`, `M88`, `cdif`.
+  - Result: success.
+  - Summary: `3` succeeded, `0` failed, `0` skipped.
+  - `diskdrv`: errors `0`, warnings `0`.
+  - `cdif`: errors `0`, warnings `0`.
+  - `M88`: errors `0`, warnings `6`.
+  - Post-build `writetag`: success.
+- Reported CRC:
+  - `e8135245` in the first recorded Release rebuild.
+  - `102adc4e` in the later `tools\windows\build_vc2008.cmd Release` rebuild.
+- VS2008 / VC8 Express rebuild:
+  - Configuration: `Debug|Win32`.
+  - Command: `tools\windows\build_vc2008.cmd Debug`.
+  - Result: failed at link.
+  - Summary: `2` succeeded, `1` failed, `0` skipped.
+  - `M88`: errors `1`, warnings `6`.
+  - Failure: `LINK : fatal error LNK1104: ファイル 'ddraw.lib' を開くことができません。`
+  - This matches the known Debug environment/library-path issue where DirectDraw import library is unavailable, not a compile failure in the `types.h` include change.
 
 ## Behavior Preserved
 
@@ -80,7 +100,6 @@ python3 tools/refactor/phase0_inventory.py --root . --output /tmp/m88_phase5_ste
 
 ## Not Verified
 
-- VS2008 / VC8 Express rebuild was not run in this environment.
 - Runtime startup/game/audio smoke was not run in this environment.
 - Full `docs/verification.md` checklist has not been completed.
 
