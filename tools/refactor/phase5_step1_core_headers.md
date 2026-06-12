@@ -78,10 +78,31 @@ After the first VS2008 rebuild attempt failed with C1010 because the project sti
 - MinGW compile-only smoke:
   - `i686-w64-mingw32-g++`: passed for the three changed `.cpp` files.
   - `x86_64-w64-mingw32-g++`: passed for the three changed `.cpp` files.
+- VS2008 / VC8 Express rebuild:
+  - Configuration: `Release|Win32`.
+  - Projects: `diskdrv`, `cdif`, `M88`.
+  - Result: success.
+  - Summary: `3` succeeded, `0` failed, `0` skipped.
+  - `diskdrv`: errors `0`, warnings `0`.
+  - `cdif`: errors `0`, warnings `0`.
+  - `M88`: errors `0`, warnings `6`.
+  - Converted files compiled without PCH C1010:
+    - `src/common/lz77d.cpp`
+    - `src/common/lpf.cpp`
+    - `src/common/error.cpp`
+  - Post-build `writetag`: success.
+  - Reported CRC: `f567fba5`.
+
+## Remaining Warnings
+
+- `src/common/srcbuf.cpp`: C4244 x4.
+- `src/pc88/crtc.cpp`: C4003 x1.
+- `src/pc88/crtc.cpp`: C4018 x1.
+
+These warnings match the known baseline warning pattern and were not introduced by the `core_headers.h` conversion.
 
 ## Not Verified
 
-- VS2008 / VC8 Express `Release|Win32` build has not been rerun after the per-file PCH setting fix.
 - Runtime behavior has not been manually checked after this step.
 
 ## Risks / Unknowns
@@ -92,7 +113,7 @@ After the first VS2008 rebuild attempt failed with C1010 because the project sti
 
 ## Recommendation
 
-Run VS2008 / VC8 Express `Release|Win32` rebuild. If it passes, continue expanding this pattern through the remaining low-risk `src/common` files before moving to `src/devices` or `src/pc88`.
+Continue expanding this pattern through the remaining low-risk `src/common` files before moving to `src/devices` or `src/pc88`.
 
 ## Workspace Notes
 
