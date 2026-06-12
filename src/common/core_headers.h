@@ -18,14 +18,7 @@
 #include <utility>
 #include <vector>
 
-#if !defined(_WINDEF_) && !defined(_BASETSD_H_)
-	#if defined(_WIN64)
-		typedef __int64 LONG_PTR;
-	#else
-		typedef long LONG_PTR;
-	#endif
-#endif
-
+#include "core_abi.h"
 #include "types.h"
 
 using namespace std;

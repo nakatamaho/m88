@@ -775,6 +775,10 @@
 				>
 			</File>
 			<File
+				RelativePath="src\common\core_abi.h"
+				>
+			</File>
+			<File
 				RelativePath="src\common\core_types.h"
 				>
 			</File>
