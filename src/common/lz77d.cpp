@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------
 //	$Id: lz77d.cpp,v 1.1 2000/01/10 08:25:04 cisc Exp $
 
-#include "headers.h"
+#include "core_headers.h"
 #include "lz77d.h"
 
 #define GetBit() (r=(bit>>bc)&1, bc--||(bit=*(uint32*)src,src+=4,bc=31), r)

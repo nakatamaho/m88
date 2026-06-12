@@ -4,7 +4,7 @@
 // ----------------------------------------------------------------------------
 //	$Id: error.cpp,v 1.6 2002/04/07 05:40:08 cisc Exp $
 
-#include "headers.h"
+#include "core_headers.h"
 #include "error.h"
 
 Error::Errno Error::err = Error::unknown;

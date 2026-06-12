@@ -171,6 +171,7 @@ SOURCE=.\src\common\draw.h
 # Begin Source File
 
 SOURCE=.\src\common\error.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 
@@ -179,6 +180,7 @@ SOURCE=.\src\common\error.h
 # Begin Source File
 
 SOURCE=.\src\common\lpf.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 
@@ -187,6 +189,7 @@ SOURCE=.\src\common\lpf.h
 # Begin Source File
 
 SOURCE=.\src\common\lz77d.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 
