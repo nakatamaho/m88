@@ -6,29 +6,9 @@
 
 #pragma once
 
+#include "../common/core_types.h"
+
 #define ENDIAN_IS_SMALL
-
-//  固定長型とか
-typedef unsigned char uchar;
-typedef unsigned short ushort;
-typedef unsigned int uint;
-typedef unsigned long ulong;
-
-typedef unsigned char uint8;
-typedef unsigned short uint16;
-typedef unsigned int  uint32;
-
-typedef signed char sint8;
-typedef signed short sint16;
-typedef signed int sint32;
-
-typedef signed char int8;
-typedef signed short int16;
-typedef signed int int32;
-
-// 8 bit 数値をまとめて処理するときに使う型
-typedef uint32 packed;
-#define PACK(p) ((p) | ((p) << 8) | ((p) << 16) | ((p) << 24))
 
 // ポインタ値を表現できる整数型
 typedef LONG_PTR intpointer;
@@ -55,22 +35,9 @@ typedef LONG_PTR intpointer;
 #define USE_Z80_X86
 #endif
 
-// C++ の新しいキャストを使用する(但し win32 コードでは関係なく使用する)
-#define USE_NEW_CAST
-
-// ---------------------------------------------------------------------------
-
 #ifdef USE_Z80_X86
 	#define MEMCALL __stdcall
 #else
 	#define MEMCALL
-#endif
-
-#if defined(USE_NEW_CAST) && defined(__cplusplus) 
-	#define STATIC_CAST(t, o)			static_cast<t> (o)
-	#define REINTERPRET_CAST(t, o)		reinterpret_cast<t> (o)
-#else
-	#define STATIC_CAST(t, o)			((t)(o))
-	#define REINTERPRET_CAST(t, o)		(*(t*)(void*)&(o))
 #endif
 

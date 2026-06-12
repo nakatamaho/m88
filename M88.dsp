@@ -167,6 +167,10 @@ SOURCE=.\src\common\device_i.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\common\core_types.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\common\draw.h
 # End Source File
 # Begin Source File
