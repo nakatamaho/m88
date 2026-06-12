@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include "../common/core_abi.h"
 #include "../common/core_types.h"
 
 #define ENDIAN_IS_SMALL
