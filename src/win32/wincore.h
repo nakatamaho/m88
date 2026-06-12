@@ -53,7 +53,7 @@ public:
 	void IFCALL Unlock() { seq.Unlock(); }
 
 private:
-//	Snapshot ƒwƒbƒ_[
+//	Snapshot ãƒ˜ãƒƒãƒ€ãƒ¼
 	enum
 	{
 		ssmajor = 1, ssminor = 1,

@@ -2,7 +2,7 @@
 //	M88 - PC-8801 series emulator
 //	Copyright (C) cisc 1999.
 // ----------------------------------------------------------------------------
-//	Main ‘¤ƒƒ‚ƒŠ(ŠÜALU)‚ÌÀ‘•
+//	Main å´ãƒ¡ãƒ¢ãƒª(å«ALU)ã®å®Ÿè£…
 // ----------------------------------------------------------------------------
 //	$Id: memory.cpp,v 1.42 2003/11/04 13:14:21 cisc Exp $
 
@@ -107,7 +107,7 @@ void Memory::Reset(uint, uint newmode)
 	port5x = 3;
 	r00 = 0, r60 = 0, w00 = 0;
 
-	// Šg’£ RAM ‚Ìİ’è
+	// æ‹¡å¼µ RAM ã®è¨­å®š
 	if (n80mode)
 		neweram = Max(1, neweram);
 	if (erambanks != neweram)
@@ -247,7 +247,7 @@ void IOCALL Memory::Out31(uint, uint data)
 // ----------------------------------------------------------------------------
 //	Port32
 //	b5		ALU Enable (port5x=RAM)
-//	b4		RAM/~TVRAM (V1S –³Œø)
+//	b4		RAM/~TVRAM (V1S ç„¡åŠ¹)
 //	b1 b0	N88 EROM bank select
 //	
 void IOCALL Memory::Out32(uint, uint data)
@@ -364,11 +364,11 @@ void IOCALL Memory::Out5x(uint bank, uint)
 }
 
 // ----------------------------------------------------------------------------
-//	Port70	TextWindow (N88 —LŒø)
+//	Port70	TextWindow (N88 æ™‚æœ‰åŠ¹)
 //
 void IOCALL Memory::Out70(uint, uint data)
 {
-	if (!n80mode)		// 80SR ‚Å‚Í port70 ‚ª hold ‚³‚ê‚È‚¢‚Á‚Ä‚±‚Æ‚©‚ÈH
+	if (!n80mode)		// 80SR ã§ã¯ port70 ãŒ hold ã•ã‚Œãªã„ã£ã¦ã“ã¨ã‹ãªï¼Ÿ
 	{
 		txtwnd = data * 0x100;
 		if ((port31 & 6) == 0)
@@ -471,7 +471,7 @@ void IOCALL Memory::Oute3(uint, uint data)
 }
 
 // ----------------------------------------------------------------------------
-//	Port F0	«‘ROMƒoƒ“ƒN‘I‘ğ
+//	Port F0	è¾æ›¸ROMãƒãƒ³ã‚¯é¸æŠ
 //	
 void IOCALL Memory::Outf0(uint, uint data)
 {
@@ -484,7 +484,7 @@ void IOCALL Memory::Outf0(uint, uint data)
 }
 
 // ----------------------------------------------------------------------------
-//	Port F0	«‘ROMƒoƒ“ƒN‘I‘ğ
+//	Port F0	è¾æ›¸ROMãƒãƒ³ã‚¯é¸æŠ
 //	
 void IOCALL Memory::Outf1(uint, uint data)
 {
@@ -742,7 +742,7 @@ void Memory::Update80()
 }
 
 // ----------------------------------------------------------------------------
-//	ƒeƒLƒXƒgƒEƒBƒ“ƒhƒE(ƒ‰ƒbƒvƒAƒ‰ƒEƒ“ƒh)‚ÌƒAƒNƒZƒX
+//	ãƒ†ã‚­ã‚¹ãƒˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦(ãƒ©ãƒƒãƒ—ã‚¢ãƒ©ã‚¦ãƒ³ãƒ‰)ã®ã‚¢ã‚¯ã‚»ã‚¹
 //
 void MEMCALL Memory::WrWindow(void* inst, uint addr, uint data)
 {
@@ -907,7 +907,7 @@ void Memory::SelectGVRAM(uint gvtop)
 }
 
 // ----------------------------------------------------------------------------
-//	GVRAM ‚Ì“Ç‚İ‘‚«
+//	GVRAM ã®èª­ã¿æ›¸ã
 //
 #define SETDIRTY(addr)	\
 	if (m->dirty[addr >> 4]) return; \
@@ -1023,7 +1023,7 @@ void MEMCALL Memory::WrALUB(void* inst, uint addr, uint)
 }
 
 // ----------------------------------------------------------------------------
-//	ƒƒ‚ƒŠ‚ÌŠ„‚è“–‚Ä‚Æ ROM ‚Ì“Ç‚İ‚İB
+//	ãƒ¡ãƒ¢ãƒªã®å‰²ã‚Šå½“ã¦ã¨ ROM ã®èª­ã¿è¾¼ã¿ã€‚
 //	
 bool Memory::InitMemory()
 {
@@ -1040,7 +1040,7 @@ bool Memory::InitMemory()
 	memset(gvram, 0, sizeof(quadbyte) * 0x4000);
 	memset(tvram, 0, 0x1000);
 
-	ram[0xff33] = 0;		// PACMAN ‘Îô
+	ram[0xff33] = 0;		// PACMAN å¯¾ç­–
 
 
 	mm->AllocR(mid, 0, 0x10000, ram);
@@ -1055,7 +1055,7 @@ bool Memory::InitMemory()
 }
 
 // ----------------------------------------------------------------------------
-//	•K{‚Å‚È‚¢ ROM ‚ğ“Ç‚İ‚Ş
+//	å¿…é ˆã§ãªã„ ROM ã‚’èª­ã¿è¾¼ã‚€
 //	
 bool Memory::LoadOptROM(const char* name, uint8*& rom, int size)
 {
@@ -1079,7 +1079,7 @@ bool Memory::LoadOptROM(const char* name, uint8*& rom, int size)
 }
 
 // ----------------------------------------------------------------------------
-//	ROM ‚ğ“Ç‚İ‚Ş
+//	ROM ã‚’èª­ã¿è¾¼ã‚€
 //	
 bool Memory::LoadROM()
 {
@@ -1132,9 +1132,9 @@ bool Memory::LoadROMImage(uint8* dest, const char* filename, int size)
 }
 
 // ----------------------------------------------------------------------------
-//	‹N“®ƒƒ‚ƒŠƒpƒ^[ƒ“ì¬ (SR Œ^)
-//	arg:	ram		RAM ƒGƒŠƒA
-//			length	RAM ƒGƒŠƒA’· (0x80 ‚Ì”{”)
+//	èµ·å‹•æ™‚ãƒ¡ãƒ¢ãƒªãƒ‘ã‚¿ãƒ¼ãƒ³ä½œæˆ (SR å‹)
+//	arg:	ram		RAM ã‚¨ãƒªã‚¢
+//			length	RAM ã‚¨ãƒªã‚¢é•· (0x80 ã®å€æ•°)
 //
 void Memory::SetRAMPattern(uint8* ram, uint length)
 {
@@ -1152,7 +1152,7 @@ void Memory::SetRAMPattern(uint8* ram, uint length)
 }
 
 // ----------------------------------------------------------------------------
-//	ƒEƒFƒCƒgî•ñ‚ÌXV
+//	ã‚¦ã‚§ã‚¤ãƒˆæƒ…å ±ã®æ›´æ–°
 //	
 void Memory::SetWait()
 {
@@ -1175,7 +1175,7 @@ void Memory::SetWait()
 }
 
 // ----------------------------------------------------------------------------
-//	VRTC(ƒEƒFƒCƒg•ÏX)
+//	VRTC(ã‚¦ã‚§ã‚¤ãƒˆå¤‰æ›´)
 //	
 void Memory::VRTC(uint, uint d)
 {
@@ -1201,7 +1201,7 @@ void IOCALL Memory::Out40(uint, uint data)
 }
 
 // ---------------------------------------------------------------------------
-//	İ’è”½‰f
+//	è¨­å®šåæ˜ 
 //
 void Memory::ApplyConfig(const Config* cfg)
 {
@@ -1227,7 +1227,7 @@ inline void Memory::SetWaits(uint a, uint s, uint v)
 }
 
 // ---------------------------------------------------------------------------
-//	ó‘Ô•Û‘¶
+//	çŠ¶æ…‹ä¿å­˜
 //
 uint IFCALL Memory::GetStatusSize()
 {

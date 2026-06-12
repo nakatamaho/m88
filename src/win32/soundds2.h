@@ -20,7 +20,7 @@ class DriverDS2 : public Driver
 private:
 	enum
 	{
-		nblocks = 4,		// 2 à»è„
+		nblocks = 4,		// 2 ‰ª•‰∏ä
 	};
 
 public:

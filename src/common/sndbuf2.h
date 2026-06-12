@@ -15,16 +15,16 @@ public:
 	SoundBuffer2();
 	~SoundBuffer2();
 
-	bool	Init(SoundSource* source, int bufsize);	// bufsize ‚ÍƒTƒ“ƒvƒ‹’PˆÊ
+	bool	Init(SoundSource* source, int bufsize);	// bufsize ã¯ã‚µãƒ³ãƒ—ãƒ«å˜ä½
 	void	Cleanup();
 
 	int		Get(Sample* dest, int size);
 	ulong	GetRate();
 	int		GetChannels();
 
-	int		Fill(int samples);			// ƒoƒbƒtƒ@‚ÉÅ‘å sample •ªƒf[ƒ^‚ğ’Ç‰Á
+	int		Fill(int samples);			// ãƒãƒƒãƒ•ã‚¡ã«æœ€å¤§ sample åˆ†ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ 
 	bool	IsEmpty();
-	void	FillWhenEmpty(bool f);		// ƒoƒbƒtƒ@‚ª‹ó‚É‚È‚Á‚½‚ç•â[‚·‚é‚©
+	void	FillWhenEmpty(bool f);		// ãƒãƒƒãƒ•ã‚¡ãŒç©ºã«ãªã£ãŸã‚‰è£œå……ã™ã‚‹ã‹
 
 	int		GetAvail();
 
@@ -35,10 +35,10 @@ private:
 	
 	SoundSource* source;
 	Sample* buffer;
-	int buffersize;						// ƒoƒbƒtƒ@‚ÌƒTƒCƒY (in samples)
-	int read;							// “ÇˆÊ’u (in samples)
-	int write;							// ‘‚«‚İˆÊ’u (in samples)
-	int ch;								// ƒ`ƒƒƒlƒ‹”(1sample = ch*Sample)
+	int buffersize;						// ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚º (in samples)
+	int read;							// èª­è¾¼ä½ç½® (in samples)
+	int write;							// æ›¸ãè¾¼ã¿ä½ç½® (in samples)
+	int ch;								// ãƒãƒ£ãƒãƒ«æ•°(1sample = ch*Sample)
 	bool fillwhenempty;
 };
 

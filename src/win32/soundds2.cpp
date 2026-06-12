@@ -15,7 +15,7 @@
 using namespace WinSoundDriver;
 
 // ---------------------------------------------------------------------------
-//	\’zE”jŠü ---------------------------------------------------------------
+//	æ§‹ç¯‰ãƒ»ç ´æ£„ ---------------------------------------------------------------
 
 DriverDS2::DriverDS2()
 {
@@ -36,7 +36,7 @@ DriverDS2::~DriverDS2()
 }
 
 // ---------------------------------------------------------------------------
-//  ‰Šú‰» -------------------------------------------------------------------
+//  åˆæœŸåŒ– -------------------------------------------------------------------
 
 bool DriverDS2::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 {
@@ -50,10 +50,10 @@ bool DriverDS2::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 	buffer_length = buflen;
 	sampleshift = 1 + (ch == 2 ? 1 : 0);
 
-	// ŒvZ
+	// è¨ˆç®—
 	buffersize = (rate * ch * sizeof(Sample) * buffer_length / 1000) & ~7;
 
-	// DirectSound object ì¬
+	// DirectSound object ä½œæˆ
 	if (FAILED(CoCreateInstance(CLSID_DirectSound, 0, CLSCTX_ALL, IID_IDirectSound, (void**) &lpds)))
 		return false;
 	if (FAILED(lpds->Initialize(0)))
@@ -61,7 +61,7 @@ bool DriverDS2::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 //	if (FAILED(DirectSoundCreate(0, &lpds, 0)))
 //		return false;
 
-	// ‹¦’²ƒŒƒxƒ‹İ’è
+	// å”èª¿ãƒ¬ãƒ™ãƒ«è¨­å®š
 	hr = lpds->SetCooperativeLevel(hwnd, DSSCL_PRIORITY);
 	if (hr != DS_OK)
 	{
@@ -80,7 +80,7 @@ bool DriverDS2::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 	if (hr != DS_OK)
 		return false;
 
-	// Primary buffer ‚ÌÄ¶ƒtƒH[ƒ}ƒbƒgİ’è
+	// Primary buffer ã®å†ç”Ÿãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆè¨­å®š
 	WAVEFORMATEX wf;
     memset(&wf, 0, sizeof(WAVEFORMATEX));
     wf.wFormatTag = WAVE_FORMAT_PCM;
@@ -92,7 +92,7 @@ bool DriverDS2::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 
 	lpdsb_primary->SetFormat(&wf);
 
-	// ƒZƒJƒ“ƒ_ƒŠƒoƒbƒtƒ@ì¬
+	// ã‚»ã‚«ãƒ³ãƒ€ãƒªãƒãƒƒãƒ•ã‚¡ä½œæˆ
     memset(&dsbd, 0, sizeof(DSBUFFERDESC));
     dsbd.dwSize = sizeof(DSBUFFERDESC);
     dsbd.dwFlags = DSBCAPS_STICKYFOCUS 
@@ -106,7 +106,7 @@ bool DriverDS2::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 	if (hr != DS_OK)
 		return false;
 
-	// ’Ê’mƒIƒuƒWƒFƒNƒgì¬
+	// é€šçŸ¥ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆä½œæˆ
 
 	hr = lpdsb->QueryInterface(IID_IDirectSoundNotify, (LPVOID*) &lpnotify);
 	if (hr != DS_OK)
@@ -132,7 +132,7 @@ bool DriverDS2::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 	playing = true;
 	nextwrite = 1 << sampleshift;
 	
-	// ƒXƒŒƒbƒh‹N“®
+	// ã‚¹ãƒ¬ãƒƒãƒ‰èµ·å‹•
 	if (!hthread)
 	{
 		hthread = HANDLE(_beginthreadex(NULL, 0, ThreadEntry,
@@ -142,14 +142,14 @@ bool DriverDS2::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 		SetThreadPriority(hthread, THREAD_PRIORITY_ABOVE_NORMAL);
 	}
 	
-	// Ä¶
+	// å†ç”Ÿ
 	lpdsb->Play(0, 0, DSBPLAY_LOOPING);
 
 	return true;
 }
 
 // ---------------------------------------------------------------------------
-//  Œã•Ğ•t‚¯ -----------------------------------------------------------------
+//  å¾Œç‰‡ä»˜ã‘ -----------------------------------------------------------------
 
 bool DriverDS2::Cleanup()
 {
@@ -200,7 +200,7 @@ uint __stdcall DriverDS2::ThreadEntry(LPVOID arg)
 }
 
 // ---------------------------------------------------------------------------
-//  ƒuƒƒbƒN‘—‚é -------------------------------------------------------------
+//  ãƒ–ãƒ­ãƒƒã‚¯é€ã‚‹ -------------------------------------------------------------
 
 void DriverDS2::Send()
 {
@@ -218,14 +218,14 @@ void DriverDS2::Send()
 		restored = true;
 	}
 
-	// ˆÊ’uæ“¾
+	// ä½ç½®å–å¾—
 	DWORD cplay, cwrite;
 	lpdsb->GetCurrentPosition(&cplay, &cwrite);
 
 	if (cplay == nextwrite && !restored)
 		return;
 
-	// ‘‚«‚±‚İƒTƒCƒYŒvZ
+	// æ›¸ãã“ã¿ã‚µã‚¤ã‚ºè¨ˆç®—
 	int writelength;
 	if (cplay < nextwrite)
 		writelength = cplay + buffersize - nextwrite;
@@ -244,7 +244,7 @@ void DriverDS2::Send()
 	if (DS_OK == lpdsb->Lock(nextwrite, writelength,
 							 (void**) &a1, &al1, (void**) &a2, &al2, 0))
 	{
-		// ‘‚«‚±‚İ
+		// æ›¸ãã“ã¿
 //		if (mixalways || !src->IsEmpty())
 		{
 			if (a1)

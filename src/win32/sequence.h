@@ -17,8 +17,8 @@ class PC88;
 // ---------------------------------------------------------------------------
 //	Sequencer
 //
-//	VM is‚Æ‰æ–ÊXV‚Ìƒ^ƒCƒ~ƒ“ƒO‚ğ’²®‚µ
-//	VM ŠÔ‚ÆÀŠÔ‚Ì“¯Šú‚ğ‚Æ‚éƒNƒ‰ƒX
+//	VM é€²è¡Œã¨ç”»é¢æ›´æ–°ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã‚’èª¿æ•´ã—
+//	VM æ™‚é–“ã¨å®Ÿæ™‚é–“ã®åŒæœŸã‚’ã¨ã‚‹ã‚¯ãƒ©ã‚¹
 //
 class Sequencer
 {
@@ -54,7 +54,7 @@ private:
 	HANDLE hthread;
 	uint idthread;
 
-	int clock;					// 1•b‚Í‰½tick?
+	int clock;					// 1ç§’ã¯ä½•tick?
 	int speed;					// 
 	int execcount;
 	int effclock;

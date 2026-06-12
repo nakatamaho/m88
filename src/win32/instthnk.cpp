@@ -8,7 +8,7 @@
 #include "instthnk.h"
 
 // ---------------------------------------------------------------------------
-//	ŒÄ‚Ño‚µæİ’è
+//	å‘¼ã³å‡ºã—å…ˆè¨­å®š
 //
 void InstanceThunk::SetDestination(void* func, void* arg0)
 {
@@ -22,7 +22,7 @@ void InstanceThunk::SetDestination(void* func, void* arg0)
 	*((void**) &EntryThunk[ 7]) = arg0;
 	*((int*) &EntryThunk[12]) = (BYTE*) func - (EntryThunk + 16);
 
-//	‰½‚©‚ ‚Á‚½‚çƒRƒƒ“ƒgƒAƒEƒg‚µ‚Ä‚İ‚é‚Ì‚à‚¢‚¢‚©‚à
+//	ä½•ã‹ã‚ã£ãŸã‚‰ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã—ã¦ã¿ã‚‹ã®ã‚‚ã„ã„ã‹ã‚‚
 //	DWORD old;
 //	VirtualProtect(EntryThunk, 16, PAGE_EXECUTE_READWRITE, &old);
 }

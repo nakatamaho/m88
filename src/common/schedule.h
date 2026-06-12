@@ -12,11 +12,11 @@
 
 struct SchedulerEvent
 {
-	int count;			// ���Ԏc��
+	int count;			// 時間残り
 	IDevice* inst;
 	IDevice::TimeFunc func;
 	int arg;
-	int time;			// ����
+	int time;			// 時間
 };
 
 class Scheduler : public IScheduler, public ITime
@@ -48,9 +48,9 @@ private:
 	virtual int GetTicks() = 0;
 
 private:
-	int evlast;				// �L���ȃC�x���g�̔ԍ��̍ő�l
-	int time;				// Scheduler ���̌��ݎ���
-	int etime;				// Execute �̏I���\�莞��
+	int evlast;				// 有効なイベントの番号の最大値
+	int time;				// Scheduler 内の現在時刻
+	int etime;				// Execute の終了予定時刻
 	Event events[maxevents];
 };
 

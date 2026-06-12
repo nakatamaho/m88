@@ -12,7 +12,7 @@
 using namespace PC8801;
 
 // ---------------------------------------------------------------------------
-//	\’z/Á–Å
+//	æ§‹ç¯‰/æ¶ˆæ»…
 //
 BasicMonitor::BasicMonitor()
 {
@@ -39,7 +39,7 @@ bool BasicMonitor::Init(PC88* pc88)
 } 
 
 // ---------------------------------------------------------------------------
-//	ƒ_ƒCƒAƒƒOˆ—
+//	ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å‡¦ç†
 //
 BOOL BasicMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 {
@@ -57,7 +57,7 @@ BOOL BasicMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 }
 
 // ---------------------------------------------------------------------------
-//	•\¦
+//	è¡¨ç¤º
 //
 void BasicMonitor::UpdateText()
 {
@@ -76,7 +76,7 @@ void BasicMonitor::UpdateText()
 }
 
 // ---------------------------------------------------------------------------
-//	ƒƒ‚ƒŠ‚©‚ç“Ç‚İ‚İ
+//	ãƒ¡ãƒ¢ãƒªã‹ã‚‰èª­ã¿è¾¼ã¿
 //
 inline uint BasicMonitor::Read8(uint addr)
 {
@@ -94,7 +94,7 @@ inline uint BasicMonitor::Read32(uint addr)
 }
 
 // ---------------------------------------------------------------------------
-//	N88-BASIC ’†ŠÔƒR[ƒh‚©‚çƒeƒLƒXƒg‚É•ÏŠ·
+//	N88-BASIC ä¸­é–“ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ãƒ†ã‚­ã‚¹ãƒˆã«å¤‰æ›
 //
 void BasicMonitor::Decode(bool always)
 {

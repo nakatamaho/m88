@@ -8,7 +8,7 @@
 
 #define ENDIAN_IS_SMALL
 
-//  ŒÅ’è’·Œ^‚Æ‚©
+//  å›ºå®šé•·å‹ã¨ã‹
 typedef unsigned char uchar;
 typedef unsigned short ushort;
 typedef unsigned int uint;
@@ -26,16 +26,16 @@ typedef signed char int8;
 typedef signed short int16;
 typedef signed int int32;
 
-// 8 bit ”’l‚ğ‚Ü‚Æ‚ß‚Äˆ—‚·‚é‚Æ‚«‚Ég‚¤Œ^
+// 8 bit æ•°å€¤ã‚’ã¾ã¨ã‚ã¦å‡¦ç†ã™ã‚‹ã¨ãã«ä½¿ã†å‹
 typedef uint32 packed;
 #define PACK(p) ((p) | ((p) << 8) | ((p) << 16) | ((p) << 24))
 
-// ƒ|ƒCƒ“ƒ^’l‚ğ•\Œ»‚Å‚«‚é®”Œ^
+// ãƒã‚¤ãƒ³ã‚¿å€¤ã‚’è¡¨ç¾ã§ãã‚‹æ•´æ•°å‹
 typedef LONG_PTR intpointer;
 
-// ŠÖ”‚Ö‚Ìƒ|ƒCƒ“ƒ^‚É‚¨‚¢‚Ä í‚É 0 ‚Æ‚È‚éƒrƒbƒg (1 bit ‚Ì‚İ)
-// ‚È‚¯‚ê‚Î PTR_IDBIT ©‘Ì‚ğ define ‚µ‚È‚¢‚Å‚­‚¾‚³‚¢D
-// (x86 ”Å Z80 ƒGƒ“ƒWƒ“‚Å‚Í•K{)
+// é–¢æ•°ã¸ã®ãƒã‚¤ãƒ³ã‚¿ã«ãŠã„ã¦ å¸¸ã« 0 ã¨ãªã‚‹ãƒ“ãƒƒãƒˆ (1 bit ã®ã¿)
+// ãªã‘ã‚Œã° PTR_IDBIT è‡ªä½“ã‚’ define ã—ãªã„ã§ãã ã•ã„ï¼
+// (x86 ç‰ˆ Z80 ã‚¨ãƒ³ã‚¸ãƒ³ã§ã¯å¿…é ˆ)
 
 #if defined(_WIN64)
 #undef PTR_IDBIT
@@ -47,15 +47,15 @@ typedef LONG_PTR intpointer;
 #endif
 #endif
 
-// ƒ[ƒh‹«ŠE‚ğ‰z‚¦‚éƒAƒNƒZƒX‚ğ‹–‰Â
+// ãƒ¯ãƒ¼ãƒ‰å¢ƒç•Œã‚’è¶Šãˆã‚‹ã‚¢ã‚¯ã‚»ã‚¹ã‚’è¨±å¯
 #define ALLOWBOUNDARYACCESS
 
-// x86 ”Å‚Ì Z80 ƒGƒ“ƒWƒ“‚ğg—p‚·‚é
+// x86 ç‰ˆã® Z80 ã‚¨ãƒ³ã‚¸ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹
 #if !defined(_WIN64)
 #define USE_Z80_X86
 #endif
 
-// C++ ‚ÌV‚µ‚¢ƒLƒƒƒXƒg‚ğg—p‚·‚é(’A‚µ win32 ƒR[ƒh‚Å‚ÍŠÖŒW‚È‚­g—p‚·‚é)
+// C++ ã®æ–°ã—ã„ã‚­ãƒ£ã‚¹ãƒˆã‚’ä½¿ç”¨ã™ã‚‹(ä½†ã— win32 ã‚³ãƒ¼ãƒ‰ã§ã¯é–¢ä¿‚ãªãä½¿ç”¨ã™ã‚‹)
 #define USE_NEW_CAST
 
 // ---------------------------------------------------------------------------

@@ -15,7 +15,7 @@
 using namespace PC8801;
 
 // ---------------------------------------------------------------------------
-//	\’z/Á–Å
+//	æ§‹ç¯‰/æ¶ˆæ»…
 //
 CodeMonitor::CodeMonitor()
 {
@@ -38,7 +38,7 @@ bool CodeMonitor::Init(PC88* pc88)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒ_ƒCƒAƒƒOˆ—
+//	ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å‡¦ç†
 //
 BOOL CodeMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 {
@@ -55,7 +55,7 @@ BOOL CodeMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒXƒNƒ[ƒ‹ƒo[ˆ—
+//	ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼å‡¦ç†
 //
 int CodeMonitor::VerticalScroll(int msg)
 {
@@ -120,7 +120,7 @@ void CodeMonitor::UpdateText()
 	{
 		if (a < 0x10000)
 		{
-			// Às‰ñ”‚ÉŠî‚Ã‚¢‚ÄF‚ğ‚Â‚¯‚Ä‚İ‚é
+			// å®Ÿè¡Œå›æ•°ã«åŸºã¥ã„ã¦è‰²ã‚’ã¤ã‘ã¦ã¿ã‚‹
 			SetBkCol(RGB(StatExec(a), 0, 0x20));
 
 			int next = diag.Disassemble(a, buf+8);
@@ -160,11 +160,11 @@ bool CodeMonitor::Dump(FILE* fp, int from, int to)
 }
 
 // ----------------------------------------------------------------------------
-//	‘ƒ_ƒ“ƒv‚ğ‘‚«‚Ş
+//	ç·ãƒ€ãƒ³ãƒ—ã‚’æ›¸ãè¾¼ã‚€
 //	
 bool CodeMonitor::DumpImage()
 {
-	// ƒ_ƒCƒAƒƒO
+	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
 	OFNV5 ofn;
 	memset(&ofn, 0, sizeof(ofn));
 	ofn.lStructSize = WINVAR(OFNSIZE);
@@ -185,7 +185,7 @@ bool CodeMonitor::DumpImage()
 	if (!GetSaveFileName(&ofn))
 		return false;
 
-	// ‘‚«‚İ
+	// æ›¸ãè¾¼ã¿
 	FILE* fp = fopen(filename, "w");
 	if (fp)
 	{

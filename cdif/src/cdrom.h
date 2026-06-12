@@ -12,7 +12,7 @@
 class ASPI;
 
 // ---------------------------------------------------------------------------
-//	CDROM §ŒäƒNƒ‰ƒX
+//	CDROM åˆ¶å¾¡ã‚¯ãƒ©ã‚¹
 //
 class CDROM
 {
@@ -58,14 +58,14 @@ private:
 	int m_driveletters[26];
 	int m_maxcd;
 	HANDLE hdev;
-	int ntracks;	// ƒgƒ‰ƒbƒN”
-	int trstart;	// ƒgƒ‰ƒbƒN‚ÌŠJnˆÊ’u
+	int ntracks;	// ãƒˆãƒ©ãƒƒã‚¯æ•°
+	int trstart;	// ãƒˆãƒ©ãƒƒã‚¯ã®é–‹å§‹ä½ç½®
 
 	Track track[100];
 };
 
 // ---------------------------------------------------------------------------
-//	LBA ŠÔ‚ğ MSF ŠÔ‚É•ÏŠ·
+//	LBA æ™‚é–“ã‚’ MSF æ™‚é–“ã«å¤‰æ›
 //
 inline CDROM::MSF CDROM::ToMSF(uint lba)
 {
@@ -78,7 +78,7 @@ inline CDROM::MSF CDROM::ToMSF(uint lba)
 }
 
 // ---------------------------------------------------------------------------
-//	LBA ŠÔ‚ğ MSF ŠÔ‚É•ÏŠ·
+//	LBA æ™‚é–“ã‚’ MSF æ™‚é–“ã«å¤‰æ›
 //
 inline uint CDROM::ToLBA(MSF msf)
 {
@@ -87,8 +87,8 @@ inline uint CDROM::ToLBA(MSF msf)
 }
 
 // ---------------------------------------------------------------------------
-//	CD ‚Ìƒgƒ‰ƒbƒNî•ñ‚ğæ“¾
-//	ReadTOC Œã‚É—LŒø
+//	CD ã®ãƒˆãƒ©ãƒƒã‚¯æƒ…å ±ã‚’å–å¾—
+//	ReadTOC å¾Œã«æœ‰åŠ¹
 //
 inline const CDROM::Track* CDROM::GetTrackInfo(int t)
 {
@@ -98,8 +98,8 @@ inline const CDROM::Track* CDROM::GetTrackInfo(int t)
 }
 
 // ---------------------------------------------------------------------------
-//	CD ’†‚Ìƒgƒ‰ƒbƒN”‚ğæ“¾
-//	ReadTOC Œã‚É—LŒø
+//	CD ä¸­ã®ãƒˆãƒ©ãƒƒã‚¯æ•°ã‚’å–å¾—
+//	ReadTOC å¾Œã«æœ‰åŠ¹
 //
 inline int CDROM::GetNumTracks()
 {

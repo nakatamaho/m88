@@ -2,7 +2,7 @@
 //  M88 - PC88 emulator
 //  Copyright (C) cisc 1998, 1999.
 // ---------------------------------------------------------------------------
-//	‰æ–Ê•`‰æŠÖŒW
+//	ç”»é¢æç”»é–¢ä¿‚
 // ---------------------------------------------------------------------------
 //	$Id: windraw.h,v 1.19 2002/04/07 05:40:11 cisc Exp $
 
@@ -89,21 +89,21 @@ private:
 	
 	uint idthread;
 	HANDLE hthread;
-	volatile bool shouldterminate;	// ƒXƒŒƒbƒhI—¹—v‹
+	volatile bool shouldterminate;	// ã‚¹ãƒ¬ãƒƒãƒ‰çµ‚äº†è¦æ±‚
 
 	DisplayType drawtype;
 
-	int palcngbegin;				// ƒpƒŒƒbƒg•ÏXƒGƒ“ƒgƒŠ‚ÌÅ‰
-	int palcngend;					// ƒpƒŒƒbƒg•ÏXƒGƒ“ƒgƒŠ‚ÌÅŒã
-	int palrgnbegin;				// g—p’†ƒpƒŒƒbƒg‚ÌÅ‰
-	int palrgnend;					// g—p’†ƒpƒŒƒbƒg‚ÌÅŒã
-	volatile bool drawing;			// ‰æ–Ê‚ğ‘‚«Š·‚¦’†
-	bool drawall;					// ‰æ–Ê‘S‘Ì‚ğ‘‚«Š·‚¦‚é
+	int palcngbegin;				// ãƒ‘ãƒ¬ãƒƒãƒˆå¤‰æ›´ã‚¨ãƒ³ãƒˆãƒªã®æœ€åˆ
+	int palcngend;					// ãƒ‘ãƒ¬ãƒƒãƒˆå¤‰æ›´ã‚¨ãƒ³ãƒˆãƒªã®æœ€å¾Œ
+	int palrgnbegin;				// ä½¿ç”¨ä¸­ãƒ‘ãƒ¬ãƒƒãƒˆã®æœ€åˆ
+	int palrgnend;					// ä½¿ç”¨ä¸­ãƒ‘ãƒ¬ãƒƒãƒˆã®æœ€å¾Œ
+	volatile bool drawing;			// ç”»é¢ã‚’æ›¸ãæ›ãˆä¸­
+	bool drawall;					// ç”»é¢å…¨ä½“ã‚’æ›¸ãæ›ãˆã‚‹
 	bool active;
-	bool haspalette;				// ƒpƒŒƒbƒg‚ğ‚Á‚Ä‚¢‚é
+	bool haspalette;				// ãƒ‘ãƒ¬ãƒƒãƒˆã‚’æŒã£ã¦ã„ã‚‹
 
 	int  refresh;
-	RECT drawarea;					// ‘‚«Š·‚¦‚é—Ìˆæ
+	RECT drawarea;					// æ›¸ãæ›ãˆã‚‹é ˜åŸŸ
 	int drawcount;
 	int guicount;
 
@@ -118,8 +118,8 @@ private:
 	bool locked;
 	bool flipmode;
 
-	HMONITOR hmonitor;				// ’Tõ’†‚Ì hmonitor
-	GUID gmonitor;					// hmonitor ‚É‘Î‰‚·‚é GUID
+	HMONITOR hmonitor;				// æ¢ç´¢ä¸­ã® hmonitor
+	GUID gmonitor;					// hmonitor ã«å¯¾å¿œã™ã‚‹ GUID
 
 	PALETTEENTRY palette[0x100];
 };

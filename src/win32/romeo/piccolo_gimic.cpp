@@ -43,7 +43,7 @@ class GimicIf : public PiccoloChip
 	void Reset(bool opna) {
 		pic->DrvReset();
 		gmcdrv.chip->reset();
-		gmcdrv.gimic->setSSGVolume( opna ? 63 : 68 );	// FM/PSG”ä 50%/55%
+		gmcdrv.gimic->setSSGVolume( opna ? 63 : 68 );	// FM/PSGæ¯” 50%/55%
 	}
 	bool SetReg( uint32 at, uint addr, uint data ) {
 		if (gmcdrv.chip) {
@@ -127,13 +127,13 @@ Piccolo_Gimic::~Piccolo_Gimic()
 
 int Piccolo_Gimic::Init()
 {
-	// DLL —pˆÓ
+	// DLL ç”¨æ„
 	Log("LoadDLL\n");
 	if (!LoadDLL()) {
 		return PICCOLOE_DLL_NOT_FOUND;
 	}
 
-	// OPN3/OPNA‚Ì‘¶ÝŠm”F
+	// OPN3/OPNAã®å­˜åœ¨ç¢ºèª
 	Log("FindDevice\n");
 	int devnum = g_chipbase->getNumberOfChip();
 	bool found_device = false;
@@ -149,7 +149,7 @@ int Piccolo_Gimic::Init()
 			found_device = true;
 			gmcdrv.chip->reset();
 			gmcdrv.gimic->setPLLClock( 7987200 );
-			gmcdrv.gimic->setSSGVolume( 63 );	// FM/PSG”ä 50%
+			gmcdrv.gimic->setSSGVolume( 63 );	// FM/PSGæ¯” 50%
 			avail = 2;
 			break;
 		}

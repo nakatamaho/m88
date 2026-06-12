@@ -2,7 +2,7 @@
 //	M88 - PC-88 Emulator.
 //	Copyright (C) cisc 1998.
 // ---------------------------------------------------------------------------
-//  CRTC (ƒÊPD3301) ‚ÌƒGƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“
+//  CRTC (Î¼PD3301) ã®ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
 // ---------------------------------------------------------------------------
 //	$Id: crtc.h,v 1.19 2002/04/07 05:40:09 cisc Exp $
 
@@ -20,7 +20,7 @@ class PD8257;
 class Config;
 	
 // ---------------------------------------------------------------------------
-//  CRTC (ƒÊPD3301) ‹y‚ÑƒeƒLƒXƒg‰æ–Ê‡¬
+//  CRTC (Î¼PD3301) åŠã³ãƒ†ã‚­ã‚¹ãƒˆç”»é¢åˆæˆ
 //
 class CRTC : public Device  
 {
@@ -63,7 +63,7 @@ public:
 private:
 	enum Mode
 	{
-		inverse				= 1 << 0,	// reverse bit ‚Æ“¯‚¶
+		inverse				= 1 << 0,	// reverse bit ã¨åŒã˜
 		color				= 1 << 1,
 		control				= 1 << 2,
 		skipline			= 1 << 3,
@@ -76,7 +76,7 @@ private:
 		resize				= 1 << 10,
 	};
 
-//	ATTR BIT ”z’u		G  R  B  CG UL OL SE RE
+//	ATTR BIT é…ç½®		G  R  B  CG UL OL SE RE
 	enum TextAttr
 	{
 		reverse				= 1 << 0,
@@ -158,7 +158,7 @@ private:
 	int cmdm, cmdc;
 	uint cursormode;
 	uint linesize;
-	bool line200;			// 15KHz ƒ‚[ƒh
+	bool line200;			// 15KHz ãƒ¢ãƒ¼ãƒ‰
 	uint8 attr;
 	uint8 attr_cursor;
 	uint8 attr_blink;
@@ -182,26 +182,26 @@ private:
 	uint8* vram[2];
 	uint8* attrcache;
 
-	uint bank;				// VRAM Cache ‚Ìƒoƒ“ƒN
-//	uint tvramsize;			// 1‰æ–Ê‚ÌƒeƒLƒXƒgƒTƒCƒY
-//	uint screenwidth;		// ‰æ–Ê‚Ì•
-	uint screenheight;		// ‰æ–Ê‚Ì‚‚³
+	uint bank;				// VRAM Cache ã®ãƒãƒ³ã‚¯
+//	uint tvramsize;			// 1ç”»é¢ã®ãƒ†ã‚­ã‚¹ãƒˆã‚µã‚¤ã‚º
+//	uint screenwidth;		// ç”»é¢ã®å¹…
+	uint screenheight;		// ç”»é¢ã®é«˜ã•
 
-	uint cursor_x;			// ƒJ[ƒ\ƒ‹ˆÊ’u
+	uint cursor_x;			// ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®
 	uint cursor_y;
-	uint attrperline;		// 1s‚ ‚½‚è‚ÌƒAƒgƒŠƒrƒ…[ƒg”
-	uint linecharlimit;		// 1s‚ ‚½‚è‚ÌƒeƒLƒXƒg‚‚³
-	uint linesperchar;		// 1s‚Ìƒhƒbƒg”
-	uint width;				// ƒeƒLƒXƒg‰æ–Ê‚Ì•
-	uint height;			// ƒeƒLƒXƒg‰æ–Ê‚Ì‚‚³
-	uint blinkrate;			// ƒuƒŠƒ“ƒN‚Ì‘¬“x
+	uint attrperline;		// 1è¡Œã‚ãŸã‚Šã®ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆæ•°
+	uint linecharlimit;		// 1è¡Œã‚ãŸã‚Šã®ãƒ†ã‚­ã‚¹ãƒˆé«˜ã•
+	uint linesperchar;		// 1è¡Œã®ãƒ‰ãƒƒãƒˆæ•°
+	uint width;				// ãƒ†ã‚­ã‚¹ãƒˆç”»é¢ã®å¹…
+	uint height;			// ãƒ†ã‚­ã‚¹ãƒˆç”»é¢ã®é«˜ã•
+	uint blinkrate;			// ãƒ–ãƒªãƒ³ã‚¯ã®é€Ÿåº¦
 	int cursor_type;		// b0:blink, b1:underline (-1=none)
 	uint vretrace;			// 
 	uint mode;
 	bool widefont;
 	bool pcgenable;
-	bool kanaenable;		// ‚Ğ‚çƒJƒi‘I‘ğ—LŒø
-	uint8 kanamode;			// b4 = ‚Ğ‚ç‚ª‚Èƒ‚[ƒh
+	bool kanaenable;		// ã²ã‚‰ã‚«ãƒŠé¸æŠæœ‰åŠ¹
+	uint8 kanamode;			// b4 = ã²ã‚‰ãŒãªãƒ¢ãƒ¼ãƒ‰
 
 	uint8 pcount[2];
 	uint8 param0[6];
@@ -218,7 +218,7 @@ private:
 
 
 // ---------------------------------------------------------------------------
-//	1 ƒtƒŒ[ƒ€•ª‚É‘Š“–‚·‚éŠÔ‚ğ‹‚ß‚é
+//	1 ãƒ•ãƒ¬ãƒ¼ãƒ åˆ†ã«ç›¸å½“ã™ã‚‹æ™‚é–“ã‚’æ±‚ã‚ã‚‹
 //
 inline int CRTC::GetFramePeriod()
 {

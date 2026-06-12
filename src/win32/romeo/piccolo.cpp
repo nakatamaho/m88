@@ -62,7 +62,7 @@ Piccolo::~Piccolo()
 //
 int Piccolo::Init()
 {
-	// thread ì¬
+	// thread ä½œæˆ
 	shouldterminate = false;
 	if (!hthread)
 	{
@@ -79,7 +79,7 @@ int Piccolo::Init()
 }
 
 // ---------------------------------------------------------------------------
-//	ŒãŽn––
+//	å¾Œå§‹æœ«
 //
 void Piccolo::Cleanup()
 {
@@ -132,7 +132,7 @@ uint Piccolo::ThreadMain()
 }
 
 // ---------------------------------------------------------------------------
-//	ƒLƒ…[‚É’Ç‰Á
+//	ã‚­ãƒ¥ãƒ¼ã«è¿½åŠ 
 //
 bool Piccolo::Push(Piccolo::Event& ev)
 {
@@ -144,7 +144,7 @@ bool Piccolo::Push(Piccolo::Event& ev)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒLƒ…[‚©‚çˆêŒÂ–á‚¤
+//	ã‚­ãƒ¥ãƒ¼ã‹ã‚‰ä¸€å€‹è²°ã†
 //
 Piccolo::Event* Piccolo::Top()
 {
@@ -161,7 +161,7 @@ void Piccolo::Pop()
 
 
 // ---------------------------------------------------------------------------
-//	ƒTƒuƒXƒŒƒbƒhŠJŽn“_
+//	ã‚µãƒ–ã‚¹ãƒ¬ãƒƒãƒ‰é–‹å§‹ç‚¹
 //
 uint CALLBACK Piccolo::ThreadEntry(void* arg)
 {
@@ -203,7 +203,7 @@ void Piccolo::DrvReset()
 {
 	CriticalSection::Lock lock(cs);
 
-	// –{“–‚ÍŠY“–‚·‚éƒGƒ“ƒgƒŠ‚¾‚¯íœ‚·‚×‚«‚¾‚ªc
+	// æœ¬å½“ã¯è©²å½“ã™ã‚‹ã‚¨ãƒ³ãƒˆãƒªã ã‘å‰Šé™¤ã™ã¹ãã ãŒâ€¦
 	evread = 0;
 	evwrite = 0;
 }

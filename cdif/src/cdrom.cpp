@@ -36,7 +36,7 @@ static bool shift = false;
 #endif
 
 // --------------------------------------------------------------------------
-//	\’z
+//	æ§‹ç¯‰
 //
 CDROM::CDROM()
 {
@@ -49,7 +49,7 @@ CDROM::CDROM()
 }
 
 // --------------------------------------------------------------------------
-//	”jŠü
+//	ç ´æ£„
 //
 CDROM::~CDROM()
 {
@@ -61,7 +61,7 @@ CDROM::~CDROM()
 
 
 // --------------------------------------------------------------------------
-//	‰Šú‰»
+//	åˆæœŸåŒ–
 //
 bool CDROM::Init()
 {
@@ -70,8 +70,8 @@ bool CDROM::Init()
 		return false;
 	}
 
-	// ƒfƒoƒCƒXƒI[ƒvƒ“
-	// ‚Æ‚è‚ ‚¦‚¸ˆê”ÔÅ‰‚ÉŒ©‚Â‚©‚Á‚½ƒhƒ‰ƒCƒu‚ğŠJ‚­
+	// ãƒ‡ãƒã‚¤ã‚¹ã‚ªãƒ¼ãƒ—ãƒ³
+	// ã¨ã‚Šã‚ãˆãšä¸€ç•ªæœ€åˆã«è¦‹ã¤ã‹ã£ãŸãƒ‰ãƒ©ã‚¤ãƒ–ã‚’é–‹ã
 	char devname[8] = {0};
 	sprintf_s( devname, sizeof(devname), "\\\\.\\%c:", m_driveletters[0] );
 	hdev = ::CreateFile( devname,
@@ -88,11 +88,11 @@ bool CDROM::Init()
 }
 
 // --------------------------------------------------------------------------
-//	ƒhƒ‰ƒCƒu‚ğŒ©‚Â‚¯‚é
+//	ãƒ‰ãƒ©ã‚¤ãƒ–ã‚’è¦‹ã¤ã‘ã‚‹
 //
 bool CDROM::FindDrive()
 {
-	// —LŒø‚Èƒhƒ‰ƒCƒuƒŒƒ^[‚ğæ“¾‚·‚é
+	// æœ‰åŠ¹ãªãƒ‰ãƒ©ã‚¤ãƒ–ãƒ¬ã‚¿ãƒ¼ã‚’å–å¾—ã™ã‚‹
 	char buf[4*MAX_DRIVE+2];
 	memset( &buf, 0, sizeof(buf) );
 	::GetLogicalDriveStrings( sizeof(buf), buf );
@@ -108,7 +108,7 @@ bool CDROM::FindDrive()
 	}
 
 	if ( m_maxcd == 0 ) {
-		// ƒhƒ‰ƒCƒu–³‚µ
+		// ãƒ‰ãƒ©ã‚¤ãƒ–ç„¡ã—
 		return false;
 	}
 
@@ -116,7 +116,7 @@ bool CDROM::FindDrive()
 }
 
 // --------------------------------------------------------------------------
-//	TOC ‚ğ“Ç‚İ‚Ş
+//	TOC ã‚’èª­ã¿è¾¼ã‚€
 //
 int CDROM::ReadTOC()
 {
@@ -129,7 +129,7 @@ int CDROM::ReadTOC()
 
 	cdb.id = CD_READ_TOC;
 	
-	// ƒgƒ‰ƒbƒN”‚Æ Track1 ‚Ì MSF ‚ğæ“¾
+	// ãƒˆãƒ©ãƒƒã‚¯æ•°ã¨ Track1 ã® MSF ã‚’å–å¾—
 	cdb.flags = 2;
 	cdb.length = 12;
 
@@ -154,7 +154,7 @@ int CDROM::ReadTOC()
 	LOG3("[%d]-[%d] (%d)\n", toc.header.start, toc.header.end, trstart);
 //	printf("[%d]-[%d]\n", toc.header.start, toc.header.end);
 
-	// Šeƒgƒ‰ƒbƒN‚ÌˆÊ’u‚ğæ“¾
+	// å„ãƒˆãƒ©ãƒƒã‚¯ã®ä½ç½®ã‚’å–å¾—
 	int start = toc.header.start;
 	int end = toc.header.end;
 	int tsize = 4 + (end - start + 2) * 8;
@@ -169,7 +169,7 @@ int CDROM::ReadTOC()
 		return 0;
 	}
 
-	// ƒe[ƒuƒ‹‚É“o˜^
+	// ãƒ†ãƒ¼ãƒ–ãƒ«ã«ç™»éŒ²
 	Track* tr = track + start - 1;
 #ifdef SHIFT
 	shift = (toc.entry[1].addr == 13578);
@@ -190,7 +190,7 @@ int CDROM::ReadTOC()
 }
 
 // --------------------------------------------------------------------------
-//	ƒgƒ‰ƒbƒN‚ÌÄ¶
+//	ãƒˆãƒ©ãƒƒã‚¯ã®å†ç”Ÿ
 //
 bool CDROM::PlayTrack(int t, bool one)
 {
@@ -198,11 +198,11 @@ bool CDROM::PlayTrack(int t, bool one)
 		return false;
 	Track* tr = &track[t-1];
 	
-	// —LŒø‚Èƒgƒ‰ƒbƒN‚©H
+	// æœ‰åŠ¹ãªãƒˆãƒ©ãƒƒã‚¯ã‹ï¼Ÿ
 	if (tr->addr == ~0)
 		return false;
 	
-	// ƒI[ƒfƒBƒIƒgƒ‰ƒbƒN‚©?
+	// ã‚ªãƒ¼ãƒ‡ã‚£ã‚ªãƒˆãƒ©ãƒƒã‚¯ã‹?
 	if (tr->control & 0x04)
 		return false;
 
@@ -227,7 +227,7 @@ bool CDROM::PlayTrack(int t, bool one)
 }
 
 // --------------------------------------------------------------------------
-//	ƒgƒ‰ƒbƒN‚ÌÄ¶
+//	ãƒˆãƒ©ãƒƒã‚¯ã®å†ç”Ÿ
 //
 bool CDROM::PlayAudio(uint begin, uint stop)
 {
@@ -253,7 +253,7 @@ bool CDROM::PlayAudio(uint begin, uint stop)
 }
 
 // --------------------------------------------------------------------------
-//	ƒTƒuƒ`ƒƒƒ“ƒlƒ‹‚Ìæ“¾
+//	ã‚µãƒ–ãƒãƒ£ãƒ³ãƒãƒ«ã®å–å¾—
 //
 bool CDROM::ReadSubCh(uint8* dest, bool msf)
 {
@@ -273,7 +273,7 @@ bool CDROM::ReadSubCh(uint8* dest, bool msf)
 }
 
 // --------------------------------------------------------------------------
-//	ƒ|[ƒY
+//	ãƒãƒ¼ã‚º
 //
 bool CDROM::Pause(bool pause)
 {
@@ -290,7 +290,7 @@ bool CDROM::Pause(bool pause)
 }
 
 // --------------------------------------------------------------------------
-//	’â~
+//	åœæ­¢
 //
 bool CDROM::Stop()
 {
@@ -307,7 +307,7 @@ bool CDROM::Stop()
 }
 
 // --------------------------------------------------------------------------
-//	CD ã‚ÌƒZƒNƒ^‚ğ“Ç‚İo‚·
+//	CD ä¸Šã®ã‚»ã‚¯ã‚¿ã‚’èª­ã¿å‡ºã™
 //
 bool CDROM::Read(uint sector, uint8* dest, int length)
 {
@@ -332,7 +332,7 @@ bool CDROM::Read(uint sector, uint8* dest, int length)
 }
 
 // --------------------------------------------------------------------------
-//	2340 ƒoƒCƒg“Ç‚Ş
+//	2340 ãƒã‚¤ãƒˆèª­ã‚€
 //
 bool CDROM::Read2(uint sector, uint8* dest, int length)
 {
@@ -357,7 +357,7 @@ bool CDROM::Read2(uint sector, uint8* dest, int length)
 }
 
 // --------------------------------------------------------------------------
-//	CD-DA ƒZƒNƒ^‚Ì“Ç‚İ‚İ
+//	CD-DA ã‚»ã‚¯ã‚¿ã®èª­ã¿è¾¼ã¿
 //
 bool CDROM::ReadCDDA(uint sector, uint8* dest, int length)
 {
@@ -382,7 +382,7 @@ bool CDROM::ReadCDDA(uint sector, uint8* dest, int length)
 }
 
 // --------------------------------------------------------------------------
-//	ƒƒfƒBƒA‚ªƒhƒ‰ƒCƒu‚É‚ ‚é‚©H
+//	ãƒ¡ãƒ‡ã‚£ã‚¢ãŒãƒ‰ãƒ©ã‚¤ãƒ–ã«ã‚ã‚‹ã‹ï¼Ÿ
 //
 bool CDROM::CheckMedia()
 {
@@ -398,7 +398,7 @@ bool CDROM::CheckMedia()
 }
 
 
-// SCSIƒRƒ}ƒ“ƒh”­s
+// SCSIã‚³ãƒãƒ³ãƒ‰ç™ºè¡Œ
 int CDROM::ExecuteSCSICommand(
 	HANDLE _hdev,
 	void* _cdb,
@@ -408,27 +408,27 @@ int CDROM::ExecuteSCSICommand(
 	uint _datalen)
 {
 	SCSI_PASS_THROUGH_DIRECT_WITH_BUFFER swb;
-	ULONG length = sizeof(SCSI_PASS_THROUGH_DIRECT_WITH_BUFFER);	// \‘¢‘Ì‚ÌƒTƒCƒY
+	ULONG length = sizeof(SCSI_PASS_THROUGH_DIRECT_WITH_BUFFER);	// æ§‹é€ ä½“ã®ã‚µã‚¤ã‚º
 	::memset( &swb, 0, sizeof(SCSI_PASS_THROUGH_DIRECT_WITH_BUFFER) );
 	swb.sptd.Length = sizeof(SCSI_PASS_THROUGH_DIRECT);
 	::memcpy( swb.sptd.Cdb, _cdb, _cdblen );
 
 	swb.sptd.CdbLength = _cdblen;
 	swb.sptd.SenseInfoLength = 24;
-	swb.sptd.DataIn = SCSI_IOCTL_DATA_IN;		// KB871134‘Îô
+	swb.sptd.DataIn = SCSI_IOCTL_DATA_IN;		// KB871134å¯¾ç­–
 	swb.sptd.DataBuffer = _data;
 	swb.sptd.DataTransferLength = _datalen;
 	swb.sptd.TimeOutValue = 10;
 	swb.sptd.SenseInfoOffset = offsetof(SCSI_PASS_THROUGH_DIRECT_WITH_BUFFER, ucSenseBuf);
 
-	// ƒRƒ}ƒ“ƒh‘—M
+	// ã‚³ãƒãƒ³ãƒ‰é€ä¿¡
 	ULONG result;
 	BOOL ret;
 	ret = ::DeviceIoControl(_hdev,
 							IOCTL_SCSI_PASS_THROUGH_DIRECT,
-							&swb,			// “ü—Í
+							&swb,			// å…¥åŠ›
 							length,
-							&swb,			// o—Í
+							&swb,			// å‡ºåŠ›
 							length,
 							&result,
 							NULL);

@@ -4,11 +4,11 @@
 // ---------------------------------------------------------------------------
 //	$Id: Z80_x86.cpp,v 1.29 2003/05/19 02:33:56 cisc Exp $
 // ---------------------------------------------------------------------------
-//	’ˆÓ:
-//	VC6 ˆÈŠO‚ÅƒRƒ“ƒpƒCƒ‹‚·‚é‚±‚Æ‚Íl‚¦‚È‚¢•û‚ª‚¢‚¢‚Æv‚¤
-//	#ƒCƒ“ƒeƒ‹Å“K‰»ƒRƒ“ƒpƒCƒ‰‚Å‚à’Ê‚ç‚È‚¢‚µ(^^;;;
+//	æ³¨æ„:
+//	VC6 ä»¥å¤–ã§ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã™ã‚‹ã“ã¨ã¯è€ƒãˆãªã„æ–¹ãŒã„ã„ã¨æ€ã†
+//	#ã‚¤ãƒ³ãƒ†ãƒ«æœ€é©åŒ–ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã§ã‚‚é€šã‚‰ãªã„ã—(^^;;;
 //	
-//	Memory ŠÖ”‚Í __cdecl, IO ŠÖ”‚Í __stdcall (IOCALL) ‚ğ‘z’è‚µ‚Ä‚¢‚Ü‚·
+//	Memory é–¢æ•°ã¯ __cdecl, IO é–¢æ•°ã¯ __stdcall (IOCALL) ã‚’æƒ³å®šã—ã¦ã„ã¾ã™
 //
 
 #include "headers.h"
@@ -25,16 +25,16 @@
 
 // ---------------------------------------------------------------------------
 //	Configuration
-//	VC ‚Ì‚È‚¢‚·‚Èd—l‚É‚æ‚èC
-//	ƒCƒ“ƒ‰ƒCƒ“ƒAƒZƒ“ƒuƒŠ‚©‚çƒNƒ‰ƒX“à’è”‚ÉƒAƒNƒZƒX‚Å‚«‚È‚¢‚½‚ßC
-//	‚±‚±‚Å–¾¦“I‚Éw’è‚µ‚Ä‚â‚é•K—v‚ª‚ ‚éi‚â‚ê‚â‚êj
+//	VC ã®ãªã„ã™ãªä»•æ§˜ã«ã‚ˆã‚Šï¼Œ
+//	ã‚¤ãƒ³ãƒ©ã‚¤ãƒ³ã‚¢ã‚»ãƒ³ãƒ–ãƒªã‹ã‚‰ã‚¯ãƒ©ã‚¹å†…å®šæ•°ã«ã‚¢ã‚¯ã‚»ã‚¹ã§ããªã„ãŸã‚ï¼Œ
+//	ã“ã“ã§æ˜ç¤ºçš„ã«æŒ‡å®šã—ã¦ã‚„ã‚‹å¿…è¦ãŒã‚ã‚‹ï¼ˆã‚„ã‚Œã‚„ã‚Œï¼‰
 //
 #define PAGEBITS			10			// == MemoryManager::pagebits
 
 #define IDBIT				PTR_IDBIT	// == MemoryManager::idbit
 
 // ---------------------------------------------------------------------------
-//	ƒŒƒWƒXƒ^‚Ì‚í‚è‚ ‚Ä
+//	ãƒ¬ã‚¸ã‚¹ã‚¿ã®ã‚ã‚Šã‚ã¦
 //		eax		A/F/R
 //		ebx		work (PQ)
 //		ecx		work (ST) / Address Register
@@ -43,7 +43,7 @@
 //		edi		Instruction Pointer (PC/&Memory[PC])
 //		ebp		Clock counter
 //
-extern Z80_x86* z80_ptr;		// dummy. ÀÛ‚É‚Í‘¶İ‚µ‚È‚¢
+extern Z80_x86* z80_ptr;		// dummy. å®Ÿéš›ã«ã¯å­˜åœ¨ã—ãªã„
 
 static Z80_x86* currentz80;
 
@@ -69,15 +69,15 @@ static Z80_x86* currentz80;
 #define IY			CPU.reg.r.w.iy
 #define SP			CPU.reg.r.w.sp
 #define I			CPU.reg.ireg
-#define R			CPU.reg.rreg		// R ‚Ì ‘æ‚Uƒrƒbƒg‚Ü‚Å
-#define R7			CPU.reg.rreg7		// R ‚Ì ‘æ‚Vƒrƒbƒg
+#define R			CPU.reg.rreg		// R ã® ç¬¬ï¼–ãƒ“ãƒƒãƒˆã¾ã§
+#define R7			CPU.reg.rreg7		// R ã® ç¬¬ï¼—ãƒ“ãƒƒãƒˆ
 #define IFF1		CPU.reg.iff1
 #define IFF2		CPU.reg.iff2
-#define REVAF		CPU.reg.r_af		// — 
+#define REVAF		CPU.reg.r_af		// è£
 #define REVBC		CPU.reg.r_bc
 #define REVDE		CPU.reg.r_de
 #define REVHL		CPU.reg.r_hl
-#define FLAGX		CPU.flagn			// u–¢g—pvƒtƒ‰ƒO
+#define FLAGX		CPU.flagn			// ã€Œæœªä½¿ç”¨ã€ãƒ•ãƒ©ã‚°
 
 
 #define INTMODE		CPU.reg.intmode
@@ -113,7 +113,7 @@ static Z80_x86* currentz80;
 #define SF			0x80
 
 // ---------------------------------------------------------------------------
-//	Šî–{‘€ì
+//	åŸºæœ¬æ“ä½œ
 //
 #define SETF(flgs)			__asm { or ah,(flgs) }
 #define CLRF(flgs)			__asm { and ah,not (flgs) }
@@ -146,7 +146,7 @@ static Z80_x86* currentz80;
 #define SYNC				__asm { call Sync }
 
 // ---------------------------------------------------------------------------
-//	PC ‘€ì
+//	PC æ“ä½œ
 //
 
 #if FASTFETCH
@@ -203,7 +203,7 @@ void O_INTR();
 void O_OUTINTR();
 
 // ---------------------------------------------------------------------------
-//	‚‘¬“Ç‚İ‚İ‚Ì‚½‚ß‚Ì PC •ÏŠ·
+//	é«˜é€Ÿèª­ã¿è¾¼ã¿ã®ãŸã‚ã® PC å¤‰æ›
 //	arg:	edi(INST)	PC
 //	ret:	edi(INST)	INST
 //			ZF			direct if NZ
@@ -260,7 +260,7 @@ static void __declspec(naked) SetPC()
 }
 
 // ---------------------------------------------------------------------------
-//	“¯Šúƒ`ƒFƒbƒN
+//	åŒæœŸãƒã‚§ãƒƒã‚¯
 //	arg:	edx = SyncPort
 //			ebx = -check clock
 //	ret:	CF = Need synchonization
@@ -289,7 +289,7 @@ static void __declspec(naked) Sync()
 		add edx,ebx				// ebp
 		cmp CPU.delaycount,edx	// (count1-1 - count2 >= 0) ? 
 		
-		// (delaycount - GetCount() < 0) ‚È‚çŒã‚ÅÀs‚·‚é
+		// (delaycount - GetCount() < 0) ãªã‚‰å¾Œã§å®Ÿè¡Œã™ã‚‹
 		pop edx
 		js sync_needed
 		pop ecx
@@ -307,9 +307,9 @@ static void __declspec(naked) Sync()
 
 
 // ---------------------------------------------------------------------------
-//	ƒCƒ“ƒ^[ƒtƒF[ƒXƒ}ƒNƒ
+//	ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ãƒã‚¯ãƒ­
 //
-//	ƒ}ƒNƒ–¼			”j‰ó‚µ‚Ä‚à‚æ‚¢ƒŒƒWƒXƒ^	‹@”\
+//	ãƒã‚¯ãƒ­å			ç ´å£Šã—ã¦ã‚‚ã‚ˆã„ãƒ¬ã‚¸ã‚¹ã‚¿	æ©Ÿèƒ½
 //	READ8				ebx ecx edx				edx = byte[cx]
 //	READ16				ebx ecx edx				edx = word[cx]
 //	WRITE8				ebx ecx edx				[cx] = dl
@@ -321,7 +321,7 @@ static void __declspec(naked) Sync()
 //	OUTP				ebx ecx edx				Out(ecx, edx)
 
 // ---------------------------------------------------------------------------
-//	‚PƒoƒCƒg“Ç‚İ‚İ
+//	ï¼‘ãƒã‚¤ãƒˆèª­ã¿è¾¼ã¿
 //	arg:	ecx(ST)		address
 //	ret:	dl(edx)(V)	data
 //	uses:	ebx(PQ), ecx(ST), edx(UV)
@@ -360,7 +360,7 @@ static void __declspec(naked) Reader8()
 
 
 // ---------------------------------------------------------------------------
-//	–½—ß‚PƒoƒCƒg“Ç‚İ‚İ
+//	å‘½ä»¤ï¼‘ãƒã‚¤ãƒˆèª­ã¿è¾¼ã¿
 //	ret:	dl(edx)	data
 //	uses:	ecx, edx
 //
@@ -378,7 +378,7 @@ static void __declspec(naked) Fetcher8()
 		ret
 
 	indirect:
-		add INST,INSTBASE		// edi ‚ğ PC ‚É•ÏŠ·
+		add INST,INSTBASE		// edi ã‚’ PC ã«å¤‰æ›
 		call SetPC
 		jz func
 		
@@ -407,7 +407,7 @@ static void __declspec(naked) Fetcher8()
 }
 		
 // ---------------------------------------------------------------------------
-//	–½—ß‚PƒoƒCƒg“Ç‚İ‚İ(2)
+//	å‘½ä»¤ï¼‘ãƒã‚¤ãƒˆèª­ã¿è¾¼ã¿(2)
 //	ret:	edx		data(sign extended)
 //	uses:	ecx, edx
 //
@@ -425,7 +425,7 @@ static void __declspec(naked) Fetcher8sx()
 		ret
 
 	indirect:
-		add INST,INSTBASE		// edi ‚ğ PC ‚É•ÏŠ·
+		add INST,INSTBASE		// edi ã‚’ PC ã«å¤‰æ›
 		call SetPC
 		jz func
 		
@@ -454,7 +454,7 @@ static void __declspec(naked) Fetcher8sx()
 }
 
 // ---------------------------------------------------------------------------
-//	–½—ß‚QƒoƒCƒg“Ç‚İ‚İ
+//	å‘½ä»¤ï¼’ãƒã‚¤ãƒˆèª­ã¿è¾¼ã¿
 //	ret:	dl(edx)	data
 //	uses:	ecx, edx
 //
@@ -486,7 +486,7 @@ static void __declspec(naked) Fetcher16()
 }
 
 // ---------------------------------------------------------------------------
-//	‚QƒoƒCƒg“Ç‚İ‚İ
+//	ï¼’ãƒã‚¤ãƒˆèª­ã¿è¾¼ã¿
 //	arg:	ecx(ST)		address
 //	ret:	dx(edx)(V)	data
 //	uses:	ebx, ecx, edx (PQSTUV)
@@ -547,7 +547,7 @@ static void __declspec(naked) Reader16()
 }
 
 // ---------------------------------------------------------------------------
-//	‚PƒoƒCƒg‘‚«‚İ
+//	ï¼‘ãƒã‚¤ãƒˆæ›¸ãè¾¼ã¿
 //	arg:	dl		data
 //			ecx		address
 //	uses:	ebx, ecx, edx
@@ -589,7 +589,7 @@ static void __declspec(naked) Writer8()
 }
 
 // ---------------------------------------------------------------------------
-//	‚QƒoƒCƒg‘‚«‚İ
+//	ï¼’ãƒã‚¤ãƒˆæ›¸ãè¾¼ã¿
 //	arg:	dx		data
 //			ecx		address
 //	uses:	ebx, ecx, edx
@@ -788,21 +788,21 @@ looop:
 #define	OUTP			__asm { call Bus_Out }
 
 // ---------------------------------------------------------------------------
-//  ƒXƒ^ƒbƒN‘€ì
+//  ã‚¹ã‚¿ãƒƒã‚¯æ“ä½œ
 //	STACK <-> UV
 //
 #define MPUSHUV			MOV16(ST, SP); SUB16N(ST, 2); MOV16(SP, ST); WRITE16
 #define MPOPUV			MOV16(ST, SP); READ16; ADD16N(SP, 2);
 
 // ---------------------------------------------------------------------------
-//	IX+d / IY+d	ƒAƒhƒŒƒXZo -> ST
+//	IX+d / IY+d	ã‚¢ãƒ‰ãƒ¬ã‚¹ç®—å‡º -> ST
 //
 #define LEAHL			MOV16(ST, HL)
 #define LEAIX			FETCH8SX; MOV16(ST, IX); ADD16(ST, UV)
 #define LEAIY			FETCH8SX; MOV16(ST, IY); ADD16(ST, UV)
 
 // ---------------------------------------------------------------------------
-//	ƒŒƒWƒXƒ^‘€ì(“Áê)
+//	ãƒ¬ã‚¸ã‚¹ã‚¿æ“ä½œ(ç‰¹æ®Š)
 //	UV <-> AF, A <- R
 
 //	AF->UV
@@ -840,7 +840,7 @@ looop:
 
 
 // ---------------------------------------------------------------------------
-//	ƒtƒ‰ƒO‘€ì
+//	ãƒ•ãƒ©ã‚°æ“ä½œ
 //
 
 #define USEVFP				__asm { seto T } \
@@ -854,7 +854,7 @@ looop:
 							SETF(NF) \
 							__asm { or ah,T }
 
-// A ‚Ì“à—e‚Æ IFF ‚©‚ç ƒtƒ‰ƒOƒZƒbƒg
+// A ã®å†…å®¹ã¨ IFF ã‹ã‚‰ ãƒ•ãƒ©ã‚°ã‚»ãƒƒãƒˆ
 
 #define TESTIFF				LOADF \
 							__asm { inc A } \
@@ -867,7 +867,7 @@ looop:
 							__asm { or ah,V }
 
 // ---------------------------------------------------------------------------
-//	–½—ßƒtƒ[‘€ì
+//	å‘½ä»¤ãƒ•ãƒ­ãƒ¼æ“ä½œ
 //
 #define PUSH(r)				__asm { push r }
 #define POP(r)				__asm { pop r }
@@ -876,7 +876,7 @@ looop:
 #define MRET				MPOPUV; MOV16(INST, UV); MJUMP
 
 // ---------------------------------------------------------------------------
-// 	‚WƒrƒbƒgZp‰‰Z
+// 	ï¼˜ãƒ“ãƒƒãƒˆç®—è¡“æ¼”ç®—
 //
 
 #define MADD_A(reg)			__asm { add A,reg } \
@@ -926,7 +926,7 @@ looop:
 							USEVFM 
 
 // ---------------------------------------------------------------------------
-//	‚P‚UƒrƒbƒgZp‰‰Z
+//	ï¼‘ï¼–ãƒ“ãƒƒãƒˆç®—è¡“æ¼”ç®—
 //
 
 #define MADD16(ph,pl,qh,ql)	__asm { mov T,ah } \
@@ -965,7 +965,7 @@ looop:
 							__asm { or ah,V }
 
 // ---------------------------------------------------------------------------
-//	ƒ[ƒe[ƒgEƒVƒtƒg
+//	ãƒ­ãƒ¼ãƒ†ãƒ¼ãƒˆãƒ»ã‚·ãƒ•ãƒˆ
 // 
 
 #define MRLCV				__asm { rol V,1 } \
@@ -1055,7 +1055,7 @@ looop:
 							CLRF(NF+HF)
 		
 // ---------------------------------------------------------------------------
-//	ğŒ•ªŠò -----------------------------------------------------------------
+//	æ¡ä»¶åˆ†å² -----------------------------------------------------------------
 
 #define MIFNZ(dest)			__asm { test ah,ZF } __asm { jz dest }
 #define MIFZ(dest)			__asm { test ah,ZF } __asm { jnz dest }
@@ -1068,11 +1068,11 @@ looop:
 #define MIFSUB(dest)		__asm { test ah,NF } __asm { jnz dest }
 
 // ---------------------------------------------------------------------------
-//	’P‘Ì–½—ßƒGƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“ƒ}ƒNƒ
+//	å˜ä½“å‘½ä»¤ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒã‚¯ãƒ­
 //
 
 // ---------------------------------------------------------------------------
-//  ‚ ‚«‚ã‚İ‚ã‚ê[‚½Eƒ[ƒe[ƒgƒVƒtƒg ----------------------------------------
+//  ã‚ãã‚…ã¿ã‚…ã‚Œãƒ¼ãŸãƒ»ãƒ­ãƒ¼ãƒ†ãƒ¼ãƒˆã‚·ãƒ•ãƒˆ ----------------------------------------
 
 #define MRLCA				LOADF \
 							__asm { rol A,1 } \
@@ -1095,7 +1095,7 @@ looop:
 							CLRF(NF+HF) 
 
 // ---------------------------------------------------------------------------
-//	‚ ‚«‚ã‚İ‚ã‚ê[‚½ ‘€ì–½—ß -------------------------------------------------
+//	ã‚ãã‚…ã¿ã‚…ã‚Œãƒ¼ãŸ æ“ä½œå‘½ä»¤ -------------------------------------------------
 
 #define MDAA				__asm { mov cl,ah } \
 							__asm { and cl,NF } \
@@ -1130,7 +1130,7 @@ looop:
 
 
 // ---------------------------------------------------------------------------
-//	ƒuƒƒbƒN“üo—Í‘€ì -------------------------------------------------------
+//	ãƒ–ãƒ­ãƒƒã‚¯å…¥å‡ºåŠ›æ“ä½œ -------------------------------------------------------
 
 #define MINX 				MOV16(UV, BC) \
 							INP \
@@ -1157,7 +1157,7 @@ looop:
 							OINTERRUPT
 
 // ---------------------------------------------------------------------------
-//	ƒuƒƒbƒN“]‘—‘€ì ---------------------------------------------------------
+//	ãƒ–ãƒ­ãƒƒã‚¯è»¢é€æ“ä½œ ---------------------------------------------------------
 
 #define MLDI				__asm { mov ST, HL } \
 							READ8 \
@@ -1190,7 +1190,7 @@ looop:
 							__asm { or ah,V } 
 
 // ---------------------------------------------------------------------------
-//	ƒuƒƒbƒNƒT[ƒ`‘€ì -------------------------------------------------------
+//	ãƒ–ãƒ­ãƒƒã‚¯ã‚µãƒ¼ãƒæ“ä½œ -------------------------------------------------------
 
 #define MCPI				__asm { mov ST, HL } \
 							__asm { lea UV, [ST+1] } \
@@ -1234,14 +1234,14 @@ looop:
 
 
 // ---------------------------------------------------------------------------
-//  ƒR[ƒh•”•ª
+//  ã‚³ãƒ¼ãƒ‰éƒ¨åˆ†
 //
 #define OPFUNC(label)	void __declspec(naked) O_##label ()
 #define OPEND			__asm { ret }
 typedef void (*OpFuncPtr)();
 
 // ---------------------------------------------------------------------------
-//	ƒAƒLƒ…ƒ€ƒŒ[ƒ^‘€ì–½—ß–½—ß -----------------------------------------------
+//	ã‚¢ã‚­ãƒ¥ãƒ ãƒ¬ãƒ¼ã‚¿æ“ä½œå‘½ä»¤å‘½ä»¤ -----------------------------------------------
 
 static OPFUNC(DAA) { MDAA; CLK(4, 1); OPEND; }
 static OPFUNC(CPL) { MCPL; CLK(4, 1); OPEND; }
@@ -1266,7 +1266,7 @@ static OPFUNC(IM1) { SETIM(1); CLK(8, 2); OPEND; }
 static OPFUNC(IM2) { SETIM(2); CLK(8, 2); OPEND; }
 
 // ---------------------------------------------------------------------------
-//	“üo—Í–½—ß ---------------------------------------------------------------
+//	å…¥å‡ºåŠ›å‘½ä»¤ ---------------------------------------------------------------
 
 static OPFUNC(IN_A_N)
 {
@@ -1350,7 +1350,7 @@ static OPFUNC(OUT_C_Z) { MOUTPC(0) }
 static OPFUNC(OUT_C_A) { MOUTPC(A) }
 	
 // ---------------------------------------------------------------------------
-//	•ªŠò–½—ß -----------------------------------------------------------------
+//	åˆ†å²å‘½ä»¤ -----------------------------------------------------------------
 
 static OPFUNC(JP) 	 { FETCH16; CLK(10, 3); MOV16(INST, UV); MJUMP; }
 static OPFUNC(JR)    { FETCH8SX; CLK(12, 2); MJUMPR(UV); }
@@ -1422,7 +1422,7 @@ static OPFUNC(RST30) { CLK(11, 3); GETPC(UV); MPUSHUV; SETPC(0x30); OPEND; }
 static OPFUNC(RST38) { CLK(11, 3); GETPC(UV); MPUSHUV; SETPC(0x38); OPEND; }
 
 // ---------------------------------------------------------------------------
-//	‚P‚UƒrƒbƒgZp–½—ß -------------------------------------------------------
+//	ï¼‘ï¼–ãƒ“ãƒƒãƒˆç®—è¡“å‘½ä»¤ -------------------------------------------------------
 
 static OPFUNC(ADDHL_BC) { MOV16(UV,HL); MADD16(U,V, B,C); MOVD(L, V); CLK(11, 1); MOVD(H, U); OPEND; }
 static OPFUNC(ADDHL_DE) { MOV16(UV,HL); MADD16(U,V, D,E); MOVD(L, V); CLK(11, 1); MOVD(H, U); OPEND; }
@@ -1439,7 +1439,7 @@ static OPFUNC(ADDIY_DE) { MOV16(UV,IY); MADD16(U,V, D,E); CLK(11, 1); MOV16(IY,U
 static OPFUNC(ADDIY_IY) { MOV16(UV,IY); MADD16(U,V, U,V); CLK(11, 1); MOV16(IY,UV); OPEND; }
 static OPFUNC(ADDIY_SP) { MOV16(UV,IY); MADD16(U,V, SPH,SPL); CLK(11, 1); MOV16(IY,UV); OPEND; }
 
-// ADC/SBC HL,HL : “à•”‚Å UV <- HL ‚Å‚ ‚é‚±‚Æ‚ğ—˜—p
+// ADC/SBC HL,HL : å†…éƒ¨ã§ UV <- HL ã§ã‚ã‚‹ã“ã¨ã‚’åˆ©ç”¨
 static OPFUNC(ADCHL_BC) { CLK(15, 2); MADCHL(B,C); OPEND; }
 static OPFUNC(ADCHL_DE) { CLK(15, 2); MADCHL(D,E); OPEND; }
 static OPFUNC(ADCHL_HL) { CLK(15, 2); MADCHL(U,V); OPEND; }
@@ -1451,7 +1451,7 @@ static OPFUNC(SBCHL_HL) { CLK(15, 2); MSBCHL(U,V); OPEND; }
 static OPFUNC(SBCHL_SP) { CLK(15, 2); MSBCHL(SPH,SPL); OPEND; }
 
 #define INC16X(reg)  MOV16(UV, reg); INC16(UV); CLK(6, 1); MOV16(reg, UV)
-static OPFUNC(INC_BC) { INC16X(BC); OPEND; }			// INC ss ‚Íƒtƒ‰ƒO•Ï‰»‚È‚µ
+static OPFUNC(INC_BC) { INC16X(BC); OPEND; }			// INC ss ã¯ãƒ•ãƒ©ã‚°å¤‰åŒ–ãªã—
 static OPFUNC(INC_DE) { INC16X(DE); OPEND; }
 static OPFUNC(INC_HL) { INC16X(HL); OPEND; }
 static OPFUNC(INC_SP) { INC16X(SP); OPEND; }
@@ -1460,7 +1460,7 @@ static OPFUNC(INC_IY) { INC16X(IY); OPEND; }
 #undef INC16X
 
 #define DEC16X(reg)  MOV16(UV, reg); DEC16(UV); CLK(6, 1); MOV16(reg, UV)
-static OPFUNC(DEC_BC) { DEC16X(BC); OPEND; }			// DEC ss ‚Íƒtƒ‰ƒO•Ï‰»‚È‚µ
+static OPFUNC(DEC_BC) { DEC16X(BC); OPEND; }			// DEC ss ã¯ãƒ•ãƒ©ã‚°å¤‰åŒ–ãªã—
 static OPFUNC(DEC_DE) { DEC16X(DE); OPEND; }
 static OPFUNC(DEC_HL) { DEC16X(HL); OPEND; }
 static OPFUNC(DEC_SP) { DEC16X(SP); OPEND; }
@@ -1469,7 +1469,7 @@ static OPFUNC(DEC_IY) { DEC16X(IY); OPEND; }
 #undef DEC16X
 
 // ---------------------------------------------------------------------------
-//	ŒğŠ·–½—ß -----------------------------------------------------------------
+//	äº¤æ›å‘½ä»¤ -----------------------------------------------------------------
 
 static OPFUNC(EX_AF_AF) { LOADUVAF; MOV16(PQ, REVAF); MOV16(REVAF, UV); MOV16(UV, PQ); STOREAFUV; CLK(4, 1); OPEND; }
 static OPFUNC(EX_SP_HL) { MPOPUV; MOV16(PQ, UV); MOV16(UV, HL); CLK(19, 5); MOV16(HL, PQ); MPUSHUV; OPEND; }
@@ -1488,7 +1488,7 @@ static OPFUNC(EXX)
 }
 
 // ---------------------------------------------------------------------------
-//	CPU §Œä–½—ß -------------------------------------------------------------
+//	CPU åˆ¶å¾¡å‘½ä»¤ -------------------------------------------------------------
 
 static OPFUNC(NOP) { CLK(4, 1); OPEND; }
 
@@ -1507,7 +1507,7 @@ halt_1:
 }
 
 // ---------------------------------------------------------------------------
-//	8 bit ‰‰Z–½—ß -----------------------------------------------------------
+//	8 bit æ¼”ç®—å‘½ä»¤ -----------------------------------------------------------
 
 #define	OPALU(func)			static OPFUNC(func##_B)  { M##func(B); CLK(4, 1); OPEND; } \
 							static OPFUNC(func##_C)  { M##func(C); CLK(4, 1); OPEND; } \
@@ -1559,7 +1559,7 @@ static OPFUNC(DEC_MX) { LEAIX; PUSH(ST); READ8; MDECV; POP(ST); WRITE8; CLK(19, 
 static OPFUNC(DEC_MY) { LEAIY; PUSH(ST); READ8; MDECV; POP(ST); WRITE8; CLK(19, 4); OPEND; }
 
 // ---------------------------------------------------------------------------
-//	ƒXƒ^ƒbƒN–½—ß -------------------------------------------------------------
+//	ã‚¹ã‚¿ãƒƒã‚¯å‘½ä»¤ -------------------------------------------------------------
 
 static OPFUNC(PUSH_BC) { MOV16(UV, BC); MPUSHUV; CLK(11, 3); OPEND; }
 static OPFUNC(PUSH_DE) { MOV16(UV, DE); MPUSHUV; CLK(11, 3); OPEND; }
@@ -1576,7 +1576,7 @@ static OPFUNC(POP_IY) { MPOPUV; MOV16(IY, UV); CLK(10, 3); OPEND; }
 static OPFUNC(POP_AF) { MPOPUV; CLK(10, 3); STOREAFUV; OPEND; }
 
 // ---------------------------------------------------------------------------
-//	16 ƒrƒbƒgƒ[ƒh–½—ß ------------------------------------------------------
+//	16 ãƒ“ãƒƒãƒˆãƒ­ãƒ¼ãƒ‰å‘½ä»¤ ------------------------------------------------------
 
 static OPFUNC(LD_BC_NN) { FETCH16; MOV16(BC, UV); CLK(10, 3); OPEND; }
 static OPFUNC(LD_DE_NN) { FETCH16; MOV16(DE, UV); CLK(10, 3); OPEND; }
@@ -1606,7 +1606,7 @@ static OPFUNC(LD_SP_IX) { MOV16(UV, IX); CLK(6, 1); MOV16(SP, UV); OPEND; }
 static OPFUNC(LD_SP_IY) { MOV16(UV, IY); CLK(6, 1); MOV16(SP, UV); OPEND; }
 
 // ---------------------------------------------------------------------------
-//	8 ƒrƒbƒgƒ[ƒh–½—ß -------------------------------------------------------
+//	8 ãƒ“ãƒƒãƒˆãƒ­ãƒ¼ãƒ‰å‘½ä»¤ -------------------------------------------------------
 
 static OPFUNC(LD_B_C)  { MOV(B, C); CLK(4, 1); OPEND; }
 static OPFUNC(LD_B_D)  { MOV(B, D); CLK(4, 1); OPEND; }
@@ -1777,7 +1777,7 @@ static OPFUNC(LD_I_A) { MOVD(I, A); CLK(9, 2); OPEND; }
 static OPFUNC(LD_R_A) { STORERA; CLK(9, 2); OPEND; }
 
 // ---------------------------------------------------------------------------
-//	ƒuƒƒbƒN“üo—Í–½—ß -------------------------------------------------------
+//	ãƒ–ãƒ­ãƒƒã‚¯å…¥å‡ºåŠ›å‘½ä»¤ -------------------------------------------------------
 
 static OPFUNC(INI) { MINX; INC16(HL); CLK(16, 3); OPEND; inp_sync: PCDEC2; OPEND; }
 static OPFUNC(IND) { MINX; DEC16(HL); CLK(16, 3); OPEND; inp_sync: PCDEC2; OPEND; }
@@ -1790,7 +1790,7 @@ static OPFUNC(OTIR) { MOUTX; INC16(HL); MIFZ(END); CLK(20, 3); outx_sync: PCDEC2
 static OPFUNC(OTDR) { MOUTX; DEC16(HL); MIFZ(END); CLK(20, 3); outx_sync: PCDEC2; OPEND; END: CLK(16, 3); OPEND; }
 
 // ---------------------------------------------------------------------------
-//	ƒuƒƒbƒN“]‘—–½—ß ---------------------------------------------------------
+//	ãƒ–ãƒ­ãƒƒã‚¯è»¢é€å‘½ä»¤ ---------------------------------------------------------
 
 static OPFUNC(LDI) { MLDI; CLK(16, 4); OPEND; }
 static OPFUNC(LDD) { MLDD; CLK(16, 4); OPEND; }
@@ -1799,7 +1799,7 @@ static OPFUNC(LDIR) { MLDI; MIFPO(END); CLK(21, 4); PCDEC2; OPEND; END: CLK(16, 
 static OPFUNC(LDDR) { MLDD; MIFPO(END); CLK(21, 4); PCDEC2; OPEND; END: CLK(16, 4); OPEND; }
 
 // ---------------------------------------------------------------------------
-//	ƒuƒƒbƒNƒT[ƒ`–½—ß -------------------------------------------------------
+//	ãƒ–ãƒ­ãƒƒã‚¯ã‚µãƒ¼ãƒå‘½ä»¤ -------------------------------------------------------
 
 static OPFUNC(CPI) { MCPI; CLK(16, 4); OPEND; }
 static OPFUNC(CPD) { MCPD; CLK(16, 4); OPEND; }
@@ -1808,10 +1808,10 @@ static OPFUNC(CPIR) { MCPI; MIFZ(END); MIFPO(END); CLK(20, 4); PCDEC2; OPEND; EN
 static OPFUNC(CPDR) { MCPD; MIFZ(END); MIFPO(END); CLK(20, 4); PCDEC2; OPEND; END: CLK(16, 4); OPEND; }
 
 // ---------------------------------------------------------------------------
-//	CB ŠÖŒW ------------------------------------------------------------------
+//	CB é–¢ä¿‚ ------------------------------------------------------------------
 
 #define MBITV(n)		\
- /* ‘‚«‚İÈ—ª */		__asm { pop PQ } \
+ /* æ›¸ãè¾¼ã¿çœç•¥ */		__asm { pop PQ } \
 						__asm { test V,n } \
 						__asm { setz U } \
 						CLRF(SF+NF+ZF) \
@@ -1915,7 +1915,7 @@ static OPFUNC(CB_MA)
 }
 
 // ---------------------------------------------------------------------------
-//	˜A‘± DD/FD prefix ‚Ì‚Ì‚½‚ß‚Ìˆ—ƒuƒƒbƒN -------------------------------
+//	é€£ç¶š DD/FD prefix ã®æ™‚ã®ãŸã‚ã®å‡¦ç†ãƒ–ãƒ­ãƒƒã‚¯ -------------------------------
 
 static OPFUNC(DEC_PC)
 {
@@ -2087,7 +2087,7 @@ static const OpFuncPtr OpTableCB1X[8] =
 };
 
 // ---------------------------------------------------------------------------
-//  prefix •t–½—ßˆ— --------------------------------------------------------
+//  prefix ä»˜å‘½ä»¤å‡¦ç† --------------------------------------------------------
 
 static OPFUNC(CODE_DD)
 {
@@ -2173,7 +2173,7 @@ static OPFUNC(CODE_FDCB)
 }
 
 // ---------------------------------------------------------------------------
-//	Š„‚è‚Ş -----------------------------------------------------------------
+//	å‰²ã‚Šè¾¼ã‚€ -----------------------------------------------------------------
 
 static OPFUNC(INTR)
 {
@@ -2215,7 +2215,7 @@ process:
 	MPUSHUV; 
 	POP(INST); 
 	MJUMP
-	CLK(19, 4);							// ƒxƒNƒ^“Ç‚İ‚İ + push ? 
+	CLK(19, 4);							// ãƒ™ã‚¯ã‚¿èª­ã¿è¾¼ã¿ + push ? 
 	__asm { stc }
 	__asm { ret }
 
@@ -2228,14 +2228,14 @@ int1:
 	__asm { ret }
 
 int0:
-	// –½—ßˆ—‚µ‚È‚¢‚Æ
+	// å‘½ä»¤å‡¦ç†ã—ãªã„ã¨
 	CLK(13, 2);								// nop ?
 	__asm { stc }
 	__asm { ret }
 }
 
 // ---------------------------------------------------------------------------
-// –½—ßˆ——pƒ}ƒNƒ
+// å‘½ä»¤å‡¦ç†ç”¨ãƒã‚¯ãƒ­
 
 #if FASTFETCH
 	#if 1
@@ -2271,8 +2271,8 @@ int0:
 
 
 // ---------------------------------------------------------------------------
-//	–½—ßˆ—
-//	‘O’ñğŒ: thiscall
+//	å‘½ä»¤å‡¦ç†
+//	å‰ææ¡ä»¶: thiscall
 //
 int __declspec(naked) Z80_x86::Exec(int clocks)
 {
@@ -2294,7 +2294,7 @@ int __declspec(naked) Z80_x86::Exec(int clocks)
 	__asm { neg CLOCKCOUNT }
 
 	FETCHCODE(0)
-	__asm { call O_INTR }			// Š„‚è‚İ•]‰¿
+	__asm { call O_INTR }			// å‰²ã‚Šè¾¼ã¿è©•ä¾¡
 
 OP_EXEC_2:
 	FETCHCODE(1)
@@ -2321,8 +2321,8 @@ OP_EXEC_2:
 }
 
 // ---------------------------------------------------------------------------
-//	–½—ßˆ—
-//	‘O’ñğŒ: thiscall
+//	å‘½ä»¤å‡¦ç†
+//	å‰ææ¡ä»¶: thiscall
 //
 int __declspec(naked) Z80_x86::ExecOne()
 {
@@ -2357,7 +2357,7 @@ int __declspec(naked) Z80_x86::ExecOne()
 }
 
 // ---------------------------------------------------------------------------
-//	Š„‚è‚İƒ`ƒFƒbƒN
+//	å‰²ã‚Šè¾¼ã¿ãƒã‚§ãƒƒã‚¯
 //
 void __declspec(naked) Z80_x86::TestIntr()
 {
@@ -2388,7 +2388,7 @@ void __declspec(naked) Z80_x86::TestIntr()
 }
 
 // ---------------------------------------------------------------------------
-//	–½—ßˆ—
+//	å‘½ä»¤å‡¦ç†
 //	ecx = stop;
 //	edx = delay;
 //	esi = this
@@ -2449,7 +2449,7 @@ dontexec:
 }
 
 // ---------------------------------------------------------------------------
-//	–½—ßˆ—
+//	å‘½ä»¤å‡¦ç†
 //	ecx = stop;
 //	edx = delay;
 //	esi = this
@@ -2589,7 +2589,7 @@ c2:
 		// ecx = stop
 looop:
 		mov esi, FIRST[4]
-		cmp CPU.execcount,ecx	// ExecCount >= stop‚È‚çƒXƒLƒbƒv
+		cmp CPU.execcount,ecx	// ExecCount >= stopãªã‚‰ã‚¹ã‚­ãƒƒãƒ—
 		jns x1
 
 		call Exec0
@@ -2711,7 +2711,7 @@ c2:
 		// ecx = stop
 looop:
 		mov esi, FIRST[4]
-		cmp CPU.execcount,ecx	// ExecCount >= stop‚È‚çƒXƒLƒbƒv
+		cmp CPU.execcount,ecx	// ExecCount >= stopãªã‚‰ã‚¹ã‚­ãƒƒãƒ—
 		jns x1
 
 		call Exec0
@@ -2828,7 +2828,7 @@ void Z80_x86::StopDual(int clocks)
 }
 
 // ---------------------------------------------------------------------------
-//	Š„‚è‚İ§Œä–½—ß ---------------------------------------------------------
+//	å‰²ã‚Šè¾¼ã¿åˆ¶å¾¡å‘½ä»¤ ---------------------------------------------------------
 
 static OPFUNC(DI)
 {
@@ -2843,9 +2843,9 @@ static OPFUNC(EI)
 {
 	CLK(4, 1)
 	FETCH8
-	__asm { mov ebx,0f7h }					// ’¼Œã‚Ì‚P–½—ß‚ğÀs‚·‚é
-	__asm { and ebx,edx }					// ’A‚µ DI ‚Ü‚½‚Í EI –½—ß‚Å‚ ‚Á‚½‚ç
-	__asm { cmp ebx,0f3h }					// ‰½‚à‚µ‚È‚¢
+	__asm { mov ebx,0f7h }					// ç›´å¾Œã®ï¼‘å‘½ä»¤ã‚’å®Ÿè¡Œã™ã‚‹
+	__asm { and ebx,edx }					// ä½†ã— DI ã¾ãŸã¯ EI å‘½ä»¤ã§ã‚ã£ãŸã‚‰
+	__asm { cmp ebx,0f3h }					// ä½•ã‚‚ã—ãªã„
 	__asm { jz dont_exec }
 	__asm { add eax,1000000h }
 	__asm { call OpTable[edx*4] }
@@ -2853,7 +2853,7 @@ static OPFUNC(EI)
 	__asm { mov cl,1 }
 	__asm { mov IFF1,cl }
 	__asm { mov IFF2,cl }
-	__asm { call O_INTR }					// Š„‚è‚İƒ`ƒFƒbƒN•Š„‚è‚İÀs
+	__asm { call O_INTR }					// å‰²ã‚Šè¾¼ã¿ãƒã‚§ãƒƒã‚¯ï¼†å‰²ã‚Šè¾¼ã¿å®Ÿè¡Œ
 	__asm { ret }
 	
 	FETCH8SUB; 
@@ -2923,7 +2923,7 @@ instout:
 }
 
 // ---------------------------------------------------------------------------
-//	\’zE”jŠü
+//	æ§‹ç¯‰ãƒ»ç ´æ£„
 //
 Z80_x86::Z80_x86(const ID& id)
 : Device(id)
@@ -2951,7 +2951,7 @@ void Z80_x86::Stop(int count)
 }
 
 // ---------------------------------------------------------------------------
-//	‰Šú‰»
+//	åˆæœŸåŒ–
 //
 bool Z80_x86::Init(MemoryManager* mm, IOBus* bus, int iack)
 {
@@ -2967,8 +2967,8 @@ bool Z80_x86::Init(MemoryManager* mm, IOBus* bus, int iack)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒŠƒZƒbƒg
-//	bank - Š„‚è‚İ”Ô†
+//	ãƒªã‚»ãƒƒãƒˆ
+//	bank - å‰²ã‚Šè¾¼ã¿ç•ªå·
 //
 void IOCALL Z80_x86::Reset(uint, uint)
 {
@@ -2982,7 +2982,7 @@ void IOCALL Z80_x86::Reset(uint, uint)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒ}ƒXƒJƒuƒ‹Š„‚İ—v‹
+//	ãƒã‚¹ã‚«ãƒ–ãƒ«å‰²è¾¼ã¿è¦æ±‚
 //
 void IOCALL Z80_x86::IRQ(uint, uint d)
 {
@@ -2990,16 +2990,16 @@ void IOCALL Z80_x86::IRQ(uint, uint d)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒmƒ“ƒ}ƒXƒJƒuƒ‹Š„‚İ—v‹
-//	–¢À‘•
+//	ãƒãƒ³ãƒã‚¹ã‚«ãƒ–ãƒ«å‰²è¾¼ã¿è¦æ±‚
+//	æœªå®Ÿè£…
 //	
 void IOCALL Z80_x86::NMI(uint, uint)
 {
 }
 
 // ---------------------------------------------------------------------------
-//	Exec ‚µ‚Ä‚©‚çŒo‰ß‚µ‚½ƒNƒƒbƒN”‚ğæ“¾
-//	(ExecOne ‚Å‚Í–¢‘Î‰)
+//	Exec ã—ã¦ã‹ã‚‰çµŒéã—ãŸã‚¯ãƒ­ãƒƒã‚¯æ•°ã‚’å–å¾—
+//	(ExecOne ã§ã¯æœªå¯¾å¿œ)
 //
 int Z80_x86::GetCCount()
 {
@@ -3007,7 +3007,7 @@ int Z80_x86::GetCCount()
 }
 
 // ---------------------------------------------------------------------------
-//	ó‘Ô•Û‘¶
+//	çŠ¶æ…‹ä¿å­˜
 //
 bool IFCALL Z80_x86::SaveStatus(uint8* s)
 {
@@ -3026,7 +3026,7 @@ bool IFCALL Z80_x86::SaveStatus(uint8* s)
 }
 
 // ---------------------------------------------------------------------------
-//	ó‘Ô•œŒ³
+//	çŠ¶æ…‹å¾©å…ƒ
 //
 bool IFCALL Z80_x86::LoadStatus(const uint8* s)
 {

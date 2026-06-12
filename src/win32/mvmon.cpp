@@ -14,7 +14,7 @@
 using namespace PC8801;
 
 // ---------------------------------------------------------------------------
-//	\’z/Á–Å
+//	æ§‹ç¯‰/æ¶ˆæ»…
 //
 MemViewMonitor::MemViewMonitor()
 {
@@ -25,7 +25,7 @@ MemViewMonitor::~MemViewMonitor()
 }
 
 // ---------------------------------------------------------------------------
-//	‰Šú‰»
+//	åˆæœŸåŒ–
 //
 bool MemViewMonitor::Init(LPCTSTR tmpl, PC88* pc88)
 {
@@ -42,7 +42,7 @@ bool MemViewMonitor::Init(LPCTSTR tmpl, PC88* pc88)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒ_ƒCƒAƒƒOˆ—
+//	ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å‡¦ç†
 //
 BOOL MemViewMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 {
@@ -110,7 +110,7 @@ BOOL MemViewMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒoƒ“ƒN•ÏX
+//	ãƒãƒ³ã‚¯å¤‰æ›´
 //
 void MemViewMonitor::SetBank()
 {

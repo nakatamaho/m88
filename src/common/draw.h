@@ -39,9 +39,9 @@ public:
 
 	enum Status
 	{
-		readytodraw		= 1 <<  0,		// XV‚Å‚«‚é‚±‚Æ‚ğ¦‚·
-		shouldrefresh	= 1 <<  1,		// DrawBuffer ‚ğ‚Ü‚½‘‚«’¼‚·•K—v‚ª‚ ‚é
-		flippable		= 1 <<  2,		// flip ‚ªÀ‘•‚µ‚Ä‚ ‚é‚±‚Æ‚ğ¦‚·
+		readytodraw		= 1 <<  0,		// æ›´æ–°ã§ãã‚‹ã“ã¨ã‚’ç¤ºã™
+		shouldrefresh	= 1 <<  1,		// DrawBuffer ã‚’ã¾ãŸæ›¸ãç›´ã™å¿…è¦ãŒã‚ã‚‹
+		flippable		= 1 <<  2,		// flip ãŒå®Ÿè£…ã—ã¦ã‚ã‚‹ã“ã¨ã‚’ç¤ºã™
 	};
 
 public:

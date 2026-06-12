@@ -55,8 +55,8 @@ private:
 	string dumpfile_;
 
 	HMMIO hmmio_;					// mmio handle
-	MMCKINFO ckparent_;				// RIFF チャンク
-	MMCKINFO ckdata_;				// data チャンク
+	MMCKINFO ckparent_;				// RIFF 繝√Ε繝ｳ繧ｯ
+	MMCKINFO ckdata_;				// data 繝√Ε繝ｳ繧ｯ
 
 	DumpState dumpstate_;
 	int dumpedsample_;

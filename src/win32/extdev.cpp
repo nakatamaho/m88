@@ -17,7 +17,7 @@ using namespace PC8801;
 PCInfo ExternalDevice::pcinfo;
 
 // ---------------------------------------------------------------------------
-//	\’zE”jŠü
+//	æ§‹ç¯‰ãƒ»ç ´æ£„
 //
 ExternalDevice::ExternalDevice()
 : Device(0), hdll(0), dev(0), sound(0), mm(0), mid(-1)
@@ -30,7 +30,7 @@ ExternalDevice::~ExternalDevice()
 }
 
 // ---------------------------------------------------------------------------
-//	‰Šú‰»
+//	åˆæœŸåŒ–
 //
 bool ExternalDevice::Init
 (const char* dllname, PC88* p, IOBus* b, PD8257* dm, ISoundControl* s, IMemoryManager* _mm)
@@ -70,7 +70,7 @@ bool ExternalDevice::Init
 }
 
 // ---------------------------------------------------------------------------
-//	Œã•Ğ•t
+//	å¾Œç‰‡ä»˜
 //
 bool ExternalDevice::Cleanup()
 {
@@ -92,7 +92,7 @@ bool ExternalDevice::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	PCInfo \‘¢‘Ì‚Ì‰Šú‰»
+//	PCInfo æ§‹é€ ä½“ã®åˆæœŸåŒ–
 //
 bool ExternalDevice::InitPCInfo()
 {
@@ -112,7 +112,7 @@ bool ExternalDevice::InitPCInfo()
 }
 
 // ---------------------------------------------------------------------------
-//	DLL ‚ğ“Ç‚İ‚Ş
+//	DLL ã‚’èª­ã¿è¾¼ã‚€
 //
 bool ExternalDevice::LoadDLL(const char* dllname)
 {
@@ -224,7 +224,7 @@ uint ExternalDevice::S_GetTime(void* h)
 }
 
 // ---------------------------------------------------------------------------
-//	XV
+//	æ›´æ–°
 //
 void ExternalDevice::S_SoundUpdate(void* h)
 {

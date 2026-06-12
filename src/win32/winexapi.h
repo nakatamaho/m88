@@ -77,9 +77,9 @@ public:
 #endif
 
 // ---------------------------------------------------------------------------
-//	�W���ł͒񋟂���Ȃ���������Ȃ� API ���
-//	EXAPI - GetModuleHandle �Őڑ�
-//	EXDLL - �N���� �� LoadLibrary �Őڑ�
+//	標準では提供されないかもしれない API を列挙
+//	EXAPI - GetModuleHandle で接続
+//	EXDLL - 起動時 に LoadLibrary で接続
 //
 DECLARE_EXAPI(EnableIME, BOOL, (HWND, BOOL), "user32.dll", "WINNLSEnableIME", FALSE)
 DECLARE_EXAPI(MonitorFromWin, HMONITOR, (HWND, DWORD), "user32.dll", "MonitorFromWindow", 0)

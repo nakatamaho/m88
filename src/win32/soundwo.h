@@ -35,9 +35,9 @@ private:
 	HWAVEOUT hwo;
 	HANDLE hthread;
 	uint idthread;
-	int numblocks;					// WAVEHDR(PCM ƒuƒƒbƒN)‚Ì”
-	WAVEHDR* wavehdr;				// WAVEHDR ‚Ì”z—ñ
-	bool dontmix;					// WAVE ‚ğ‘—‚éÛ‚É‰¹º‚Ì‡¬‚ğ‚µ‚È‚¢
+	int numblocks;					// WAVEHDR(PCM ãƒ–ãƒ­ãƒƒã‚¯)ã®æ•°
+	WAVEHDR* wavehdr;				// WAVEHDR ã®é…åˆ—
+	bool dontmix;					// WAVE ã‚’é€ã‚‹éš›ã«éŸ³å£°ã®åˆæˆã‚’ã—ãªã„
 };
 
 }

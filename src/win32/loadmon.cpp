@@ -16,7 +16,7 @@
 LoadMonitor* LoadMonitor::instance = 0;
 
 // ---------------------------------------------------------------------------
-//	ç\íz/è¡ñ≈
+//	ÊßãÁØâ/Ê∂àÊªÖ
 //
 LoadMonitor::LoadMonitor()
 {
@@ -38,7 +38,7 @@ bool LoadMonitor::Init()
 
 	LARGE_INTEGER freq;
 	QueryPerformanceFrequency(&freq);
-	base = freq.LowPart / 1000000;		// 1us íPà 
+	base = freq.LowPart / 1000000;		// 1us Âçò‰Ωç
 	
 	instance = this;
 	tidx = 0;
@@ -60,7 +60,7 @@ void LoadMonitor::DrawMain(HDC hdc, bool)
 }
 
 // ---------------------------------------------------------------------------
-//	É_ÉCÉAÉçÉOèàóù
+//	„ÉÄ„Ç§„Ç¢„É≠„Ç∞Âá¶ÁêÜ
 //
 BOOL LoadMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 {
@@ -68,7 +68,7 @@ BOOL LoadMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 }
 
 // ---------------------------------------------------------------------------
-//	èÛë‘Çï\é¶
+//	Áä∂ÊÖã„ÇíË°®Á§∫
 //
 void LoadMonitor::UpdateText()
 {
@@ -103,7 +103,7 @@ void LoadMonitor::UpdateText()
 }
 
 // ---------------------------------------------------------------------------
-//	ãLò^äJén
+//	Ë®òÈå≤ÈñãÂßã
 //
 void LoadMonitor::ProcBegin(const char* name)
 {
@@ -121,7 +121,7 @@ void LoadMonitor::ProcBegin(const char* name)
 	}
 	else
 	{
-		// êVÇµÇ≠ìoò^
+		// Êñ∞„Åó„ÅèÁôªÈå≤
 		State stat;
 		memset(stat.total, 0, sizeof(stat.total));
 		stat.timeentered = t.LowPart;
@@ -130,7 +130,7 @@ void LoadMonitor::ProcBegin(const char* name)
 }
 
 // ---------------------------------------------------------------------------
-//	ãLò^èIóπ
+//	Ë®òÈå≤ÁµÇ‰∫Ü
 //
 void LoadMonitor::ProcEnd(const char* name)
 {

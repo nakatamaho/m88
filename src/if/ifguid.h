@@ -8,40 +8,40 @@
 // ----------------------------------------------------------------------------
 //	M88 interface GUID
 //
-// Main ë§ I/O Bus					{328ABDEA-7E10-11d3-BD4F-00A0C90AC9DA}
+// Main ÂÅ¥ I/O Bus					{328ABDEA-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_IOBus1,			0x328abdea, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
-// Sub ë§ I/O Bus					{328ABDEB-7E10-11d3-BD4F-00A0C90AC9DA}
+// Sub ÂÅ¥ I/O Bus					{328ABDEB-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_IOBus2,			0x328abdeb, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
 
-// Main ë§ I/O Bus					{328ABDEC-7E10-11d3-BD4F-00A0C90AC9DA}
+// Main ÂÅ¥ I/O Bus					{328ABDEC-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_IOAccess1,		0x328abdec, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
-// Sub ë§ I/O Bus					{328ABDED-7E10-11d3-BD4F-00A0C90AC9DA}
+// Sub ÂÅ¥ I/O Bus					{328ABDED-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_IOAccess2,		0x328abded, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
 
-// Main ë§ ÉÅÉÇÉää«óù				{328ABDEE-7E10-11d3-BD4F-00A0C90AC9DA}
+// Main ÂÅ¥ „É°„É¢„É™ÁÆ°ÁêÜ				{328ABDEE-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_MemoryManager1,	0x328abdee, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
-// Sub ë§ ÉÅÉÇÉää«óù				{328ABDEF-7E10-11d3-BD4F-00A0C90AC9DA}
+// Sub ÂÅ¥ „É°„É¢„É™ÁÆ°ÁêÜ				{328ABDEF-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_MemoryManager2,	0x328abdef, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
 
-// Main ë§ ÉÅÉÇÉäÉAÉNÉZÉX			{328ABDF0-7E10-11d3-BD4F-00A0C90AC9DA}
+// Main ÂÅ¥ „É°„É¢„É™„Ç¢„ÇØ„Çª„Çπ			{328ABDF0-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_MemoryAccess1,	0x328abdf0, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
-// Sub ë§ ÉÅÉÇÉäÉAÉNÉZÉX			{328ABDF1-7E10-11d3-BD4F-00A0C90AC9DA}
+// Sub ÂÅ¥ „É°„É¢„É™„Ç¢„ÇØ„Çª„Çπ			{328ABDF1-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_MemoryAccess2,	0x328abdf1, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
 
-// âπä«óù							{328ABDF2-7E10-11d3-BD4F-00A0C90AC9DA}
+// Èü≥ÁÆ°ÁêÜ							{328ABDF2-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_SoundControl,	0x328abdf2, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
 
-// É^ÉCÉ}Å[ä«óù						{328ABDF3-7E10-11d3-BD4F-00A0C90AC9DA}
+// „Çø„Ç§„Éû„ÉºÁÆ°ÁêÜ						{328ABDF3-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_Scheduler,		0x328abdf3, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
-// ÉVÉXÉeÉÄéûä‘éÊìæ					{328ABDF4-7E10-11d3-BD4F-00A0C90AC9DA}
+// „Ç∑„Çπ„ÉÜ„É†ÊôÇÈñìÂèñÂæó					{328ABDF4-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_Time,			0x328abdf4, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
-// CPU éûä‘éÊìæ						{44F8E15C-7E9F-11d3-BD51-00A0C90AC9DA}
+// CPU ÊôÇÈñìÂèñÂæó						{44F8E15C-7E9F-11d3-BD51-00A0C90AC9DA}
 DEFINE_GUID(M88IID_CPUTime,			0x44f8e15c, 0x7e9f, 0x11d3, 0xbd, 0x51, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
 
 // DMA								{328ABDF5-7E10-11d3-BD4F-00A0C90AC9DA}
 DEFINE_GUID(M88IID_DMA,				0x328abdf5, 0x7e10, 0x11d3, 0xbd, 0x4f, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
 
-// ê›íËÉ_ÉCÉAÉçÉO					{32694F5A-7F25-11d3-BD53-00A0C90AC9DA}
+// Ë®≠ÂÆö„ÉÄ„Ç§„Ç¢„É≠„Ç∞					{32694F5A-7F25-11d3-BD53-00A0C90AC9DA}
 DEFINE_GUID(M88IID_ConfigPropBase,	0x32694f5a, 0x7f25, 0x11d3, 0xbd, 0x53, 0x0, 0xa0, 0xc9, 0xa, 0xc9, 0xda);
 
 // UI								{A63E4B05-8F80-11d3-BD81-00A0C90AC9DA}

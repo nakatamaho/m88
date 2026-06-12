@@ -2,7 +2,7 @@
 //	M88 - PC-8801 series emulator
 //	Copyright (C) cisc 1999.
 // ----------------------------------------------------------------------------
-//	CD-ROM ƒCƒ“ƒ^[ƒtƒF[ƒX‚ÌÀ‘•
+//	CD-ROM ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã®å®Ÿè£…
 // ----------------------------------------------------------------------------
 //	$Id: cdif.h,v 1.2 1999/10/10 01:39:00 cisc Exp $
 
@@ -114,10 +114,10 @@ private:
 	
 	int phase;
 	
-	uint8* ptr;				// “]‘—ƒ‚[ƒh
+	uint8* ptr;				// è»¢é€ãƒ¢ãƒ¼ãƒ‰
 	int length;
 
-	uint addrs;				// Ä¶ŠJnƒAƒhƒŒƒX
+	uint addrs;				// å†ç”Ÿé–‹å§‹ã‚¢ãƒ‰ãƒ¬ã‚¹
 	
 	uint status;			// in 90
 	uint data;				// port 91
@@ -134,7 +134,7 @@ private:
 	bool enable;
 	bool active;
 
-	uint8 cmdbuf[16];		// ƒoƒbƒtƒ@‚Í˜A‘±‚µ‚Ä”z’u‚³‚ê‚é‚±‚Æ
+	uint8 cmdbuf[16];		// ãƒãƒƒãƒ•ã‚¡ã¯é€£ç¶šã—ã¦é…ç½®ã•ã‚Œã‚‹ã“ã¨
 	uint8 datbuf[16];
 	uint8 tmpbuf[2340];
 	CDROM cdrom;

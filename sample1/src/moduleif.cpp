@@ -17,8 +17,8 @@ enum SpecialPort
 	pirq,			// IRQ
 	piack,			// interrupt acknowledgement
 	vrtc,			// vertical retrace
-	popnio,			// OPN ‚Ì“üo—Íƒ|[ƒg 1
-	popnio2,		// OPN ‚Ì“üo—Íƒ|[ƒg 2 (˜A”Ô)
+	popnio,			// OPN ã®å…¥å‡ºåŠ›ãƒãƒ¼ãƒˆ 1
+	popnio2,		// OPN ã®å…¥å‡ºåŠ›ãƒãƒ¼ãƒˆ 2 (é€£ç•ª)
 	portend
 };
 
@@ -81,7 +81,7 @@ void SineModule::Release()
 
 // ---------------------------------------------------------------------------
 
-//	Module ‚ğì¬
+//	Module ã‚’ä½œæˆ
 extern "C" EXTDEVAPI IModule* __cdecl M88CreateModule(ISystem* system)
 {
 	SineModule* module = new SineModule;

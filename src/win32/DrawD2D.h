@@ -2,7 +2,7 @@
 //  M88 - PC88 emulator
 //  Copyright (C) cisc 1998, 1999.
 // ---------------------------------------------------------------------------
-//	Direct2D ‚É‚æ‚é‰æ–Ê•`‰æ
+//	Direct2D ã«ã‚ˆã‚‹ç”»é¢æç”»
 // ---------------------------------------------------------------------------
 
 #pragma once
@@ -48,7 +48,7 @@ private:
 	HWND	m_hCWnd;
 	uint	m_width;
 	uint	m_height;
-	BYTE*	m_image; 	// ‰æ‘œBitmap
+	BYTE*	m_image; 	// ç”»åƒBitmap
 	BI256	m_bmpinfo;
 	HBITMAP	m_hBitmap;
 	int		bpl;

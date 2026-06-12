@@ -20,44 +20,44 @@ class IOBus;
 // ----------------------------------------------------------------------------
 //	Z80 Emulator
 //	
-//	g—p‰Â”\‚È‹@”\
+//	ä½¿ç”¨å¯èƒ½ãªæ©Ÿèƒ½
 //	Reset
 //	INT
 //	NMI
 //	
 //	bool Init(MemoryManager* mem, IOBus* bus)
-//	Z80 ƒGƒ~ƒ…ƒŒ[ƒ^‚ğ‰Šú‰»‚·‚é
-//	in:		bus		CPU ‚ğ‚Â‚È‚® Bus
-//	out:			–â‘è‚È‚¯‚ê‚Î true
+//	Z80 ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚¿ã‚’åˆæœŸåŒ–ã™ã‚‹
+//	in:		bus		CPU ã‚’ã¤ãªã Bus
+//	out:			å•é¡Œãªã‘ã‚Œã° true
 //	
 //	uint Exec(uint clk)
-//	w’è‚µ‚½ƒNƒƒbƒN•ª‚¾‚¯–½—ß‚ğÀs‚·‚é
-//	in:		clk		Às‚·‚éƒNƒƒbƒN”
-//	out:			ÀÛ‚ÉÀs‚µ‚½ƒNƒƒbƒN”
+//	æŒ‡å®šã—ãŸã‚¯ãƒ­ãƒƒã‚¯åˆ†ã ã‘å‘½ä»¤ã‚’å®Ÿè¡Œã™ã‚‹
+//	in:		clk		å®Ÿè¡Œã™ã‚‹ã‚¯ãƒ­ãƒƒã‚¯æ•°
+//	out:			å®Ÿéš›ã«å®Ÿè¡Œã—ãŸã‚¯ãƒ­ãƒƒã‚¯æ•°
 //	
 //	int Stop(int clk)
-//	Àsc‚èƒNƒƒbƒN”‚ğ•ÏX‚·‚é
+//	å®Ÿè¡Œæ®‹ã‚Šã‚¯ãƒ­ãƒƒã‚¯æ•°ã‚’å¤‰æ›´ã™ã‚‹
 //	in:		clk
 //
 //	uint GetCount()
-//	’ÊZÀsƒNƒƒbƒNƒJƒEƒ“ƒg‚ğæ“¾
+//	é€šç®—å®Ÿè¡Œã‚¯ãƒ­ãƒƒã‚¯ã‚«ã‚¦ãƒ³ãƒˆã‚’å–å¾—
 //	out:
 //
 //	void Reset()
-//	Z80 CPU ‚ğƒŠƒZƒbƒg‚·‚é
+//	Z80 CPU ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
 //
 //	void INT(int flag)
-//	Z80 CPU ‚É INT Š„‚è‚İ—v‹‚ğo‚·
-//	in:		flag	true: Š„‚è‚İ”­¶
-//					false: æ‚èÁ‚µ
+//	Z80 CPU ã« INT å‰²ã‚Šè¾¼ã¿è¦æ±‚ã‚’å‡ºã™
+//	in:		flag	true: å‰²ã‚Šè¾¼ã¿ç™ºç”Ÿ
+//					false: å–ã‚Šæ¶ˆã—
 //	
 //	void NMI()
-//	Z80 CPU ‚É NMI Š„‚è‚İ—v‹‚ğo‚·
+//	Z80 CPU ã« NMI å‰²ã‚Šè¾¼ã¿è¦æ±‚ã‚’å‡ºã™
 //	
 //	void Wait(bool wait)
-//	Z80 CPU ‚Ì“®ì‚ğ’â~‚³‚¹‚é
-//	in:		wait	~‚ß‚éê‡ true
-//					wait ó‘Ô‚Ìê‡ Exec ‚ª–½—ß‚ğÀs‚µ‚È‚¢‚æ‚¤‚É‚È‚é
+//	Z80 CPU ã®å‹•ä½œã‚’åœæ­¢ã•ã›ã‚‹
+//	in:		wait	æ­¢ã‚ã‚‹å ´åˆ true
+//					wait çŠ¶æ…‹ã®å ´åˆ Exec ãŒå‘½ä»¤ã‚’å®Ÿè¡Œã—ãªã„ã‚ˆã†ã«ãªã‚‹
 //
 class Z80C : public Device
 {
@@ -144,8 +144,8 @@ private:
 
 	void DumpLog();
 
-	uint8* inst;		// PC ‚Ìw‚·ƒƒ‚ƒŠ‚Ìƒ|ƒCƒ“ƒ^C‚Ü‚½‚Í PC ‚»‚Ì‚à‚Ì
-	uint8* instlim;		// inst ‚Ì—LŒøãŒÀ
+	uint8* inst;		// PC ã®æŒ‡ã™ãƒ¡ãƒ¢ãƒªã®ãƒã‚¤ãƒ³ã‚¿ï¼Œã¾ãŸã¯ PC ãã®ã‚‚ã®
+	uint8* instlim;		// inst ã®æœ‰åŠ¹ä¸Šé™
 	uint8* instbase;	// inst - PC		(PC = inst - instbase)
 	uint8* instpage;
 	
@@ -167,17 +167,17 @@ private:
 	int startcount;
 	
 	enum index { USEHL, USEIX, USEIY };
-	index index_mode;						/* HL/IX/IY ‚Ç‚ê‚ğQÆ‚·‚é‚© */
-	uint8 uf;								/* –¢ŒvZƒtƒ‰ƒO */
-	uint8 nfa;								/* ÅŒã‚Ì‰ÁŒ¸Z‚Ìí—Ş */
-	uint8 xf;								/* –¢’è‹`ƒtƒ‰ƒO(‘æ3,5ƒrƒbƒg) */
-	uint32 fx32, fy32;						/* ƒtƒ‰ƒOŒvZ—p‚Ìƒf[ƒ^ */
+	index index_mode;						/* HL/IX/IY ã©ã‚Œã‚’å‚ç…§ã™ã‚‹ã‹ */
+	uint8 uf;								/* æœªè¨ˆç®—ãƒ•ãƒ©ã‚° */
+	uint8 nfa;								/* æœ€å¾Œã®åŠ æ¸›ç®—ã®ç¨®é¡ */
+	uint8 xf;								/* æœªå®šç¾©ãƒ•ãƒ©ã‚°(ç¬¬3,5ãƒ“ãƒƒãƒˆ) */
+	uint32 fx32, fy32;						/* ãƒ•ãƒ©ã‚°è¨ˆç®—ç”¨ã®ãƒ‡ãƒ¼ã‚¿ */
 	uint fx, fy;
 	
-	uint8* ref_h[3];						/* H / XH / YH ‚Ìƒe[ƒuƒ‹ */
-	uint8* ref_l[3];						/* L / YH / YL ‚Ìƒe[ƒuƒ‹ */
-	Z80Reg::wordreg* ref_hl[3];				/* HL/ IX / IY ‚Ìƒe[ƒuƒ‹ */
-	uint8* ref_byte[8];						/* BCDEHL A ‚Ìƒe[ƒuƒ‹ */
+	uint8* ref_h[3];						/* H / XH / YH ã®ãƒ†ãƒ¼ãƒ–ãƒ« */
+	uint8* ref_l[3];						/* L / YH / YL ã®ãƒ†ãƒ¼ãƒ–ãƒ« */
+	Z80Reg::wordreg* ref_hl[3];				/* HL/ IX / IY ã®ãƒ†ãƒ¼ãƒ–ãƒ« */
+	uint8* ref_byte[8];						/* BCDEHL A ã®ãƒ†ãƒ¼ãƒ–ãƒ« */
 	FILE* dumplog;
 	Z80Diag diag;
 
@@ -188,7 +188,7 @@ private:
 	Statistics statistics;
 #endif
 	
-	// “à•”ƒCƒ“ƒ^[ƒtƒF[ƒX
+	// å†…éƒ¨ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 private:
 	uint Read8(uint addr);
 	uint Read16(uint a);
@@ -238,7 +238,7 @@ private:
 };
 
 // ---------------------------------------------------------------------------
-//  ƒNƒƒbƒNƒJƒEƒ“ƒ^æ“¾
+//  ã‚¯ãƒ­ãƒƒã‚¯ã‚«ã‚¦ãƒ³ã‚¿å–å¾—
 //
 inline int Z80C::GetCount()
 {

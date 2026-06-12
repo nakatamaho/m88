@@ -22,7 +22,7 @@ public:
 		// bit1 N/N80 (bit5=0)
 		// bit4 V1/V2
 		// bit5 N/N88
-		// bit6 CDROM —LŒø
+		// bit6 CDROM æœ‰åŠ¹
 		N80 = 0x00, N802 = 0x02, N80V2 = 0x12,
 		N88V1 = 0x20, N88V1H = 0x21, N88V2 = 0x31, 
 		N88V2CD = 0x71,
@@ -38,54 +38,54 @@ public:
 
 	enum Flags
 	{
-		subcpucontrol	= 1 <<  0,	// Sub CPU ‚Ì‹ì“®‚ð§Œä‚·‚é
-		savedirectory	= 1 <<  1,	// ‹N“®Žž‚É‘O‰ñI—¹Žž‚ÌƒfƒBƒŒƒNƒgƒŠ‚ÉˆÚ“®
-		fullspeed		= 1 <<  2,	// ‘S—Í“®ì
-		enablepad		= 1 <<  3,	// ƒpƒbƒh—LŒø
-		enableopna		= 1 <<  4,	// OPNA ƒ‚[ƒh (44h)
-		watchregister	= 1 <<  5,	// ƒŒƒWƒXƒ^•\Ž¦
-		askbeforereset	= 1 <<  6,	// I—¹EƒŠƒZƒbƒgŽž‚ÉŠm”F
-		enablepcg		= 1 <<  7,	// PCG Œn‚ÌƒtƒHƒ“ƒg‘‚«Š·‚¦‚ð—LŒø
-		fv15k			= 1 <<  8,	// 15KHz ƒ‚ƒjƒ^[ƒ‚[ƒh
-		cpuburst        = 1 <<  9,	// ƒm[ƒEƒFƒCƒg
-		suppressmenu	= 1 << 10,	// ALT ‚ð GRPH ‚É
-		cpuclockmode	= 1 << 11,	// ƒNƒƒbƒN’PˆÊ‚ÅØ‚è‘Ö‚¦
-		usearrowfor10	= 1 << 12,	// •ûŒüƒL[‚ðƒeƒ“ƒL[‚É
-		swappadbuttons	= 1 << 13,	// ƒpƒbƒh‚Ìƒ{ƒ^ƒ“‚ð“ü‚ê‘Ö‚¦
-		disablesing		= 1 << 14,	// CMD SING –³Œø
-		digitalpalette	= 1 << 15,	// ƒfƒBƒWƒ^ƒ‹ƒpƒŒƒbƒgƒ‚[ƒh
-		useqpc			= 1 << 16,	// QueryPerformanceCounter ‚Â‚©‚¤
-		force480		= 1 << 17,	// ‘S‰æ–Ê‚ðí‚É 640x480 ‚Å
+		subcpucontrol	= 1 <<  0,	// Sub CPU ã®é§†å‹•ã‚’åˆ¶å¾¡ã™ã‚‹
+		savedirectory	= 1 <<  1,	// èµ·å‹•æ™‚ã«å‰å›žçµ‚äº†æ™‚ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ç§»å‹•
+		fullspeed		= 1 <<  2,	// å…¨åŠ›å‹•ä½œ
+		enablepad		= 1 <<  3,	// ãƒ‘ãƒƒãƒ‰æœ‰åŠ¹
+		enableopna		= 1 <<  4,	// OPNA ãƒ¢ãƒ¼ãƒ‰ (44h)
+		watchregister	= 1 <<  5,	// ãƒ¬ã‚¸ã‚¹ã‚¿è¡¨ç¤º
+		askbeforereset	= 1 <<  6,	// çµ‚äº†ãƒ»ãƒªã‚»ãƒƒãƒˆæ™‚ã«ç¢ºèª
+		enablepcg		= 1 <<  7,	// PCG ç³»ã®ãƒ•ã‚©ãƒ³ãƒˆæ›¸ãæ›ãˆã‚’æœ‰åŠ¹
+		fv15k			= 1 <<  8,	// 15KHz ãƒ¢ãƒ‹ã‚¿ãƒ¼ãƒ¢ãƒ¼ãƒ‰
+		cpuburst        = 1 <<  9,	// ãƒŽãƒ¼ã‚¦ã‚§ã‚¤ãƒˆ
+		suppressmenu	= 1 << 10,	// ALT ã‚’ GRPH ã«
+		cpuclockmode	= 1 << 11,	// ã‚¯ãƒ­ãƒƒã‚¯å˜ä½ã§åˆ‡ã‚Šæ›¿ãˆ
+		usearrowfor10	= 1 << 12,	// æ–¹å‘ã‚­ãƒ¼ã‚’ãƒ†ãƒ³ã‚­ãƒ¼ã«
+		swappadbuttons	= 1 << 13,	// ãƒ‘ãƒƒãƒ‰ã®ãƒœã‚¿ãƒ³ã‚’å…¥ã‚Œæ›¿ãˆ
+		disablesing		= 1 << 14,	// CMD SING ç„¡åŠ¹
+		digitalpalette	= 1 << 15,	// ãƒ‡ã‚£ã‚¸ã‚¿ãƒ«ãƒ‘ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰
+		useqpc			= 1 << 16,	// QueryPerformanceCounter ã¤ã‹ã†
+		force480		= 1 << 17,	// å…¨ç”»é¢ã‚’å¸¸ã« 640x480 ã§
 		opnona8			= 1 << 18,	// OPN (a8h)
 		opnaona8		= 1 << 19,	// OPNA (a8h)
-		drawprioritylow	= 1 << 20,	// •`‰æ‚Ì—Dæ“x‚ð—Ž‚Æ‚·
-		disablef12reset = 1 << 21,  // F12 ‚ð RESET ‚Æ‚µ‚ÄŽg—p‚µ‚È‚¢(COPY ƒL[‚É‚È‚é)
-		fullline		= 1 << 22,  // ‹ô”ƒ‰ƒCƒ“•\Ž¦
-		showstatusbar	= 1 << 23,	// ƒXƒe[ƒ^ƒXƒo[•\Ž¦
-		showfdcstatus	= 1 << 24,	// FDC ‚ÌƒXƒe[ƒ^ƒX‚ð•\Ž¦
-		enablewait		= 1 << 25,	// Wait ‚ð‚Â‚¯‚é
-		enablemouse		= 1 << 26,	// Mouse ‚ðŽg—p
-		mousejoymode	= 1 << 27,	// Mouse ‚ðƒWƒ‡ƒCƒXƒeƒBƒbƒNƒ‚[ƒh‚ÅŽg—p
-		specialpalette	= 1 << 28,	// ƒfƒoƒbƒNƒpƒŒƒbƒgƒ‚[ƒh
-		mixsoundalways	= 1 << 29,	// ˆ—‚ªd‚¢Žž‚à‰¹‚Ì‡¬‚ð‘±‚¯‚é
-		precisemixing	= 1 << 30,	// ‚¸“x‚È‡¬‚ðs‚¤
+		drawprioritylow	= 1 << 20,	// æç”»ã®å„ªå…ˆåº¦ã‚’è½ã¨ã™
+		disablef12reset = 1 << 21,  // F12 ã‚’ RESET ã¨ã—ã¦ä½¿ç”¨ã—ãªã„(COPY ã‚­ãƒ¼ã«ãªã‚‹)
+		fullline		= 1 << 22,  // å¶æ•°ãƒ©ã‚¤ãƒ³è¡¨ç¤º
+		showstatusbar	= 1 << 23,	// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ¼è¡¨ç¤º
+		showfdcstatus	= 1 << 24,	// FDC ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¡¨ç¤º
+		enablewait		= 1 << 25,	// Wait ã‚’ã¤ã‘ã‚‹
+		enablemouse		= 1 << 26,	// Mouse ã‚’ä½¿ç”¨
+		mousejoymode	= 1 << 27,	// Mouse ã‚’ã‚¸ãƒ§ã‚¤ã‚¹ãƒ†ã‚£ãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰ã§ä½¿ç”¨
+		specialpalette	= 1 << 28,	// ãƒ‡ãƒãƒƒã‚¯ãƒ‘ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰
+		mixsoundalways	= 1 << 29,	// å‡¦ç†ãŒé‡ã„æ™‚ã‚‚éŸ³ã®åˆæˆã‚’ç¶šã‘ã‚‹
+		precisemixing	= 1 << 30,	// é«˜ç²¾åº¦ãªåˆæˆã‚’è¡Œã†
 	};
 	enum Flag2
 	{
-		disableopn44	= 1 <<  0,	// OPN(44h) ‚ð–³Œø‰» (V2 ƒ‚[ƒhŽž‚Í OPN)
-		usewaveoutdrv	= 1 <<	1,	// PCM ‚ÌÄ¶‚É waveOut ‚ðŽg—p‚·‚é
-		mask0			= 1 <<  2,	// ‘I‘ð•\Ž¦ƒ‚[ƒh
+		disableopn44	= 1 <<  0,	// OPN(44h) ã‚’ç„¡åŠ¹åŒ– (V2 ãƒ¢ãƒ¼ãƒ‰æ™‚ã¯ OPN)
+		usewaveoutdrv	= 1 <<	1,	// PCM ã®å†ç”Ÿã« waveOut ã‚’ä½¿ç”¨ã™ã‚‹
+		mask0			= 1 <<  2,	// é¸æŠžè¡¨ç¤ºãƒ¢ãƒ¼ãƒ‰
 		mask1			= 1 <<  3,
 		mask2			= 1 <<  4,
-		genscrnshotname = 1 <<  5,	// ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒgƒtƒ@ƒCƒ‹–¼‚ðŽ©“®¶¬
-		usefmclock		= 1 <<  6,	// FM ‰¹Œ¹‚Ì‡¬‚É–{—ˆ‚ÌƒNƒƒbƒN‚ðŽg—p
-		compresssnapshot= 1 <<  7,  // ƒXƒiƒbƒvƒVƒ‡ƒbƒg‚ðˆ³k‚·‚é
-		synctovsync		= 1 <<  8,	// ‘S‰æ–Êƒ‚[ƒhŽž vsync ‚Æ“¯Šú‚·‚é
-		showplacesbar	= 1 <<  9,	// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒO‚Å PLACESBAR ‚ð•\Ž¦‚·‚é
-		lpfenable		= 1 << 10,	// LPF ‚ðŽg‚Á‚Ä‚Ý‚é
-		fddnowait		= 1 << 11,	// FDD ƒm[ƒEƒFƒCƒg
+		genscrnshotname = 1 <<  5,	// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆãƒ•ã‚¡ã‚¤ãƒ«åã‚’è‡ªå‹•ç”Ÿæˆ
+		usefmclock		= 1 <<  6,	// FM éŸ³æºã®åˆæˆã«æœ¬æ¥ã®ã‚¯ãƒ­ãƒƒã‚¯ã‚’ä½¿ç”¨
+		compresssnapshot= 1 <<  7,  // ã‚¹ãƒŠãƒƒãƒ—ã‚·ãƒ§ãƒƒãƒˆã‚’åœ§ç¸®ã™ã‚‹
+		synctovsync		= 1 <<  8,	// å…¨ç”»é¢ãƒ¢ãƒ¼ãƒ‰æ™‚ vsync ã¨åŒæœŸã™ã‚‹
+		showplacesbar	= 1 <<  9,	// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§ PLACESBAR ã‚’è¡¨ç¤ºã™ã‚‹
+		lpfenable		= 1 << 10,	// LPF ã‚’ä½¿ã£ã¦ã¿ã‚‹
+		fddnowait		= 1 << 11,	// FDD ãƒŽãƒ¼ã‚¦ã‚§ã‚¤ãƒˆ
 		usedsnotify		= 1 << 12,
-		saveposition	= 1 << 13,	// ‹N“®Žž‚É‘O‰ñI—¹Žž‚ÌƒEƒCƒ“ƒhƒEˆÊ’u‚ð•œŒ³
+		saveposition	= 1 << 13,	// èµ·å‹•æ™‚ã«å‰å›žçµ‚äº†æ™‚ã®ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ä½ç½®ã‚’å¾©å…ƒ
 	};
 
 	int flags;
@@ -104,7 +104,7 @@ public:
 	uint soundbuffer;
 	uint mousesensibility;
 	int cpumode;
-	uint lpffc;				// LPF ‚ÌƒJƒbƒgƒIƒtŽü”g” (Hz)
+	uint lpffc;				// LPF ã®ã‚«ãƒƒãƒˆã‚ªãƒ•å‘¨æ³¢æ•° (Hz)
 	uint lpforder;
 	int romeolatency;
 	int winposx;
@@ -112,8 +112,8 @@ public:
 
 	BASICMode basicmode;
 
-	// 15kHz ƒ‚[ƒh‚Ì”»’è‚ðs‚¤D
-	// (ðŒ: option –”‚Í N80/SR ƒ‚[ƒhŽž)
+	// 15kHz ãƒ¢ãƒ¼ãƒ‰ã®åˆ¤å®šã‚’è¡Œã†ï¼Ž
+	// (æ¡ä»¶: option åˆã¯ N80/SR ãƒ¢ãƒ¼ãƒ‰æ™‚)
 	bool IsFV15k() const { return (basicmode & 2) || (flags & fv15k); }
 };
 

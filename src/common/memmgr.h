@@ -9,7 +9,7 @@
 #include "if/ifcommon.h"
 
 // ---------------------------------------------------------------------------
-//	ƒƒ‚ƒŠŠÇ—ƒNƒ‰ƒX
+//	ãƒ¡ãƒ¢ãƒªç®¡ç†ã‚¯ãƒ©ã‚¹
 //
 struct MemoryPage
 {
@@ -169,7 +169,7 @@ inline bool MemoryManager::Disconnect(void* inst)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒƒ‚ƒŠ‹óŠÔ‚Ìæ“¾
+//	ãƒ¡ãƒ¢ãƒªç©ºé–“ã®å–å¾—
 //
 inline bool MemoryManagerBase::Alloc
 (uint pid, uint page, uint top, intpointer ptr, int incr, bool func)
@@ -181,22 +181,22 @@ inline bool MemoryManagerBase::Alloc
 	uint8* pri = priority + page * ndevices;
 	for (; page < top; page++, pri += ndevices)
 	{
-		// Œ»İ‚Ìƒy[ƒW‚Ì owner ‚ª©•ª‚æ‚è‚à’á‚¢—Dæ“x‚ğ‚Âê‡
-		// priority ‚Ì‘‚«Š·‚¦‚ğs‚¤
+		// ç¾åœ¨ã®ãƒšãƒ¼ã‚¸ã® owner ãŒè‡ªåˆ†ã‚ˆã‚Šã‚‚ä½ã„å„ªå…ˆåº¦ã‚’æŒã¤å ´åˆ
+		// priority ã®æ›¸ãæ›ãˆã‚’è¡Œã†
 		for (int i=pid; pri[i] > pid && i>=0; i--)
 		{
 			pri[i] = pid;
 		}
 		if (pri[0] == pid)
 		{
-			// ©•ª‚ªƒy[ƒW‚Ì—DæŒ ‚ğ‚Â‚È‚ç Page ‚Ì‘‚«Š·‚¦
+			// è‡ªåˆ†ãŒãƒšãƒ¼ã‚¸ã®å„ªå…ˆæ¨©ã‚’æŒã¤ãªã‚‰ Page ã®æ›¸ãæ›ãˆ
 			pages[page].inst = ls.inst;
 			pages[page].ptr = ptr;
 #ifndef PTR_IDBIT
 			pages[page].func = func;
 #endif
 		}
-		// ƒ[ƒJƒ‹ƒy[ƒW‚Ì‘®«‚ğXV
+		// ãƒ­ãƒ¼ã‚«ãƒ«ãƒšãƒ¼ã‚¸ã®å±æ€§ã‚’æ›´æ–°
 		ls.pages[page].ptr = ptr;
 #ifndef PTR_IDBIT
 		ls.pages[page].func = func;
@@ -207,11 +207,11 @@ inline bool MemoryManagerBase::Alloc
 }
 
 // ---------------------------------------------------------------------------
-//	ƒƒ‚ƒŠ‹óŠÔ‚ÌŠJ•ú
+//	ãƒ¡ãƒ¢ãƒªç©ºé–“ã®é–‹æ”¾
 //
 inline bool MemoryManagerBase::Release(uint pid, uint page, uint top)
 {
-	if (pid < ndevices - 1)		// Å‰ºˆÊ‚ÌƒfƒoƒCƒX‚Í Release ‚Å‚«‚È‚¢
+	if (pid < ndevices - 1)		// æœ€ä¸‹ä½ã®ãƒ‡ãƒã‚¤ã‚¹ã¯ Release ã§ããªã„
 	{
 		LocalSpace& ls = lsp[pid];
 		assert(ls.inst);
@@ -219,11 +219,11 @@ inline bool MemoryManagerBase::Release(uint pid, uint page, uint top)
 		uint8* pri = priority + page * ndevices;
 		for (; page < top; page++, pri += ndevices)
 		{
-			// ©•ª‚ª‘‚«Š·‚¦‚ğŠ–]‚·‚éƒy[ƒW‚È‚ç‚Î
+			// è‡ªåˆ†ãŒæ›¸ãæ›ãˆã‚’æ‰€æœ›ã™ã‚‹ãƒšãƒ¼ã‚¸ãªã‚‰ã°
 			if (pri[pid] == pid)
 			{
 				int npid = pri[pid+1];
-				// priority ‚Ì‘‚«Š·‚¦
+				// priority ã®æ›¸ãæ›ãˆ
 				for (int i=pid; i>=1 && pri[i] >= pid; i--)
 				{
 					pri[i] = npid;
@@ -306,7 +306,7 @@ inline bool WriteMemManager::ReleaseW(uint pid, uint addr, uint length)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒƒ‚ƒŠ‚©‚ç‚Ì“Ç‚İ‚İ
+//	ãƒ¡ãƒ¢ãƒªã‹ã‚‰ã®èª­ã¿è¾¼ã¿
 //
 inline uint ReadMemManager::Read8(uint addr)
 {
@@ -325,7 +325,7 @@ inline uint ReadMemManager::Read8(uint addr)
 }
 
 // ---------------------------------------------------------------------------
-//	ƒƒ‚ƒŠ‚Ö‚Ì‘‚İ
+//	ãƒ¡ãƒ¢ãƒªã¸ã®æ›¸è¾¼ã¿
 //
 inline void WriteMemManager::Write8(uint addr, uint data)
 {

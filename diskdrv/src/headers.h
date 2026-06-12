@@ -1,6 +1,6 @@
 //
-//	Windows Œn includes
-//	‚·‚×‚Ä‚Ì•W€ƒwƒbƒ_[‚ğŠÜ‚Ş
+//	Windows ç³» includes
+//	ã™ã¹ã¦ã®æ¨™æº–ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’å«ã‚€
 //
 //	$Id: headers.h,v 1.3 1999/10/10 16:05:52 cisc Exp $
 //

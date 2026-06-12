@@ -23,7 +23,7 @@ interface IMouseUI : public IUnk
 
 struct PadState
 {
-	uint8 direction;		// b0:ª b1:« b2:© b3:¨  active high
+	uint8 direction;		// b0:â†‘ b1:â†“ b2:â† b3:â†’  active high
 	uint8 button;			// b0-3, active high
 };
 

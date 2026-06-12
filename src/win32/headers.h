@@ -1,6 +1,6 @@
 //
-//	Windows Œn includes
-//	‚·‚×‚Ä‚Ì•W€ƒwƒbƒ_[‚ğŠÜ‚Ş
+//	Windows ç³» includes
+//	ã™ã¹ã¦ã®æ¨™æº–ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’å«ã‚€
 //
 //	$Id: headers.h,v 1.13 2003/05/12 22:26:35 cisc Exp $
 //
@@ -12,7 +12,7 @@
 
 #define DIRECTSOUND_VERSION	0x500	// for pre-DirectX7 environment
 
-#define FORW2K					// W2K —p‚Ì SDK ‚ğg—p
+#define FORW2K					// W2K ç”¨ã® SDK ã‚’ä½¿ç”¨
 
 #ifdef FORW2K
 	#define WINVER			0x500	// for Win2000
@@ -46,7 +46,7 @@
 
 using namespace std;
 
-// --- STL ŠÖŒW
+// --- STL é–¢ä¿‚
 
 #ifdef _MSC_VER
 	#undef max
@@ -55,7 +55,7 @@ using namespace std;
 	#define min _MIN
 #endif
 
-// --- OPENFILENAME ŠÖŒW
+// --- OPENFILENAME é–¢ä¿‚
 
 #if _WIN32_WINNT < 0x500
 	struct OFNV5 : public OPENFILENAME
