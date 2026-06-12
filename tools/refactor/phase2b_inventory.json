@@ -1,0 +1,792 @@
+{
+  "phase": "2b-inventory",
+  "generated_by": "tools/refactor/phase2b_inventory.py",
+  "scope": "inventory only; no rename performed",
+  "summary": {
+    "tracked_files": 296,
+    "uppercase_path_count": 30,
+    "keep_count": 30,
+    "possible_rename_candidate_count": 0
+  },
+  "uppercase_paths": [
+    {
+      "path": "AGENTS.md",
+      "decision": "keep",
+      "reason": "root project/document name; historical or tool-facing",
+      "reference_count": 0,
+      "references": []
+    },
+    {
+      "path": "HISTORY.TXT",
+      "decision": "keep",
+      "reason": "root project/document name; historical or tool-facing",
+      "reference_count": 0,
+      "references": []
+    },
+    {
+      "path": "M88.dsp",
+      "decision": "keep",
+      "reason": "root project/document name; historical or tool-facing",
+      "reference_count": 0,
+      "references": []
+    },
+    {
+      "path": "M88.dsw",
+      "decision": "keep",
+      "reason": "root project/document name; historical or tool-facing",
+      "reference_count": 0,
+      "references": []
+    },
+    {
+      "path": "M88_2008.sln",
+      "decision": "keep",
+      "reason": "root project/document name; historical or tool-facing",
+      "reference_count": 0,
+      "references": []
+    },
+    {
+      "path": "M88_2008.vcproj",
+      "decision": "keep",
+      "reason": "root project/document name; historical or tool-facing",
+      "reference_count": 0,
+      "references": []
+    },
+    {
+      "path": "README.md",
+      "decision": "keep",
+      "reason": "root project/document name; historical or tool-facing",
+      "reference_count": 0,
+      "references": []
+    },
+    {
+      "path": "src/devices/Z80.h",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 6,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 304,
+          "spelling": ".\\src\\devices\\Z80.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1678,
+          "spelling": "src\\devices\\Z80.h"
+        },
+        {
+          "from": "src/devices/Z80Debug.h",
+          "kind": "include",
+          "line": 13,
+          "spelling": "Z80.h"
+        },
+        {
+          "from": "src/devices/Z80Test.h",
+          "kind": "include",
+          "line": 12,
+          "spelling": "Z80.h"
+        },
+        {
+          "from": "src/devices/Z80_x86.h",
+          "kind": "include",
+          "line": 12,
+          "spelling": "Z80.h"
+        },
+        {
+          "from": "src/devices/Z80c.h",
+          "kind": "include",
+          "line": 13,
+          "spelling": "Z80.h"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80Debug.cpp",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 335,
+          "spelling": ".\\src\\devices\\Z80debug.cpp"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1822,
+          "spelling": "src\\devices\\Z80debug.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80Debug.h",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 4,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 340,
+          "spelling": ".\\src\\devices\\Z80debug.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1892,
+          "spelling": "src\\devices\\Z80debug.h"
+        },
+        {
+          "from": "src/devices/Z80Debug.cpp",
+          "kind": "include",
+          "line": 10,
+          "spelling": "Z80Debug.h"
+        },
+        {
+          "from": "src/pc88/pc88.h",
+          "kind": "include",
+          "line": 35,
+          "spelling": "Z80Debug.h"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80Test.cpp",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 352,
+          "spelling": ".\\src\\devices\\Z80Test.cpp"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1964,
+          "spelling": "src\\devices\\Z80Test.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80Test.h",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 4,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 357,
+          "spelling": ".\\src\\devices\\Z80Test.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 2034,
+          "spelling": "src\\devices\\Z80Test.h"
+        },
+        {
+          "from": "src/devices/Z80Test.cpp",
+          "kind": "include",
+          "line": 9,
+          "spelling": "Z80Test.h"
+        },
+        {
+          "from": "src/pc88/pc88.h",
+          "kind": "include",
+          "line": 31,
+          "spelling": "Z80Test.h"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80_x86.cpp",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 308,
+          "spelling": ".\\src\\devices\\Z80_x86.cpp"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1682,
+          "spelling": "src\\devices\\Z80_x86.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80_x86.h",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 6,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 312,
+          "spelling": ".\\src\\devices\\Z80_x86.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1749,
+          "spelling": "src\\devices\\Z80_x86.h"
+        },
+        {
+          "from": "src/devices/Z80Debug.h",
+          "kind": "include",
+          "line": 15,
+          "spelling": "Z80_x86.h"
+        },
+        {
+          "from": "src/devices/Z80Test.h",
+          "kind": "include",
+          "line": 14,
+          "spelling": "Z80_x86.h"
+        },
+        {
+          "from": "src/devices/Z80_x86.cpp",
+          "kind": "include",
+          "line": 19,
+          "spelling": "Z80_x86.h"
+        },
+        {
+          "from": "src/pc88/pc88.h",
+          "kind": "include",
+          "line": 25,
+          "spelling": "Z80_x86.h"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80c.cpp",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 316,
+          "spelling": ".\\src\\devices\\Z80c.cpp"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1753,
+          "spelling": "src\\devices\\Z80c.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80c.h",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 7,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 331,
+          "spelling": ".\\src\\devices\\Z80c.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1818,
+          "spelling": "src\\devices\\Z80c.h"
+        },
+        {
+          "from": "src/devices/Z80Debug.h",
+          "kind": "include",
+          "line": 14,
+          "spelling": "Z80c.h"
+        },
+        {
+          "from": "src/devices/Z80Test.h",
+          "kind": "include",
+          "line": 13,
+          "spelling": "Z80c.h"
+        },
+        {
+          "from": "src/devices/Z80c.cpp",
+          "kind": "include",
+          "line": 8,
+          "spelling": "Z80c.h"
+        },
+        {
+          "from": "src/pc88/base.h",
+          "kind": "include",
+          "line": 11,
+          "spelling": "Z80c.h"
+        },
+        {
+          "from": "src/pc88/pc88.h",
+          "kind": "include",
+          "line": 27,
+          "spelling": "Z80c.h"
+        }
+      ]
+    },
+    {
+      "path": "src/devices/Z80diag.h",
+      "decision": "keep",
+      "reason": "Z80 engine/debug/test naming is historical and domain-specific",
+      "reference_count": 5,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 348,
+          "spelling": ".\\src\\devices\\Z80diag.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 1960,
+          "spelling": "src\\devices\\Z80diag.h"
+        },
+        {
+          "from": "src/devices/Z80c.h",
+          "kind": "include",
+          "line": 14,
+          "spelling": "Z80diag.h"
+        },
+        {
+          "from": "src/devices/z80diag.cpp",
+          "kind": "include",
+          "line": 8,
+          "spelling": "Z80diag.h"
+        },
+        {
+          "from": "src/win32/codemon.h",
+          "kind": "include",
+          "line": 12,
+          "spelling": "Z80diag.h"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/CritSect.h",
+      "decision": "keep",
+      "reason": "Win32 CriticalSection wrapper name used across code",
+      "reference_count": 16,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 669,
+          "spelling": ".\\src\\Win32\\CritSect.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 4030,
+          "spelling": "src\\Win32\\CritSect.h"
+        },
+        {
+          "from": "src/common/sndbuf2.h",
+          "kind": "include",
+          "line": 4,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/common/soundbuf.h",
+          "kind": "include",
+          "line": 10,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/common/srcbuf.h",
+          "kind": "include",
+          "line": 4,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/pc88/diskmgr.h",
+          "kind": "include",
+          "line": 12,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/pc88/fdc.cpp",
+          "kind": "include",
+          "line": 14,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/WinKeyIF.h",
+          "kind": "include",
+          "line": 12,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/loadmon.h",
+          "kind": "include",
+          "line": 11,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/romeo/piccolo.h",
+          "kind": "include",
+          "line": 8,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/sequence.h",
+          "kind": "include",
+          "line": 12,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/soundwo.h",
+          "kind": "include",
+          "line": 12,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/status.h",
+          "kind": "include",
+          "line": 10,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/wincore.h",
+          "kind": "include",
+          "line": 12,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/windraw.h",
+          "kind": "include",
+          "line": 13,
+          "spelling": "CritSect.h"
+        },
+        {
+          "from": "src/win32/winsound.h",
+          "kind": "include",
+          "line": 14,
+          "spelling": "CritSect.h"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/DrawD2D.cpp",
+      "decision": "keep",
+      "reason": "Win32 draw driver class/file naming",
+      "reference_count": 1,
+      "references": [
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 4170,
+          "spelling": ".\\src\\win32\\DrawD2D.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/DrawD2D.h",
+      "decision": "keep",
+      "reason": "Win32 draw driver class/file naming",
+      "reference_count": 3,
+      "references": [
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 4174,
+          "spelling": ".\\src\\win32\\DrawD2D.h"
+        },
+        {
+          "from": "src/win32/DrawD2D.cpp",
+          "kind": "include",
+          "line": 9,
+          "spelling": "DrawD2D.h"
+        },
+        {
+          "from": "src/win32/windraw.cpp",
+          "kind": "include",
+          "line": 15,
+          "spelling": "DrawD2D.h"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/DrawDDS.cpp",
+      "decision": "keep",
+      "reason": "Win32 draw driver class/file naming",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 689,
+          "spelling": ".\\src\\Win32\\DrawDDS.cpp"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 4178,
+          "spelling": "src\\Win32\\DrawDDS.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/DrawDDS.h",
+      "decision": "keep",
+      "reason": "Win32 draw driver class/file naming",
+      "reference_count": 4,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 693,
+          "spelling": ".\\src\\Win32\\DrawDDS.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 4242,
+          "spelling": "src\\Win32\\DrawDDS.h"
+        },
+        {
+          "from": "src/win32/DrawDDS.cpp",
+          "kind": "include",
+          "line": 10,
+          "spelling": "DrawDDS.h"
+        },
+        {
+          "from": "src/win32/windraw.cpp",
+          "kind": "include",
+          "line": 13,
+          "spelling": "DrawDDS.h"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/DrawGDI.cpp",
+      "decision": "keep",
+      "reason": "Win32 draw driver class/file naming",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 705,
+          "spelling": ".\\src\\Win32\\DrawGDI.cpp"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 4314,
+          "spelling": "src\\Win32\\DrawGDI.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/DrawGDI.h",
+      "decision": "keep",
+      "reason": "Win32 draw driver class/file naming",
+      "reference_count": 4,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 709,
+          "spelling": ".\\src\\Win32\\DrawGDI.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 4378,
+          "spelling": "src\\Win32\\DrawGDI.h"
+        },
+        {
+          "from": "src/win32/DrawGDI.cpp",
+          "kind": "include",
+          "line": 12,
+          "spelling": "DrawGDI.h"
+        },
+        {
+          "from": "src/win32/windraw.cpp",
+          "kind": "include",
+          "line": 12,
+          "spelling": "DrawGDI.h"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/M88.ico",
+      "decision": "keep",
+      "reason": "product/resource file name",
+      "reference_count": 3,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 1155,
+          "spelling": ".\\src\\Win32\\M88.ico"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 7503,
+          "spelling": "src\\Win32\\M88.ico"
+        },
+        {
+          "from": "src/win32/M88.rc",
+          "kind": "rc_asset",
+          "line": 206,
+          "spelling": "M88.ico"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/M88.rc",
+      "decision": "keep",
+      "reason": "product/resource file name",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 793,
+          "spelling": ".\\src\\Win32\\M88.rc"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 4872,
+          "spelling": "src\\Win32\\M88.rc"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/WinJoy.cpp",
+      "decision": "keep",
+      "reason": "Win32 interface class/file naming",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 968,
+          "spelling": ".\\src\\Win32\\WinJoy.cpp"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 6172,
+          "spelling": "src\\Win32\\WinJoy.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/WinJoy.h",
+      "decision": "keep",
+      "reason": "Win32 interface class/file naming",
+      "reference_count": 4,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 972,
+          "spelling": ".\\src\\Win32\\WinJoy.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 6236,
+          "spelling": "src\\Win32\\WinJoy.h"
+        },
+        {
+          "from": "src/win32/WinJoy.cpp",
+          "kind": "include",
+          "line": 10,
+          "spelling": "WinJoy.h"
+        },
+        {
+          "from": "src/win32/wincore.h",
+          "kind": "include",
+          "line": 17,
+          "spelling": "WinJoy.h"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/WinKeyIF.cpp",
+      "decision": "keep",
+      "reason": "Win32 interface class/file naming",
+      "reference_count": 2,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 976,
+          "spelling": ".\\src\\Win32\\WinKeyIF.cpp"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 6240,
+          "spelling": "src\\Win32\\WinKeyIF.cpp"
+        }
+      ]
+    },
+    {
+      "path": "src/win32/WinKeyIF.h",
+      "decision": "keep",
+      "reason": "Win32 interface class/file naming",
+      "reference_count": 6,
+      "references": [
+        {
+          "from": "M88.dsp",
+          "kind": "dsp",
+          "line": 980,
+          "spelling": ".\\src\\Win32\\WinKeyIF.h"
+        },
+        {
+          "from": "M88_2008.vcproj",
+          "kind": "vcproj",
+          "line": 6304,
+          "spelling": "src\\Win32\\WinKeyIF.h"
+        },
+        {
+          "from": "src/win32/WinKeyIF.cpp",
+          "kind": "include",
+          "line": 10,
+          "spelling": "WinKeyIF.h"
+        },
+        {
+          "from": "src/win32/keybconn.cpp",
+          "kind": "include",
+          "line": 9,
+          "spelling": "WinKeyIF.h"
+        },
+        {
+          "from": "src/win32/ui.h",
+          "kind": "include",
+          "line": 14,
+          "spelling": "WinKeyIF.h"
+        },
+        {
+          "from": "src/win32/wincore.cpp",
+          "kind": "include",
+          "line": 9,
+          "spelling": "WinKeyIF.h"
+        }
+      ]
+    }
+  ]
+}
