@@ -5,7 +5,7 @@
 
 #include "types.h"
 #include "timekeep.h"
-#include "critsect.h"
+#include "CritSect.h"
 
 //	遅延送信対応 ROMEO ドライバ
 //	

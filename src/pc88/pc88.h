@@ -24,7 +24,7 @@
 #ifdef CPU_Z80X86
  #include "Z80_x86.h"
 #else
- #include "Z80C.h"
+ #include "Z80c.h"
 #endif
 
 #ifdef CPU_TEST

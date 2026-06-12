@@ -6,7 +6,7 @@
 
 #include "headers.h"
 #include "keybconn.h"
-#include "winkeyif.h"
+#include "WinKeyIF.h"
 #include "pc88/pc88.h"
 
 #define LOGNAME "wincore"

@@ -10,7 +10,7 @@
 
 #include "types.h"
 #include "wincore.h"
-#include "WinDraw.h"
+#include "windraw.h"
 #include "WinKeyIF.h"
 #include "88config.h"
 #include "wincfg.h"

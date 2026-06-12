@@ -8,7 +8,7 @@
 
 #include "device.h"
 #include "winmon.h"
-#include "critsect.h"
+#include "CritSect.h"
 
 //#define ENABLE_LOADMONITOR
 

@@ -9,7 +9,7 @@
 // ---------------------------------------------------------------------------
 
 #include "types.h"
-#include "critsect.h"
+#include "CritSect.h"
 #include "timekeep.h"
 
 class PC88;

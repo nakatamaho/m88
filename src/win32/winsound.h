@@ -11,7 +11,7 @@
 #include "types.h"
 #include "pc88/sound.h"
 #include "sounddrv.h"
-#include "critsect.h"
+#include "CritSect.h"
 
 class PC88;
 class OPNMonitor;

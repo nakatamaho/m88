@@ -10,7 +10,7 @@
 
 #include "types.h"
 #include "draw.h"
-#include "critsect.h"
+#include "CritSect.h"
 
 // ---------------------------------------------------------------------------
 

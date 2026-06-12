@@ -7,7 +7,7 @@
 #pragma once
 
 #include "types.h"
-#include "critsect.h"
+#include "CritSect.h"
 
 class StatusDisplay
 {

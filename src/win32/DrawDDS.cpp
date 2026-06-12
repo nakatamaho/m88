@@ -7,7 +7,7 @@
 //	$Id: DrawDDS.cpp,v 1.16 2003/11/04 13:14:21 cisc Exp $
 
 #include "headers.h"
-#include "drawdds.h"
+#include "DrawDDS.h"
 #include "misc.h"
 #include "messages.h"
 

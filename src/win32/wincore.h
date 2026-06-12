@@ -9,12 +9,12 @@
 // ---------------------------------------------------------------------------
 
 #include "types.h"
-#include "critsect.h"
+#include "CritSect.h"
 #include "pc88/pc88.h"
 #include "pc88/config.h"
 #include "winsound.h"
 #include "sequence.h"
-#include "winjoy.h"
+#include "WinJoy.h"
 
 namespace PC8801
 {

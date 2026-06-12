@@ -6,7 +6,7 @@
 // ---------------------------------------------------------------------------
 
 #include "headers.h"
-#include "drawd2d.h"
+#include "DrawD2D.h"
 
 #pragma comment( lib,    "delayimp.lib" )
 #pragma comment( lib,    "d2d1.lib" )
