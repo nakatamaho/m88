@@ -63,6 +63,13 @@ python3 tools/refactor/phase0_inventory.py --root . --output /tmp/m88_phase5_cor
 - Phase 0 inventory was rerun:
   - include case mismatch count: `0`.
   - vcproj missing references: unchanged after staging; expected historical missing refs remain `m88dev.html` and `memo.txt`.
+- VS2008 / VC8 Express rebuild:
+  - Configuration: `Release|Win32`.
+  - Result: success.
+- Manual runtime smoke:
+  - `M88.exe` launched successfully.
+  - Test game ran briefly.
+  - Audio output was confirmed.
 
 ## Behavior Preserved
 
@@ -76,8 +83,7 @@ python3 tools/refactor/phase0_inventory.py --root . --output /tmp/m88_phase5_cor
 
 ## Not Verified
 
-- VS2008 / VC8 Express rebuild was not run in this environment.
-- Runtime startup/game/audio smoke was not run in this environment.
+- Full `docs/verification.md` checklist has not been completed.
 
 ## Risks / Unknowns
 
