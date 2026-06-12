@@ -114,9 +114,9 @@ private:
 	int offset;
 	uint32 tick;
 	Mode mode;
-	uint time;			// motor on: ã‚¿ã‚¤ãƒãƒ¼é–‹å§‹æ™‚é–“
+	uint time;			// motor on: ƒ^ƒCƒ}[ŠJnŠÔ
 	uint timercount;
-	uint timerremain;	// ã‚¿ã‚¤ãƒãƒ¼æ®‹ã‚Š
+	uint timerremain;	// ƒ^ƒCƒ}[c‚è
 	bool motor;
 
 	IOBus* bus;

@@ -8,7 +8,7 @@
 #include "floppy.h"
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰
+//	\’z
 //
 FloppyDisk::FloppyDisk()
 {
@@ -25,7 +25,7 @@ FloppyDisk::~FloppyDisk()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool FloppyDisk::Init(DiskType _type, bool _readonly)
 {
@@ -42,7 +42,7 @@ bool FloppyDisk::Init(DiskType _type, bool _readonly)
 }
 
 // ---------------------------------------------------------------------------
-//	æŒ‡å®šã®ãƒˆãƒ©ãƒƒã‚¯ã«ã‚·ãƒ¼ã‚¯
+//	w’è‚Ìƒgƒ‰ƒbƒN‚ÉƒV[ƒN
 //
 void FloppyDisk::Seek(uint tr)
 {
@@ -55,7 +55,7 @@ void FloppyDisk::Seek(uint tr)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚»ã‚¯ã‚¿ä¸€ã¤èª­ã¿å‡ºã—
+//	ƒZƒNƒ^ˆê‚Â“Ç‚İo‚µ
 //
 FloppyDisk::Sector* FloppyDisk::GetSector()
 {
@@ -74,7 +74,7 @@ FloppyDisk::Sector* FloppyDisk::GetSector()
 }
 
 // ---------------------------------------------------------------------------
-//	æŒ‡å®šã—ãŸ ID ã‚’æ¤œç´¢
+//	w’è‚µ‚½ ID ‚ğŒŸõ
 //
 bool FloppyDisk::FindID(IDR idr, uint density)
 {
@@ -103,7 +103,7 @@ bool FloppyDisk::FindID(IDR idr, uint density)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚»ã‚¯ã‚¿æ•°ã‚’å¾—ã‚‹
+//	ƒZƒNƒ^”‚ğ“¾‚é
 //
 uint FloppyDisk::GetNumSectors()
 {
@@ -121,7 +121,7 @@ uint FloppyDisk::GetNumSectors()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒˆãƒ©ãƒƒã‚¯ä¸­ã®ã‚»ã‚¯ã‚¿ãƒ‡ãƒ¼ã‚¿ã®ç·é‡ã‚’å¾—ã‚‹
+//	ƒgƒ‰ƒbƒN’†‚ÌƒZƒNƒ^ƒf[ƒ^‚Ì‘—Ê‚ğ“¾‚é
 //
 uint FloppyDisk::GetTrackSize()
 {
@@ -141,8 +141,8 @@ uint FloppyDisk::GetTrackSize()
 
 // ---------------------------------------------------------------------------
 //	Floppy::Resize
-//	ã‚»ã‚¯ã‚¿ã®ã‚µã‚¤ã‚ºã‚’å¤§ããã—ãŸå ´åˆã«ãŠã‘ã‚‹ã‚»ã‚¯ã‚¿æ½°ã—ã®å†ç¾
-//	sector ã¯ç¾åœ¨é¸æŠã—ã¦ã„ã‚‹ãƒˆãƒ©ãƒƒã‚¯ã«å±ã—ã¦ã„ã‚‹å¿…è¦ãŒã‚ã‚‹ï¼
+//	ƒZƒNƒ^‚ÌƒTƒCƒY‚ğ‘å‚«‚­‚µ‚½ê‡‚É‚¨‚¯‚éƒZƒNƒ^’×‚µ‚ÌÄŒ»
+//	sector ‚ÍŒ»İ‘I‘ğ‚µ‚Ä‚¢‚éƒgƒ‰ƒbƒN‚É‘®‚µ‚Ä‚¢‚é•K—v‚ª‚ ‚éD
 //
 bool FloppyDisk::Resize(Sector* sec, uint newsize)
 {
@@ -150,7 +150,7 @@ bool FloppyDisk::Resize(Sector* sec, uint newsize)
 
 	int extend = newsize - sec->size - 0x40;
 	
-	// sector è‡ªèº«ã® resize
+	// sector ©g‚Ì resize
 	delete[] sec->image;
 	sec->image = new uint8[newsize];
 	sec->size = newsize;
@@ -199,7 +199,7 @@ bool FloppyDisk::FormatTrack(int nsec, int secsize)
 	if (!curtrack)
 		return false;
 	
-	// ä»Šã‚ã‚‹ãƒˆãƒ©ãƒƒã‚¯ã‚’ç ´æ£„
+	// ¡‚ ‚éƒgƒ‰ƒbƒN‚ğ”jŠü
 	sec = curtrack->sector;
 	while (sec)
 	{
@@ -212,7 +212,7 @@ bool FloppyDisk::FormatTrack(int nsec, int secsize)
 	
 	if (nsec)
 	{
-		// ã‚»ã‚¯ã‚¿ã‚’ä½œæˆ
+		// ƒZƒNƒ^‚ğì¬
 		cursector = 0;
 		for (int i=0; i<nsec; i++)
 		{
@@ -242,7 +242,7 @@ bool FloppyDisk::FormatTrack(int nsec, int secsize)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚»ã‚¯ã‚¿ä¸€ã¤è¿½åŠ 
+//	ƒZƒNƒ^ˆê‚Â’Ç‰Á
 //
 FloppyDisk::Sector* FloppyDisk::AddSector(int size)
 {
@@ -284,7 +284,7 @@ FloppyDisk::Sector* FloppyDisk::AddSector(int size)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒˆãƒ©ãƒƒã‚¯ã®å®¹é‡ã‚’å¾—ã‚‹
+//	ƒgƒ‰ƒbƒN‚Ì—e—Ê‚ğ“¾‚é
 //
 uint FloppyDisk::GetTrackCapacity()
 {
@@ -293,7 +293,7 @@ uint FloppyDisk::GetTrackCapacity()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒˆãƒ©ãƒƒã‚¯ã‚’å¾—ã‚‹
+//	ƒgƒ‰ƒbƒN‚ğ“¾‚é
 //
 FloppyDisk::Sector* FloppyDisk::GetFirstSector(uint tr)
 {

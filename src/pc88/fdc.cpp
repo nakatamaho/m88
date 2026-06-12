@@ -22,7 +22,7 @@
 using namespace PC8801;
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰/æ¶ˆæ»…
+//	\’z/Á–Å
 //
 FDC::FDC(const ID& id)
 : Device(id) 
@@ -46,7 +46,7 @@ FDC::~FDC()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool FDC::Init(DiskManager* dm, Scheduler* s, IOBus* b, int ip, int sp)
 {
@@ -73,7 +73,7 @@ bool FDC::Init(DiskManager* dm, Scheduler* s, IOBus* b, int ip, int sp)
 }
 
 // ---------------------------------------------------------------------------
-//	è¨­å®šåæ˜ 
+//	İ’è”½‰f
 //
 void FDC::ApplyConfig(const Config* cfg)
 {
@@ -83,15 +83,15 @@ void FDC::ApplyConfig(const Config* cfg)
 
 
 // ---------------------------------------------------------------------------
-//	ãƒ‰ãƒ©ã‚¤ãƒ–åˆ¶å¾¡
+//	ƒhƒ‰ƒCƒu§Œä
 //	0f4h/out	b5  b4  b3  b2  b1  b0
 //				CLK DSI TD1 TD0 RV1 RV0
 //
-//	RVx:	ãƒ‰ãƒ©ã‚¤ãƒ–ã®ãƒ¢ãƒ¼ãƒ‰
+//	RVx:	ƒhƒ‰ƒCƒu‚Ìƒ‚[ƒh
 //			0: 2D/2DD
 //			1: 2HD
 //
-//	TDx:	ãƒ‰ãƒ©ã‚¤ãƒ–ã®ãƒˆãƒ©ãƒƒã‚¯å¯†åº¦
+//	TDx:	ƒhƒ‰ƒCƒu‚Ìƒgƒ‰ƒbƒN–§“x
 //			0: 48TPI (2D)
 //			1: 96TPI (2DD/2HD)
 //
@@ -119,7 +119,7 @@ void IOCALL FDC::DriveControl(uint, uint data)
 
 // ---------------------------------------------------------------------------
 //	FDC::Intr
-//	å‰²ã‚Šè¾¼ã¿ç™ºç”Ÿ
+//	Š„‚è‚İ”­¶
 //
 inline void FDC::Intr(bool i)
 {
@@ -146,15 +146,15 @@ void IOCALL FDC::Reset(uint, uint)
 
 // ---------------------------------------------------------------------------
 //	FDC::Status
-//	ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¬ã‚¸ã‚¹ã‚¿
+//	ƒXƒe[ƒ^ƒXƒŒƒWƒXƒ^
 //
 //	MSB                         LSB
 //	RQM DIO NDM CB  D3B D2B D1B D0B
 //
-//	CB  = idlephase ä»¥å¤–
+//	CB  = idlephase ˆÈŠO
 //	NDM = E-Phase
-//	DIO = 0 ãªã‚‰ CPU->FDC (Put)  1 ãªã‚‰ FDC->CPU (Get)
-//	RQM = ãƒ‡ãƒ¼ã‚¿ã®é€ä¿¡ãƒ»å—ä¿¡ã®ç”¨æ„ãŒã§ããŸ
+//	DIO = 0 ‚È‚ç CPU->FDC (Put)  1 ‚È‚ç FDC->CPU (Get)
+//	RQM = ƒf[ƒ^‚Ì‘—MEóM‚Ì—pˆÓ‚ª‚Å‚«‚½
 //
 uint IOCALL FDC::Status(uint)
 {
@@ -163,11 +163,11 @@ uint IOCALL FDC::Status(uint)
 
 // ---------------------------------------------------------------------------
 //	FDC::SetData
-//	CPU ã‹ã‚‰ FDC ã«ãƒ‡ãƒ¼ã‚¿ã‚’é€ã‚‹
+//	CPU ‚©‚ç FDC ‚Éƒf[ƒ^‚ğ‘—‚é
 //
 void IOCALL FDC::SetData(uint, uint d)
 {
-	// å—ã‘å–ã‚Œã‚‹çŠ¶æ³ã‹ãƒã‚§ãƒƒã‚¯
+	// ó‚¯æ‚ê‚éó‹µ‚©ƒ`ƒFƒbƒN
 	if ((status & (S_RQM | S_DIO)) == S_RQM)
 	{
 		data = d;
@@ -176,14 +176,14 @@ void IOCALL FDC::SetData(uint, uint d)
 		
 		switch (phase)
 		{
-		// ã‚³ãƒãƒ³ãƒ‰ã‚’å—ã‘å–ã‚‹
+		// ƒRƒ}ƒ“ƒh‚ğó‚¯æ‚é
 		case idlephase:
 			LOG1("\n[%.2x] ", data);
 			command = data;
 			(this->*CommandTable[command & 31])();
 			break;
 		
-		// ã‚³ãƒãƒ³ãƒ‰ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å—ã‘å–ã‚‹
+		// ƒRƒ}ƒ“ƒh‚Ìƒpƒ‰ƒ[ƒ^‚ğó‚¯æ‚é
 		case commandphase:
 			*bufptr++ = data;
 			if (--count)
@@ -192,7 +192,7 @@ void IOCALL FDC::SetData(uint, uint d)
 				(this->*CommandTable[command & 31])();
 			break;
 
-		// E-Phase (è»¢é€ä¸­)
+		// E-Phase (“]‘—’†)
 		case execwritephase:
 			*bufptr++ = data;
 			if (--count)
@@ -206,7 +206,7 @@ void IOCALL FDC::SetData(uint, uint d)
 			}
 			break;
 
-		// E-Phase (æ¯”è¼ƒä¸­)
+		// E-Phase (”äŠr’†)
 		case execscanphase:
 			if (data != 0xff)
 			{
@@ -214,7 +214,7 @@ void IOCALL FDC::SetData(uint, uint d)
 				 || ((command & 31) == 0x19 && *bufptr > data)
 				 || ((command & 31) == 0x1d && *bufptr < data))
 				{
-					// æ¡ä»¶ã«åˆã‚ãªã„
+					// ğŒ‚É‡‚í‚È‚¢
 					result &= ~ST2_SH;
 				}
 			}
@@ -248,7 +248,7 @@ uint IOCALL FDC::GetData(uint)
 		
 		switch (phase)
 		{
-		// ãƒªã‚¾ãƒ«ãƒˆãƒ»ãƒ•ã‚§ã‚¤ã‚º
+		// ƒŠƒ]ƒ‹ƒgEƒtƒFƒCƒY
 		case resultphase:
 			data = *bufptr++;
 			LOG1(" %.2x", data);
@@ -261,7 +261,7 @@ uint IOCALL FDC::GetData(uint)
 			}
 			break;
 
-		// E-Phase(è»¢é€ä¸­)
+		// E-Phase(“]‘—’†)
 		case execreadphase:
 //			LOG1("ex= %d\n", scheduler->GetTime());
 //			LOG0("*");
@@ -283,7 +283,7 @@ uint IOCALL FDC::GetData(uint)
 }
 
 // ---------------------------------------------------------------------------
-//	TC (è»¢é€çµ‚äº†)
+//	TC (“]‘—I—¹)
 //
 uint IOCALL FDC::TC(uint)
 {
@@ -299,7 +299,7 @@ uint IOCALL FDC::TC(uint)
 }
 
 // ---------------------------------------------------------------------------
-//	I-PHASE (ã‚³ãƒãƒ³ãƒ‰å¾…ã¡)
+//	I-PHASE (ƒRƒ}ƒ“ƒh‘Ò‚¿)
 //
 void FDC::ShiftToIdlePhase()
 {
@@ -315,7 +315,7 @@ void FDC::ShiftToIdlePhase()
 }
 
 // ---------------------------------------------------------------------------
-//	C-PHASE (ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å¾…ã¡)
+//	C-PHASE (ƒpƒ‰ƒ[ƒ^‘Ò‚¿)
 //
 void FDC::ShiftToCommandPhase(int nbytes)
 {
@@ -396,7 +396,7 @@ void FDC::ShiftToResultPhase(int nbytes)
 }
 
 // ---------------------------------------------------------------------------
-//	R/W DATA ç³» resultphase (ST0/ST1/ST2/C/H/R/N)
+//	R/W DATA Œn resultphase (ST0/ST1/ST2/C/H/R/N)
 
 void FDC::ShiftToResultPhase7()
 {
@@ -412,7 +412,7 @@ void FDC::ShiftToResultPhase7()
 }
 
 // ---------------------------------------------------------------------------
-//	command ã‚„ EOT ã‚’å‚è€ƒã«ãƒ¬ã‚³ãƒ¼ãƒ‰å¢—åŠ 
+//	command ‚â EOT ‚ğQl‚ÉƒŒƒR[ƒh‘‰Á
 //
 bool FDC::IDIncrement()
 {
@@ -448,7 +448,7 @@ bool FDC::IDIncrement()
 
 
 // ---------------------------------------------------------------------------
-//	ã‚¿ã‚¤ãƒãƒ¼
+//	ƒ^ƒCƒ}[
 //
 void FDC::SetTimer(Phase p, int ticks)
 {
@@ -505,7 +505,7 @@ void FDC::CmdReadData()
 	{
 	case idlephase:
 		LOG0((command & 31) == 12 ? "ReadDeletedData" : "ReadData ");
-		ShiftToCommandPhase(8);		// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯ 8 å€‹
+		ShiftToCommandPhase(8);		// ƒpƒ‰ƒ[ƒ^‚Í 8 ŒÂ
 		return;
 
 	case commandphase:
@@ -565,7 +565,7 @@ void FDC::CmdScanEqual()
 	
 	case commandphase:
 		GetSectorParameters();
-		dtl = dtl | 0x100;		// STP ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ï¼DTL ã¨ã—ã¦ç„¡åŠ¹ãªå€¤ã‚’ä»£å…¥ã™ã‚‹ï¼
+		dtl = dtl | 0x100;		// STP ƒpƒ‰ƒ[ƒ^DDTL ‚Æ‚µ‚Ä–³Œø‚È’l‚ğ‘ã“ü‚·‚éD
 		SetTimer(executephase, 200);
 		return;
 
@@ -596,7 +596,7 @@ void FDC::CmdScanEqual()
 		return;
 	
 	case timerphase:
-		// çµ‚äº†ï¼Œã¿ã¤ã‹ã‚“ãªã‹ã£ãŸï½
+		// I—¹C‚İ‚Â‚©‚ñ‚È‚©‚Á‚½`
 		result = ST1_EN | ST2_SN;
 		ShiftToResultPhase7();
 		return;
@@ -616,7 +616,7 @@ void FDC::ReadData(bool deleted, bool scan)
 	result = CheckCondition(false);
 	if (result & ST1_MA)
 	{
-		// ãƒ‡ã‚£ã‚¹ã‚¯ãŒç„¡ã„å ´åˆï¼Œ100ms å¾Œã«å†æŒ‘æˆ¦
+		// ƒfƒBƒXƒN‚ª–³‚¢ê‡C100ms Œã‚ÉÄ’§í
 		SetTimer(executephase, 10000);
 		LOG0("Disk not mounted: Retry\n");
 		return;
@@ -698,7 +698,7 @@ void FDC::CmdRecalibrate()
 }
 
 // ---------------------------------------------------------------------------
-//	æŒ‡å®šã®ãƒ‰ãƒ©ã‚¤ãƒ–ã‚’ã‚·ãƒ¼ã‚¯ã™ã‚‹
+//	w’è‚Ìƒhƒ‰ƒCƒu‚ğƒV[ƒN‚·‚é
 //
 void FDC::Seek(uint dr, uint cy)
 {
@@ -917,11 +917,11 @@ void FDC::CmdWriteData()
 			SetTimer(timerphase, 20);
 			return;
 		}
-		SetTimer(executephase, 500);		// å®Ÿéš›ã¯ CRC, GAP ã®æ›¸ãè¾¼ã¿ãŒçµ‚ã‚ã‚‹ã¾ã§çŒ¶äºˆãŒã‚ã‚‹ã¯ãš
+		SetTimer(executephase, 500);		// ÀÛ‚Í CRC, GAP ‚Ì‘‚«‚İ‚ªI‚í‚é‚Ü‚Å—P—\‚ª‚ ‚é‚Í‚¸
 		return;
 
 	case timerphase:
-		// æ¬¡ã®ã‚»ã‚¯ã‚¿ã‚’å‡¦ç†ã—ãªã„
+		// Ÿ‚ÌƒZƒNƒ^‚ğˆ—‚µ‚È‚¢
 		result = ST0_AT | ST1_EN;
 		ShiftToResultPhase7();
 		return;
@@ -931,7 +931,7 @@ void FDC::CmdWriteData()
 		LOG1("\tTC at 0x%x byte\n", bufptr - buffer);
 		if (prevphase == execwritephase)
 		{
-			// è»¢é€ä¸­ï¼Ÿ
+			// “]‘—’†H
 			LOG0("flush");
 			memset(bufptr, 0, count);
 			WriteData((command & 31) == 9);
@@ -1106,7 +1106,7 @@ void FDC::CmdReadDiagnostic()
 		int ct;
 	case idlephase:
 		LOG0("ReadDiagnostic ");
-		ShiftToCommandPhase(8);		// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯ 8 å€‹
+		ShiftToCommandPhase(8);		// ƒpƒ‰ƒ[ƒ^‚Í 8 ŒÂ
 		readdiagptr = 0;
 		return;
 
@@ -1178,7 +1178,7 @@ void FDC::ReadDiagnostic()
 
 		if (result & ST1_MA)
 		{
-			// ãƒ‡ã‚£ã‚¹ã‚¯ãŒç„¡ã„å ´åˆï¼Œ100ms å¾Œã«å†æŒ‘æˆ¦
+			// ƒfƒBƒXƒN‚ª–³‚¢ê‡C100ms Œã‚ÉÄ’§í
 			LOG0("Disk not mounted: Retry\n");
 			SetTimer(executephase, 10000);
 			return;
@@ -1206,7 +1206,7 @@ void FDC::ReadDiagnostic()
 }
 
 // ---------------------------------------------------------------------------
-//	Read/Write æ“ä½œãŒå®Ÿè¡Œå¯èƒ½ã‹ã©ã†ã‹ã‚’ç¢ºèª
+//	Read/Write ‘€ì‚ªÀs‰Â”\‚©‚Ç‚¤‚©‚ğŠm”F
 //	
 uint FDC::CheckCondition(bool write)
 {
@@ -1224,7 +1224,7 @@ uint FDC::CheckCondition(bool write)
 }
 
 // ---------------------------------------------------------------------------
-//	Read/Write Data ç³»ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å¾—ã‚‹
+//	Read/Write Data Œn‚Ìƒpƒ‰ƒ[ƒ^‚ğ“¾‚é
 //	
 void FDC::GetSectorParameters()
 {
@@ -1243,7 +1243,7 @@ void FDC::GetSectorParameters()
 }
 
 // ---------------------------------------------------------------------------
-//	çŠ¶æ…‹ä¿å­˜
+//	ó‘Ô•Û‘¶
 //
 uint IFCALL FDC::GetStatusSize()
 {

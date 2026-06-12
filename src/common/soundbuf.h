@@ -22,25 +22,25 @@ public:
 	SoundBuffer();
 	~SoundBuffer();
 
-	bool Init(int nch, int bufsize);	// bufsize ã¯ã‚µãƒ³ãƒ—ãƒ«å˜ä½
+	bool Init(int nch, int bufsize);	// bufsize ‚ÍƒTƒ“ƒvƒ‹’PˆÊ
 	void Cleanup();
 
-	void Put(int sample);				// ãƒãƒƒãƒ•ã‚¡ã«æœ€å¤§ sample åˆ†ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ 
-	void Get(Sample* ptr, int sample);	// ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰ sample åˆ†ã®ãƒ‡ãƒ¼ã‚¿ã‚’å¾—ã‚‹
+	void Put(int sample);				// ƒoƒbƒtƒ@‚ÉÅ‘å sample •ªƒf[ƒ^‚ğ’Ç‰Á
+	void Get(Sample* ptr, int sample);	// ƒoƒbƒtƒ@‚©‚ç sample •ª‚Ìƒf[ƒ^‚ğ“¾‚é
 	bool IsEmpty();
-	void FillWhenEmpty(bool f);			// ãƒãƒƒãƒ•ã‚¡ãŒç©ºã«ãªã£ãŸã‚‰è£œå……ã™ã‚‹ã‹
+	void FillWhenEmpty(bool f);			// ƒoƒbƒtƒ@‚ª‹ó‚É‚È‚Á‚½‚ç•â[‚·‚é‚©
 
 private:
-	virtual void Mix(Sample* b1, int s1, Sample* b2=0, int s2=0) = 0;	// sample åˆ†ã®ãƒ‡ãƒ¼ã‚¿ç”Ÿæˆ
+	virtual void Mix(Sample* b1, int s1, Sample* b2=0, int s2=0) = 0;	// sample •ª‚Ìƒf[ƒ^¶¬
 	void PutMain(int sample);
 	
 	Sample* buffer;
 	CriticalSection cs;
 	
-	int buffersize;						// ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚º (in samples)
-	int read;							// èª­è¾¼ä½ç½® (in samples)
-	int write;							// æ›¸ãè¾¼ã¿ä½ç½® (in samples)
-	int ch;								// ãƒãƒ£ãƒãƒ«æ•°(1sample = ch*Sample)
+	int buffersize;						// ƒoƒbƒtƒ@‚ÌƒTƒCƒY (in samples)
+	int read;							// “ÇˆÊ’u (in samples)
+	int write;							// ‘‚«‚İˆÊ’u (in samples)
+	int ch;								// ƒ`ƒƒƒlƒ‹”(1sample = ch*Sample)
 	bool fillwhenempty;
 };
 

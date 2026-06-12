@@ -65,7 +65,7 @@ void SamplingRateConverter::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒƒãƒ•ã‚¡ã«éŸ³ã‚’è¿½åŠ 
+//	ƒoƒbƒtƒ@‚É‰¹‚ğ’Ç‰Á
 //
 int SamplingRateConverter::Fill(int samples)
 {
@@ -77,7 +77,7 @@ int SamplingRateConverter::Fill(int samples)
 
 int SamplingRateConverter::FillMain(int samples)
 {
-	// ãƒªãƒ³ã‚°ãƒãƒƒãƒ•ã‚¡ã®ç©ºãã‚’è¨ˆç®—
+	// ƒŠƒ“ƒOƒoƒbƒtƒ@‚Ì‹ó‚«‚ğŒvZ
 	int free = buffersize - Avail();
 	
 	if (!fillwhenempty && (samples > free-1))
@@ -89,19 +89,19 @@ int SamplingRateConverter::FillMain(int samples)
 			read -= buffersize;
 	}
 	
-	// æ›¸ãã“ã‚€ã¹ããƒ‡ãƒ¼ã‚¿é‡ã‚’è¨ˆç®—
+	// ‘‚«‚±‚Ş‚×‚«ƒf[ƒ^—Ê‚ğŒvZ
 	samples = Min(samples, free-1);
 	if (samples > 0)
 	{
-		// æ›¸ãã“ã‚€
+		// ‘‚«‚±‚Ş
 		if (buffersize - write >= samples)
 		{
-			// ä¸€åº¦ã§æ›¸ã‘ã‚‹å ´åˆ
+			// ˆê“x‚Å‘‚¯‚éê‡
 			source->Get(buffer + write * ch, samples);
 		}
 		else
 		{
-			// ï¼’åº¦ã«åˆ†ã‘ã¦æ›¸ãå ´åˆ
+			// ‚Q“x‚É•ª‚¯‚Ä‘‚­ê‡
 			source->Get(buffer + write * ch, buffersize - write);
 			source->Get(buffer, samples - (buffersize - write));
 		}
@@ -115,17 +115,17 @@ int SamplingRateConverter::FillMain(int samples)
 
 
 // ---------------------------------------------------------------------------
-//	ãƒ•ã‚£ãƒ«ã‚¿ã‚’æ§‹ç¯‰
+//	ƒtƒBƒ‹ƒ^‚ğ\’z
 //
 void SamplingRateConverter::MakeFilter(ulong out)
 {
 	ulong in = source->GetRate();
 
-	// å¤‰æ›å‰ã€å¤‰æ›å¾Œãƒ¬ãƒ¼ãƒˆã®æ¯”ã‚’æ±‚ã‚ã‚‹
-	// ã‚½ãƒ¼ã‚¹ã‚’ ic å€ã‚¢ãƒƒãƒ—ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ã—ã¦ LPF ã‚’æ›ã‘ãŸå¾Œ
-	// oc åˆ†ã® 1 ã«ãƒ€ã‚¦ãƒ³ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ã™ã‚‹
+	// •ÏŠ·‘OA•ÏŠ·ŒãƒŒ[ƒg‚Ì”ä‚ğ‹‚ß‚é
+	// ƒ\[ƒX‚ğ ic ”{ƒAƒbƒvƒTƒ“ƒvƒŠƒ“ƒO‚µ‚Ä LPF ‚ğŠ|‚¯‚½Œã
+	// oc •ª‚Ì 1 ‚Éƒ_ƒEƒ“ƒTƒ“ƒvƒŠƒ“ƒO‚·‚é
 
-	if (in == 55467)		// FM éŸ³æºå¯¾ç­–(w
+	if (in == 55467)		// FM ‰¹Œ¹‘Îô(w
 	{
 		in = 166400;
 		out *= 3;
@@ -134,28 +134,28 @@ void SamplingRateConverter::MakeFilter(ulong out)
 	ic = out / g;
 	oc = in / g;
 
-	// ã‚ã¾ã‚Šæ¬¡å…ƒã‚’é«˜ãã—ã™ãã‚‹ã¨ã€ä¿‚æ•°ãƒ†ãƒ¼ãƒ–ãƒ«ãŒå·¨å¤§ã«ãªã£ã¦ã—ã¾ã†ã®ã§ã¦ã‘ã¨ã†ã«ç²¾åº¦ã‚’è½ã¨ã™
+	// ‚ ‚Ü‚èŸŒ³‚ğ‚‚­‚µ‚·‚¬‚é‚ÆAŒW”ƒe[ƒuƒ‹‚ª‹‘å‚É‚È‚Á‚Ä‚µ‚Ü‚¤‚Ì‚Å‚Ä‚¯‚Æ‚¤‚É¸“x‚ğ—‚Æ‚·
 	while (ic > osmax && oc >= osmin)
 	{
 		ic = (ic + 1) / 2;
 		oc = (oc + 1) / 2;
 	}
 
-	double r = ic * in;			// r = lpf ã‹ã‘ã‚‹æ™‚ã®ãƒ¬ãƒ¼ãƒˆ
+	double r = ic * in;			// r = lpf ‚©‚¯‚é‚ÌƒŒ[ƒg
 
-	// ã‚«ãƒƒãƒˆã‚ªãƒ• å‘¨æ³¢æ•°
-	double c = .95 * PI / Max(ic, oc);	// c = ã‚«ãƒƒãƒˆã‚ªãƒ•
+	// ƒJƒbƒgƒIƒt ü”g”
+	double c = .95 * PI / Max(ic, oc);	// c = ƒJƒbƒgƒIƒt
 	double fc = c * r / (2 * PI);
 
-	// ãƒ•ã‚£ãƒ«ã‚¿ã‚’ä½œã£ã¦ã¿ã‚‹
-	// FIR LPF (çª“é–¢æ•°ã¯ã‚«ã‚¤ã‚¶ãƒ¼çª“)
-	n = (M+1) * ic;						// n = ãƒ•ã‚£ãƒ«ã‚¿ã®æ¬¡æ•°
+	// ƒtƒBƒ‹ƒ^‚ğì‚Á‚Ä‚İ‚é
+	// FIR LPF (‘‹ŠÖ”‚ÍƒJƒCƒU[‘‹)
+	n = (M+1) * ic;						// n = ƒtƒBƒ‹ƒ^‚ÌŸ”
 	
 	delete[] h2;
 	h2 = new float[(ic+1)*(M+1)];
 	
 	double gain = 2 * ic * fc / r;
-	double a = 10.;					// a = é˜»æ­¢åŸŸã§ã®æ¸›è¡°é‡ã‚’æ±ºã‚ã‚‹
+	double a = 10.;					// a = ‘j~ˆæ‚Å‚ÌŒ¸Š—Ê‚ğŒˆ‚ß‚é
 	double d = bessel0(a);
 
 	int j=0;
@@ -185,7 +185,7 @@ void SamplingRateConverter::MakeFilter(ulong out)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰éŸ³ã‚’è²°ã†
+//	ƒoƒbƒtƒ@‚©‚ç‰¹‚ğ–á‚¤
 //
 int SamplingRateConverter::Get(Sample* dest, int samples)
 {

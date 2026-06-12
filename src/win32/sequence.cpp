@@ -13,7 +13,7 @@
 #include "diag.h"
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰/æ¶ˆæ»…
+//	\’z/Á–Å
 //
 Sequencer::Sequencer()
 : hthread(0), execcount(0), vm(0)
@@ -26,7 +26,7 @@ Sequencer::~Sequencer()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool Sequencer::Init(PC88* _vm)
 {
@@ -53,7 +53,7 @@ bool Sequencer::Init(PC88* _vm)
 }
 
 // ---------------------------------------------------------------------------
-//	å¾Œå§‹æœ«
+//	Œãn––
 //
 bool Sequencer::Cleanup()
 {
@@ -94,7 +94,7 @@ uint Sequencer::ThreadMain()
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚µãƒ–ã‚¹ãƒ¬ãƒƒãƒ‰é–‹å§‹ç‚¹
+//	ƒTƒuƒXƒŒƒbƒhŠJn“_
 //
 uint CALLBACK Sequencer::ThreadEntry(void* arg)
 {
@@ -102,10 +102,10 @@ uint CALLBACK Sequencer::ThreadEntry(void* arg)
 }
 
 // ---------------------------------------------------------------------------
-//	ï¼£ï¼°ï¼µãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—
-//	clock	ï¼£ï¼°ï¼µã®ã‚¯ãƒ­ãƒƒã‚¯(0.1MHz)
-//	length	å®Ÿè¡Œã™ã‚‹æ™‚é–“ (0.01ms)
-//	eff		å®ŸåŠ¹ã‚¯ãƒ­ãƒƒã‚¯
+//	‚b‚o‚tƒƒCƒ“ƒ‹[ƒv
+//	clock	‚b‚o‚t‚ÌƒNƒƒbƒN(0.1MHz)
+//	length	Às‚·‚éŠÔ (0.01ms)
+//	eff		ÀŒøƒNƒƒbƒN
 //
 inline void Sequencer::Execute(long clk, long length, long eff)
 {
@@ -114,7 +114,7 @@ inline void Sequencer::Execute(long clk, long length, long eff)
 }
 
 // ---------------------------------------------------------------------------
-//	VSYNC éåŒæœŸ
+//	VSYNC ”ñ“¯Šú
 //
 void Sequencer::ExecuteAsynchronus()
 {
@@ -183,11 +183,11 @@ void Sequencer::ExecuteAsynchronus()
 }
 
 // ---------------------------------------------------------------------------
-//	å®Ÿè¡Œã‚¯ãƒ­ãƒƒã‚¯ã‚«ã‚¦ãƒ³ãƒˆã®å€¤ã‚’è¿”ã—ã€ã‚«ã‚¦ãƒ³ã‚¿ã‚’ãƒªã‚»ãƒƒãƒˆ
+//	ÀsƒNƒƒbƒNƒJƒEƒ“ƒg‚Ì’l‚ğ•Ô‚µAƒJƒEƒ“ƒ^‚ğƒŠƒZƒbƒg
 //
 long Sequencer::GetExecCount()
 {
-//	CriticalSection::Lock lock(cs);	// æ­£ç¢ºãªå€¤ãŒå¿…è¦ãªã¨ãã¯æœ‰åŠ¹ã«ã™ã‚‹
+//	CriticalSection::Lock lock(cs);	// ³Šm‚È’l‚ª•K—v‚È‚Æ‚«‚Í—LŒø‚É‚·‚é
 	
 	int i = execcount;
 	execcount = 0;
@@ -195,7 +195,7 @@ long Sequencer::GetExecCount()
 }
 
 // ---------------------------------------------------------------------------
-//	å®Ÿè¡Œã™ã‚‹
+//	Às‚·‚é
 //
 void Sequencer::Activate(bool a)
 {

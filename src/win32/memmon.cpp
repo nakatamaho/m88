@@ -22,7 +22,7 @@ using namespace PC8801;
 COLORREF MemoryMonitor::col[0x100] = { 0 };
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰/æ¶ˆæ»…
+//	\’z/Á–Å
 //
 MemoryMonitor::MemoryMonitor()
 {
@@ -46,7 +46,7 @@ MemoryMonitor::~MemoryMonitor()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool MemoryMonitor::Init(WinCore* pc88)
 {
@@ -132,28 +132,28 @@ uint MEMCALL MemoryMonitor::MemRead(void* p, uint a)
 {
 	MemoryMonitor* m = reinterpret_cast<MemoryMonitor*>(p);
 
-	// é ˜åŸŸãŒè¦‹ãŸã„ãƒ¡ãƒ¢ãƒªã‚’æŒ‡ã—ç¤ºã—ã¦ã„ã‚‹ãªã‚‰æ›´æ–°
+	// —Ìˆæ‚ªŒ©‚½‚¢ƒƒ‚ƒŠ‚ğw‚µ¦‚µ‚Ä‚¢‚é‚È‚çXV
 	int b = m->mv.GetCurrentBank(a);
 	if (b == -1 || b == m->gmb->GetRdBank(a))
 		m->access[a] = m->time;
 	
-	return m->mm->Read8P(m->mid, a);	// æœ¬æ¥ã®ãƒ¡ãƒ¢ãƒªç©ºé–“ã¸ã¨ã‚¢ã‚¯ã‚»ã‚¹
+	return m->mm->Read8P(m->mid, a);	// –{—ˆ‚Ìƒƒ‚ƒŠ‹óŠÔ‚Ö‚ÆƒAƒNƒZƒX
 }
 
 void MEMCALL MemoryMonitor::MemWrite(void* p, uint a, uint d)
 {
 	MemoryMonitor* m = reinterpret_cast<MemoryMonitor*>(p);
 	
-	// é ˜åŸŸãŒè¦‹ãŸã„ãƒ¡ãƒ¢ãƒªã‚’æŒ‡ã—ç¤ºã—ã¦ã„ã‚‹ãªã‚‰æ›´æ–°
+	// —Ìˆæ‚ªŒ©‚½‚¢ƒƒ‚ƒŠ‚ğw‚µ¦‚µ‚Ä‚¢‚é‚È‚çXV
 	int b = m->mv.GetCurrentBank(a);
 	if (b == -1 || b == m->gmb->GetWrBank(a))
 		m->access[a] = m->time;
 
-	m->mm->Write8P(m->mid, a, d);	// æœ¬æ¥ã®ãƒ¡ãƒ¢ãƒªç©ºé–“ã¸ã¨ã‚¢ã‚¯ã‚»ã‚¹
+	m->mm->Write8P(m->mid, a, d);	// –{—ˆ‚Ìƒƒ‚ƒŠ‹óŠÔ‚Ö‚ÆƒAƒNƒZƒX
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°
+//	ƒeƒLƒXƒgXV
 //
 void MemoryMonitor::UpdateText()
 {
@@ -211,7 +211,7 @@ void MemoryMonitor::UpdateText()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å‡¦ç†
+//	ƒ_ƒCƒAƒƒOˆ—
 //
 BOOL MemoryMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 {
@@ -366,11 +366,11 @@ void MemoryMonitor::Search(uint key, int bytes)
 }
 
 // ----------------------------------------------------------------------------
-//	ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’æ›¸ãè¾¼ã‚€
+//	ƒCƒ[ƒW‚ğ‘‚«‚Ş
 //	
 bool MemoryMonitor::SaveImage()
 {
-	// ãƒ€ã‚¤ã‚¢ãƒ­ã‚°
+	// ƒ_ƒCƒAƒƒO
 	OFNV5 ofn;
 	memset(&ofn, 0, sizeof(ofn));
 	ofn.lStructSize = WINVAR(OFNSIZE);
@@ -391,7 +391,7 @@ bool MemoryMonitor::SaveImage()
 	if (!GetSaveFileName(&ofn))
 		return false;
 
-	// æ›¸ãè¾¼ã¿
+	// ‘‚«‚İ
 	FileIO fio(filename, FileIO::create);
 	if (!fio.GetFlags() & FileIO::open)
 		return false;
@@ -409,7 +409,7 @@ bool MemoryMonitor::SaveImage()
 }
 
 // ---------------------------------------------------------------------------
-//	å†…å®¹æ›¸ãæ›ãˆãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤º
+//	“à—e‘‚«Š·‚¦ƒ_ƒCƒAƒƒO•\¦
 //
 BOOL MemoryMonitor::EDlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 {

@@ -22,7 +22,7 @@ namespace PC8801
 {
 class Config;
 // ---------------------------------------------------------------------------
-//	88 Áî®„ÅÆ OPN Unit
+//	88 ópÇÃ OPN Unit
 //
 class OPNIF : public Device, public ISoundSource
 {

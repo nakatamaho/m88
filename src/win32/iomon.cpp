@@ -20,7 +20,7 @@ using namespace PC8801;
 COLORREF IOMonitor::ctbl[0x100] = { 0 };
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰/æ¶ˆæ»…
+//	\’z/Á–Å
 //
 IOMonitor::IOMonitor()
 {
@@ -41,7 +41,7 @@ IOMonitor::~IOMonitor()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool IOMonitor::Init(WinCore* _pc)
 {
@@ -84,7 +84,7 @@ inline static void ToHex(char** p, uint d)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°
+//	ƒeƒLƒXƒgXV
 //
 void IOMonitor::UpdateText()
 {
@@ -114,7 +114,7 @@ void IOMonitor::UpdateText()
 
 
 // ---------------------------------------------------------------------------
-//	ãƒ€ã‚¤ã‚¢ãƒ­ã‚°å‡¦ç†
+//	ƒ_ƒCƒAƒƒOˆ—
 //
 BOOL IOMonitor::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 {

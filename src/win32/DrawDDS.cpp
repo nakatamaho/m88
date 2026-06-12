@@ -2,7 +2,7 @@
 //  M88 - PC8801 emulator
 //  Copyright (C) cisc 1998, 2000.
 // ---------------------------------------------------------------------------
-//	DirectDraw(32/24bpp) ã«ã‚ˆã‚‹å…¨ç”»é¢æç”»
+//	DirectDraw(32/24bpp) ‚É‚æ‚é‘S‰æ–Ê•`‰æ
 // ---------------------------------------------------------------------------
 //	$Id: DrawDDS.cpp,v 1.16 2003/11/04 13:14:21 cisc Exp $
 
@@ -18,7 +18,7 @@
 #define RELCOM(x)  if (x) x->Release(), x=0; else 0
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰
+//	\’z
 //
 WinDrawDDS::WinDrawDDS(bool force480)
 {
@@ -35,7 +35,7 @@ WinDrawDDS::WinDrawDDS(bool force480)
 }
 
 // ---------------------------------------------------------------------------
-//	ç ´æ£„
+//	”jŠü
 //
 WinDrawDDS::~WinDrawDDS()
 {
@@ -43,7 +43,7 @@ WinDrawDDS::~WinDrawDDS()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool WinDrawDDS::Init(HWND hwindow, uint w, uint h, GUID* drv)
 {
@@ -96,7 +96,7 @@ bool WinDrawDDS::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	DirectDraw2 æº–å‚™
+//	DirectDraw2 €”õ
 //
 bool WinDrawDDS::CreateDD2(GUID* drv)
 {
@@ -108,13 +108,13 @@ bool WinDrawDDS::CreateDD2(GUID* drv)
 }
 
 // ---------------------------------------------------------------------------
-//	Surface æº–å‚™
+//	Surface €”õ
 //
 bool WinDrawDDS::CreateDDS()
 {
 	HRESULT hr;
 	
-	// è¡¨ç¤ºã‚µãƒ¼ãƒ•ã‚§ã‚¹ã‚’ä½œæˆ
+	// •\¦ƒT[ƒtƒFƒX‚ğì¬
 	DDSURFACEDESC ddsd;
 	memset(&ddsd, 0, sizeof(DDSURFACEDESC));
 	ddsd.dwSize = sizeof(ddsd);
@@ -131,7 +131,7 @@ bool WinDrawDDS::CreateDDS()
 	ddsc.dwCaps = DDSCAPS_BACKBUFFER;
 	ddsscrn->GetAttachedSurface(&ddsc, &ddsback);
 	
-	// ã‚¯ãƒªãƒƒãƒ‘ãƒ¼ã‚’ä½œæˆ
+	// ƒNƒŠƒbƒp[‚ğì¬
 	hr = ddraw->CreateClipper(0, &ddcscrn, 0);
 	LOGDDERR("ddraw->CreateClipper", hr);
 	if (DD_OK != hr)
@@ -143,15 +143,15 @@ bool WinDrawDDS::CreateDDS()
 }
 
 // ---------------------------------------------------------------------------
-//	æç”»
-//	flip ã¯ Flip() ã§è¡Œã†ã®ãŒç­‹ã ã¨ãŠã‚‚ã†ã‘ã©ï¼ŒDrawScreen ã¨ãƒ¡ã‚¤ãƒ³å‡¦ç†ã¯
-//	åˆ¥ã‚¹ãƒ¬ãƒƒãƒ‰ãªã®ã§ã“ã£ã¡ã§ flip ã™ã‚‹
+//	•`‰æ
+//	flip ‚Í Flip() ‚Ås‚¤‚Ì‚ª‹Ø‚¾‚Æ‚¨‚à‚¤‚¯‚ÇCDrawScreen ‚ÆƒƒCƒ“ˆ—‚Í
+//	•ÊƒXƒŒƒbƒh‚È‚Ì‚Å‚±‚Á‚¿‚Å flip ‚·‚é
 //
 void WinDrawDDS::DrawScreen(const RECT& _rect, bool refresh)
 {
 	RECT rect = _rect;
 
-	// ãƒ‘ãƒ¬ãƒƒãƒˆå¤‰æ›´ã•ã‚Œã¦ã„ãŸã‚‰å…¨ç”»é¢æ›´æ–°
+	// ƒpƒŒƒbƒg•ÏX‚³‚ê‚Ä‚¢‚½‚ç‘S‰æ–ÊXV
 	if (palchanged) {
 		refresh = true;
 		palchanged = false;
@@ -164,7 +164,7 @@ void WinDrawDDS::DrawScreen(const RECT& _rect, bool refresh)
 		FillBlankArea();
 	}
 
-	// ä½œæ¥­é ˜åŸŸã‚’æ›´æ–°
+	// ì‹Æ—Ìˆæ‚ğXV
 	HRESULT r = ddsscrn->IsLost();
 	if (r == DD_OK)
 	{
@@ -247,7 +247,7 @@ void WinDrawDDS::QueryNewPalette()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ‘ãƒ¬ãƒƒãƒˆã‚’è¨­å®š
+//	ƒpƒŒƒbƒg‚ğİ’è
 //
 void WinDrawDDS::SetPalette(PALETTEENTRY* pe, int idx, int ent)
 {
@@ -263,7 +263,7 @@ void WinDrawDDS::SetPalette(PALETTEENTRY* pe, int idx, int ent)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½¿ç”¨è¦æ±‚
+//	‰æ–ÊƒCƒ[ƒW‚Ìg—p—v‹
 //
 bool WinDrawDDS::Lock(uint8** pimage, int* pbpl)
 {
@@ -273,7 +273,7 @@ bool WinDrawDDS::Lock(uint8** pimage, int* pbpl)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½¿ç”¨çµ‚äº†
+//	‰æ–ÊƒCƒ[ƒW‚Ìg—pI—¹
 //
 bool WinDrawDDS::Unlock()
 {
@@ -282,7 +282,7 @@ bool WinDrawDDS::Unlock()
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ãƒ¢ãƒ¼ãƒ‰ã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹
+//	‰æ–Êƒ‚[ƒh‚ğØ‚è‘Ö‚¦‚é
 //
 bool WinDrawDDS::SetScreenMode()
 {
@@ -302,7 +302,7 @@ bool WinDrawDDS::SetScreenMode()
 			return false;
 	}
 
-	static const int bps[] = {32,24};	// 16,8bppæ¨ã¦
+	static const int bps[] = {32,24};	// 16,8bppÌ‚Ä
 	for (int i = 0; i < 3; i++) {
 		hr = ddraw->SetDisplayMode(width, lines, bps[i], 0, 0);
 		LOGDDERR("ddraw->SetDisplayMode", hr);
@@ -328,7 +328,7 @@ bool WinDrawDDS::SetScreenMode()
 
 
 // ---------------------------------------------------------------------------
-//! EnumDisplayModesç”¨ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
+//! EnumDisplayModes—pƒR[ƒ‹ƒoƒbƒN
 //
 HRESULT WINAPI WinDrawDDS::EDMCallBack(LPDDSURFACEDESC pddsd, LPVOID context)
 {
@@ -350,7 +350,7 @@ HRESULT WINAPI WinDrawDDS::EDMCallBack(LPDDSURFACEDESC pddsd, LPVOID context)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ­ã‚¹ãƒˆã—ãŸã‚µãƒ¼ãƒ•ã‚§ã‚¹ã‚’æˆ»ã™
+//	ƒƒXƒg‚µ‚½ƒT[ƒtƒFƒX‚ğ–ß‚·
 //
 bool WinDrawDDS::RestoreSurface()
 {
@@ -365,7 +365,7 @@ bool WinDrawDDS::RestoreSurface()
 }
 
 // ---------------------------------------------------------------------------
-//	éè¡¨ç¤ºé ˜åŸŸã‚’æ¶ˆã™
+//	”ñ•\¦—Ìˆæ‚ğÁ‚·
 //
 void WinDrawDDS::FillBlankArea()
 {
@@ -387,7 +387,7 @@ void WinDrawDDS::FillBlankArea()
 }
 
 // ---------------------------------------------------------------------------
-//	GUI ãƒ¢ãƒ¼ãƒ‰åˆ‡ã‚Šæ›¿ãˆ
+//	GUI ƒ‚[ƒhØ‚è‘Ö‚¦
 //
 void WinDrawDDS::SetGUIMode(bool newguimode)
 {
@@ -417,7 +417,7 @@ void WinDrawDDS::SetGUIMode(bool newguimode)
 }
 
 // ---------------------------------------------------------------------------
-//	è¡¨ç¤ºé ˜åŸŸã‚’è¨­å®šã™ã‚‹
+//	•\¦—Ìˆæ‚ğİ’è‚·‚é
 //
 bool WinDrawDDS::Resize(uint w, uint h)
 {
@@ -426,7 +426,7 @@ bool WinDrawDDS::Resize(uint w, uint h)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ•ãƒªãƒƒãƒ—ã‚’è¡Œã†ã‹ã©ã†ã‹è¨­å®š
+//	ƒtƒŠƒbƒv‚ğs‚¤‚©‚Ç‚¤‚©İ’è
 //
 bool WinDrawDDS::SetFlipMode(bool f)
 {

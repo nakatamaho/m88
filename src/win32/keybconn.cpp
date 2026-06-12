@@ -37,7 +37,7 @@ bool DeviceConnector::Disconnect()
 }
 
 // ---------------------------------------------------------------------------
-//	Windows ç”¨ã®ãƒ‡ãƒã‚¤ã‚¹ã‚’æ¥ç¶š
+//	Windows —p‚ÌƒfƒoƒCƒX‚ğÚ‘±
 //
 bool KeyboardConnector::Connect(IOBus* bus, WinKeyIF* keyb)
 {

@@ -2,7 +2,7 @@
 //  M88 - PC88 emulator
 //  Copyright (C) cisc 1998, 1999.
 // ---------------------------------------------------------------------------
-//	Direct2D+GDI ã«ã‚ˆã‚‹ç”»é¢æç”» (HiColor ä»¥ä¸Š)
+//	Direct2D+GDI ‚É‚æ‚é‰æ–Ê•`‰æ (HiColor ˆÈã)
 // ---------------------------------------------------------------------------
 
 #include "headers.h"
@@ -20,7 +20,7 @@ template <class T> void SafeRelease(T **ppT)
 }
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰/æ¶ˆæ»…
+//	\’z/Á–Å
 //
 WinDrawD2D::WinDrawD2D() :
 	m_hWnd(0),
@@ -40,7 +40,7 @@ WinDrawD2D::~WinDrawD2D()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–å‡¦ç†
+//	‰Šú‰»ˆ—
 //
 bool WinDrawD2D::Init( HWND _hWnd, uint _width, uint _height, GUID* )
 {
@@ -70,20 +70,20 @@ void WinDrawD2D::SetGUIMode( bool _mode )
 
 bool WinDrawD2D::CreateD2D()
 {
-	// OSãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®ãƒã‚§ãƒƒã‚¯
+	// OSƒo[ƒWƒ‡ƒ“‚Ìƒ`ƒFƒbƒN
 	OSVERSIONINFOEX osinfo;
 	memset( &osinfo, 0, sizeof( osinfo ) );
 	osinfo.dwOSVersionInfoSize = sizeof( OSVERSIONINFOEX );
 	::GetVersionEx( (OSVERSIONINFO*)&osinfo );
 	if ( osinfo.dwMajorVersion < 6 ) {
-		// Vista(ver6.0)ä»¥å‰ã¯å¤±æ•—
+		// Vista(ver6.0)ˆÈ‘O‚Í¸”s
 		return false;
 	}
 
 	Cleanup();
 
 	if ( m_hCWnd == 0 ) {
-		// Base windowã‚’ç”Ÿæˆ
+		// Base window‚ğ¶¬
 		m_hCWnd = ::CreateWindowEx(
 			WS_EX_TRANSPARENT,
 			"M88p2 WinUI",
@@ -103,7 +103,7 @@ bool WinDrawD2D::CreateD2D()
 		::ShowWindow( m_hCWnd, SW_SHOW );
 	}
 
-	// D2D factoryä½œæˆ
+	// D2D factoryì¬
 	HRESULT hr;
 	hr = ::D2D1CreateFactory( D2D1_FACTORY_TYPE_MULTI_THREADED,
 							  &m_D2DFact );
@@ -115,7 +115,7 @@ bool WinDrawD2D::CreateD2D()
 	}
 }
 
-//! ç”»é¢æœ‰åŠ¹ç¯„å›²ã‚’å¤‰æ›´
+//! ‰æ–Ê—LŒø”ÍˆÍ‚ğ•ÏX
 //
 bool WinDrawD2D::Resize( uint _width, uint _height )
 {
@@ -175,7 +175,7 @@ bool WinDrawD2D::Resize( uint _width, uint _height )
 	return true;
 }
 
-//! å¾Œç‰‡ä»˜ã‘
+//! Œã•Ğ•t‚¯
 //
 bool WinDrawD2D::Cleanup()
 {
@@ -193,7 +193,7 @@ bool WinDrawD2D::Cleanup()
 	return true;
 }
 
-//! BITMAP ä½œæˆ
+//! BITMAP ì¬
 //
 bool WinDrawD2D::MakeBitmap()
 {
@@ -211,7 +211,7 @@ bool WinDrawD2D::MakeBitmap()
 
 	m_RenderTarget->BeginDraw();
 
-	// ãƒ‘ãƒ¬ãƒƒãƒˆãŒç„¡ã„å ´åˆ
+	// ƒpƒŒƒbƒg‚ª–³‚¢ê‡
 	HDC hdc;
 	m_GDIRT->GetDC( D2D1_DC_INITIALIZE_MODE_COPY, &hdc );
 
@@ -241,8 +241,8 @@ bool WinDrawD2D::MakeBitmap()
 	return true;
 }
 
-//! ãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š
-//	index ç•ªç›®ã®ãƒ‘ãƒ¬ãƒƒãƒˆã« pe ã‚’ã‚»ãƒƒãƒˆ
+//! ƒpƒŒƒbƒgİ’è
+//	index ”Ô–Ú‚ÌƒpƒŒƒbƒg‚É pe ‚ğƒZƒbƒg
 //
 void WinDrawD2D::SetPalette(PALETTEENTRY* _pe, int index, int nentries)
 {
@@ -256,7 +256,7 @@ void WinDrawD2D::SetPalette(PALETTEENTRY* _pe, int index, int nentries)
 	m_UpdatePal = true;
 }
 
-//! æç”»
+//! •`‰æ
 //
 void WinDrawD2D::DrawScreen(const RECT& _rect, bool refresh)
 {
@@ -305,7 +305,7 @@ void WinDrawD2D::DrawScreen(const RECT& _rect, bool refresh)
 	}
 }
 
-//! ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½¿ç”¨è¦æ±‚
+//! ‰æ–ÊƒCƒ[ƒW‚Ìg—p—v‹
 // @param _pimage [out] image pointer
 // @param _pbpl   [out] width
 //
@@ -316,7 +316,7 @@ bool WinDrawD2D::Lock(uint8** _pimage, int* _pbpl)
 	return m_image != 0;
 }
 
-//! ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½¿ç”¨çµ‚äº†
+//! ‰æ–ÊƒCƒ[ƒW‚Ìg—pI—¹
 //
 bool WinDrawD2D::Unlock()
 {

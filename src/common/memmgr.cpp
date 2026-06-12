@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-//	ãƒ¡ãƒ¢ãƒªç®¡ç†ã‚¯ãƒ©ã‚¹
+//	ƒƒ‚ƒŠŠÇ—ƒNƒ‰ƒX
 //	Copyright (c) cisc 1999.
 // ---------------------------------------------------------------------------
 //	$Id: memmgr.cpp,v 1.4 1999/12/28 10:33:53 cisc Exp $
@@ -9,7 +9,7 @@
 #include "diag.h"
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰ãƒ»ç ´æ£„
+//	\’zE”jŠü
 //
 MemoryManagerBase::MemoryManagerBase()
 : ownpages(false), pages(0), npages(0), priority(0)
@@ -23,7 +23,7 @@ MemoryManagerBase::~MemoryManagerBase()
 }
 
 // ---------------------------------------------------------------------------
-//	ä¸‹æº–å‚™
+//	‰º€”õ
 //
 bool MemoryManagerBase::Init(uint sas, Page* expages)
 {
@@ -67,7 +67,7 @@ bool MemoryManagerBase::Init(uint sas, Page* expages)
 }
 
 // ---------------------------------------------------------------------------
-//	å¾Œå§‹æœ«
+//	Œãn––
 //
 void MemoryManagerBase::Cleanup()
 {
@@ -84,7 +84,7 @@ void MemoryManagerBase::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ¡ãƒ¢ãƒªç©ºé–“ã‚’ä½¿ç”¨ã—ãŸã„ device ã‚’è¿½åŠ ã™ã‚‹
+//	ƒƒ‚ƒŠ‹óŠÔ‚ğg—p‚µ‚½‚¢ device ‚ğ’Ç‰Á‚·‚é
 //
 int MemoryManagerBase::Connect(void* inst, bool high)
 {
@@ -96,7 +96,7 @@ int MemoryManagerBase::Connect(void* inst, bool high)
 	{
 		LocalSpace& ls = lsp[pid];
 		
-		// ç©ºã® lsp ã‚’æ¢ã™
+		// ‹ó‚Ì lsp ‚ğ’T‚·
 		if (!ls.inst)
 		{
 			ls.inst = inst;
@@ -111,7 +111,7 @@ int MemoryManagerBase::Connect(void* inst, bool high)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ‡ãƒã‚¤ã‚¹ã‚’å–ã‚Šå¤–ã™
+//	ƒfƒoƒCƒX‚ğæ‚èŠO‚·
 //
 bool MemoryManagerBase::Disconnect(uint pid)
 {
@@ -121,7 +121,7 @@ bool MemoryManagerBase::Disconnect(uint pid)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ‡ãƒã‚¤ã‚¹ã‚’å–ã‚Šå¤–ã™
+//	ƒfƒoƒCƒX‚ğæ‚èŠO‚·
 //
 bool MemoryManagerBase::Disconnect(void* inst)
 {
@@ -135,7 +135,7 @@ bool MemoryManagerBase::Disconnect(void* inst)
 
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool ReadMemManager::Init(uint sas, Page* _pages)
 {
@@ -156,7 +156,7 @@ bool ReadMemManager::Init(uint sas, Page* _pages)
 }
 
 // ---------------------------------------------------------------------------
-//	æŒ‡å®šã•ã‚ŒãŸ pid ã®ç›´å¾Œã®ãƒ¡ãƒ¢ãƒªç©ºé–“ã®èª­ã¿è¾¼ã¿
+//	w’è‚³‚ê‚½ pid ‚Ì’¼Œã‚Ìƒƒ‚ƒŠ‹óŠÔ‚Ì“Ç‚İ‚İ
 //
 uint ReadMemManager::Read8P(uint pid, uint addr)
 {
@@ -179,7 +179,7 @@ uint ReadMemManager::Read8P(uint pid, uint addr)
 }
 
 // ---------------------------------------------------------------------------
-//	ãˆã‚‰ãƒ¼
+//	‚¦‚ç[
 //
 uint ReadMemManager::UndefinedRead(void*, uint addr)
 {
@@ -189,7 +189,7 @@ uint ReadMemManager::UndefinedRead(void*, uint addr)
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool WriteMemManager::Init(uint sas, Page* _pages)
 {
@@ -210,7 +210,7 @@ bool WriteMemManager::Init(uint sas, Page* _pages)
 }
 
 // ---------------------------------------------------------------------------
-//	æŒ‡å®šã•ã‚ŒãŸ pid ã®ç›´å¾Œã®ãƒ¡ãƒ¢ãƒªç©ºé–“ã«å¯¾ã™ã‚‹æ›¸è¾¼ã¿
+//	w’è‚³‚ê‚½ pid ‚Ì’¼Œã‚Ìƒƒ‚ƒŠ‹óŠÔ‚É‘Î‚·‚é‘‚İ
 //
 void WriteMemManager::Write8P(uint pid, uint addr, uint data)
 {
@@ -233,7 +233,7 @@ void WriteMemManager::Write8P(uint pid, uint addr, uint data)
 }
 
 // ---------------------------------------------------------------------------
-//	ãˆã‚‰ãƒ¼
+//	‚¦‚ç[
 //
 void WriteMemManager::UndefinedWrite(void*, uint addr, uint)
 {

@@ -30,7 +30,7 @@ bool Scheduler::Init()
 }
 
 // ---------------------------------------------------------------------------
-//	æ™‚é–“ã‚¤ãƒ™ãƒ³ãƒˆã‚’è¿½åŠ 
+//	ŠÔƒCƒxƒ“ƒg‚ğ’Ç‰Á
 //	
 Scheduler::Event* IFCALL Scheduler::AddEvent
 (int count, IDevice* inst, IDevice::TimeFunc func, int arg, bool repeat)
@@ -39,7 +39,7 @@ Scheduler::Event* IFCALL Scheduler::AddEvent
 	assert(count > 0);
 	
 	int i;
-	// ç©ºã„ã¦ã‚‹ Event ã‚’æ¢ã™
+	// ‹ó‚¢‚Ä‚é Event ‚ğ’T‚·
 	for (i=0; i<=evlast; i++)
 		if (!events[i].inst)
 			break;
@@ -53,7 +53,7 @@ Scheduler::Event* IFCALL Scheduler::AddEvent
 	ev.inst = inst, ev.func = func, ev.arg = arg;
 	ev.time = repeat ? count : 0;
 	
-	// æœ€çŸ­ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿæ™‚åˆ»ã‚’æ›´æ–°ã™ã‚‹ï¼Ÿ
+	// Å’ZƒCƒxƒ“ƒg”­¶‚ğXV‚·‚éH
 	if ((etime - ev.count) > 0)
 	{
 		Shorten(etime - ev.count);
@@ -63,7 +63,7 @@ Scheduler::Event* IFCALL Scheduler::AddEvent
 }
 
 // ---------------------------------------------------------------------------
-//	æ™‚é–“ã‚¤ãƒ™ãƒ³ãƒˆã®å±æ€§å¤‰æ›´
+//	ŠÔƒCƒxƒ“ƒg‚Ì‘®«•ÏX
 //	
 void IFCALL Scheduler::SetEvent
 (Event* ev, int count, IDevice* inst, IDevice::TimeFunc func, int arg, bool repeat)
@@ -75,7 +75,7 @@ void IFCALL Scheduler::SetEvent
 	ev->inst = inst, ev->func = func, ev->arg = arg;
 	ev->time = repeat ? count : 0;
 	
-	// æœ€çŸ­ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿæ™‚åˆ»ã‚’æ›´æ–°ã™ã‚‹ï¼Ÿ
+	// Å’ZƒCƒxƒ“ƒg”­¶‚ğXV‚·‚éH
 	if ((etime - ev->count) > 0)
 	{
 		Shorten(etime - ev->count);
@@ -85,7 +85,7 @@ void IFCALL Scheduler::SetEvent
 
 
 // ---------------------------------------------------------------------------
-//	æ™‚é–“ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‰Šé™¤
+//	ŠÔƒCƒxƒ“ƒg‚ğíœ
 //	
 bool IFCALL Scheduler::DelEvent(IDevice* inst)
 {
@@ -114,7 +114,7 @@ bool IFCALL Scheduler::DelEvent(Event* ev)
 }
 
 // ---------------------------------------------------------------------------
-//	æ™‚é–“ã‚’é€²ã‚ã‚‹
+//	ŠÔ‚ği‚ß‚é
 //
 int Scheduler::Proceed(int ticks)
 {
@@ -140,7 +140,7 @@ int Scheduler::Proceed(int ticks)
 		etime = time += xtime;
 		t -= xtime;
 
-		// ã‚¤ãƒ™ãƒ³ãƒˆã‚’é§†å‹•
+		// ƒCƒxƒ“ƒg‚ğ‹ì“®
 		for (i=evlast; i>=0; i--)
 		{
 			Event& ev = events[i];

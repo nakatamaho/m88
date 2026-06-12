@@ -2,7 +2,7 @@
 //	M88 - PC-8801 Emulator.
 //	Copyright (C) cisc 1998, 1999.
 // ---------------------------------------------------------------------------
-//  CRTC (Î¼PD3301) ã®ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
+//  CRTC (ƒÊPD3301) ‚ÌƒGƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“
 // ---------------------------------------------------------------------------
 //	$Id: crtc.cpp,v 1.34 2004/02/05 11:57:49 cisc Exp $
 
@@ -24,13 +24,13 @@
 using namespace PC8801;
 
 // ---------------------------------------------------------------------------
-//	CRTC éƒ¨ã®æ©Ÿèƒ½
-//	ãƒ»VSYNC å‰²ã‚Šè¾¼ã¿ç®¡ç†
-//	ãƒ»ç”»é¢ä½ç½®ãƒ»ã‚µã‚¤ã‚ºè¨ˆç®—
-//	ãƒ»ãƒ†ã‚­ã‚¹ãƒˆç”»é¢ç”Ÿæˆ
-//	ãƒ»CGROM
+//	CRTC •”‚Ì‹@”\
+//	EVSYNC Š„‚è‚İŠÇ—
+//	E‰æ–ÊˆÊ’uEƒTƒCƒYŒvZ
+//	EƒeƒLƒXƒg‰æ–Ê¶¬
+//	ECGROM
 //
-//	ã‚«ãƒ¼ã‚½ãƒ«ãƒ–ãƒªãƒ³ã‚¯é–“éš” 16n ãƒ•ãƒ¬ãƒ¼ãƒ 
+//	ƒJ[ƒ\ƒ‹ƒuƒŠƒ“ƒNŠÔŠu 16n ƒtƒŒ[ƒ€
 //
 //	Status Bit
 //		b0		Light Pen
@@ -39,14 +39,14 @@ using namespace PC8801;
 //		b3		DMA under run
 //		b4		Video Enable
 //
-//	ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ãƒ“ãƒƒãƒˆé…åˆ†
+//	‰æ–ÊƒCƒ[ƒW‚Ìƒrƒbƒg”z•ª
 //		GMode	b4 b3 b2 b1 b0
-//		ã‚«ãƒ©ãƒ¼	-- TE TG TR TB 
-//		ç™½é»’	Rv TE TG TR TB
+//		ƒJƒ‰[	-- TE TG TR TB 
+//		”’•	Rv TE TG TR TB
 //
-//	ãƒªãƒãƒ¼ã‚¹ã®æ–¹æ³•(XOR)
-//		ã‚«ãƒ©ãƒ¼	-- TE -- -- --
-//		ç™½é»’    Rv -- -- -- --
+//	ƒŠƒo[ƒX‚Ì•û–@(XOR)
+//		ƒJƒ‰[	-- TE -- -- --
+//		”’•    Rv -- -- -- --
 //
 //	24kHz	440 lines(25)
 //			448 lines(20)
@@ -63,7 +63,7 @@ using namespace PC8801;
 #define TEXT_RESP	PACK(TEXT_RES)
 
 // ---------------------------------------------------------------------------
-// æ§‹ç¯‰/æ¶ˆæ»…
+// \’z/Á–Å
 //
 CRTC::CRTC(const ID& id)
 : Device(id)
@@ -97,7 +97,7 @@ CRTC::~CRTC()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool CRTC::Init(IOBus* b, Scheduler* s, PD8257* d, Draw* _draw)
 {
@@ -170,7 +170,7 @@ void IOCALL CRTC::Reset(uint, uint)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒªã‚»ãƒƒãƒˆ
+//	ƒpƒ‰ƒ[ƒ^ƒŠƒZƒbƒg
 //
 void CRTC::HotReset()
 {
@@ -195,7 +195,7 @@ void CRTC::HotReset()
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ãƒ¢ãƒ¼ãƒ‰ã®å¤‰æ›´
+//	ƒOƒ‰ƒtƒBƒbƒNƒ‚[ƒh‚Ì•ÏX
 //
 void CRTC::SetTextMode(bool color)
 {
@@ -213,7 +213,7 @@ void CRTC::SetTextMode(bool color)
 }
 
 // ---------------------------------------------------------------------------
-//	æ–‡å­—ã‚µã‚¤ã‚ºã®å¤‰æ›´
+//	•¶šƒTƒCƒY‚Ì•ÏX
 //
 void CRTC::SetTextSize(bool wide)
 {
@@ -222,7 +222,7 @@ void CRTC::SetTextSize(bool wide)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚³ãƒãƒ³ãƒ‰å‡¦ç†
+//	ƒRƒ}ƒ“ƒhˆ—
 //
 uint CRTC::Command(bool a0, uint data)
 {
@@ -266,15 +266,15 @@ uint CRTC::Command(bool a0, uint data)
 			break;
 			
 		//	b0-b5	height-1 (char)
-		//	b6-b7	ã‚«ãƒ¼ã‚½ãƒ«ç‚¹æ»…é€Ÿåº¦ (0:16 - 3:64 frame) 
+		//	b6-b7	ƒJ[ƒ\ƒ‹“_–Å‘¬“x (0:16 - 3:64 frame) 
 		case 2:
 			blinkrate = 32 * (1 + (data >> 6));
 			height = (data & 0x3f) + 1;
 			break;
 			
-		//	b0-b4	æ–‡å­—ã®ãƒ©ã‚¤ãƒ³æ•°
-		//	b5-b6	ã‚«ãƒ¼ã‚½ãƒ«ã®ç¨®åˆ¥ (b5:ç‚¹æ»… b6:ãƒœãƒƒã‚¯ã‚¹/~ã‚¢ãƒ³ãƒ€ãƒ¼ãƒ©ã‚¤ãƒ³)
-		//	b7		1 è¡Œç½®ããƒ¢ãƒ¼ãƒ‰
+		//	b0-b4	•¶š‚Ìƒ‰ƒCƒ“”
+		//	b5-b6	ƒJ[ƒ\ƒ‹‚Ìí•Ê (b5:“_–Å b6:ƒ{ƒbƒNƒX/~ƒAƒ“ƒ_[ƒ‰ƒCƒ“)
+		//	b7		1 s’u‚«ƒ‚[ƒh
 		case 3:
 			cursormode = (data >> 5) & 3;
 			linesperchar = (data & 0x1f) + 1;
@@ -296,8 +296,8 @@ uint CRTC::Command(bool a0, uint data)
 //			linetime = 1667 / (height+vretrace-1);
 			break;
 
-		//	b0-b4	ï¼‘è¡Œã‚ãŸã‚Šã®ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆæ•° - 1
-		//	b5-b7	ãƒ†ã‚­ã‚¹ãƒˆç”»é¢ãƒ¢ãƒ¼ãƒ‰
+		//	b0-b4	‚Ps‚ ‚½‚è‚ÌƒAƒgƒŠƒrƒ…[ƒg” - 1
+		//	b5-b7	ƒeƒLƒXƒg‰æ–Êƒ‚[ƒh
 		case 5:
 			mode &= ~(enable | color | control | attribute | nontransparent);
 			mode |= modetbl[(data >> 5) & 7];
@@ -375,8 +375,8 @@ uint CRTC::Command(bool a0, uint data)
 		break;
 		
 	case 6:			// RESET COUNTERS
-		mode |= clear;			// ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã«ã‚ˆã£ã¦ã¯
-		status = 0;				// æ¶ˆãˆãªã„ã“ã¨ã‚‚ã‚ã‚‹ã‹ã‚‚ï¼Ÿ
+		mode |= clear;			// ƒ^ƒCƒ~ƒ“ƒO‚É‚æ‚Á‚Ä‚Í
+		status = 0;				// Á‚¦‚È‚¢‚±‚Æ‚à‚ ‚é‚©‚àH
 		break;
 		
 	default:
@@ -387,7 +387,7 @@ uint CRTC::Command(bool a0, uint data)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ•ã‚©ãƒ³ãƒˆãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿
+//	ƒtƒHƒ“ƒgƒtƒ@ƒCƒ‹“Ç‚İ‚İ
 //	
 bool CRTC::LoadFontFile()
 {
@@ -417,8 +417,8 @@ bool CRTC::LoadFontFile()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚©ãƒ³ãƒˆã‹ã‚‰è¡¨ç¤ºç”¨ãƒ•ã‚©ãƒ³ãƒˆã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’ä½œæˆã™ã‚‹
-//	src		ãƒ•ã‚©ãƒ³ãƒˆ ROM
+//	ƒeƒLƒXƒgƒtƒHƒ“ƒg‚©‚ç•\¦—pƒtƒHƒ“ƒgƒCƒ[ƒW‚ğì¬‚·‚é
+//	src		ƒtƒHƒ“ƒg ROM
 //
 void CRTC::CreateTFont()
 {
@@ -467,7 +467,7 @@ void CRTC::ModifyFont(uint off, uint d)
 
 
 // ---------------------------------------------------------------------------
-//	ã‚»ãƒŸã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¹ç”¨ãƒ•ã‚©ãƒ³ãƒˆã‚’ä½œæˆã™ã‚‹
+//	ƒZƒ~ƒOƒ‰ƒtƒBƒbƒNƒX—pƒtƒHƒ“ƒg‚ğì¬‚·‚é
 //	
 void CRTC::CreateGFont()
 {
@@ -501,7 +501,7 @@ void CRTC::CreateGFont()
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢è¡¨ç¤ºé–‹å§‹ã®ã‚¿ã‚¤ãƒŸãƒ³ã‚°å‡¦ç†
+//	‰æ–Ê•\¦ŠJn‚Ìƒ^ƒCƒ~ƒ“ƒOˆ—
 //
 void IOCALL CRTC::StartDisplay(uint)
 {
@@ -516,7 +516,7 @@ void IOCALL CRTC::StartDisplay(uint)
 }
 
 // ---------------------------------------------------------------------------
-//	ï¼‘è¡Œåˆ†å–å¾—
+//	‚Ps•ªæ“¾
 //
 void IOCALL CRTC::ExpandLine(uint)
 {
@@ -551,7 +551,7 @@ int CRTC::ExpandLineSub()
 		{
 			if (linesize > dmac->RequestRead(dmabank, dest, linesize))
 			{
-				// DMA ã‚¢ãƒ³ãƒ€ãƒ¼ãƒ©ãƒ³
+				// DMA ƒAƒ“ƒ_[ƒ‰ƒ“
 				mode = (mode & ~(enable)) | clear;
 				status = (status & ~0x10) | 0x08;
 				memset(dest, 0, linesize);
@@ -565,7 +565,7 @@ int CRTC::ExpandLineSub()
 				if (mode & control)
 				{
 					bool docontrol = false;
-#if 0		// XXX: è¦æ¤œè¨¼
+#if 0		// XXX: —vŒŸØ
 					for (int i=1; i<=attrperline; i++)
 					{
 						if ((dest[linesize-i*2] & 0x7f) == 0x60)
@@ -579,7 +579,7 @@ int CRTC::ExpandLineSub()
 #endif
 					if (docontrol)
 					{
-						// ç‰¹æ®Šåˆ¶å¾¡æ–‡å­—
+						// “Áê§Œä•¶š
 						int sc = dest[linesize-1];
 						if (sc & 1)
 						{
@@ -612,15 +612,15 @@ inline void IOCALL CRTC::ExpandLineEnd(uint)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚µã‚¤ã‚ºå¤‰æ›´ã®å¿…è¦ãŒã‚ã‚Œã°å¤‰æ›´
+//	‰æ–ÊƒTƒCƒY•ÏX‚Ì•K—v‚ª‚ ‚ê‚Î•ÏX
 //
 void CRTC::SetSize()
 {
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚’ã‚¤ãƒ¡ãƒ¼ã‚¸ã«å±•é–‹ã™ã‚‹
-//	region	æ›´æ–°é ˜åŸŸ
+//	‰æ–Ê‚ğƒCƒ[ƒW‚É“WŠJ‚·‚é
+//	region	XV—Ìˆæ
 //
 void CRTC::UpdateScreen(uint8* image, int _bpl, Draw::Region& region, bool ref)
 {
@@ -637,8 +637,8 @@ void CRTC::UpdateScreen(uint8* image, int _bpl, Draw::Region& region, bool ref)
 	if (mode & resize)
 	{
 		Log(" resize");
-		// ä»®æƒ³ç”»é¢è‡ªä½“ã®å¤§ãã•ã‚’å¤‰ãˆã¦ã—ã¾ã†ã®ãŒç†æƒ³çš„ã ãŒï¼Œ
-		// è‰²ã€…é¢å€’ãªã®ã§å®Ÿéš›ã¯ãƒ†ã‚­ã‚¹ãƒˆãƒã‚¹ã‚¯ã‚’è²¼ã‚‹
+		// ‰¼‘z‰æ–Ê©‘Ì‚Ì‘å‚«‚³‚ğ•Ï‚¦‚Ä‚µ‚Ü‚¤‚Ì‚ª—‘z“I‚¾‚ªC
+		// FX–Ê“|‚È‚Ì‚ÅÀÛ‚ÍƒeƒLƒXƒgƒ}ƒXƒN‚ğ“\‚é
 		mode &= ~resize;
 //		draw->Resize(screenwidth, screenheight);
 		ref = true;
@@ -675,7 +675,7 @@ void CRTC::UpdateScreen(uint8* image, int _bpl, Draw::Region& region, bool ref)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ†ã‚­ã‚¹ãƒˆç”»é¢æ¶ˆå»
+//	ƒeƒLƒXƒg‰æ–ÊÁ‹
 //
 void CRTC::ClearText(uint8* dest)
 {
@@ -714,12 +714,12 @@ void CRTC::ClearText(uint8* dest)
 		}
 		dest += bpl;
 	}
-	// ã™ã¹ã¦ã®ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚·ãƒ¼ã‚¯ãƒ¬ãƒƒãƒˆå±æ€§æ‰±ã„ã«ã™ã‚‹
+	// ‚·‚×‚Ä‚ÌƒeƒLƒXƒg‚ğƒV[ƒNƒŒƒbƒg‘®«ˆµ‚¢‚É‚·‚é
 	memset(attrcache, secret, 0x1400);
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢å±•é–‹
+//	‰æ–Ê“WŠJ
 //
 void CRTC::ExpandImage(uint8* image, Draw::Region& region)
 {
@@ -804,7 +804,7 @@ void CRTC::ExpandImage(uint8* image, Draw::Region& region)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆæƒ…å ±ã‚’å±•é–‹
+//	ƒAƒgƒŠƒrƒ…[ƒgî•ñ‚ğ“WŠJ
 //
 void CRTC::ExpandAttributes(uint8* dest, const uint8* src, uint y)
 {
@@ -816,14 +816,14 @@ void CRTC::ExpandAttributes(uint8* dest, const uint8* src, uint y)
 		return;
 	}
 	
-	// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚³ãƒ¼ãƒ‰æœ‰åŠ¹æ™‚ã«ã¯ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆãŒ1çµ„æ¸›ã‚‹ã¨ã„ã†
-	// è¨˜è¿°ãŒã©ã“ã‹ã«ã‚ã£ãŸã‘ã©ã€å˜˜ã§ã™ã‹ï¼Ÿ
+	// ƒRƒ“ƒgƒ[ƒ‹ƒR[ƒh—LŒø‚É‚ÍƒAƒgƒŠƒrƒ…[ƒg‚ª1‘gŒ¸‚é‚Æ‚¢‚¤
+	// ‹Lq‚ª‚Ç‚±‚©‚É‚ ‚Á‚½‚¯‚ÇA‰R‚Å‚·‚©H
 	uint nattrs = attrperline; // - (mode & control ? 1 : 0);
 
-	// ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆå±•é–‹
-	//	æ–‡çŒ®ã§ã¯ 2 byte ã§ä¸€çµ„ã¨ãªã£ã¦ã„ã‚‹ãŒã€å®Ÿã¯æ¡ã¨å±æ€§ã¯ç‹¬ç«‹ã—ã¦ã„ã‚‹æ¨¡æ§˜
-	//	1 byte ç›®ã¯å±æ€§ã‚’åæ˜ ã•ã›ã‚‹æ¡(ä¸‹ä½ 7 bit æœ‰åŠ¹)
-	//	2 byte ç›®ã¯å±æ€§å€¤
+	// ƒAƒgƒŠƒrƒ…[ƒg“WŠJ
+	//	•¶Œ£‚Å‚Í 2 byte ‚Åˆê‘g‚Æ‚È‚Á‚Ä‚¢‚é‚ªAÀ‚ÍŒ…‚Æ‘®«‚Í“Æ—§‚µ‚Ä‚¢‚é–Í—l
+	//	1 byte –Ú‚Í‘®«‚ğ”½‰f‚³‚¹‚éŒ…(‰ºˆÊ 7 bit —LŒø)
+	//	2 byte –Ú‚Í‘®«’l
 	memset(dest, 0, 80);
 	for (i = 2 * (nattrs - 1); i >= 0; i -= 2)
 		dest[src[i] & 0x7f] = 1;
@@ -836,13 +836,13 @@ void CRTC::ExpandAttributes(uint8* dest, const uint8* src, uint y)
 		dest[i] = attr;
 	}
 
-	// ã‚«ãƒ¼ã‚½ãƒ«ã®å±æ€§ã‚’åæ˜ 
+	// ƒJ[ƒ\ƒ‹‚Ì‘®«‚ğ”½‰f
 	if (cursor_y == y && cursor_x < width)
 		dest[cursor_x] ^= attr_cursor;
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚¢ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ãƒˆã‚³ãƒ¼ãƒ‰ã‚’å†…éƒ¨ã®ãƒ•ãƒ©ã‚°ã«å¤‰æ›
+//	ƒAƒgƒŠƒrƒ…[ƒgƒR[ƒh‚ğ“à•”‚Ìƒtƒ‰ƒO‚É•ÏŠ·
 //	
 void CRTC::ChangeAttr(uint8 code)
 {
@@ -869,7 +869,7 @@ void CRTC::ChangeAttr(uint8 code)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ•ã‚©ãƒ³ãƒˆã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—
+//	ƒtƒHƒ“ƒg‚ÌƒAƒhƒŒƒX‚ğæ“¾
 //
 inline const uint8* CRTC::GetFont(uint c)
 {
@@ -877,7 +877,7 @@ inline const uint8* CRTC::GetFont(uint c)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ•ã‚©ãƒ³ãƒˆ(40æ–‡å­—)ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’å–å¾—
+//	ƒtƒHƒ“ƒg(40•¶š)‚ÌƒAƒhƒŒƒX‚ğæ“¾
 //
 inline const uint8* CRTC::GetFontW(uint c)
 {
@@ -885,7 +885,7 @@ inline const uint8* CRTC::GetFontW(uint c)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º
+//	ƒeƒLƒXƒg•\¦
 //
 inline void CRTC::PutChar(packed* dest, uint8 ch, uint8 attr)
 {
@@ -902,7 +902,7 @@ inline void CRTC::PutChar(packed* dest, uint8 ch, uint8 attr)
 #define DRAW(dest, data)	(dest) = ((dest) & pat_mask) | (data)
 
 // ---------------------------------------------------------------------------
-//	æ™®é€šã®ãƒ†ã‚­ã‚¹ãƒˆæ–‡å­—
+//	•’Ê‚ÌƒeƒLƒXƒg•¶š
 //
 void CRTC::PutNormal(packed * dest, const packed * src)
 {
@@ -926,7 +926,7 @@ void CRTC::PutNormal(packed * dest, const packed * src)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ†ã‚­ã‚¹ãƒˆåè»¢è¡¨ç¤º
+//	ƒeƒLƒXƒg”½“]•\¦
 //
 void CRTC::PutReversed(packed * dest, const packed * src)
 {
@@ -951,7 +951,7 @@ void CRTC::PutReversed(packed * dest, const packed * src)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ³ã€ã‚¢ãƒ³ãƒ€ãƒ¼ãƒ©ã‚¤ãƒ³è¡¨ç¤º
+//	ƒI[ƒo[ƒ‰ƒCƒ“AƒAƒ“ƒ_[ƒ‰ƒCƒ“•\¦
 //
 void CRTC::PutLineNormal(packed* dest, uint8 attr)
 {
@@ -982,7 +982,7 @@ void CRTC::PutLineReversed(packed* dest, uint8 attr)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º(40 æ–‡å­—ãƒ¢ãƒ¼ãƒ‰)
+//	ƒeƒLƒXƒg•\¦(40 •¶šƒ‚[ƒh)
 //
 inline void CRTC::PutCharW(packed* dest, uint8 ch, uint8 attr)
 {
@@ -996,7 +996,7 @@ inline void CRTC::PutCharW(packed* dest, uint8 ch, uint8 attr)
 }
 
 // ---------------------------------------------------------------------------
-//	æ™®é€šã®ãƒ†ã‚­ã‚¹ãƒˆæ–‡å­—
+//	•’Ê‚ÌƒeƒLƒXƒg•¶š
 //
 void CRTC::PutNormalW(packed * dest, const packed * src)
 {
@@ -1026,7 +1026,7 @@ void CRTC::PutNormalW(packed * dest, const packed * src)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ†ã‚­ã‚¹ãƒˆåè»¢è¡¨ç¤º
+//	ƒeƒLƒXƒg”½“]•\¦
 //
 void CRTC::PutReversedW(packed * dest, const packed * src)
 {
@@ -1058,7 +1058,7 @@ void CRTC::PutReversedW(packed * dest, const packed * src)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ³ã€ã‚¢ãƒ³ãƒ€ãƒ¼ãƒ©ã‚¤ãƒ³è¡¨ç¤º
+//	ƒI[ƒo[ƒ‰ƒCƒ“AƒAƒ“ƒ_[ƒ‰ƒCƒ“•\¦
 //
 void CRTC::PutLineNormalW(packed* dest, uint8 attr)
 {
@@ -1140,12 +1140,12 @@ void CRTC::EnablePCG(bool enable)
 
 // ---------------------------------------------------------------------------
 //	OUT 33H (80SR)
-//	bit4 = ã²ã‚‰ãŒãª(1)ãƒ»ã‚«ã‚¿ã‚«ãƒŠ(0)é¸æŠ
+//	bit4 = ‚Ğ‚ç‚ª‚È(1)EƒJƒ^ƒJƒi(0)‘I‘ğ
 //
 void IOCALL CRTC::SetKanaMode(uint, uint data)
 {
 	if (kanaenable) {
-		// ROMã«3ã¤ãƒ•ã‚©ãƒ³ãƒˆãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹ãŒ1ä»¥å¤–ã¯åˆ‡ã‚Šæ›¿ã‚ã‚‰ãªã„ã€‚
+		// ROM‚É3‚ÂƒtƒHƒ“ƒg‚ª—pˆÓ‚³‚ê‚Ä‚¢‚é‚ª1ˆÈŠO‚ÍØ‚è‘Ö‚í‚ç‚È‚¢B
 		data &= 0x10;
 	} else {
 		data = 0;
@@ -1177,7 +1177,7 @@ const packed CRTC::colorpattern[8] =
 };
 
 // ---------------------------------------------------------------------------
-//	çŠ¶æ…‹ä¿å­˜
+//	ó‘Ô•Û‘¶
 //
 uint IFCALL CRTC::GetStatusSize()
 {

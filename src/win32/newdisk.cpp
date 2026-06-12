@@ -11,7 +11,7 @@
 #include "newdisk.h"
 
 // ---------------------------------------------------------------------------
-//	ÊßãÁØâ/Ê∂àÊªÖ
+//	ç\íz/è¡ñ≈
 //
 WinNewDisk::WinNewDisk()
 {
@@ -19,7 +19,7 @@ WinNewDisk::WinNewDisk()
 }
 
 // ---------------------------------------------------------------------------
-//	„ÉÄ„Ç§„Ç¢„É≠„Ç∞Ë°®Á§∫
+//	É_ÉCÉAÉçÉOï\é¶
 //
 bool WinNewDisk::Show(HINSTANCE hinst, HWND hwndparent)
 {
@@ -31,7 +31,7 @@ bool WinNewDisk::Show(HINSTANCE hinst, HWND hwndparent)
 }
 
 // ---------------------------------------------------------------------------
-//	„ÉÄ„Ç§„Ç¢„É≠„Ç∞Âá¶ÁêÜ
+//	É_ÉCÉAÉçÉOèàóù
 //
 BOOL WinNewDisk::DlgProc(HWND hdlg, UINT msg, WPARAM wp, LPARAM lp)
 {

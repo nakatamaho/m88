@@ -2,7 +2,7 @@
 //	M88 - PC-88 Emulator.
 //	Copyright (C) cisc 1998, 1999.
 // ---------------------------------------------------------------------------
-//  ç”»é¢åˆ¶å¾¡ã¨ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¹ç”»é¢åˆæˆ
+//  ‰æ–Ê§Œä‚ÆƒOƒ‰ƒtƒBƒbƒNƒX‰æ–Ê‡¬
 // ---------------------------------------------------------------------------
 //	$Id: screen.cpp,v 1.26 2003/09/28 14:35:35 cisc Exp $
 
@@ -47,7 +47,7 @@ const int16 Screen::RegionTable[64] =
 };
 
 // ---------------------------------------------------------------------------
-//	åŸè‰²ãƒ‘ãƒ¬ãƒƒãƒˆ
+//	Œ´FƒpƒŒƒbƒg
 //	RGB
 const Draw::Palette Screen::palcolor[8] =
 {
@@ -62,7 +62,7 @@ const uint8 Screen::palextable[2][8] =
 };
 
 // ---------------------------------------------------------------------------
-// æ§‹ç¯‰/æ¶ˆæ»…
+// \’z/Á–Å
 //
 Screen::Screen(const ID& id)
 : Device(id)
@@ -77,7 +77,7 @@ Screen::~Screen()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool Screen::Init(IOBus* _bus, Memory* mem, CRTC* _crtc)
 {
@@ -126,7 +126,7 @@ static inline Draw::Palette Avg(Draw::Palette a, Draw::Palette b)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ‘ãƒ¬ãƒƒãƒˆã‚’æ›´æ–°
+//	ƒpƒŒƒbƒg‚ğXV
 //
 bool Screen::UpdatePalette(Draw* draw)
 {
@@ -323,12 +323,12 @@ bool Screen::UpdatePalette(Draw* draw)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®æ›´æ–°
-//	arg:	region		æ›´æ–°é ˜åŸŸ
+//	‰æ–ÊƒCƒ[ƒW‚ÌXV
+//	arg:	region		XV—Ìˆæ
 //
 void Screen::UpdateScreen(uint8* image, int bpl, Draw::Region& region, bool refresh)
 {
-	// 53 53 53 GR TX  80 V2 32 CL  53 53 53 L4 (b4ï½b6ã®é…ç½®ã¯å¤‰ãˆãªã„ã“ã¨)
+	// 53 53 53 GR TX  80 V2 32 CL  53 53 53 L4 (b4`b6‚Ì”z’u‚Í•Ï‚¦‚È‚¢‚±‚Æ)
 	int gmode = line400 ? 1 : 0;
 	gmode |= color ? 0x10 : (port53 & 0x0e);
 	gmode |= line320 ? 0x20 : 0;
@@ -376,7 +376,7 @@ void Screen::UpdateScreen(uint8* image, int bpl, Draw::Region& region, bool refr
 		switch((gmode>>4) & 7) {
 		case 0:	UpdateScreen80b(image, bpl, region);  break; //	V1 640x200 B&W
 		case 1:	UpdateScreen200c(image, bpl, region); break; //	V1 640x200 COLOR
-		case 2:										  break; //	V1 320x200 ã¯å¸¸ã«COLORãªã®ã§B&Wã¯å­˜åœ¨ã—ãªã„
+		case 2:										  break; //	V1 320x200 ‚Íí‚ÉCOLOR‚È‚Ì‚ÅB&W‚Í‘¶İ‚µ‚È‚¢
 		case 3:	UpdateScreen80c(image, bpl, region);  break; //	V1 320x200 COLOR
 		case 4:	UpdateScreen200b(image, bpl, region); break; //	V2 640x200 B&W
 		case 5:	UpdateScreen200c(image, bpl, region); break; //	V2 640x200 COLOR
@@ -388,7 +388,7 @@ void Screen::UpdateScreen(uint8* image, int bpl, Draw::Region& region, bool refr
 
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æ›´æ–°
+//	‰æ–ÊXV
 //
 #define WRITEC0(d, a)	d = (d & ~PACK(GVRAMC_BIT)) \
 			| BETable0[(a>>4)&15] | BETable1[(a>>12)&15] | BETable2[(a>>20)&15]
@@ -485,7 +485,7 @@ void Screen::UpdateScreen200c(uint8* image, int bpl, Draw::Region& region)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æ›´æ–° (200 lines  b/w)
+//	‰æ–ÊXV (200 lines  b/w)
 //
 #define WRITEB0(d, a)	d = (d & ~PACK(GVRAMM_BIT)) \
 			| BETable1[((a>>4) | (a>>12) | (a>>20)) & 15]
@@ -590,7 +590,7 @@ void Screen::UpdateScreen200b(uint8* image, int bpl, Draw::Region& region)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æ›´æ–° (400 lines  b/w)
+//	‰æ–ÊXV (400 lines  b/w)
 //
 #define WRITE400B(d, a)	(d)[0] = ((d)[0] & ~PACK(GVRAMM_BIT)) | BETable1[(a >> 4) & 15], \
 						(d)[1] = ((d)[1] & ~PACK(GVRAMM_BIT)) | BETable1[(a >> 0) & 15]
@@ -654,7 +654,7 @@ void Screen::UpdateScreen400b(uint8* image, int bpl, Draw::Region& region)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æ›´æ–°
+//	‰æ–ÊXV
 //
 #define WRITE80C0(d, a)		d = (d & ~PACK(GVRAMC_BIT)) | E80Table[(a >> 4) &15]
 
@@ -748,7 +748,7 @@ void Screen::UpdateScreen80c(uint8* image, int bpl, Draw::Region& region)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æ›´æ–° (200 lines  b/w)
+//	‰æ–ÊXV (200 lines  b/w)
 //
 #define WRITE80B0(d, a)	d = (d & ~PACK(GVRAMM_BIT)) | BETable1[(a>>4) & 15]
 
@@ -859,7 +859,7 @@ void Screen::UpdateScreen80b(uint8* image, int bpl, Draw::Region& region)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æ›´æ–° (320x200x2 color)
+//	‰æ–ÊXV (320x200x2 color)
 //
 #define WRITEC320(d)	m = E80SRMask[(bp1 | rp1>>2 | gp1>>4) & 3]; \
 						d = (d & ~PACK(GVRAMC_BIT)) \
@@ -1021,7 +1021,7 @@ void Screen::UpdateScreen320c(uint8* image, int bpl, Draw::Region& region)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æ›´æ–° (320x200x6 b/w)
+//	‰æ–ÊXV (320x200x6 b/w)
 //
 #define WRITEB320(d, a)	d = (d & ~PACK(GVRAMM_BIT)) \
 			| BE80Table[a & 3]
@@ -1151,7 +1151,7 @@ void Screen::UpdateScreen320b(uint8* image, int bpl, Draw::Region& region)
 
 // ---------------------------------------------------------------------------
 //	Out 30
-//	b1	CRT ãƒ¢ãƒ¼ãƒ‰ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«
+//	b1	CRT ƒ‚[ƒhƒRƒ“ƒgƒ[ƒ‹
 //
 void IOCALL Screen::Out30(uint, uint data)
 {
@@ -1260,7 +1260,7 @@ void IOCALL Screen::Out31(uint, uint data)
 
 // ---------------------------------------------------------------------------
 //	Out 32
-//	b5	ãƒ‘ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰
+//	b5	ƒpƒŒƒbƒgƒ‚[ƒh
 //	
 void IOCALL Screen::Out32(uint, uint data)
 {
@@ -1276,8 +1276,8 @@ void IOCALL Screen::Out32(uint, uint data)
 // ---------------------------------------------------------------------------
 //	Out 33
 //	b7	0...N/N80,     1...N80V2
-//	b3	0...Text>Grphï¼Œ1...Grph>Text
-//	b2	0...Gr1 > Gr2ï¼Œ1...Gr2 > Gr1
+//	b3	0...Text>GrphC1...Grph>Text
+//	b2	0...Gr1 > Gr2C1...Gr2 > Gr1
 //
 void IOCALL Screen::Out33(uint, uint data)
 {
@@ -1296,7 +1296,7 @@ void IOCALL Screen::Out33(uint, uint data)
 
 // ---------------------------------------------------------------------------
 //	Out 52
-//	ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã‚«ãƒ©ãƒ¼(ãƒ‡ã‚¸ã‚¿ãƒ«)ã®æŒ‡å®š
+//	ƒoƒbƒNƒOƒ‰ƒEƒ“ƒhƒJƒ‰[(ƒfƒWƒ^ƒ‹)‚Ìw’è
 //
 void IOCALL Screen::Out52(uint, uint data)
 {
@@ -1313,7 +1313,7 @@ void IOCALL Screen::Out52(uint, uint data)
 
 // ---------------------------------------------------------------------------
 //	Out 53
-//	ç”»é¢é‡ã­ã‚ã‚ã›ã®åˆ¶å¾¡
+//	‰æ–Êd‚Ë‚ ‚í‚¹‚Ì§Œä
 //	
 void IOCALL Screen::Out53(uint, uint data)
 {
@@ -1356,7 +1356,7 @@ void IOCALL Screen::Out53(uint, uint data)
 				displaygraphics = ((data & mask53) != mask53 && (port31 & 8) != 0);
 			}
 		}
-		port53 = data;	//	ç”»é¢ãƒ¢ãƒ¼ãƒ‰ãŒå¤‰æ›´ã•ã‚Œã‚‹å¯èƒ½æ€§ã«å‚™ãˆï¼Œå€¤ã¯å¸¸ã«å…¨ãƒ“ãƒƒãƒˆä¿å­˜
+		port53 = data;	//	‰æ–Êƒ‚[ƒh‚ª•ÏX‚³‚ê‚é‰Â”\«‚É”õ‚¦C’l‚Íí‚É‘Sƒrƒbƒg•Û‘¶
 	}
 }
 
@@ -1416,7 +1416,7 @@ void IOCALL Screen::Out55to5b(uint port, uint data)
 
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æ¶ˆå»
+//	‰æ–ÊÁ‹
 //
 void Screen::ClearScreen(uint8* image, int bpl)
 {
@@ -1471,7 +1471,7 @@ void Screen::ClearScreen(uint8* image, int bpl)
 }
 
 // ---------------------------------------------------------------------------
-//	è¨­å®šæ›´æ–°
+//	İ’èXV
 //
 void Screen::ApplyConfig(const Config* config)
 {
@@ -1488,7 +1488,7 @@ void Screen::ApplyConfig(const Config* config)
 }
 
 // ---------------------------------------------------------------------------
-//	Table ä½œæˆ
+//	Table ì¬
 //
 packed Screen::BETable0[1 << sizeof(packed)] = { -1 };
 packed Screen::BETable1[1 << sizeof(packed)];
@@ -1562,7 +1562,7 @@ void Screen::CreateTable()
 }
 
 // ---------------------------------------------------------------------------
-//	çŠ¶æ…‹ä¿å­˜
+//	ó‘Ô•Û‘¶
 //
 uint IFCALL Screen::GetStatusSize()
 {

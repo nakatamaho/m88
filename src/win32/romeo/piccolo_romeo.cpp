@@ -134,15 +134,15 @@ Piccolo_Romeo::~Piccolo_Romeo()
 int Piccolo_Romeo::Init()
 {
 	{
-		// DLL ç”¨æ„
+		// DLL —pˆÓ
 		Log("LoadDLL\n");
 		if (!LoadDLL())
 			return PICCOLOE_DLL_NOT_FOUND;
 
 		avail = 1;
 
-		// ROMEO ã®å­˜åœ¨ç¢ºèª
-		// ãƒ‡ãƒã‚¤ã‚¹ã‚’æŽ¢ã™
+		// ROMEO ‚Ì‘¶ÝŠm”F
+		// ƒfƒoƒCƒX‚ð’T‚·
 		Log("FindDevice\n");
 		uint32 id;
 		id = pcidrv.finddev(0x6809, 0x8121, 0);
@@ -152,7 +152,7 @@ int Piccolo_Romeo::Init()
 		if (id & 0xff)
 			return PICCOLOE_ROMEO_NOT_FOUND;
 
-		// ROMEO ã¯ã‚ã‚Šãã†ã ãŒã€ãƒ‡ãƒã‚¤ã‚¹ã¯ï¼Ÿ
+		// ROMEO ‚Í‚ ‚è‚»‚¤‚¾‚ªAƒfƒoƒCƒX‚ÍH
 		id >>= 16;
 		addr = pcidrv.read32(id, ROMEO_BASEADDRESS1);
 		irq  = pcidrv.read32(id, ROMEO_PCIINTERRUPT) & 0xff;

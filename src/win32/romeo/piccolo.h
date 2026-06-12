@@ -7,7 +7,7 @@
 #include "timekeep.h"
 #include "critsect.h"
 
-//	é…å»¶é€ä¿¡å¯¾å¿œ ROMEO ãƒ‰ãƒ©ã‚¤ãƒ
+//	’x‰„‘—M‘Î‰ ROMEO ƒhƒ‰ƒCƒo
 //	
 class PiccoloChip
 {
@@ -47,15 +47,15 @@ public:
 	static Piccolo* GetInstance();
 	static void DeleteInstance();
 
-	// é…å»¶ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚ºã‚’è¨­å®š
+	// ’x‰„ƒoƒbƒtƒ@‚ÌƒTƒCƒY‚ğİ’è
 	bool SetLatencyBufferSize(uint entry);
 
-	// é…å»¶æ™‚é–“ã®æœ€å¤§å€¤ã‚’è¨­å®š
-	// SetReg ãŒå‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã€nanosec å¾Œä»¥é™ã®ãƒ¬ã‚¸ã‚¹ã‚¿æ›¸ãè¾¼ã¿ã‚’æŒ‡ç¤ºã™ã‚‹ at ã®å€¤ã‚’æŒ‡å®šã—ãŸå ´åˆ
-	// å‘¼ã³å‡ºã—ã¯å´ä¸‹ã•ã‚Œã‚‹ã‹ã‚‚ã—ã‚Œãªã„ã€‚
+	// ’x‰„ŠÔ‚ÌÅ‘å’l‚ğİ’è
+	// SetReg ‚ªŒÄ‚Ño‚³‚ê‚½‚Æ‚«Ananosec ŒãˆÈ~‚ÌƒŒƒWƒXƒ^‘‚«‚İ‚ğw¦‚·‚é at ‚Ì’l‚ğw’è‚µ‚½ê‡
+	// ŒÄ‚Ño‚µ‚Í‹p‰º‚³‚ê‚é‚©‚à‚µ‚ê‚È‚¢B
 	bool SetMaximumLatency(uint nanosec);
 
-	// ãƒ¡ã‚½ãƒƒãƒ‰å‘¼ã³å‡ºã—æ™‚ç‚¹ã§ã®æ™‚é–“ã‚’æ¸¡ã™(å˜ä½ã¯ nanosec)
+	// ƒƒ\ƒbƒhŒÄ‚Ño‚µ“_‚Å‚ÌŠÔ‚ğ“n‚·(’PˆÊ‚Í nanosec)
 	uint32 GetCurrentTime();
 
 	// 

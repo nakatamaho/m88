@@ -11,14 +11,14 @@
 #include "diag.h"
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰
+//	\’z
 //
 Z80Diag::Z80Diag()
 {
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool Z80Diag::Init(IMemoryAccess* b)
 {
@@ -27,7 +27,7 @@ bool Z80Diag::Init(IMemoryAccess* b)
 }
 
 // ---------------------------------------------------------------------------
-//	1å‘½ä»¤é€†ã‚¢ã‚»ãƒ³ãƒ–ãƒ«ã™ã‚‹
+//	1–½—ß‹tƒAƒZƒ“ƒuƒ‹‚·‚é
 //
 uint Z80Diag::Disassemble(uint _pc, char* dest)
 {
@@ -39,7 +39,7 @@ uint Z80Diag::Disassemble(uint _pc, char* dest)
 }
 
 // ---------------------------------------------------------------------------
-//	1å‘½ä»¤é€†ã‚¢ã‚»ãƒ³ãƒ–ãƒ«ã™ã‚‹
+//	1–½—ß‹tƒAƒZƒ“ƒuƒ‹‚·‚é
 //
 uint Z80Diag::DisassembleS(uint _pc, char* dest)
 {
@@ -51,7 +51,7 @@ uint Z80Diag::DisassembleS(uint _pc, char* dest)
 }
 
 // ---------------------------------------------------------------------------
-//	å±•é–‹ã™ã‚‹
+//	“WŠJ‚·‚é
 //
 char* Z80Diag::Expand(char* dest, const char* src)
 {
@@ -120,7 +120,7 @@ char* Z80Diag::Expand(char* dest, const char* src)
 				*dest++ = 'L';
 				break;
 
-			case 'C':		// CBxx ç³»
+			case 'C':		// CBxx Œn
 			{
 				int y;
 				if (xmode != usehl)
@@ -156,10 +156,10 @@ char* Z80Diag::Expand(char* dest, const char* src)
 				break;
 			}
 
-			case 'D':		// DD ç³»
+			case 'D':		// DD Œn
 				xmode = useix;
 				goto ddfd;
-			case 'F':		// FD ç³»
+			case 'F':		// FD Œn
 				xmode = useiy;
 ddfd:
 				i = Read8(pc++);
@@ -177,7 +177,7 @@ ddfd:
 				}
 				break;
 
-			case 'E':		// ED ç³»
+			case 'E':		// ED Œn
 				i = Read8(pc++);
 				if ((i & 0xc0) == 0x40)
 				{
@@ -227,7 +227,7 @@ void Z80Diag::SetHex(char*& dest, uint n)
 }
 
 // ---------------------------------------------------------------------------
-//	ï¼‘å‘½ä»¤å¾Œã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æ±‚ã‚ã‚‹
+//	‚P–½—ßŒã‚ÌƒAƒhƒŒƒX‚ğ‹‚ß‚é
 //
 uint Z80Diag::InstInc(uint ad)
 {
@@ -235,7 +235,7 @@ uint Z80Diag::InstInc(uint ad)
 }
 
 // ---------------------------------------------------------------------------
-//	ï¼‘å‘½ä»¤å‰ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’æ±‚ã‚ã‚‹
+//	‚P–½—ß‘O‚ÌƒAƒhƒŒƒX‚ğ‹‚ß‚é
 //	
 uint Z80Diag::InstDec(uint ad)
 {

@@ -17,7 +17,7 @@
 using namespace PC8801;
 
 // ---------------------------------------------------------------------------
-//	ç”Ÿæˆãƒ»ç ´æ£„
+//	¶¬E”jŠü
 //
 Sound::Sound()
 : Device(0), sslist(0), mixingbuf(0), enabled(false), cfgflg(0)
@@ -30,7 +30,7 @@ Sound::~Sound()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–ã¨ã‹
+//	‰Šú‰»‚Æ‚©
 //
 bool Sound::Init(PC88* pc88, uint rate, int bufsize)
 {
@@ -42,31 +42,31 @@ bool Sound::Init(PC88* pc88, uint rate, int bufsize)
 	if (!SetRate(rate, bufsize))
 		return false;
 	
-	// æ™‚é–“ã‚«ã‚¦ãƒ³ã‚¿ãŒä¸€å‘¨ã—ãªã„ã‚ˆã†ã«å®šæœŸçš„ã«æ›´æ–°ã™ã‚‹
+	// ŠÔƒJƒEƒ“ƒ^‚ªˆêü‚µ‚È‚¢‚æ‚¤‚É’èŠú“I‚ÉXV‚·‚é
 	pc88->AddEvent(5000, this, STATIC_CAST(TimeFunc, &Sound::UpdateCounter), 0, true);
 	return true;
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ¬ãƒ¼ãƒˆè¨­å®š
-//	clock:		OPN ã«ä¸ãˆã‚‹ã‚¯ãƒ­ãƒƒã‚¯
-//	bufsize:	ãƒãƒƒãƒ•ã‚¡é•· (ã‚µãƒ³ãƒ—ãƒ«å˜ä½?)
+//	ƒŒ[ƒgİ’è
+//	clock:		OPN ‚É—^‚¦‚éƒNƒƒbƒN
+//	bufsize:	ƒoƒbƒtƒ@’· (ƒTƒ“ƒvƒ‹’PˆÊ?)
 //
 bool Sound::SetRate(uint rate, int bufsize)
 {
 	mixrate = 55467;
 
-	// å„éŸ³æºã®ãƒ¬ãƒ¼ãƒˆè¨­å®šã‚’å¤‰æ›´
+	// Še‰¹Œ¹‚ÌƒŒ[ƒgİ’è‚ğ•ÏX
 	for (SSNode* n = sslist; n; n = n->next)
 		n->ss->SetRate(mixrate);
 	
 	enabled = false;
 	
-	// å¤ã„ãƒãƒƒãƒ•ã‚¡ã‚’å‰Šé™¤
+	// ŒÃ‚¢ƒoƒbƒtƒ@‚ğíœ
 	soundbuf.Cleanup();
 	delete[] mixingbuf;	mixingbuf = 0;
 
-	// æ–°ã—ã„ãƒãƒƒãƒ•ã‚¡ã‚’ç”¨æ„
+	// V‚µ‚¢ƒoƒbƒtƒ@‚ğ—pˆÓ
 	samplingrate = rate;
 	buffersize = bufsize;
 	if (bufsize > 0)
@@ -88,11 +88,11 @@ bool Sound::SetRate(uint rate, int bufsize)
 }
 
 // ---------------------------------------------------------------------------
-//	å¾Œç‰‡ä»˜ã‘
+//	Œã•Ğ•t‚¯
 //
 void Sound::Cleanup()
 {
-	// å„éŸ³æºã‚’åˆ‡ã‚Šé›¢ã™ã€‚(éŸ³æºè‡ªä½“ã®å‰Šé™¤ã¯è¡Œã‚ãªã„)
+	// Še‰¹Œ¹‚ğØ‚è—£‚·B(‰¹Œ¹©‘Ì‚Ìíœ‚Ís‚í‚È‚¢)
 	for (SSNode* n = sslist; n; )
 	{
 		SSNode* next = n->next;
@@ -101,20 +101,20 @@ void Sound::Cleanup()
 	}
 	sslist = 0;
 
-	// ãƒãƒƒãƒ•ã‚¡ã‚’é–‹æ”¾
+	// ƒoƒbƒtƒ@‚ğŠJ•ú
 	soundbuf.Cleanup();
 	delete[] mixingbuf; mixingbuf = 0;
 }
 
 // ---------------------------------------------------------------------------
-//	éŸ³åˆæˆ
+//	‰¹‡¬
 //
 int Sound::Get(Sample* dest, int nsamples)
 {
 	int mixsamples = Min(nsamples, buffersize);
 	if (mixsamples > 0)
 	{
-		// åˆæˆ
+		// ‡¬
 		{
 			memset(mixingbuf, 0, mixsamples * 2 * sizeof(int32));
 			CriticalSection::Lock lock(cs_ss);
@@ -133,11 +133,11 @@ int Sound::Get(Sample* dest, int nsamples)
 }
 
 // ---------------------------------------------------------------------------
-//	éŸ³åˆæˆ
+//	‰¹‡¬
 //
 int Sound::Get(SampleL* dest, int nsamples)
 {
-	// åˆæˆ
+	// ‡¬
 	memset(dest, 0, nsamples * 2 * sizeof(int32));
 	CriticalSection::Lock lock(cs_ss);
 	for (SSNode* s = sslist; s; s = s->next)
@@ -147,7 +147,7 @@ int Sound::Get(SampleL* dest, int nsamples)
 
 
 // ---------------------------------------------------------------------------
-//	è¨­å®šæ›´æ–°
+//	İ’èXV
 //
 void Sound::ApplyConfig(const Config* config)
 {
@@ -155,18 +155,18 @@ void Sound::ApplyConfig(const Config* config)
 }
 
 // ---------------------------------------------------------------------------
-//	éŸ³æºã‚’è¿½åŠ ã™ã‚‹
-//	Sound ãŒæŒã¤éŸ³æºãƒªã‚¹ãƒˆã«ï¼Œss ã§æŒ‡å®šã•ã‚ŒãŸéŸ³æºã‚’è¿½åŠ ï¼Œ
-//	ss ã® SetRate ã‚’å‘¼ã³å‡ºã™ï¼
+//	‰¹Œ¹‚ğ’Ç‰Á‚·‚é
+//	Sound ‚ª‚Â‰¹Œ¹ƒŠƒXƒg‚ÉCss ‚Åw’è‚³‚ê‚½‰¹Œ¹‚ğ’Ç‰ÁC
+//	ss ‚Ì SetRate ‚ğŒÄ‚Ño‚·D
 //
-//	arg:	ss		è¿½åŠ ã™ã‚‹éŸ³æº (ISoundSource)
+//	arg:	ss		’Ç‰Á‚·‚é‰¹Œ¹ (ISoundSource)
 //	ret:	S_OK, E_FAIL, E_OUTOFMEMORY
 //
 bool Sound::Connect(ISoundSource* ss)
 {
 	CriticalSection::Lock lock(cs_ss);
 
-	// éŸ³æºã¯æ—¢ã«ç™»éŒ²æ¸ˆã¿ã‹ï¼Ÿ;
+	// ‰¹Œ¹‚ÍŠù‚É“o˜^Ï‚İ‚©H;
 	SSNode** n;
 	for (n = &sslist; *n; n=&((*n)->next))
 	{
@@ -187,9 +187,9 @@ bool Sound::Connect(ISoundSource* ss)
 }
 
 // ---------------------------------------------------------------------------
-//	éŸ³æºãƒªã‚¹ãƒˆã‹ã‚‰æŒ‡å®šã•ã‚ŒãŸéŸ³æºã‚’å‰Šé™¤ã™ã‚‹
+//	‰¹Œ¹ƒŠƒXƒg‚©‚çw’è‚³‚ê‚½‰¹Œ¹‚ğíœ‚·‚é
 //
-//	arg:	ss		å‰Šé™¤ã™ã‚‹éŸ³æº
+//	arg:	ss		íœ‚·‚é‰¹Œ¹
 //	ret:	S_OK, E_HANDLE
 //
 bool Sound::Disconnect(ISoundSource* ss)
@@ -210,12 +210,12 @@ bool Sound::Disconnect(ISoundSource* ss)
 }
 
 // ---------------------------------------------------------------------------
-//	æ›´æ–°å‡¦ç†
-//	(æŒ‡å®šã•ã‚ŒãŸ)éŸ³æºã® Mix ã‚’å‘¼ã³å‡ºã—ï¼Œç¾åœ¨ã®æ™‚é–“ã¾ã§æ›´æ–°ã™ã‚‹	
-//	éŸ³æºã®å†…éƒ¨çŠ¶æ…‹ãŒå¤‰ã‚ã‚Šï¼ŒéŸ³ãŒå¤‰åŒ–ã™ã‚‹ç›´å‰ã®æ®µéšã§å‘¼ã³å‡ºã™ã¨
-//	ç²¾åº¦ã®é«˜ã„éŸ³å†ç¾ãŒå¯èƒ½ã«ãªã‚‹(ã‹ã‚‚)ï¼
+//	XVˆ—
+//	(w’è‚³‚ê‚½)‰¹Œ¹‚Ì Mix ‚ğŒÄ‚Ño‚µCŒ»İ‚ÌŠÔ‚Ü‚ÅXV‚·‚é	
+//	‰¹Œ¹‚Ì“à•”ó‘Ô‚ª•Ï‚í‚èC‰¹‚ª•Ï‰»‚·‚é’¼‘O‚Ì’iŠK‚ÅŒÄ‚Ño‚·‚Æ
+//	¸“x‚Ì‚‚¢‰¹ÄŒ»‚ª‰Â”\‚É‚È‚é(‚©‚à)D
 //
-//	arg:	src		æ›´æ–°ã™ã‚‹éŸ³æºã‚’æŒ‡å®š(ä»Šã®å®Ÿè£…ã§ã¯ç„¡è¦–ã•ã‚Œã¾ã™)
+//	arg:	src		XV‚·‚é‰¹Œ¹‚ğw’è(¡‚ÌÀ‘•‚Å‚Í–³‹‚³‚ê‚Ü‚·)
 //
 bool Sound::Update(ISoundSource* /*src*/)
 {
@@ -225,7 +225,7 @@ bool Sound::Update(ISoundSource* /*src*/)
 	if (enabled && time > mixthreshold)
 	{
 		prevtime = currenttime;
-		// nsamples = çµŒéæ™‚é–“(s) * ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ãƒ¬ãƒ¼ãƒˆ
+		// nsamples = Œo‰ßŠÔ(s) * ƒTƒ“ƒvƒŠƒ“ƒOƒŒ[ƒg
 		// sample = ticks * rate / clock / 100000
 		// sample = ticks * (rate/50) / clock / 2000
 
@@ -242,7 +242,7 @@ bool Sound::Update(ISoundSource* /*src*/)
 }
 
 // ---------------------------------------------------------------------------
-//	ä»Šã¾ã§åˆæˆã•ã‚ŒãŸæ™‚é–“ã®ï¼Œ1ã‚µãƒ³ãƒ—ãƒ«æœªæº€ã®ç«¯æ•°(0-1999)ã‚’æ±‚ã‚ã‚‹
+//	¡‚Ü‚Å‡¬‚³‚ê‚½ŠÔ‚ÌC1ƒTƒ“ƒvƒ‹–¢–‚Ì’[”(0-1999)‚ğ‹‚ß‚é
 //
 int IFCALL Sound::GetSubsampleTime(ISoundSource* /*src*/)
 {
@@ -250,7 +250,7 @@ int IFCALL Sound::GetSubsampleTime(ISoundSource* /*src*/)
 }
 
 // ---------------------------------------------------------------------------
-//	å®šæœŸçš„ã«å†…éƒ¨ã‚«ã‚¦ãƒ³ã‚¿ã‚’æ›´æ–°
+//	’èŠú“I‚É“à•”ƒJƒEƒ“ƒ^‚ğXV
 //
 void IOCALL Sound::UpdateCounter(uint)
 {

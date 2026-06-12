@@ -1,7 +1,7 @@
 
 
 
-//			type	 name				default value	ä¸‹é™	ä¸Šé™
+//			type	 name				default value	‰ºŒÀ	ãŒÀ
 DECLARE_CONFIG_INT	(BASICMode,			0x31,			0,		0xff)
 DECLARE_CONFIG_INT	(ERAMBanks,			0,				0,		256)
 DECLARE_CONFIG_INT	(DipSwitch,			1829,			0,		INT_MAX)
@@ -12,37 +12,37 @@ DECLARE_CONFIG_INT	(CPUClock,			40,				1,		1000)
 DECLARE_CONFIG_SYM	(CPUMSSpeed,		CPUMSSpeedType,	msauto)
 
 
-DECLARE_CONFIG_BOOL	(SubCPUControl,		true)								// Sub CPU ã®é§†å‹•ã‚’åˆ¶å¾¡ã™ã‚‹
-DECLARE_CONFIG_BOOL	(FullSpeed,			false)								// å…¨åŠ›å‹•ä½œ
+DECLARE_CONFIG_BOOL	(SubCPUControl,		true)								// Sub CPU ‚Ì‹ì“®‚ð§Œä‚·‚é
+DECLARE_CONFIG_BOOL	(FullSpeed,			false)								// ‘S—Í“®ì
 DECLARE_CONFIG_INT	(Speed,				1000,			500,	2000)
-DECLARE_CONFIG_BOOL	(NoWaitMode,		false)								// ãƒŽãƒ¼ã‚¦ã‚§ã‚¤ãƒˆ
-DECLARE_CONFIG_BOOL	(FDDWait,			true)								// FDD ã‚¦ã‚§ã‚¤ãƒˆ
-DECLARE_CONFIG_BOOL	(CPUWait,			true)								// ã‚¦ã‚§ã‚¤ãƒˆã®ã‚¨ãƒŸãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
+DECLARE_CONFIG_BOOL	(NoWaitMode,		false)								// ƒm[ƒEƒFƒCƒg
+DECLARE_CONFIG_BOOL	(FDDWait,			true)								// FDD ƒEƒFƒCƒg
+DECLARE_CONFIG_BOOL	(CPUWait,			true)								// ƒEƒFƒCƒg‚ÌƒGƒ~ƒ…ƒŒ[ƒVƒ‡ƒ“
 
 
-DECLARE_CONFIG_BOOL	(EnablePCG,			false)								// PCG ç³»ã®ãƒ•ã‚©ãƒ³ãƒˆæ›¸ãæ›ãˆã‚’æœ‰åŠ¹
-DECLARE_CONFIG_SYM	(DisplayMode,		DispModeType,	24k)				// 15KHz ãƒ¢ãƒ‹ã‚¿ãƒ¼ãƒ¢ãƒ¼ãƒ‰
-DECLARE_CONFIG_SYM	(PaletteMode,		PalModeType,	Analogue)			// ãƒ‘ãƒ¬ãƒƒãƒˆãƒ¢ãƒ¼ãƒ‰
-DECLARE_CONFIG_BOOL	(Force480,			false)								// å…¨ç”»é¢ã‚’å¸¸ã« 640x480 ã§
+DECLARE_CONFIG_BOOL	(EnablePCG,			false)								// PCG Œn‚ÌƒtƒHƒ“ƒg‘‚«Š·‚¦‚ð—LŒø
+DECLARE_CONFIG_SYM	(DisplayMode,		DispModeType,	24k)				// 15KHz ƒ‚ƒjƒ^[ƒ‚[ƒh
+DECLARE_CONFIG_SYM	(PaletteMode,		PalModeType,	Analogue)			// ƒpƒŒƒbƒgƒ‚[ƒh
+DECLARE_CONFIG_BOOL	(Force480,			false)								// ‘S‰æ–Ê‚ðí‚É 640x480 ‚Å
 
-DECLARE_CONFIG_BOOL	(FullLine,			true)								// å¶æ•°ãƒ©ã‚¤ãƒ³è¡¨ç¤º
-DECLARE_CONFIG_BOOL	(DrawPriorityLow,	false)								// æç”»ã®å„ªå…ˆåº¦ã‚’è½ã¨ã™
+DECLARE_CONFIG_BOOL	(FullLine,			true)								// ‹ô”ƒ‰ƒCƒ“•\Ž¦
+DECLARE_CONFIG_BOOL	(DrawPriorityLow,	false)								// •`‰æ‚Ì—Dæ“x‚ð—Ž‚Æ‚·
 DECLARE_CONFIG_INT	(DrawInterval,		3,				1,		4)
 
 
 
-DECLARE_CONFIG_SYM	(SoundDriver,		SoundDriverType,DirectSound)		// PCM ã®å†ç”Ÿã«ä½¿ç”¨ã™ã‚‹ãƒ‰ãƒ©ã‚¤ãƒ
+DECLARE_CONFIG_SYM	(SoundDriver,		SoundDriverType,DirectSound)		// PCM ‚ÌÄ¶‚ÉŽg—p‚·‚éƒhƒ‰ƒCƒo
 DECLARE_CONFIG_INT	(SoundBuffer,		200,			50,		1000)
-DECLARE_CONFIG_BOOL	(SoundPriorityHigh,	false)								// å‡¦ç†ãŒé‡ã„æ™‚ã‚‚éŸ³ã®åˆæˆã‚’ç¶šã‘ã‚‹
+DECLARE_CONFIG_BOOL	(SoundPriorityHigh,	false)								// ˆ—‚ªd‚¢Žž‚à‰¹‚Ì‡¬‚ð‘±‚¯‚é
 
-DECLARE_CONFIG_BOOL	(EnableCMDSING,		true)								// CMD SING æœ‰åŠ¹
+DECLARE_CONFIG_BOOL	(EnableCMDSING,		true)								// CMD SING —LŒø
 DECLARE_CONFIG_SYM	(OpnType44h,		OpnType,		OPN)				// OPN (44h)
 DECLARE_CONFIG_SYM	(OpnTypeA8h,		OpnType,		None)				// OPN (a8h)
 
 DECLARE_CONFIG_INT	(PCMRate,			22100,			8000,	96000)
-DECLARE_CONFIG_BOOL	(FMMix55k,			true)								// FM éŸ³æºã®åˆæˆã«æœ¬æ¥ã®ã‚¯ãƒ­ãƒƒã‚¯ã‚’ä½¿ç”¨
-DECLARE_CONFIG_BOOL	(PreciseMixing,		true)								// é«˜ç²¾åº¦ãªåˆæˆã‚’è¡Œã†
-DECLARE_CONFIG_BOOL	(EnableLPF,			false)								// LPF ã‚’ä½¿ã£ã¦ã¿ã‚‹
+DECLARE_CONFIG_BOOL	(FMMix55k,			true)								// FM ‰¹Œ¹‚Ì‡¬‚É–{—ˆ‚ÌƒNƒƒbƒN‚ðŽg—p
+DECLARE_CONFIG_BOOL	(PreciseMixing,		true)								// ‚¸“x‚È‡¬‚ðs‚¤
+DECLARE_CONFIG_BOOL	(EnableLPF,			false)								// LPF ‚ðŽg‚Á‚Ä‚Ý‚é
 DECLARE_CONFIG_INT	(LPFCutoff,			9000,			3000,	48000)
 DECLARE_CONFIG_INT	(LPFOrder,			4,				2,		16)
 
@@ -59,20 +59,20 @@ DECLARE_CONFIG_INT	(VolumeRIM,			0,				-100,	40)
 
 
 
-DECLARE_CONFIG_BOOL	(ShowStatusBar,		false)								// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ¼è¡¨ç¤º
-DECLARE_CONFIG_BOOL	(ShowFDCStatus,		false)								// FDC ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¡¨ç¤º
+DECLARE_CONFIG_BOOL	(ShowStatusBar,		false)								// ƒXƒe[ƒ^ƒXƒo[•\Ž¦
+DECLARE_CONFIG_BOOL	(ShowFDCStatus,		false)								// FDC ‚ÌƒXƒe[ƒ^ƒX‚ð•\Ž¦
 
-DECLARE_CONFIG_BOOL	(UseF12AsReset,		true)								// F12 ã‚’ COPY ã®ä»£ã‚ã‚Šã« RESET ã¨ã—ã¦ä½¿ç”¨
-DECLARE_CONFIG_BOOL	(ShowPlacesBar,		false)								// ãƒ•ã‚¡ã‚¤ãƒ«ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã§ PLACESBAR ã‚’è¡¨ç¤ºã™ã‚‹
+DECLARE_CONFIG_BOOL	(UseF12AsReset,		true)								// F12 ‚ð COPY ‚Ì‘ã‚í‚è‚É RESET ‚Æ‚µ‚ÄŽg—p
+DECLARE_CONFIG_BOOL	(ShowPlacesBar,		false)								// ƒtƒ@ƒCƒ‹ƒ_ƒCƒAƒƒO‚Å PLACESBAR ‚ð•\Ž¦‚·‚é
 DECLARE_CONFIG_SYM	(JoyPortMode,		JoyPortModeType,None)				//
-DECLARE_CONFIG_BOOL	(UseALTasGRPH,		false)								// ALT ã‚’ GRPH ã«
-DECLARE_CONFIG_BOOL	(UseArrowAs10key,	false)								// æ–¹å‘ã‚­ãƒ¼ã‚’ãƒ†ãƒ³ã‚­ãƒ¼ã«
-DECLARE_CONFIG_BOOL	(SwapPadButtons,	false)								// ãƒ‘ãƒƒãƒ‰ã®ãƒœã‚¿ãƒ³ã‚’å…¥ã‚Œæ›¿ãˆ
-DECLARE_CONFIG_SYM	(ScreenShotName,	ScreenShotNameType, Ask)			// ã‚¹ã‚¯ãƒªãƒ¼ãƒ³ã‚·ãƒ§ãƒƒãƒˆãƒ•ã‚¡ã‚¤ãƒ«åã®æŒ‡å®šæ³•
-DECLARE_CONFIG_BOOL	(CompressSnapshot,	true)								// ã‚¹ãƒŠãƒƒãƒ—ã‚·ãƒ§ãƒƒãƒˆã‚’åœ§ç¸®ã™ã‚‹
+DECLARE_CONFIG_BOOL	(UseALTasGRPH,		false)								// ALT ‚ð GRPH ‚É
+DECLARE_CONFIG_BOOL	(UseArrowAs10key,	false)								// •ûŒüƒL[‚ðƒeƒ“ƒL[‚É
+DECLARE_CONFIG_BOOL	(SwapPadButtons,	false)								// ƒpƒbƒh‚Ìƒ{ƒ^ƒ“‚ð“ü‚ê‘Ö‚¦
+DECLARE_CONFIG_SYM	(ScreenShotName,	ScreenShotNameType, Ask)			// ƒXƒNƒŠ[ƒ“ƒVƒ‡ƒbƒgƒtƒ@ƒCƒ‹–¼‚ÌŽw’è–@
+DECLARE_CONFIG_BOOL	(CompressSnapshot,	true)								// ƒXƒiƒbƒvƒVƒ‡ƒbƒg‚ðˆ³k‚·‚é
 DECLARE_CONFIG_SYM	(KeyboardType,		KeyType,		AT106)
-DECLARE_CONFIG_BOOL	(SaveDirectory,		true)								// èµ·å‹•æ™‚ã«å‰å›žçµ‚äº†æ™‚ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ç§»å‹•
-DECLARE_CONFIG_BOOL	(AskBeforeReset,	false)								// çµ‚äº†ãƒ»ãƒªã‚»ãƒƒãƒˆæ™‚ã«ç¢ºèª
+DECLARE_CONFIG_BOOL	(SaveDirectory,		true)								// ‹N“®Žž‚É‘O‰ñI—¹Žž‚ÌƒfƒBƒŒƒNƒgƒŠ‚ÉˆÚ“®
+DECLARE_CONFIG_BOOL	(AskBeforeReset,	false)								// I—¹EƒŠƒZƒbƒgŽž‚ÉŠm”F
 
 
 

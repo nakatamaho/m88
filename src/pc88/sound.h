@@ -55,7 +55,7 @@ public:
 
 protected:
 	uint mixrate;
-	uint samplingrate;		// ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°ãƒ¬ãƒ¼ãƒˆ
+	uint samplingrate;		// ƒTƒ“ƒvƒŠƒ“ƒOƒŒ[ƒg
 	uint rate50;			// samplingrate / 50
 
 private:

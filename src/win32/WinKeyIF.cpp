@@ -43,7 +43,7 @@ WinKeyIF::~WinKeyIF()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool WinKeyIF::Init(HWND hwndmsg)
 {
@@ -54,7 +54,7 @@ bool WinKeyIF::Init(HWND hwndmsg)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒªã‚»ãƒƒãƒˆï¼ˆã¨ã„ã†ã‹ã€BASIC ãƒ¢ãƒ¼ãƒ‰ã®å¤‰æ›´ï¼‰
+//	ƒŠƒZƒbƒgi‚Æ‚¢‚¤‚©ABASIC ƒ‚[ƒh‚Ì•ÏXj
 //
 void IOCALL WinKeyIF::Reset(uint, uint)
 {
@@ -62,7 +62,7 @@ void IOCALL WinKeyIF::Reset(uint, uint)
 }
 
 // ---------------------------------------------------------------------------
-//	è¨­å®šåæ˜ 
+//	İ’è”½‰f
 //
 void WinKeyIF::ApplyConfig(const Config* config)
 {
@@ -93,7 +93,7 @@ void WinKeyIF::KeyDown(uint vkcode, uint32 keydata)
 {
 	if (keytable == KeyTable106[0])
 	{
-		// åŠè§’ãƒ»å…¨è§’ã‚­ãƒ¼å¯¾ç­–
+		// ”¼ŠpE‘SŠpƒL[‘Îô
 		if (vkcode == 0xf3 || vkcode == 0xf4)
 		{
 			keystate[0xf4] = 3;
@@ -114,7 +114,7 @@ void WinKeyIF::KeyUp(uint vkcode, uint32 keydata)
 	keystate[keyindex] = 0;
 	LOG2("KeyUp   = %.2x %.3x\n", vkcode, keyindex);
 	
-	// SHIFT + ãƒ†ãƒ³ã‚­ãƒ¼ã«ã‚ˆã‚‹æŠ¼ã—ã£ã±ãªã—ç¾è±¡å¯¾ç­–
+	// SHIFT + ƒeƒ“ƒL[‚É‚æ‚é‰Ÿ‚µ‚Á‚Ï‚È‚µŒ»Û‘Îô
 	
 	if (keytable == KeyTable106[0] || keytable == KeyTable101[0])
 	{
@@ -156,7 +156,7 @@ void WinKeyIF::KeyUp(uint vkcode, uint32 keydata)
 
 // ---------------------------------------------------------------------------
 //	Key
-//	keyboard ã«ã‚ˆã‚‹ã‚­ãƒ¼ãƒã‚§ãƒƒã‚¯ã¯åå¿œãŒéˆã„ã‹ã‚‚çŸ¥ã‚Œãš
+//	keyboard ‚É‚æ‚éƒL[ƒ`ƒFƒbƒN‚Í”½‰‚ª“İ‚¢‚©‚à’m‚ê‚¸
 //
 uint WinKeyIF::GetKey(const Key* key)
 {
@@ -221,7 +221,7 @@ uint WinKeyIF::GetKey(const Key* key)
 }
 
 // ---------------------------------------------------------------------------
-//	VSync å‡¦ç†
+//	VSync ˆ—
 //
 void IOCALL WinKeyIF::VSync(uint,uint d)
 {
@@ -264,7 +264,7 @@ void WinKeyIF::Disable(bool yes)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚­ãƒ¼å…¥åŠ›
+//	ƒL[“ü—Í
 //
 uint IOCALL WinKeyIF::In(uint port)
 {
@@ -295,16 +295,16 @@ uint IOCALL WinKeyIF::In(uint port)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚­ãƒ¼å¯¾å¿œè¡¨
-//	ã²ã¨ã¤ã®ã‚­ãƒ¼ã«æ›¸ã‘ã‚‹ã‚¨ãƒ³ãƒˆãƒªæ•°ã¯ï¼˜å€‹ã¾ã§ã€‚
-//	ï¼˜å€‹æœªæº€ã®å ´åˆã¯æœ€å¾Œã« TERM ã‚’ä»˜ã‘ã‚‹ã“ã¨ã€‚
+//	ƒL[‘Î‰•\
+//	‚Ğ‚Æ‚Â‚ÌƒL[‚É‘‚¯‚éƒGƒ“ƒgƒŠ”‚Í‚WŒÂ‚Ü‚ÅB
+//	‚WŒÂ–¢–‚Ìê‡‚ÍÅŒã‚É TERM ‚ğ•t‚¯‚é‚±‚ÆB
 //	
-//	KEYF ã® f ã¯æ¬¡ã®ã©ã‚Œã‹ã€‚
-//	nex		WM_KEYxxx ã® extended ãƒ•ãƒ©ã‚°ãŒ 0 ã®ã‚­ãƒ¼ã®ã¿
-//	ext		WM_KEYxxx ã® extended ãƒ•ãƒ©ã‚°ãŒ 1 ã®ã‚­ãƒ¼ã®ã¿
-//	lock	ãƒ­ãƒƒã‚¯æ©Ÿèƒ½ã‚’æŒã¤ã‚­ãƒ¼ (åˆ¥ã« CAPS LOCK ã‚„ã‚«ãƒŠã®ã‚ˆã†ã«ç‰©ç†çš„
-//								  ãƒ­ãƒƒã‚¯æ©Ÿèƒ½ã‚’æŒã£ã¦ã„ã‚‹å¿…è¦ã¯ç„¡ã„ã¯ãš)
-//	arrowten æ–¹å‘ã‚­ãƒ¼ã‚’ãƒ†ãƒ³ã‚­ãƒ¼ã«å¯¾å¿œã•ã›ã‚‹å ´åˆã®ã¿
+//	KEYF ‚Ì f ‚ÍŸ‚Ì‚Ç‚ê‚©B
+//	nex		WM_KEYxxx ‚Ì extended ƒtƒ‰ƒO‚ª 0 ‚ÌƒL[‚Ì‚İ
+//	ext		WM_KEYxxx ‚Ì extended ƒtƒ‰ƒO‚ª 1 ‚ÌƒL[‚Ì‚İ
+//	lock	ƒƒbƒN‹@”\‚ğ‚ÂƒL[ (•Ê‚É CAPS LOCK ‚âƒJƒi‚Ì‚æ‚¤‚É•¨—“I
+//								  ƒƒbƒN‹@”\‚ğ‚Á‚Ä‚¢‚é•K—v‚Í–³‚¢‚Í‚¸)
+//	arrowten •ûŒüƒL[‚ğƒeƒ“ƒL[‚É‘Î‰‚³‚¹‚éê‡‚Ì‚İ
 //
 
 #define KEY(k)     { k, 0 }
@@ -312,7 +312,7 @@ uint IOCALL WinKeyIF::In(uint port)
 #define TERM       { 0, 0 }
 
 // ---------------------------------------------------------------------------
-//	ã‚­ãƒ¼å¯¾å¿œè¡¨ for æ—¥æœ¬èª 106 ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰
+//	ƒL[‘Î‰•\ for “ú–{Œê 106 ƒL[ƒ{[ƒh
 //
 const WinKeyIF::Key WinKeyIF::KeyTable106[16 * 8][8] =
 {
@@ -398,11 +398,11 @@ const WinKeyIF::Key WinKeyIF::KeyTable106[16 * 8][8] =
 
 	// 08
 	{ KEYF(VK_HOME, ext),	TERM }, // CLR
-	{ KEYF(VK_UP, noarrowtenex),	KEYF(VK_DOWN, pc80key), TERM }, // â†‘
-	{ KEYF(VK_RIGHT, noarrowtenex),	KEYF(VK_LEFT, pc80key), TERM }, // â†’
+	{ KEYF(VK_UP, noarrowtenex),	KEYF(VK_DOWN, pc80key), TERM }, // ª
+	{ KEYF(VK_RIGHT, noarrowtenex),	KEYF(VK_LEFT, pc80key), TERM }, // ¨
 	{ KEY(VK_BACK),	KEYF(VK_INSERT, ext), KEYF(VK_DELETE, ext), TERM }, // BS
 	{ KEY(VK_MENU),			TERM }, // GRPH
-	{ KEYF(VK_SCROLL, lock),TERM }, // ã‚«ãƒŠ
+	{ KEYF(VK_SCROLL, lock),TERM }, // ƒJƒi
 	{ KEY(VK_SHIFT), KEY(VK_F6), KEY(VK_F7), KEY(VK_F8), KEY(VK_F9), KEY(VK_F10), KEYF(VK_INSERT, ext), KEYF(1, pc80sft) }, // SHIFT
 	{ KEY(VK_CONTROL),		TERM }, // CTRL
 
@@ -418,8 +418,8 @@ const WinKeyIF::Key WinKeyIF::KeyTable106[16 * 8][8] =
 
 	// 0a
 	{ KEY(VK_TAB),			TERM }, // TAB
-	{ KEYF(VK_DOWN, noarrowtenex),	TERM }, // â†“
-	{ KEYF(VK_LEFT, noarrowtenex),	TERM }, // â†
+	{ KEYF(VK_DOWN, noarrowtenex),	TERM }, // «
+	{ KEYF(VK_LEFT, noarrowtenex),	TERM }, // ©
 	{ KEYF(VK_END, ext), KEY(VK_HELP), TERM }, // HELP
 	{ KEY(VK_F12), TERM }, // COPY
 	{ KEY(0x6d),			TERM }, // -
@@ -447,10 +447,10 @@ const WinKeyIF::Key WinKeyIF::KeyTable106[16 * 8][8] =
 	{ KEYF(VK_DELETE, ext), TERM },	// DEL
 
 	// 0d
-	{ KEY(VK_CONVERT), TERM },		// å¤‰æ›
-	{ KEY(VK_NONCONVERT), KEY(VK_ACCEPT), TERM }, // æ±ºå®š
+	{ KEY(VK_CONVERT), TERM },		// •ÏŠ·
+	{ KEY(VK_NONCONVERT), KEY(VK_ACCEPT), TERM }, // Œˆ’è
 	{ TERM },						// PC
-	{ KEY(0xf4), TERM },			// å…¨è§’
+	{ KEY(0xf4), TERM },			// ‘SŠp
 	{ TERM },
 	{ TERM },
 	{ TERM },
@@ -479,7 +479,7 @@ const WinKeyIF::Key WinKeyIF::KeyTable106[16 * 8][8] =
 
 
 // ---------------------------------------------------------------------------
-//	ã‚­ãƒ¼å¯¾å¿œè¡¨ for 101 ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰
+//	ƒL[‘Î‰•\ for 101 ƒL[ƒ{[ƒh
 //
 const WinKeyIF::Key WinKeyIF::KeyTable101[16 * 8][8] =
 {
@@ -565,11 +565,11 @@ const WinKeyIF::Key WinKeyIF::KeyTable101[16 * 8][8] =
 
 	// 08
 	{ KEYF(VK_HOME, ext),	TERM }, // CLR
-	{ KEYF(VK_UP, noarrowtenex),	KEYF(VK_DOWN, pc80key), TERM }, // â†‘
-	{ KEYF(VK_RIGHT, noarrowtenex),	KEYF(VK_LEFT, pc80key), TERM }, // â†’
+	{ KEYF(VK_UP, noarrowtenex),	KEYF(VK_DOWN, pc80key), TERM }, // ª
+	{ KEYF(VK_RIGHT, noarrowtenex),	KEYF(VK_LEFT, pc80key), TERM }, // ¨
 	{ KEY(VK_BACK),	KEYF(VK_INSERT, ext), KEYF(VK_DELETE, ext), TERM }, // BS
 	{ KEY(VK_MENU),			TERM }, // GRPH
-	{ KEYF(VK_SCROLL, lock),TERM }, // ã‚«ãƒŠ
+	{ KEYF(VK_SCROLL, lock),TERM }, // ƒJƒi
 	{ KEY(VK_SHIFT), KEY(VK_F6), KEY(VK_F7), KEY(VK_F8), KEY(VK_F9), KEY(VK_F10), KEYF(VK_INSERT, ext), KEYF(1, pc80sft) }, // SHIFT
 	{ KEY(VK_CONTROL),		TERM }, // CTRL
 
@@ -585,8 +585,8 @@ const WinKeyIF::Key WinKeyIF::KeyTable101[16 * 8][8] =
 
 	// 0a
 	{ KEY(VK_TAB),			TERM }, // TAB
-	{ KEYF(VK_DOWN, noarrowtenex),	TERM }, // â†“
-	{ KEYF(VK_LEFT, noarrowtenex),	TERM }, // â†
+	{ KEYF(VK_DOWN, noarrowtenex),	TERM }, // «
+	{ KEYF(VK_LEFT, noarrowtenex),	TERM }, // ©
 	{ KEYF(VK_END, ext), KEY(VK_HELP), TERM }, // HELP
 	{ KEY(VK_F12), TERM }, // COPY
 	{ KEY(0x6d),			TERM }, // -
@@ -614,10 +614,10 @@ const WinKeyIF::Key WinKeyIF::KeyTable101[16 * 8][8] =
 	{ KEYF(VK_DELETE, ext), TERM },	// DEL
 
 	// 0d
-	{ KEY(VK_CONVERT), TERM },		// å¤‰æ›
-	{ KEY(VK_NONCONVERT), KEY(VK_ACCEPT), TERM }, // æ±ºå®š
+	{ KEY(VK_CONVERT), TERM },		// •ÏŠ·
+	{ KEY(VK_NONCONVERT), KEY(VK_ACCEPT), TERM }, // Œˆ’è
 	{ TERM },						// PC
-	{ KEY(0xf4), TERM },			// å…¨è§’
+	{ KEY(0xf4), TERM },			// ‘SŠp
 	{ TERM },
 	{ TERM },
 	{ TERM },
@@ -645,7 +645,7 @@ const WinKeyIF::Key WinKeyIF::KeyTable101[16 * 8][8] =
 };
 
 // ---------------------------------------------------------------------------
-//	ã‚­ãƒ¼å¯¾å¿œè¡¨ for 9801 key
+//	ƒL[‘Î‰•\ for 9801 key
 //
 const WinKeyIF::Key WinKeyIF::KeyTable98[16 * 8][8] =
 {
@@ -731,11 +731,11 @@ const WinKeyIF::Key WinKeyIF::KeyTable98[16 * 8][8] =
 
 	// 08
 	{ KEY(VK_HOME),		TERM }, // CLR
-	{ KEYF(VK_UP, noarrowten),		TERM }, // â†‘
-	{ KEYF(VK_RIGHT, noarrowten),	TERM }, // â†’
+	{ KEYF(VK_UP, noarrowten),		TERM }, // ª
+	{ KEYF(VK_RIGHT, noarrowten),	TERM }, // ¨
 	{ KEY(VK_BACK),		TERM }, // BS
 	{ KEY(VK_MENU),		TERM }, // GRPH
-	{ KEYF(0x15, lock),	TERM }, // ã‚«ãƒŠ
+	{ KEYF(0x15, lock),	TERM }, // ƒJƒi
 	{ KEY(VK_SHIFT), KEY(VK_F6), KEY(VK_F7), KEY(VK_F8), KEY(VK_F9), KEY(VK_F10), KEYF(0, pc80sft) }, // SHIFT
 	{ KEY(VK_CONTROL),		TERM }, // CTRL
 
@@ -751,8 +751,8 @@ const WinKeyIF::Key WinKeyIF::KeyTable98[16 * 8][8] =
 
 	// 0a
 	{ KEY(VK_TAB),		TERM }, // TAB
-	{ KEYF(VK_DOWN, noarrowten),		TERM }, // â†“
-	{ KEYF(VK_LEFT, noarrowten),		TERM }, // â†
+	{ KEYF(VK_DOWN, noarrowten),		TERM }, // «
+	{ KEYF(VK_LEFT, noarrowten),		TERM }, // ©
 	{ KEY(VK_END),		TERM }, // HELP
 	{ KEY(VK_F14),	KEY(VK_F12),	TERM }, // COPY
 	{ KEY(0x6d),		TERM }, // -
@@ -785,8 +785,8 @@ const WinKeyIF::Key WinKeyIF::KeyTable98[16 * 8][8] =
 	{ KEY(VK_F8),	TERM }, // F8
 	{ KEY(VK_F9),	TERM }, // F9
 	{ KEY(VK_F10),	TERM }, // F10
-	{ KEY(0x1d),	TERM }, // å¤‰æ›
-	{ KEY(0x19),	TERM }, // æ±ºå®š
+	{ KEY(0x1d),	TERM }, // •ÏŠ·
+	{ KEY(0x19),	TERM }, // Œˆ’è
 	{ KEY(VK_SPACE), TERM }, // SPACE
 
 	// 0e
@@ -795,7 +795,7 @@ const WinKeyIF::Key WinKeyIF::KeyTable98[16 * 8][8] =
 	{ KEY(VK_LSHIFT), TERM }, // SHIFT L
 	{ KEY(VK_RSHIFT), TERM }, // SHIFT R
 	{ TERM }, // PC
-	{ TERM }, // å…¨è§’
+	{ TERM }, // ‘SŠp
 	{ TERM },
 	{ TERM },
 

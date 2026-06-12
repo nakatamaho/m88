@@ -91,18 +91,18 @@ private:
 	int AllocControlID();
 	void FreeControlID(int);
 
-	// ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦é–¢ä¿‚
+	// ƒEƒCƒ“ƒhƒEŠÖŒW
 	HWND hwnd;
 	HINSTANCE hinst;
 	HACCEL accel;
 	HMENU hmenudbg;
 
-	// çŠ¶æ…‹è¡¨ç¤ºç”¨
+	// ó‘Ô•\¦—p
 	UINT_PTR timerid;
 	bool report;
 	volatile bool active;
 
-	// ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã®çŠ¶æ…‹
+	// ƒEƒCƒ“ƒhƒE‚Ìó‘Ô
 	bool background;
 	bool fullscreen;
 	uint displaychangedtime;
@@ -116,7 +116,7 @@ private:
 	DiskInfo diskinfo[2];
 	char tapetitle[MAX_PATH];
 	
-	// snapshot é–¢ä¿‚
+	// snapshot ŠÖŒW
 	HMENU hmenuss[2];
 	int currentsnapshot;
 	bool snapshotchanged;
@@ -142,7 +142,7 @@ private:
 	TapeManager* tapemgr;
 
 private:
-	// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é–¢æ•°
+	// ƒƒbƒZ[ƒWŠÖ”
 	LRESULT M88ChangeDisplay(HWND, WPARAM, LPARAM);
 	LRESULT M88ChangeVolume(HWND, WPARAM, LPARAM);
 	LRESULT M88ApplyConfig(HWND, WPARAM, LPARAM);

@@ -2,17 +2,17 @@
 //  M88 - PC88 emulator
 //  Copyright (C) cisc 1998, 1999.
 // ---------------------------------------------------------------------------
-//	GDI ã«ã‚ˆã‚‹ç”»é¢æç”» (HiColor ä»¥ä¸Š)
+//	GDI ‚É‚æ‚é‰æ–Ê•`‰æ (HiColor ˆÈã)
 // ---------------------------------------------------------------------------
 //	$Id: DrawGDI.cpp,v 1.13 2003/04/22 13:16:35 cisc Exp $
 
-//	bug:ãƒ‘ãƒ¬ãƒƒãƒˆï½(T-T
+//	bug:ƒpƒŒƒbƒg`(T-T
 
 #include "headers.h"
 #include "drawgdi.h"
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰/æ¶ˆæ»…
+//	\’z/Á–Å
 //
 WinDrawGDI::WinDrawGDI()
 : hwnd(0), hbitmap(0), updatepal(false), bitmapimage(0), image(0)
@@ -25,7 +25,7 @@ WinDrawGDI::~WinDrawGDI()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–å‡¦ç†
+//	‰Šú‰»ˆ—
 //
 bool WinDrawGDI::Init(HWND hwindow, uint w, uint h, GUID*)
 {
@@ -37,7 +37,7 @@ bool WinDrawGDI::Init(HWND hwindow, uint w, uint h, GUID*)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢æœ‰åŠ¹ç¯„å›²ã‚’å¤‰æ›´
+//	‰æ–Ê—LŒø”ÍˆÍ‚ğ•ÏX
 //
 bool WinDrawGDI::Resize(uint w, uint h)
 {
@@ -53,7 +53,7 @@ bool WinDrawGDI::Resize(uint w, uint h)
 }
 
 // ---------------------------------------------------------------------------
-//	å¾Œç‰‡ä»˜ã‘
+//	Œã•Ğ•t‚¯
 //
 bool WinDrawGDI::Cleanup()
 {
@@ -65,7 +65,7 @@ bool WinDrawGDI::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	BITMAP ä½œæˆ
+//	BITMAP ì¬
 //
 bool WinDrawGDI::MakeBitmap()
 {
@@ -81,7 +81,7 @@ bool WinDrawGDI::MakeBitmap()
 	binfo.header.biClrUsed       = 256;
 	binfo.header.biClrImportant  = 0;
 
-	// ãƒ‘ãƒ¬ãƒƒãƒˆãªã„å ´åˆ
+	// ƒpƒŒƒbƒg‚È‚¢ê‡
 	
 	HDC hdc = GetDC(hwnd);
 	memset(binfo.colors, 0, sizeof(RGBQUAD) * 256);
@@ -106,8 +106,8 @@ bool WinDrawGDI::MakeBitmap()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ‘ãƒ¬ãƒƒãƒˆè¨­å®š
-//	index ç•ªç›®ã®ãƒ‘ãƒ¬ãƒƒãƒˆã« pe ã‚’ã‚»ãƒƒãƒˆ
+//	ƒpƒŒƒbƒgİ’è
+//	index ”Ô–Ú‚ÌƒpƒŒƒbƒg‚É pe ‚ğƒZƒbƒg
 //
 void WinDrawGDI::SetPalette(PALETTEENTRY* pe, int index, int nentries)
 {
@@ -122,7 +122,7 @@ void WinDrawGDI::SetPalette(PALETTEENTRY* pe, int index, int nentries)
 }
 
 // ---------------------------------------------------------------------------
-//	æç”»
+//	•`‰æ
 //
 void WinDrawGDI::DrawScreen(const RECT& _rect, bool refresh)
 {
@@ -155,7 +155,7 @@ void WinDrawGDI::DrawScreen(const RECT& _rect, bool refresh)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½¿ç”¨è¦æ±‚
+//	‰æ–ÊƒCƒ[ƒW‚Ìg—p—v‹
 //
 bool WinDrawGDI::Lock(uint8** pimage, int* pbpl)
 {
@@ -165,7 +165,7 @@ bool WinDrawGDI::Lock(uint8** pimage, int* pbpl)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½¿ç”¨çµ‚äº†
+//	‰æ–ÊƒCƒ[ƒW‚Ìg—pI—¹
 //
 bool WinDrawGDI::Unlock()
 {

@@ -15,7 +15,7 @@
 
 // ---------------------------------------------------------------------------
 //	Memory Bus
-//	æ§‹ç¯‰ãƒ»å»ƒæ£„
+//	\’zE”pŠü
 //
 MemoryBus::MemoryBus()
 : pages(0), owners(0), ownpages(false)
@@ -30,10 +30,10 @@ MemoryBus::~MemoryBus()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
-//	arg:	npages	ãƒãƒ³ã‚¯æ•°
-//			_pages	Page æ§‹é€ ä½“ã® array (å¤–éƒ¨ã§ç”¨æ„ã™ã‚‹å ´åˆ)
-//					çœç•¥æ™‚ã¯ MemoryBus ã§ç”¨æ„
+//	‰Šú‰»
+//	arg:	npages	ƒoƒ“ƒN”
+//			_pages	Page \‘¢‘Ì‚Ì array (ŠO•”‚Å—pˆÓ‚·‚éê‡)
+//					È—ª‚Í MemoryBus ‚Å—pˆÓ
 //
 bool MemoryBus::Init(uint npages, Page* _pages)
 {
@@ -72,7 +72,7 @@ bool MemoryBus::Init(uint npages, Page* _pages)
 
 
 // ---------------------------------------------------------------------------
-//	ãƒ€ãƒŸãƒ¼å…¥å‡ºåŠ›é–¢æ•°
+//	ƒ_ƒ~[“üo—ÍŠÖ”
 //
 uint MEMCALL MemoryBus::rddummy(void*, uint addr)
 {
@@ -120,7 +120,7 @@ IOBus::~IOBus()
 	delete[] flags;
 }
 
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 bool IOBus::Init(uint nbanks, DeviceList* dl)
 {
 	devlist = dl;
@@ -152,7 +152,7 @@ bool IOBus::Init(uint nbanks, DeviceList* dl)
 	return true;
 }
 
-//	ãƒ‡ãƒã‚¤ã‚¹æ¥ç¶š
+//	ƒfƒoƒCƒXÚ‘±
 bool IOBus::Connect(IDevice* device, const Connector* connector)
 {
 	if (devlist)
@@ -185,13 +185,13 @@ bool IOBus::ConnectIn(uint bank, IDevice* device, InFuncPtr func)
 	InBank* i = &ins[bank];
 	if (i->func == &DummyIO::dummyin)
 	{
-		// æœ€åˆã®æ¥ç¶š
+		// Å‰‚ÌÚ‘±
 		i->device = device;
 		i->func = func;
 	}
 	else
 	{
-		// 2å›ç›®ä»¥é™ã®æ¥ç¶š
+		// 2‰ñ–ÚˆÈ~‚ÌÚ‘±
 		InBank* j = new InBank;
 		if (!j)
 			return false;
@@ -208,13 +208,13 @@ bool IOBus::ConnectOut(uint bank, IDevice* device, OutFuncPtr func)
 	OutBank* i = &outs[bank];
 	if (i->func == &DummyIO::dummyout)
 	{
-		// æœ€åˆã®æ¥ç¶š
+		// Å‰‚ÌÚ‘±
 		i->device = device;
 		i->func = func;
 	}
 	else
 	{
-		// 2å›ç›®ä»¥é™ã®æ¥ç¶š
+		// 2‰ñ–ÚˆÈ~‚ÌÚ‘±
 		OutBank* j = new OutBank;
 		if (!j)
 			return false;
@@ -248,10 +248,10 @@ bool IOBus::Disconnect(IDevice* device)
 				}
 				else
 				{
-					// å‰Šé™¤ã™ã‚‹ã¹ãã‚¢ã‚¤ãƒ†ãƒ ãŒæœ€åˆã«ã‚ã£ãŸå ´åˆ
+					// íœ‚·‚é‚×‚«ƒAƒCƒeƒ€‚ªÅ‰‚É‚ ‚Á‚½ê‡
 					if (next)
 					{
-						// æ¬¡ã®ã‚¢ã‚¤ãƒ†ãƒ ã®å†…å®¹ã‚’è¤‡å†™ã—ã¦å‰Šé™¤
+						// Ÿ‚ÌƒAƒCƒeƒ€‚Ì“à—e‚ğ•¡Ê‚µ‚Äíœ
 						*current = *next;
 						referer = 0;
 						delete next;
@@ -259,7 +259,7 @@ bool IOBus::Disconnect(IDevice* device)
 					}
 					else
 					{
-						// ã“ã®ã‚¢ã‚¤ãƒ†ãƒ ãŒå”¯ä¸€ã®ã‚¢ã‚¤ãƒ†ãƒ ã ã£ãŸå ´åˆ
+						// ‚±‚ÌƒAƒCƒeƒ€‚ª—Bˆê‚ÌƒAƒCƒeƒ€‚¾‚Á‚½ê‡
 						current->func = STATIC_CAST(InFuncPtr, &DummyIO::dummyin);
 					}
 				}
@@ -284,10 +284,10 @@ bool IOBus::Disconnect(IDevice* device)
 				}
 				else
 				{
-					// å‰Šé™¤ã™ã‚‹ã¹ãã‚¢ã‚¤ãƒ†ãƒ ãŒæœ€åˆã«ã‚ã£ãŸå ´åˆ
+					// íœ‚·‚é‚×‚«ƒAƒCƒeƒ€‚ªÅ‰‚É‚ ‚Á‚½ê‡
 					if (next)
 					{
-						// æ¬¡ã®ã‚¢ã‚¤ãƒ†ãƒ ã®å†…å®¹ã‚’è¤‡å†™ã—ã¦å‰Šé™¤
+						// Ÿ‚ÌƒAƒCƒeƒ€‚Ì“à—e‚ğ•¡Ê‚µ‚Äíœ
 						*current = *next;
 						referer = 0;
 						delete next;
@@ -295,7 +295,7 @@ bool IOBus::Disconnect(IDevice* device)
 					}
 					else
 					{
-						// ã“ã®ã‚¢ã‚¤ãƒ†ãƒ ãŒå”¯ä¸€ã®ã‚¢ã‚¤ãƒ†ãƒ ã ã£ãŸå ´åˆ
+						// ‚±‚ÌƒAƒCƒeƒ€‚ª—Bˆê‚ÌƒAƒCƒeƒ€‚¾‚Á‚½ê‡
 						current->func = STATIC_CAST(OutFuncPtr, &DummyIO::dummyout);
 					}
 				}
@@ -341,7 +341,7 @@ void IOCALL IOBus::DummyIO::dummyout(uint, uint)
 
 // ---------------------------------------------------------------------------
 //	DeviceList
-//	çŠ¶æ…‹ä¿å­˜ãƒ»å¾©å¸°ã®å¯¾è±¡ã¨ãªã‚‹ãƒ‡ãƒã‚¤ã‚¹ã®ãƒªã‚¹ãƒˆã‚’ç®¡ç†ã™ã‚‹ï¼
+//	ó‘Ô•Û‘¶E•œ‹A‚Ì‘ÎÛ‚Æ‚È‚éƒfƒoƒCƒX‚ÌƒŠƒXƒg‚ğŠÇ—‚·‚éD
 //
 DeviceList::~DeviceList()
 {
@@ -349,7 +349,7 @@ DeviceList::~DeviceList()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒªã‚¹ãƒˆã‚’ã™ã¹ã¦ç ´æ£„
+//	ƒŠƒXƒg‚ğ‚·‚×‚Ä”jŠü
 //
 void DeviceList::Cleanup()
 {
@@ -364,7 +364,7 @@ void DeviceList::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒªã‚¹ãƒˆã«ãƒ‡ãƒã‚¤ã‚¹ã‚’ç™»éŒ²
+//	ƒŠƒXƒg‚ÉƒfƒoƒCƒX‚ğ“o˜^
 //
 bool DeviceList::Add(IDevice* t)
 {
@@ -392,7 +392,7 @@ bool DeviceList::Add(IDevice* t)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒªã‚¹ãƒˆã‹ã‚‰ãƒ‡ãƒã‚¤ã‚¹ã‚’å‰Šé™¤
+//	ƒŠƒXƒg‚©‚çƒfƒoƒCƒX‚ğíœ
 //
 bool DeviceList::Del(const ID id)
 {
@@ -413,7 +413,7 @@ bool DeviceList::Del(const ID id)
 }
 
 // ---------------------------------------------------------------------------
-//	æŒ‡å®šã•ã‚ŒãŸè­˜åˆ¥å­ã‚’æŒã¤ãƒ‡ãƒã‚¤ã‚¹ã‚’ãƒªã‚¹ãƒˆä¸­ã‹ã‚‰æ¢ã™
+//	w’è‚³‚ê‚½¯•Êq‚ğ‚ÂƒfƒoƒCƒX‚ğƒŠƒXƒg’†‚©‚ç’T‚·
 //
 IDevice* DeviceList::Find(const ID id)
 {
@@ -422,7 +422,7 @@ IDevice* DeviceList::Find(const ID id)
 }
 
 // ---------------------------------------------------------------------------
-//	æŒ‡å®šã•ã‚ŒãŸè­˜åˆ¥å­ã‚’æŒã¤ãƒ‡ãƒã‚¤ã‚¹ãƒãƒ¼ãƒ‰ã‚’æ¢ã™
+//	w’è‚³‚ê‚½¯•Êq‚ğ‚ÂƒfƒoƒCƒXƒm[ƒh‚ğ’T‚·
 //
 DeviceList::Node* DeviceList::FindNode(const ID id)
 {
@@ -435,7 +435,7 @@ DeviceList::Node* DeviceList::FindNode(const ID id)
 }
 
 // ---------------------------------------------------------------------------
-//	çŠ¶æ…‹ä¿å­˜ã«å¿…è¦ãªãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚ºã‚’æ±‚ã‚ã‚‹
+//	ó‘Ô•Û‘¶‚É•K—v‚Èƒf[ƒ^ƒTƒCƒY‚ğ‹‚ß‚é
 //
 uint DeviceList::GetStatusSize()
 {
@@ -450,8 +450,8 @@ uint DeviceList::GetStatusSize()
 }
 
 // ---------------------------------------------------------------------------
-//	çŠ¶æ…‹ä¿å­˜ã‚’è¡Œã†
-//	data ã«ã¯ã‚ã‚‰ã‹ã˜ã‚ GetStatusSize() ã§å–å¾—ã—ãŸã‚µã‚¤ã‚ºã®ãƒãƒƒãƒ•ã‚¡ãŒå¿…è¦
+//	ó‘Ô•Û‘¶‚ğs‚¤
+//	data ‚É‚Í‚ ‚ç‚©‚¶‚ß GetStatusSize() ‚Åæ“¾‚µ‚½ƒTƒCƒY‚Ìƒoƒbƒtƒ@‚ª•K—v
 //
 bool DeviceList::SaveStatus(uint8* data)
 {
@@ -473,7 +473,7 @@ bool DeviceList::SaveStatus(uint8* data)
 }
 
 // ---------------------------------------------------------------------------
-//	SaveStatus ã§ä¿å­˜ã—ãŸçŠ¶æ…‹ã‹ã‚‰å¾©å¸°ã™ã‚‹ï¼
+//	SaveStatus ‚Å•Û‘¶‚µ‚½ó‘Ô‚©‚ç•œ‹A‚·‚éD
 //
 bool DeviceList::LoadStatus(const uint8* data)
 {
@@ -498,8 +498,8 @@ bool DeviceList::LoadStatus(const uint8* data)
 }
 
 // ---------------------------------------------------------------------------
-//	çŠ¶æ…‹ãƒ‡ãƒ¼ã‚¿ãŒç¾åœ¨ã®æ§‹æˆã§é©å¿œå¯èƒ½ã‹èª¿ã¹ã‚‹
-//	å…·ä½“çš„ã«ã¯ã‚µã‚¤ã‚ºãƒã‚§ãƒƒã‚¯ã ã‘ï¼
+//	ó‘Ôƒf[ƒ^‚ªŒ»İ‚Ì\¬‚Å“K‰‰Â”\‚©’²‚×‚é
+//	‹ï‘Ì“I‚É‚ÍƒTƒCƒYƒ`ƒFƒbƒN‚¾‚¯D
 //	
 bool DeviceList::CheckStatus(const uint8* data)
 {

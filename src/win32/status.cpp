@@ -143,7 +143,7 @@ void StatusDisplay::DrawItem(DRAWITEMSTRUCT* dis)
 }
 
 // ---------------------------------------------------------------------------
-//	メッセージ追加
+//	���b�Z�[�W�ǉ�
 //
 bool StatusDisplay::Show(int priority, int duration, char* msg, ...)
 {
@@ -176,7 +176,7 @@ bool StatusDisplay::Show(int priority, int duration, char* msg, ...)
 }
 
 // ---------------------------------------------------------------------------
-//	更新
+//	�X�V
 //
 void StatusDisplay::Update()
 {
@@ -232,7 +232,7 @@ void StatusDisplay::Update()
 }
 
 // ---------------------------------------------------------------------------
-//	必要ないエントリの削除
+//	�K�v�Ȃ��G���g���̍폜
 //
 void StatusDisplay::Clean()
 {

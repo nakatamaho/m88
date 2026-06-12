@@ -19,8 +19,8 @@ enum SpecialPort
 	pirq,			// IRQ
 	piack,			// interrupt acknowledgement
 	vrtc,			// vertical retrace
-	popnio,			// OPN ã®å…¥å‡ºåŠ›ãƒãƒ¼ãƒˆ 1
-	popnio2,		// OPN ã®å…¥å‡ºåŠ›ãƒãƒ¼ãƒˆ 2 (é€£ç•ª)
+	popnio,			// OPN ‚Ì“üo—Íƒ|[ƒg 1
+	popnio2,		// OPN ‚Ì“üo—Íƒ|[ƒg 2 (˜A”Ô)
 	portend
 };
 
@@ -78,7 +78,7 @@ void DiskDrvModule::Release()
 
 // ---------------------------------------------------------------------------
 
-//	Module ã‚’ä½œæˆ
+//	Module ‚ğì¬
 extern "C" EXTDEVAPI IModule* __cdecl M88CreateModule(ISystem* system)
 {
 	DiskDrvModule* module = new DiskDrvModule;

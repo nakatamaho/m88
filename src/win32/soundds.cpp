@@ -20,7 +20,7 @@ const uint DriverDS::num_blocks = 5;
 const uint DriverDS::timer_resolution = 20;
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰ãƒ»ç ´æ£„ ---------------------------------------------------------------
+//	\’zE”jŠü ---------------------------------------------------------------
 
 DriverDS::DriverDS()
 {
@@ -39,7 +39,7 @@ DriverDS::~DriverDS()
 }
 
 // ---------------------------------------------------------------------------
-//  åˆæœŸåŒ– -------------------------------------------------------------------
+//  ‰Šú‰» -------------------------------------------------------------------
 
 bool DriverDS::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 {
@@ -50,10 +50,10 @@ bool DriverDS::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 	buffer_length = buflen;
 	sampleshift = 1 + (ch == 2 ? 1 : 0);
 
-	// è¨ˆç®—
+	// ŒvZ
 	buffersize = (rate * ch * sizeof(Sample) * buffer_length / 1000) & ~7;
 
-	// DirectSound object ä½œæˆ
+	// DirectSound object ì¬
 	if (FAILED(CoCreateInstance(CLSID_DirectSound, 0, CLSCTX_ALL, IID_IDirectSound, (void**) &lpds)))
 		return false;
 	if (FAILED(lpds->Initialize(0)))
@@ -61,7 +61,7 @@ bool DriverDS::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 //	if (FAILED(DirectSoundCreate(0, &lpds, 0)))
 //		return false;
 
-	// å”èª¿ãƒ¬ãƒ™ãƒ«è¨­å®š
+	// ‹¦’²ƒŒƒxƒ‹İ’è
 	if (DS_OK != lpds->SetCooperativeLevel(hwnd, DSSCL_PRIORITY))
 	{
 		if (DS_OK != lpds->SetCooperativeLevel(hwnd, DSSCL_NORMAL))
@@ -77,7 +77,7 @@ bool DriverDS::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 	if (DS_OK != lpds->CreateSoundBuffer(&dsbd, &lpdsb_primary, 0))
 		return false;
 
-	// å†ç”Ÿãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆè¨­å®š
+	// Ä¶ƒtƒH[ƒ}ƒbƒgİ’è
 	WAVEFORMATEX wf;
     memset(&wf, 0, sizeof(WAVEFORMATEX));
     wf.wFormatTag = WAVE_FORMAT_PCM;
@@ -89,7 +89,7 @@ bool DriverDS::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 
 	lpdsb_primary->SetFormat(&wf);
 
-	// ã‚»ã‚«ãƒ³ãƒ€ãƒªãƒãƒƒãƒ•ã‚¡ä½œæˆ
+	// ƒZƒJƒ“ƒ_ƒŠƒoƒbƒtƒ@ì¬
     memset(&dsbd, 0, sizeof(DSBUFFERDESC));
     dsbd.dwSize = sizeof(DSBUFFERDESC);
     dsbd.dwFlags = DSBCAPS_STICKYFOCUS 
@@ -102,11 +102,11 @@ bool DriverDS::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 	if (DS_OK != res)
 		return false;
 
-	// å†ç”Ÿ
+	// Ä¶
 	lpdsb->Play(0, 0, DSBPLAY_LOOPING);
 //	lpdsb_primary->Play(0, 0, DSBPLAY_LOOPING);
 
-	// ã‚¿ã‚¤ãƒãƒ¼ä½œæˆ
+	// ƒ^ƒCƒ}[ì¬
 	timeBeginPeriod(buffer_length / num_blocks);
 	timerid = timeSetEvent(buffer_length / num_blocks, timer_resolution,
 		TimeProc, reinterpret_cast<DWORD>(this), TIME_PERIODIC);
@@ -123,7 +123,7 @@ bool DriverDS::Init(SoundSource* s, HWND hwnd, uint rate, uint ch, uint buflen)
 }
 
 // ---------------------------------------------------------------------------
-//  å¾Œç‰‡ä»˜ã‘ -----------------------------------------------------------------
+//  Œã•Ğ•t‚¯ -----------------------------------------------------------------
 
 bool DriverDS::Cleanup()
 {
@@ -159,7 +159,7 @@ void CALLBACK DriverDS::TimeProc(UINT uid, UINT, DWORD_PTR user, DWORD_PTR, DWOR
 }
 
 // ---------------------------------------------------------------------------
-//  ãƒ–ãƒ­ãƒƒã‚¯é€ã‚‹ -------------------------------------------------------------
+//  ƒuƒƒbƒN‘—‚é -------------------------------------------------------------
 
 void DriverDS::Send()
 {
@@ -180,14 +180,14 @@ void DriverDS::Send()
 			restored = true;
 		}
 
-		// ä½ç½®å–å¾—
+		// ˆÊ’uæ“¾
 		DWORD cplay, cwrite;
 		lpdsb->GetCurrentPosition(&cplay, &cwrite);
 
 		if (cplay == nextwrite && !restored)
 			goto ret;
 
-		// æ›¸ãã“ã¿ã‚µã‚¤ã‚ºè¨ˆç®—
+		// ‘‚«‚±‚İƒTƒCƒYŒvZ
 		int writelength;
 		if (cplay < nextwrite)
 			writelength = cplay + buffersize - nextwrite;
@@ -208,7 +208,7 @@ void DriverDS::Send()
 									 (void**) &a1, &al1, (void**) &a2, &al2, 0))
 				goto ret;
 
-			// æ›¸ãã“ã¿
+			// ‘‚«‚±‚İ
 			
 	//		if (mixalways || !src->IsEmpty())
 			{
@@ -229,7 +229,7 @@ void DriverDS::Send()
 		if (restored)
 			lpdsb->Play(0, 0, DSBPLAY_LOOPING);
 
-		// çµ‚äº†
+		// I—¹
 ret:
 		InterlockedExchange(&sending, false);
 	}

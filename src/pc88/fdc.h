@@ -70,12 +70,12 @@ public:
 	bool IsBusy() { return phase != idlephase; }
 	
 	void IOCALL Reset(uint=0, uint=0);
-	void IOCALL DriveControl(uint, uint data);			// 2HD/2DD åˆ‡ã‚Šæ›¿ãˆã¨ã‹
-	void IOCALL MotorControl(uint, uint data) {}		// ãƒ¢ãƒ¼ã‚¿ãƒ¼åˆ¶å¾¡
-	void IOCALL SetData(uint, uint data);				// ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆ
+	void IOCALL DriveControl(uint, uint data);			// 2HD/2DD Ø‚è‘Ö‚¦‚Æ‚©
+	void IOCALL MotorControl(uint, uint data) {}		// ƒ‚[ƒ^[§Œä
+	void IOCALL SetData(uint, uint data);				// ƒf[ƒ^ƒZƒbƒg
 	uint IOCALL TC(uint);								// TC 
-	uint IOCALL Status(uint);							// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å…¥åŠ›
-	uint IOCALL GetData(uint);							// ãƒ‡ãƒ¼ã‚¿å–å¾—
+	uint IOCALL Status(uint);							// ƒXƒe[ƒ^ƒX“ü—Í
+	uint IOCALL GetData(uint);							// ƒf[ƒ^æ“¾
 
 	uint IFCALL GetStatusSize();
 	bool IFCALL SaveStatus(uint8* status);
@@ -112,14 +112,14 @@ private:
 		uint8 eot;
 		uint8 seekstate;
 		uint8 result;
-		uint8 status;			// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¬ã‚¸ã‚¹ã‚¿
-		uint8 command;			// ç¾åœ¨å‡¦ç†ä¸­ã®ã‚³ãƒãƒ³ãƒ‰
-		uint8 data;				// ãƒ‡ãƒ¼ã‚¿ãƒ¬ã‚¸ã‚¹ã‚¿
-		bool int_requested;		// SENCEINTSTATUS ã®å‘¼ã³å‡ºã—ã‚’è¦æ±‚ã—ãŸ
+		uint8 status;			// ƒXƒe[ƒ^ƒXƒŒƒWƒXƒ^
+		uint8 command;			// Œ»İˆ—’†‚ÌƒRƒ}ƒ“ƒh
+		uint8 data;				// ƒf[ƒ^ƒŒƒWƒXƒ^
+		bool int_requested;		// SENCEINTSTATUS ‚ÌŒÄ‚Ño‚µ‚ğ—v‹‚µ‚½
 		bool accepttc;
 		
 		uint bufptr;
-		uint count;			// Exec*Phase ã§ã®è»¢é€æ®‹ã‚Šãƒã‚¤ãƒˆ
+		uint count;			// Exec*Phase ‚Å‚Ì“]‘—c‚èƒoƒCƒg
 		Phase phase, prevphase;
 		Phase t_phase;
 
@@ -174,15 +174,15 @@ private:
 	Scheduler::Event* timerhandle;
 	uint seektime;
 	
-	uint status;			// ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¬ã‚¸ã‚¹ã‚¿
+	uint status;			// ƒXƒe[ƒ^ƒXƒŒƒWƒXƒ^
 	uint8* buffer;
 	uint8* bufptr;
-	int count;				// Exec*Phase ã§ã®è»¢é€æ®‹ã‚Šãƒã‚¤ãƒˆ
-	uint command;			// ç¾åœ¨å‡¦ç†ä¸­ã®ã‚³ãƒãƒ³ãƒ‰
-	uint data;				// ãƒ‡ãƒ¼ã‚¿ãƒ¬ã‚¸ã‚¹ã‚¿
+	int count;				// Exec*Phase ‚Å‚Ì“]‘—c‚èƒoƒCƒg
+	uint command;			// Œ»İˆ—’†‚ÌƒRƒ}ƒ“ƒh
+	uint data;				// ƒf[ƒ^ƒŒƒWƒXƒ^
 	Phase phase, prevphase;
 	Phase t_phase;
-	bool int_requested;		// SENCEINTSTATUS ã®å‘¼ã³å‡ºã—ã‚’è¦æ±‚ã—ãŸ
+	bool int_requested;		// SENCEINTSTATUS ‚ÌŒÄ‚Ño‚µ‚ğ—v‹‚µ‚½
 	bool accepttc;
 	bool showstatus;
 	

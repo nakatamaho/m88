@@ -12,7 +12,7 @@
 //	MemoryBus inline funcitions
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒ³ã‚¯æ›¸ãè¾¼ã¿ã«ãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
+//	ƒoƒ“ƒN‘‚«‚İ‚Éƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
 //
 inline void MemoryBus::SetWriteMemory(uint addr, void* ptr)
 {
@@ -21,7 +21,7 @@ inline void MemoryBus::SetWriteMemory(uint addr, void* ptr)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒ³ã‚¯èª­ã¿è¾¼ã¿ã«ãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
+//	ƒoƒ“ƒN“Ç‚İ‚İ‚Éƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
 //
 inline void MemoryBus::SetReadMemory(uint addr, void* ptr)
 {
@@ -30,7 +30,7 @@ inline void MemoryBus::SetReadMemory(uint addr, void* ptr)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒ³ã‚¯èª­ã¿æ›¸ãã«ãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
+//	ƒoƒ“ƒN“Ç‚İ‘‚«‚Éƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
 //
 inline void MemoryBus::SetMemory(uint addr, void* ptr)
 {
@@ -41,7 +41,7 @@ inline void MemoryBus::SetMemory(uint addr, void* ptr)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒ³ã‚¯èª­ã¿æ›¸ãã«é–¢æ•°ã‚’å‰²ã‚Šå½“ã¦ã‚‹
+//	ƒoƒ“ƒN“Ç‚İ‘‚«‚ÉŠÖ”‚ğŠ„‚è“–‚Ä‚é
 //
 inline void MemoryBus::SetFunc(uint addr, void* inst, ReadFuncPtr rd, WriteFuncPtr wr)
 {
@@ -54,8 +54,8 @@ inline void MemoryBus::SetFunc(uint addr, void* inst, ReadFuncPtr rd, WriteFuncP
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯æ›¸ãè¾¼ã¿ã«é€£ç¶šã—ãŸãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
-//	npages ã¯å›ºå®šã®æ–¹ãŒå¥½ã¾ã—ã„ã‹ã‚‚
+//	•¡”‚Ìƒoƒ“ƒN‘‚«‚İ‚É˜A‘±‚µ‚½ƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
+//	npages ‚ÍŒÅ’è‚Ì•û‚ªD‚Ü‚µ‚¢‚©‚à
 //
 inline void MemoryBus::SetWriteMemorys(uint addr, uint length, uint8* ptr)
 {
@@ -93,8 +93,8 @@ inline void MemoryBus::SetWriteMemorys(uint addr, uint length, uint8* ptr)
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯æ›¸ãè¾¼ã¿ã«é€£ç¶šã—ãŸãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
-//	æ‰€æœ‰è€…ãƒã‚§ãƒƒã‚¯ä»˜ã
+//	•¡”‚Ìƒoƒ“ƒN‘‚«‚İ‚É˜A‘±‚µ‚½ƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
+//	Š—LÒƒ`ƒFƒbƒN•t‚«
 //
 inline void MemoryBus::SetWriteMemorys2(uint addr, uint length, uint8* ptr, void* inst)
 {
@@ -115,8 +115,8 @@ inline void MemoryBus::SetWriteMemorys2(uint addr, uint length, uint8* ptr, void
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯èª­ã¿è¾¼ã¿ã«é€£ç¶šã—ãŸãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
-//	npages ã¯å›ºå®šã®æ–¹ãŒå¥½ã¾ã—ã„ã‹ã‚‚
+//	•¡”‚Ìƒoƒ“ƒN“Ç‚İ‚İ‚É˜A‘±‚µ‚½ƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
+//	npages ‚ÍŒÅ’è‚Ì•û‚ªD‚Ü‚µ‚¢‚©‚à
 //
 inline void MemoryBus::SetReadMemorys(uint addr, uint length, uint8* ptr)
 {
@@ -154,8 +154,8 @@ inline void MemoryBus::SetReadMemorys(uint addr, uint length, uint8* ptr)
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯èª­ã¿è¾¼ã¿ã«é€£ç¶šã—ãŸãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
-//	npages ã¯å›ºå®šã®æ–¹ãŒå¥½ã¾ã—ã„ã‹ã‚‚
+//	•¡”‚Ìƒoƒ“ƒN“Ç‚İ‚İ‚É˜A‘±‚µ‚½ƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
+//	npages ‚ÍŒÅ’è‚Ì•û‚ªD‚Ü‚µ‚¢‚©‚à
 //
 inline void MemoryBus::SetReadMemorys2(uint addr, uint length, uint8* ptr, void* inst)
 {
@@ -176,8 +176,8 @@ inline void MemoryBus::SetReadMemorys2(uint addr, uint length, uint8* ptr, void*
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯èª­ã¿æ›¸ãã«é€£ç¶šã—ãŸãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
-//	npages ã¯å›ºå®šã®æ–¹ãŒå¥½ã¾ã—ã„ã‹ã‚‚
+//	•¡”‚Ìƒoƒ“ƒN“Ç‚İ‘‚«‚É˜A‘±‚µ‚½ƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
+//	npages ‚ÍŒÅ’è‚Ì•û‚ªD‚Ü‚µ‚¢‚©‚à
 //
 inline void MemoryBus::SetMemorys(uint addr, uint length, uint8* ptr)
 {
@@ -219,8 +219,8 @@ inline void MemoryBus::SetMemorys(uint addr, uint length, uint8* ptr)
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯èª­ã¿æ›¸ãã«é€£ç¶šã—ãŸãƒ¡ãƒ¢ãƒªã‚’å‰²ã‚Šå½“ã¦ã‚‹
-//	npages ã¯å›ºå®šã®æ–¹ãŒå¥½ã¾ã—ã„ã‹ã‚‚
+//	•¡”‚Ìƒoƒ“ƒN“Ç‚İ‘‚«‚É˜A‘±‚µ‚½ƒƒ‚ƒŠ‚ğŠ„‚è“–‚Ä‚é
+//	npages ‚ÍŒÅ’è‚Ì•û‚ªD‚Ü‚µ‚¢‚©‚à
 //
 inline void MemoryBus::SetMemorys2(uint addr, uint length, uint8* ptr, void* inst)
 {
@@ -243,8 +243,8 @@ inline void MemoryBus::SetMemorys2(uint addr, uint length, uint8* ptr, void* ins
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯èª­ã¿æ›¸ãã«é–¢æ•°ã‚’å‰²ã‚Šå½“ã¦ã‚‹
-//	npages ã¯å›ºå®šã®æ–¹ãŒå¥½ã¾ã—ã„ã‹ã‚‚
+//	•¡”‚Ìƒoƒ“ƒN“Ç‚İ‘‚«‚ÉŠÖ”‚ğŠ„‚è“–‚Ä‚é
+//	npages ‚ÍŒÅ’è‚Ì•û‚ªD‚Ü‚µ‚¢‚©‚à
 //
 inline void MemoryBus::SetFuncs(uint addr, uint length, void* inst, ReadFuncPtr rd, WriteFuncPtr wr)
 {
@@ -288,7 +288,7 @@ inline void MemoryBus::SetFuncs(uint addr, uint length, void* inst, ReadFuncPtr 
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯èª­ã¿æ›¸ãã«é–¢æ•°ã‚’å‰²ã‚Šå½“ã¦ã‚‹
+//	•¡”‚Ìƒoƒ“ƒN“Ç‚İ‘‚«‚ÉŠÖ”‚ğŠ„‚è“–‚Ä‚é
 //
 inline void MemoryBus::SetFuncs2(uint addr, uint length, void* inst, ReadFuncPtr rd, WriteFuncPtr wr)
 {
@@ -321,7 +321,7 @@ inline void MemoryBus::SetFuncs2(uint addr, uint length, void* inst, ReadFuncPtr
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒ³ã‚¯ã‚¢ã‚¯ã‚»ã‚¹ã®ã‚¦ã‚§ã‚¤ãƒˆã‚’è¨­å®šã™ã‚‹
+//	ƒoƒ“ƒNƒAƒNƒZƒX‚ÌƒEƒFƒCƒg‚ğİ’è‚·‚é
 //
 inline void MemoryBus::SetWait(uint addr, uint wait)
 {
@@ -329,8 +329,8 @@ inline void MemoryBus::SetWait(uint addr, uint wait)
 }
 
 // ---------------------------------------------------------------------------
-//	è¤‡æ•°ã®ãƒãƒ³ã‚¯ã«å¯¾ã™ã‚‹ã‚¦ã‚§ã‚¤ãƒˆã‚’è¨­å®šã™ã‚‹
-//	npages ã¯å›ºå®šã®æ–¹ãŒå¥½ã¾ã—ã„ã‹ã‚‚
+//	•¡”‚Ìƒoƒ“ƒN‚É‘Î‚·‚éƒEƒFƒCƒg‚ğİ’è‚·‚é
+//	npages ‚ÍŒÅ’è‚Ì•û‚ªD‚Ü‚µ‚¢‚©‚à
 //
 inline void MemoryBus::SetWaits(uint addr, uint length, uint wait)
 {
@@ -361,7 +361,7 @@ inline void MemoryBus::SetWaits(uint addr, uint length, uint wait)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒšãƒ¼ã‚¸ã«å¯¾ã—ã¦æ‰€æœ‰æ¨©ã‚’è¨­å®šã™ã‚‹
+//	ƒy[ƒW‚É‘Î‚µ‚ÄŠ—LŒ ‚ğİ’è‚·‚é
 //
 inline void MemoryBus::SetReadOwner(uint addr, uint length, void* inst)
 {
@@ -375,7 +375,7 @@ inline void MemoryBus::SetReadOwner(uint addr, uint length, void* inst)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒšãƒ¼ã‚¸ã«å¯¾ã—ã¦æ‰€æœ‰æ¨©ã‚’è¨­å®šã™ã‚‹
+//	ƒy[ƒW‚É‘Î‚µ‚ÄŠ—LŒ ‚ğİ’è‚·‚é
 //
 inline void MemoryBus::SetWriteOwner(uint addr, uint length, void* inst)
 {
@@ -389,7 +389,7 @@ inline void MemoryBus::SetWriteOwner(uint addr, uint length, void* inst)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒšãƒ¼ã‚¸ã«å¯¾ã—ã¦æ‰€æœ‰æ¨©ã‚’è¨­å®šã™ã‚‹
+//	ƒy[ƒW‚É‘Î‚µ‚ÄŠ—LŒ ‚ğİ’è‚·‚é
 //
 inline void MemoryBus::SetOwner(uint addr, uint length, void* inst)
 {
@@ -406,7 +406,7 @@ inline void MemoryBus::SetOwner(uint addr, uint length, void* inst)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ¡ãƒ¢ãƒªã«å¯¾ã™ã‚‹æ›¸ãè¾¼ã¿
+//	ƒƒ‚ƒŠ‚É‘Î‚·‚é‘‚«‚İ
 //
 inline void MemoryBus::Write8(uint addr, uint data)
 {
@@ -418,7 +418,7 @@ inline void MemoryBus::Write8(uint addr, uint data)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ¡ãƒ¢ãƒªã‹ã‚‰ã®èª­ã¿è¾¼ã¿
+//	ƒƒ‚ƒŠ‚©‚ç‚Ì“Ç‚İ‚İ
 //
 inline uint MemoryBus::Read8(uint addr)
 {
@@ -430,7 +430,7 @@ inline uint MemoryBus::Read8(uint addr)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒšãƒ¼ã‚¸ãƒ†ãƒ¼ãƒ–ãƒ«ã®å–å¾—
+//	ƒy[ƒWƒe[ƒuƒ‹‚Ìæ“¾
 //
 inline const MemoryBus::Page* MemoryBus::GetPageTable()
 {

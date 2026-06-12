@@ -53,7 +53,7 @@ void SoundBuffer2::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒƒãƒ•ã‚¡ã«éŸ³ã‚’è¿½åŠ 
+//	ƒoƒbƒtƒ@‚É‰¹‚ğ’Ç‰Á
 //
 int SoundBuffer2::Fill(int samples)
 {
@@ -65,7 +65,7 @@ int SoundBuffer2::Fill(int samples)
 
 int SoundBuffer2::FillMain(int samples)
 {
-	// ãƒªãƒ³ã‚°ãƒãƒƒãƒ•ã‚¡ã®ç©ºãã‚’è¨ˆç®—
+	// ƒŠƒ“ƒOƒoƒbƒtƒ@‚Ì‹ó‚«‚ğŒvZ
 	int free = buffersize - GetAvail();
 
 	if (!fillwhenempty && (samples > free-1))
@@ -77,19 +77,19 @@ int SoundBuffer2::FillMain(int samples)
 			read -= buffersize;
 	}
 	
-	// æ›¸ãã“ã‚€ã¹ããƒ‡ãƒ¼ã‚¿é‡ã‚’è¨ˆç®—
+	// ‘‚«‚±‚Ş‚×‚«ƒf[ƒ^—Ê‚ğŒvZ
 	samples = Min(samples, free-1);
 	if (samples > 0)
 	{
-		// æ›¸ãã“ã‚€
+		// ‘‚«‚±‚Ş
 		if (buffersize - write >= samples)
 		{
-			// ä¸€åº¦ã§æ›¸ã‘ã‚‹å ´åˆ
+			// ˆê“x‚Å‘‚¯‚éê‡
 			source->Get(buffer + write * ch, samples);
 		}
 		else
 		{
-			// ï¼’åº¦ã«åˆ†ã‘ã¦æ›¸ãå ´åˆ
+			// ‚Q“x‚É•ª‚¯‚Ä‘‚­ê‡
 			source->Get(buffer + write * ch, buffersize - write);
 			source->Get(buffer, samples - (buffersize - write));
 		}
@@ -101,7 +101,7 @@ int SoundBuffer2::FillMain(int samples)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰éŸ³ã‚’è²°ã†
+//	ƒoƒbƒtƒ@‚©‚ç‰¹‚ğ–á‚¤
 //
 int SoundBuffer2::Get(Sample* dest, int samples)
 {
@@ -115,7 +115,7 @@ int SoundBuffer2::Get(Sample* dest, int samples)
 		
 		int avail = GetAvail();
 
-		// ä¾›çµ¦ä¸è¶³ãªã‚‰è¿½åŠ 
+		// ‹Ÿ‹‹•s‘«‚È‚ç’Ç‰Á
 		if (xsize <= avail || fillwhenempty)
 		{
 			if (xsize > avail)
@@ -144,7 +144,7 @@ int SoundBuffer2::Get(Sample* dest, int samples)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒƒãƒ•ã‚¡ãŒç©ºã‹ï¼Œç©ºã«è¿‘ã„çŠ¶æ…‹ã‹?
+//	ƒoƒbƒtƒ@‚ª‹ó‚©C‹ó‚É‹ß‚¢ó‘Ô‚©?
 //
 bool SoundBuffer2::IsEmpty()
 {

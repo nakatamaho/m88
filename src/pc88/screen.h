@@ -2,7 +2,7 @@
 //	M88 - PC-88 Emulator.
 //	Copyright (C) cisc 1997, 1999.
 // ---------------------------------------------------------------------------
-//  画面制御とグラフィックス画面合成
+//  ��ʐ���ƃO���t�B�b�N�X��ʍ���
 // ---------------------------------------------------------------------------
 //	$Id: screen.h,v 1.17 2003/09/28 14:35:35 cisc Exp $
 
@@ -15,12 +15,12 @@
 
 // ---------------------------------------------------------------------------
 //	color mode
-//	BITMAP BIT 配置		-- GG GR GB TE TG TR TB 
-//	ATTR BIT 配置		G  R  B  CG UL OL SE RE
+//	BITMAP BIT �z�u		-- GG GR GB TE TG TR TB 
+//	ATTR BIT �z�u		G  R  B  CG UL OL SE RE
 //
 //	b/w mode
-//	BITMAP BIT 配置		-- -- G  RE TE TG TB TR
-//	ATTR BIT 配置		G  R  B  CG UL OL SE RE
+//	BITMAP BIT �z�u		-- -- G  RE TE TG TB TR
+//	ATTR BIT �z�u		G  R  B  CG UL OL SE RE
 //
 namespace PC8801
 {
@@ -29,7 +29,7 @@ class Memory;
 class CRTC;
 
 // ---------------------------------------------------------------------------
-//	88 の画面に関するクラス
+//	88 �̉�ʂɊւ���N���X
 //
 class Screen : public Device
 {

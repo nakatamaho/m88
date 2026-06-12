@@ -17,7 +17,7 @@
 #define T88ID	"PC-8801 Tape Image(T88)"
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰
+//	\’z
 //
 TapeManager::TapeManager()
 : Device(DEV_ID('T','A','P','E')), tags(0), scheduler(0), event(0)
@@ -33,7 +33,7 @@ TapeManager::TapeManager()
 }
 
 // ---------------------------------------------------------------------------
-//	ç ´æ£„
+//	”jŠü
 //
 TapeManager::~TapeManager()
 {
@@ -41,7 +41,7 @@ TapeManager::~TapeManager()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool TapeManager::Init(Scheduler* s, IOBus* b, int pi)
 {
@@ -57,7 +57,7 @@ bool TapeManager::Init(Scheduler* s, IOBus* b, int pi)
 }
 	
 // ---------------------------------------------------------------------------
-//	T88 ã‚’é–‹ã
+//	T88 ‚ğŠJ‚­
 //
 bool TapeManager::Open(const char* file)
 {
@@ -67,13 +67,13 @@ bool TapeManager::Open(const char* file)
 	if (!fio.Open(file, FileIO::readonly))
 		return false;
 
-	// ãƒ˜ãƒƒãƒ€ç¢ºèª
+	// ƒwƒbƒ_Šm”F
 	char buf[24];
 	fio.Read(buf, 24);
 	if (memcmp(buf, T88ID, 24))
 		return false;
 
-	// ã‚¿ã‚°ã®ãƒªã‚¹ãƒˆæ§‹é€ ã‚’å±•é–‹
+	// ƒ^ƒO‚ÌƒŠƒXƒg\‘¢‚ğ“WŠJ
 	Tag* prv = 0;
 	do
 	{
@@ -102,7 +102,7 @@ bool TapeManager::Open(const char* file)
 }
 
 // ---------------------------------------------------------------------------
-//	ã¨ã˜ã‚‹
+//	‚Æ‚¶‚é
 //
 bool TapeManager::Close()
 {
@@ -118,7 +118,7 @@ bool TapeManager::Close()
 }
 
 // ---------------------------------------------------------------------------
-//	ã¾ãã‚‚ã©ã™
+//	‚Ü‚«‚à‚Ç‚·
 //
 bool TapeManager::Rewind(bool timer)
 {
@@ -128,8 +128,8 @@ bool TapeManager::Rewind(bool timer)
 	{
 		tick = 0;
 
-		// ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç¢ºèª
-		// æœ€åˆã®ã‚¿ã‚°ã¯ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚¿ã‚°ã«ãªã‚‹ã¯ãšï¼Ÿ
+		// ƒo[ƒWƒ‡ƒ“Šm”F
+		// Å‰‚Ìƒ^ƒO‚Íƒo[ƒWƒ‡ƒ“ƒ^ƒO‚É‚È‚é‚Í‚¸H
 		if (   pos->id != T_VERSION
 			|| pos->length < 2 
 			|| *(uint16*)pos->data != T88VER)
@@ -142,7 +142,7 @@ bool TapeManager::Rewind(bool timer)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ¢ãƒ¼ã‚¿
+//	ƒ‚[ƒ^
 //
 bool TapeManager::Motor(bool s)
 {
@@ -188,7 +188,7 @@ uint TapeManager::GetPos()
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚¿ã‚°ã‚’å‡¦ç†
+//	ƒ^ƒO‚ğˆ—
 //
 void TapeManager::Proceed(bool timer)
 {
@@ -271,7 +271,7 @@ void IOCALL TapeManager::Timer(uint)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚­ãƒ£ãƒªã‚¢ç¢ºèª
+//	ƒLƒƒƒŠƒAŠm”F
 //
 bool TapeManager::Carrier()
 {
@@ -284,7 +284,7 @@ bool TapeManager::Carrier()
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚¿ã‚¤ãƒãƒ¼æ›´æ–°
+//	ƒ^ƒCƒ}[XV
 //
 void TapeManager::SetTimer(int count)
 {
@@ -303,7 +303,7 @@ void TapeManager::SetTimer(int count)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒã‚¤ãƒˆè»¢é€
+//	ƒoƒCƒg“]‘—
 //
 inline void TapeManager::Send(uint byte)
 {
@@ -312,7 +312,7 @@ inline void TapeManager::Send(uint byte)
 }
 
 // ---------------------------------------------------------------------------
-//	å³åº§ã«ãƒ‡ãƒ¼ã‚¿ã‚’è¦æ±‚ã™ã‚‹
+//	‘¦À‚Éƒf[ƒ^‚ğ—v‹‚·‚é
 //
 void TapeManager::RequestData(uint, uint)
 {
@@ -323,7 +323,7 @@ void TapeManager::RequestData(uint, uint)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚·ãƒ¼ã‚¯ã™ã‚‹
+//	ƒV[ƒN‚·‚é
 //
 bool TapeManager::Seek(uint newpos, uint off)
 {
@@ -380,7 +380,7 @@ uint IOCALL TapeManager::In40(uint)
 
 
 // ---------------------------------------------------------------------------
-//	çŠ¶æ…‹ä¿å­˜
+//	ó‘Ô•Û‘¶
 //
 uint IFCALL TapeManager::GetStatusSize()
 {

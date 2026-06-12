@@ -2,8 +2,8 @@
 //  M88 - PC88 emulator
 //  Copyright (C) cisc 1998.
 // ---------------------------------------------------------------------------
-//	DirectDraw ã«ã‚ˆã‚‹ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ç”»é¢æç”»
-//	8bpp å°‚ç”¨(T-T
+//	DirectDraw ‚É‚æ‚éƒEƒCƒ“ƒhƒE‰æ–Ê•`‰æ
+//	8bpp ê—p(T-T
 // ---------------------------------------------------------------------------
 //	$Id: drawddw.cpp,v 1.11 2002/04/07 05:40:10 cisc Exp $
 
@@ -18,7 +18,7 @@
 #define RELCOM(x)  if (x) x->Release(), x=0; else 0
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰/æ¶ˆæ»…
+//	\’z/Á–Å
 //
 WinDrawDDW::WinDrawDDW()
 {
@@ -38,7 +38,7 @@ WinDrawDDW::~WinDrawDDW()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool WinDrawDDW::Init(HWND hwindow, uint w, uint h, GUID*)
 {
@@ -103,7 +103,7 @@ bool WinDrawDDW::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	DirectDraw2 æº–å‚™
+//	DirectDraw2 €”õ
 //
 bool WinDrawDDW::CreateDD2()
 {
@@ -115,12 +115,12 @@ bool WinDrawDDW::CreateDD2()
 }
 
 // ---------------------------------------------------------------------------
-//	Primary Surface ä½œæˆ
+//	Primary Surface ì¬
 //
 bool WinDrawDDW::CreateDDSPrimary()
 {
 	HRESULT hr;
-	// è¡¨ç¤ºã‚µãƒ¼ãƒ•ã‚§ã‚¹ã‚’ä½œæˆ
+	// •\¦ƒT[ƒtƒFƒX‚ğì¬
 	DDSURFACEDESC ddsd;
 	memset(&ddsd, 0, sizeof(DDSURFACEDESC));
 	ddsd.dwSize = sizeof(ddsd);
@@ -133,7 +133,7 @@ bool WinDrawDDW::CreateDDSPrimary()
 	if (hr != DD_OK)
 		return false;
 	
-	// ã‚¯ãƒªãƒƒãƒ‘ãƒ¼ã‚’ã¤ã‘ã‚‹
+	// ƒNƒŠƒbƒp[‚ğ‚Â‚¯‚é
 	RELCOM(ddcscrn);
 	hr = ddraw->CreateClipper(0, &ddcscrn, 0);
 	LOGDDERR("DirectDraw::CreateClipper()", hr);
@@ -150,7 +150,7 @@ bool WinDrawDDW::CreateDDSPrimary()
 }
 
 // ---------------------------------------------------------------------------
-//	ä½œæ¥­ç”¨ã‚µãƒ¼ãƒ•ã‚§ã‚¹ã‚’ä½œæˆ
+//	ì‹Æ—pƒT[ƒtƒFƒX‚ğì¬
 //
 bool WinDrawDDW::CreateDDSWork()
 {
@@ -176,7 +176,7 @@ bool WinDrawDDW::CreateDDSWork()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ‘ãƒ¬ãƒƒãƒˆæº–å‚™
+//	ƒpƒŒƒbƒg€”õ
 //
 bool WinDrawDDW::CreateDDPalette()
 {
@@ -209,7 +209,7 @@ bool WinDrawDDW::CreateDDPalette()
 }
 
 // ---------------------------------------------------------------------------
-//	æç”»
+//	•`‰æ
 //
 void WinDrawDDW::DrawScreen(const RECT& _rect, bool refresh)
 {
@@ -225,7 +225,7 @@ void WinDrawDDW::DrawScreen(const RECT& _rect, bool refresh)
 	if (refresh)
 		rect.left = 0, rect.right = width, rect.top = 0, rect.bottom = height;
 
-	// ä½œæ¥­é ˜åŸŸã‚’æ›´æ–°
+	// ì‹Æ—Ìˆæ‚ğXV
 	if (rect.top < rect.bottom)
 	{
 		HRESULT hr;
@@ -261,7 +261,7 @@ void WinDrawDDW::QueryNewPalette()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ‘ãƒ¬ãƒƒãƒˆã‚’è¨­å®š
+//	ƒpƒŒƒbƒg‚ğİ’è
 //
 void WinDrawDDW::SetPalette(PALETTEENTRY* pe, int i, int n)
 {
@@ -277,7 +277,7 @@ void WinDrawDDW::SetPalette(PALETTEENTRY* pe, int i, int n)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½¿ç”¨è¦æ±‚
+//	‰æ–ÊƒCƒ[ƒW‚Ìg—p—v‹
 //
 bool WinDrawDDW::Lock(uint8** pimage, int* pbpl)
 {
@@ -306,7 +306,7 @@ bool WinDrawDDW::Lock(uint8** pimage, int* pbpl)
 }
 
 // ---------------------------------------------------------------------------
-//	ç”»é¢ã‚¤ãƒ¡ãƒ¼ã‚¸ã®ä½¿ç”¨çµ‚äº†
+//	‰æ–ÊƒCƒ[ƒW‚Ìg—pI—¹
 //
 bool WinDrawDDW::Unlock()
 {
@@ -321,7 +321,7 @@ bool WinDrawDDW::Unlock()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒ­ã‚¹ãƒˆã—ãŸã‚µãƒ¼ãƒ•ã‚§ã‚¹ã‚’æˆ»ã™
+//	ƒƒXƒg‚µ‚½ƒT[ƒtƒFƒX‚ğ–ß‚·
 //
 bool WinDrawDDW::RestoreSurface()
 {

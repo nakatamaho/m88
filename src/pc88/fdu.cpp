@@ -14,7 +14,7 @@
 using namespace PC8801;
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰ãƒ»ç ´æ£„
+//	\’zE”jŠü
 //
 FDU::FDU()
 {
@@ -29,7 +29,7 @@ FDU::~FDU()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool FDU::Init(DiskManager* dm, int dr)
 {
@@ -40,7 +40,7 @@ bool FDU::Init(DiskManager* dm, int dr)
 
 // ---------------------------------------------------------------------------
 //	FDU::Mount
-//	ã‚¤ãƒ¡ãƒ¼ã‚¸ã‚’å‰²ã‚Šå½“ã¦ã‚‹ï¼ˆï¼ãƒ‰ãƒ©ã‚¤ãƒ–ã«ãƒ‡ã‚£ã‚¹ã‚¯ã‚’å…¥ã‚Œã‚‹ï¼‰
+//	ƒCƒ[ƒW‚ğŠ„‚è“–‚Ä‚éiƒhƒ‰ƒCƒu‚ÉƒfƒBƒXƒN‚ğ“ü‚ê‚éj
 //
 bool FDU::Mount(FloppyDisk* fd)
 {
@@ -61,7 +61,7 @@ bool FDU::Unmount()
 
 // ---------------------------------------------------------------------------
 //	FDU::SetHead
-//	ãƒ˜ãƒƒãƒ‰ã®æŒ‡å®š
+//	ƒwƒbƒh‚Ìw’è
 //
 inline void FDU::SetHead(uint hd)
 {
@@ -72,7 +72,7 @@ inline void FDU::SetHead(uint hd)
 
 // ---------------------------------------------------------------------------
 //	FDU::ReadID
-//	ã‚»ã‚¯ã‚¿ã‚’ä¸€å€‹ã¨ã£ã¦ãã‚‹
+//	ƒZƒNƒ^‚ğˆêŒÂ‚Æ‚Á‚Ä‚­‚é
 //
 uint FDU::ReadID(uint flags, IDR* id)
 {
@@ -100,9 +100,9 @@ uint FDU::ReadID(uint flags, IDR* id)
 
 // ---------------------------------------------------------------------------
 //	FDU::Seek
-//	æŒ‡å®šã•ã‚ŒãŸã‚·ãƒªãƒ³ãƒ€ãƒ¼ç•ªå·ã¸ã‚·ãƒ¼ã‚¯ã™ã‚‹
+//	w’è‚³‚ê‚½ƒVƒŠƒ“ƒ_[”Ô†‚ÖƒV[ƒN‚·‚é
 //
-//	cyrinder ã‚·ãƒ¼ã‚¯å…ˆ
+//	cyrinder ƒV[ƒNæ
 //
 uint FDU::Seek(uint cy)
 {
@@ -112,11 +112,11 @@ uint FDU::Seek(uint cy)
 
 // ---------------------------------------------------------------------------
 //	FDU::ReadSector
-//	ã‚»ã‚¯ã‚¿ã‚’èª­ã‚€
+//	ƒZƒNƒ^‚ğ“Ç‚Ş
 //
-//	head	ãƒ˜ãƒƒãƒ‰ç•ªå·
-//	id		èª­ã¿è¾¼ã‚€ã‚»ã‚¯ã‚¿ã®ã‚»ã‚¯ã‚¿ ID
-//	data	ãƒ‡ãƒ¼ã‚¿ã®è»¢é€å…ˆ
+//	head	ƒwƒbƒh”Ô†
+//	id		“Ç‚İ‚ŞƒZƒNƒ^‚ÌƒZƒNƒ^ ID
+//	data	ƒf[ƒ^‚Ì“]‘—æ
 //
 uint FDU::ReadSector(uint flags, IDR id, uint8* data)
 {
@@ -162,7 +162,7 @@ uint FDU::ReadSector(uint flags, IDR id, uint8* data)
 
 // ---------------------------------------------------------------------------
 //	FDU::WriteSector
-//	ã‚»ã‚¯ã‚¿ã«æ›¸ã
+//	ƒZƒNƒ^‚É‘‚­
 //
 uint FDU::WriteSector(uint flags, IDR id, const uint8* data, bool deleted)
 {
@@ -215,7 +215,7 @@ uint FDU::WriteSector(uint flags, IDR id, const uint8* data, bool deleted)
 
 // ---------------------------------------------------------------------------
 //	FDU::SenceDeviceStatus
-//	ãƒ‡ãƒã‚¤ã‚¹ãƒ»ã‚¹ã‚¿ãƒ¼ã‚¿ã‚¹ã‚’å¾—ã‚‹
+//	ƒfƒoƒCƒXEƒXƒ^[ƒ^ƒX‚ğ“¾‚é
 //
 uint FDU::SenceDeviceStatus()
 {
@@ -239,7 +239,7 @@ uint FDU::WriteID(uint flags, WIDDESC* wid)
 
 	SetHead(flags);
 
-	// ãƒˆãƒ©ãƒƒã‚¯ã‚µã‚¤ã‚ºè¨ˆç®—
+	// ƒgƒ‰ƒbƒNƒTƒCƒYŒvZ
 	uint sot = 0;
 	uint sos = 0x80 << Min(8, wid->n);
 
@@ -305,7 +305,7 @@ uint FDU::FindID(uint flags, IDR id)
 }
 
 // ---------------------------------------------------------------------------
-//	ReadDiag ç”¨ã®ãƒ‡ãƒ¼ã‚¿ä½œæˆ
+//	ReadDiag —p‚Ìƒf[ƒ^ì¬
 //
 uint FDU::MakeDiagData(uint flags, uint8* data, uint* size)
 {
@@ -326,7 +326,7 @@ uint FDU::MakeDiagData(uint flags, uint8* data, uint* size)
 	uint8* limit = data + capacity;
 	DiagInfo* diaginfo = (DiagInfo*) (data + 0x3800);
 
-	// ãƒ—ãƒªã‚¢ãƒ³ãƒ—ãƒ«
+	// ƒvƒŠƒAƒ“ƒvƒ‹
 	if (flags & 0x40)
 	{	// MFM
 		memset(dest    , 0x4e, 80);		// GAP4a
@@ -416,7 +416,7 @@ uint FDU::MakeDiagData(uint flags, uint8* data, uint* size)
 }
 
 // ---------------------------------------------------------------------------
-//	ReadDiag æœ¬ä½“
+//	ReadDiag –{‘Ì
 //
 uint FDU::ReadDiag(uint8* data, uint8** cursor, IDR idr)
 {

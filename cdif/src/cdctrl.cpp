@@ -16,7 +16,7 @@
 #define UM_CDCONTROL	(WM_USER + 0x500)
 
 // ---------------------------------------------------------------------------
-//	æ§‹ç¯‰ãƒ»ç ´æ£„
+//	\’zE”jŠü
 //
 CDControl::CDControl()
 {
@@ -29,7 +29,7 @@ CDControl::~CDControl()
 }
 
 // ---------------------------------------------------------------------------
-//	åˆæœŸåŒ–
+//	‰Šú‰»
 //
 bool CDControl::Init(CDROM* cd, Device* dev, DONEFUNC func)
 {
@@ -53,7 +53,7 @@ bool CDControl::Init(CDROM* cd, Device* dev, DONEFUNC func)
 }
 
 // ---------------------------------------------------------------------------
-//	å¾Œç‰‡ã¥ã‘
+//	Œã•Ğ‚Ã‚¯
 //
 void CDControl::Cleanup()
 {
@@ -75,7 +75,7 @@ void CDControl::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚³ãƒãƒ³ãƒ‰ã‚’å®Ÿè¡Œ
+//	ƒRƒ}ƒ“ƒh‚ğÀs
 //
 void CDControl::ExecCommand(uint cmd, uint arg1, uint arg2)
 {
@@ -152,7 +152,7 @@ void CDControl::ExecCommand(uint cmd, uint arg1, uint arg2)
 }
 
 // ---------------------------------------------------------------------------
-//	ç¾åœ¨ã®æ™‚é–“ã‚’æ±‚ã‚ã‚‹
+//	Œ»İ‚ÌŠÔ‚ğ‹‚ß‚é
 //
 uint CDControl::GetTime()
 {
@@ -167,7 +167,7 @@ uint CDControl::GetTime()
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚³ãƒãƒ³ãƒ‰ã‚’é€ã‚‹
+//	ƒRƒ}ƒ“ƒh‚ğ‘—‚é
 //
 bool CDControl::SendCommand(uint cmd, uint arg1, uint arg2)
 {
@@ -175,7 +175,7 @@ bool CDControl::SendCommand(uint cmd, uint arg1, uint arg2)
 }
 
 // ---------------------------------------------------------------------------
-//	ã‚¹ãƒ¬ãƒƒãƒ‰
+//	ƒXƒŒƒbƒh
 //
 uint CDControl::ThreadMain()
 {

@@ -51,7 +51,7 @@ void SoundBuffer::Cleanup()
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒƒãƒ•ã‚¡ã«éŸ³ã‚’è¿½åŠ 
+//	ƒoƒbƒtƒ@‚É‰¹‚ğ’Ç‰Á
 //
 void SoundBuffer::Put(int samples)
 {
@@ -62,7 +62,7 @@ void SoundBuffer::Put(int samples)
 
 void SoundBuffer::PutMain(int samples)
 {
-	// ãƒªãƒ³ã‚°ãƒãƒƒãƒ•ã‚¡ã®ç©ºãã‚’è¨ˆç®—
+	// ƒŠƒ“ƒOƒoƒbƒtƒ@‚Ì‹ó‚«‚ğŒvZ
 	int free;
 	if (read <= write)
 		free = buffersize + read - write;
@@ -78,19 +78,19 @@ void SoundBuffer::PutMain(int samples)
 			read -= buffersize;
 	}
 	
-	// æ›¸ãã“ã‚€ã¹ããƒ‡ãƒ¼ã‚¿é‡ã‚’è¨ˆç®—
+	// ‘‚«‚±‚Ş‚×‚«ƒf[ƒ^—Ê‚ğŒvZ
 	samples = Min(samples, free-1);
 	if (samples > 0)
 	{
-		// æ›¸ãã“ã‚€
+		// ‘‚«‚±‚Ş
 		if (buffersize - write >= samples)
 		{
-			// ä¸€åº¦ã§æ›¸ã‘ã‚‹å ´åˆ
+			// ˆê“x‚Å‘‚¯‚éê‡
 			Mix(buffer + write * ch, samples);
 		}
 		else
 		{
-			// ï¼’åº¦ã«åˆ†ã‘ã¦æ›¸ãå ´åˆ
+			// ‚Q“x‚É•ª‚¯‚Ä‘‚­ê‡
 			Mix(buffer + write * ch, buffersize - write, buffer, samples - (buffersize - write));
 		}
 		write += samples;
@@ -100,7 +100,7 @@ void SoundBuffer::PutMain(int samples)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒƒãƒ•ã‚¡ã‹ã‚‰éŸ³ã‚’è²°ã†
+//	ƒoƒbƒtƒ@‚©‚ç‰¹‚ğ–á‚¤
 //
 void SoundBuffer::Get(Sample* dest, int samples)
 {
@@ -117,7 +117,7 @@ void SoundBuffer::Get(Sample* dest, int samples)
 			else
 				avail = buffersize + write - read;
 
-			// ä¾›çµ¦ä¸è¶³ãªã‚‰è¿½åŠ 
+			// ‹Ÿ‹‹•s‘«‚È‚ç’Ç‰Á
 			if (xsize <= avail || fillwhenempty)
 			{
 				if (xsize > avail)
@@ -146,7 +146,7 @@ void SoundBuffer::Get(Sample* dest, int samples)
 }
 
 // ---------------------------------------------------------------------------
-//	ãƒãƒƒãƒ•ã‚¡ãŒç©ºã‹ï¼Œç©ºã«è¿‘ã„çŠ¶æ…‹ã‹?
+//	ƒoƒbƒtƒ@‚ª‹ó‚©C‹ó‚É‹ß‚¢ó‘Ô‚©?
 //
 bool SoundBuffer::IsEmpty()
 {

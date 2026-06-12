@@ -11,15 +11,15 @@
 #include "draw.h"
 
 // ---------------------------------------------------------------------------
-//	ä½¿ç”¨ã™ã‚‹ Z80 ã‚¨ãƒ³ã‚¸ãƒ³ã®ç¨®é¡ã‚’æ±ºã‚ã‚‹
-//	æ¨™æº–ã§ã¯ C++ ç‰ˆã® Z80 ã‚¨ãƒ³ã‚¸ãƒ³ã¯ Release ç‰ˆã§ã¯ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã—ãªã„è¨­å®šã«
-//	ãªã£ã¦ã„ã‚‹ã®ã§æ³¨æ„ï¼
+//	g—p‚·‚é Z80 ƒGƒ“ƒWƒ“‚Ìí—Ş‚ğŒˆ‚ß‚é
+//	•W€‚Å‚Í C++ ”Å‚Ì Z80 ƒGƒ“ƒWƒ“‚Í Release ”Å‚Å‚ÍƒRƒ“ƒpƒCƒ‹‚µ‚È‚¢İ’è‚É
+//	‚È‚Á‚Ä‚¢‚é‚Ì‚Å’ˆÓI
 //
 #ifdef USE_Z80_X86
-  #define 	CPU_Z80X86			// x86 ç‰ˆã® Z80 ã‚¨ãƒ³ã‚¸ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹
+  #define 	CPU_Z80X86			// x86 ”Å‚Ì Z80 ƒGƒ“ƒWƒ“‚ğg—p‚·‚é
 #endif
-//#define 	CPU_TEST			// 2 ã¤ã® Z80 ã‚¨ãƒ³ã‚¸ãƒ³ã‚’æ¯”è¼ƒå®Ÿè¡Œã™ã‚‹
-//#define 	CPU_DEBUG			// Z80 ã‚¨ãƒ³ã‚¸ãƒ³ãƒ†ã‚¹ãƒˆç”¨
+//#define 	CPU_TEST			// 2 ‚Â‚Ì Z80 ƒGƒ“ƒWƒ“‚ğ”äŠrÀs‚·‚é
+//#define 	CPU_DEBUG			// Z80 ƒGƒ“ƒWƒ“ƒeƒXƒg—p
 
 #ifdef CPU_Z80X86
  #include "Z80_x86.h"
@@ -36,7 +36,7 @@
 #endif
 
 // ---------------------------------------------------------------------------
-//	ä»®å®£è¨€
+//	‰¼éŒ¾
 //
 class DiskManager;
 class TapeManager;
@@ -63,7 +63,7 @@ namespace PC8801
 }
 
 // ---------------------------------------------------------------------------
-//	PC8801 ã‚¯ãƒ©ã‚¹
+//	PC8801 ƒNƒ‰ƒX
 //
 class PC88 : public Scheduler, public ICPUTime
 {
@@ -123,9 +123,9 @@ public:
 		pirq,			// IRQ
 		piack,			// interrupt acknowledgement
 		vrtc,			// vertical retrace
-		popnio,			// OPN ã®å…¥å‡ºåŠ›ãƒãƒ¼ãƒˆ 1
-		popnio2,		// OPN ã®å…¥å‡ºåŠ›ãƒãƒ¼ãƒˆ 2 (é€£ç•ª)
-		psioin,			// SIO é–¢ä¿‚
+		popnio,			// OPN ‚Ì“üo—Íƒ|[ƒg 1
+		popnio2,		// OPN ‚Ì“üo—Íƒ|[ƒg 2 (˜A”Ô)
+		psioin,			// SIO ŠÖŒW
 		psioreq,
 		ptimesync,
 		portend
@@ -135,7 +135,7 @@ public:
 		pres2 = 0x100,
 		pirq2,
 		piac2,
-		pfdstat,		// FD ã®å‹•ä½œçŠ¶æ³ (b0-1 = LAMP, b2-3 = MODE, b4=SEEK)
+		pfdstat,		// FD ‚Ì“®ìó‹µ (b0-1 = LAMP, b2-3 = MODE, b4=SEEK)
 		portend2
 	};
 

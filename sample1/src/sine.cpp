@@ -55,8 +55,8 @@ void IFCALL Sine::Mix(int32* dest, int length)
 	{
 		int a = (table[(pos >> 8) & 127] * volume) >> 8;
 		pos += step;
-		dest[0] += a;		// バッファには既に他の音源の合成結果が
-		dest[1] += a;			// 含まれているので「加算」すること！
+		dest[0] += a;		// �o�b�t�@�ɂ͊��ɑ��̉����̍������ʂ�
+		dest[1] += a;			// �܂܂�Ă���̂Łu���Z�v���邱�ƁI
 		dest += 2;
 	}
 }
