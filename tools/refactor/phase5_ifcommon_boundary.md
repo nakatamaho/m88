@@ -74,9 +74,31 @@ x86_64-w64-mingw32-g++ -c /tmp/m88_ifcommon_include.cpp -Isrc -Isrc/win32 -finpu
   - `i686-w64-mingw32-g++`: passed for `device.cpp`, `memmgr.cpp`, and `schedule.cpp`.
   - `x86_64-w64-mingw32-g++ -DNDEBUG`: passed for `device.cpp`, `memmgr.cpp`, and `schedule.cpp`.
   - `x86_64-w64-mingw32-g++` without `-DNDEBUG` failed for `device.cpp` because `device_i.h` has existing debug-only `assert(uint(ptr) ...)` pointer truncation casts. This is not changed in this step.
+- VS2008 / VC8 Express rebuild:
+  - Configuration: `Release|Win32`.
+  - Projects: `diskdrv`, `cdif`, `M88`.
+  - Result: success.
+  - Summary: `3` succeeded, `0` failed, `0` skipped.
+  - `diskdrv`: errors `0`, warnings `0`.
+  - `cdif`: errors `0`, warnings `0`.
+  - `M88`: errors `0`, warnings `6`.
+  - Converted files compiled without PCH C1010:
+    - `src/common/device.cpp`
+    - `src/common/memmgr.cpp`
+    - `src/common/schedule.cpp`
+  - Post-build `writetag`: success.
+  - Reported CRC: `42516106`.
 - Current `src/common` include state:
   - `core_headers.h`: `6` files.
   - `headers.h`: `3` files (`soundbuf.cpp`, `sndbuf2.cpp`, `srcbuf.cpp`).
+
+## Remaining Warnings
+
+- `src/common/srcbuf.cpp`: C4244 x4.
+- `src/pc88/crtc.cpp`: C4003 x1.
+- `src/pc88/crtc.cpp`: C4018 x1.
+
+These warnings match the known baseline warning pattern and were not introduced by the `ifcommon.h` boundary change.
 
 ## Behavior Preserved
 
@@ -88,7 +110,6 @@ x86_64-w64-mingw32-g++ -c /tmp/m88_ifcommon_include.cpp -Isrc -Isrc/win32 -finpu
 
 ## Not Verified
 
-- VS2008 / VC8 Express `Release|Win32` rebuild has not been run in this environment.
 - Runtime behavior has not been manually checked.
 
 ## Risks / Unknowns
