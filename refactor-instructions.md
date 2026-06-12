@@ -280,9 +280,9 @@
 - Why this is debt: 現代のツールチェーン (MinGW, clang, エディタ, grep) で文字化け・警告・誤変換の温床。ただし**実行時文字列とリソースは CP932 であることが仕様**である点に注意。
 - Impact: 全体。
 - Risk: コメントのみのファイル (約150) は低。文字列リテラル/.rc を含む 14 ファイルは**高** (表示文言のバイト列が変わる)。
-- Proposed improvement: Phase 1 でコメントのみのファイルに限定して UTF-8 (BOM なし) 化。14 ファイルと .dsp/.dsw 等は除外し manifest に記録。execution charset の扱い (`/execution-charset:shift_jis`, `-fexec-charset=CP932`) は Phase 7 の提案事項。
-- Verification: Phase 1.4 の機械的検証 (CP932 decode == UTF-8 decode の Unicode 一致、改行保存、ビルド通過)。
-- Implementation status: コメントのみファイル: **Safe to implement now** (Phase 1)。14 ファイル + .rc + .dsp: **Proposal only**
+- Proposed improvement: Phase 1 でコメントのみのファイルに限定した文字コード正規化を検討する。ただし VS2008 / VC8 Express は UTF-8 (BOM なし) を source charset として扱えず、コメント内 UTF-8 バイト列で C4819 warning だけでなく構文解析エラーを起こすことが実測されたため、**BOM 付き UTF-8 にするか、CP932 維持にするかを人間が決めるまで実施しない**。14 ファイルと .dsp/.dsw 等は除外し manifest に記録。execution charset の扱い (`/execution-charset:shift_jis`, `-fexec-charset=CP932`) は Phase 7 の提案事項。
+- Verification: Phase 1.4 の機械的検証 (CP932 decode == 変換後 decode の Unicode 一致、改行保存、ビルド通過)。VS2008 / VC8 Express で `Release|Win32` rebuild が baseline 同等に通ることを必須とする。
+- Implementation status: コメントのみファイル: **Blocked / Needs decision** (VS2008 対応方針: BOM 付き UTF-8 か CP932 維持か)。14 ファイル + .rc + .dsp: **Proposal only**
 
 ## Debt 6: `Z80_x86.cpp` — VC6 専用 32bit inline asm
 
@@ -402,7 +402,9 @@ CP932 ファイルを「コメントのみ」「文字列リテラル含む」�
 これらは**このフェーズでは変換しない** (Stop And Ask)。`.dsp`/`.dsw`/`HISTORY.TXT`/`readme.txt`/`diskdrv/*.asm` もツール互換・歴史的文書として除外を推奨 (除外理由を manifest に記録)。
 
 ### 1.3 変換ルール
-* CP932 と確認できたテキストのみ。UTF-8 (BOM なし) へ。
+* CP932 と確認できたテキストのみを対象候補にする。
+* **現時点では変換しない。** VS2008 / VC8 Express で UTF-8 (BOM なし) 変換後に C4819 warning と構文解析エラーが発生し、Phase 1 commit は revert 済み。
+* 再実施する場合は、事前に「BOM 付き UTF-8 にする」または「CP932 維持」を人間が選択すること。UTF-8 (BOM なし) は VS2008 / VC8 Express baseline を壊すため禁止。
 * 改行コード保存、file mode 不変、whitespace 整形・include 整理・rename・意味変更を混ぜない。
 * 変換スクリプトと manifest を記録。
 
@@ -415,13 +417,13 @@ CP932 ファイルを「コメントのみ」「文字列リテラル含む」�
 * ビルド通過 (環境があれば。なければ人間に依頼)。
 
 ### 1.5 build charset
-MSVC 既定では UTF-8 (BOM なし) ソースはシステムコードページで解釈されうるため、コメントのみの変換であっても `/source-charset:utf-8` (MSVC) / `-finput-charset=UTF-8` (MinGW) の追加が必要になる可能性がある。**build flag 追加は build 挙動変更なので、必要が確認された場合は提案に留めて質問する。** コメント内の CP932 バイトが MSVC でエラーになることは通常ないが、UTF-8 化後の日本語コメントが警告 C4819 を出す可能性がある — 出た場合は報告。
+MSVC 既定では UTF-8 (BOM なし) ソースはシステムコードページで解釈されうる。VS2008 / VC8 Express では、コメントのみの UTF-8 (BOM なし) 変換で実際に C4819 warning と構文解析エラー (`draw.h`, `timekeep.h`) が発生した。VS2008 には `/source-charset:utf-8` が無いため、build flag での解決は現実的でない。Phase 1 を再実施する場合は、BOM 付き UTF-8 を採用するか、CP932 維持とするかを先に決めること。**build flag 追加は build 挙動変更なので、必要が確認された場合は提案に留めて質問する。**
 
 ### 1.6 commit 方針
 文字コード変換のみの commit とし、message に: 変換ファイル数 / 判定基準 / 使用コマンド / 除外ファイル数と理由 / 検証結果 / 文字列リテラル・.rc の扱い、を記す。
 
 ### 1.7 Stop And Ask
-判定曖昧 / 文字列リテラル・文字リテラル・macro・.rc に非 ASCII / 実行時表示が変わりうる / charset 指定不明 / MSVC・MinGW 差 / warning 増加 / 外部由来 (zlib, fmgen, c86ctl.h) / generated 判定不能 / ライセンス不明。
+判定曖昧 / 文字列リテラル・文字リテラル・macro・.rc に非 ASCII / 実行時表示が変わりうる / charset 指定不明 / MSVC・MinGW 差 / warning 増加 / UTF-8 (BOM なし) 変換案 / BOM 付き UTF-8 と CP932 維持の判断未了 / 外部由来 (zlib, fmgen, c86ctl.h) / generated 判定不能 / ライセンス不明。
 
 ### 1.8 禁止事項
 rename、case-only rename、include path 変更、build system 変更、SDL2、Windows API 削除、コア変更、UI 文言変更、文字列リテラル変更、.rc 意味変更、フォーマッタ、warning 修正、dead code 削除。
