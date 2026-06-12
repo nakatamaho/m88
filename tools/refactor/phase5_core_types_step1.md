@@ -86,6 +86,11 @@ rg -n "core_types\\.h" M88_2008.vcproj M88.dsp src
   - `M88`: errors `0`, warnings `6`.
   - Post-build `writetag`: success.
   - Reported CRC: `21e2a91c`.
+- Manual runtime smoke:
+  - `M88.exe` launched successfully.
+  - Test game ran successfully.
+  - No new warning, dialog, or crash was observed.
+  - Audio was not checked.
 
 ## Remaining Warnings
 
@@ -105,10 +110,12 @@ These warnings match the known baseline warning pattern and were not introduced 
 - `MEMCALL` behavior is unchanged.
 - `ENDIAN_IS_SMALL` and `ALLOWBOUNDARYACCESS` remain in `src/win32/types.h`.
 - No runtime logic changed.
+- Basic startup and game execution still work in the tested `Release|Win32` build.
 
 ## Not Verified
 
-- Runtime behavior has not been manually checked after this step.
+- Audio behavior has not been manually checked after this step.
+- Full `docs/verification.md` checklist has not been completed.
 
 ## Risks / Unknowns
 
