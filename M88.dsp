@@ -604,15 +604,6 @@ SOURCE=.\src\pc88\tapemgr.h
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\src\win32\romeo\juliet.cpp
-# PROP Exclude_From_Build 1
-# End Source File
-# Begin Source File
-
-SOURCE=.\src\win32\romeo\juliet.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\src\win32\romeo\piccolo.cpp
 # End Source File
 # Begin Source File
