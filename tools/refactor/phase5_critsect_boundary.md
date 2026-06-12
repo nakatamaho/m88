@@ -69,6 +69,12 @@ rg -n '#include "core_headers\\.h"' src/common | wc -l
   - `i686-w64-mingw32-g++ -std=gnu++98`: passed for `soundbuf.cpp`, `sndbuf2.cpp`, and `srcbuf.cpp`.
   - `x86_64-w64-mingw32-g++ -std=gnu++98`: passed for `soundbuf.cpp`, `sndbuf2.cpp`, and `srcbuf.cpp`.
 - MinGW default C++ mode without `-std=gnu++98` failed because modern libstdc++ exposes `std::byte`, which conflicts with the Windows SDK `byte` typedef after `using namespace std;` from `core_headers.h`. This is not a VS2008 issue and is not fixed in this step.
+- VS2008 / VC8 Express rebuild:
+  - Configuration: `Release|Win32`.
+  - Result: success.
+- Manual runtime smoke:
+  - `M88.exe` launched.
+  - Runtime behavior was checked and worked.
 
 ## Behavior Preserved
 
@@ -77,11 +83,11 @@ rg -n '#include "core_headers\\.h"' src/common | wc -l
 - Sound buffer logic is unchanged.
 - Existing Windows PCH behavior remains for files outside the converted set.
 - No runtime behavior was intentionally changed.
+- Basic runtime behavior still works in the tested `Release|Win32` build.
 
 ## Not Verified
 
-- VS2008 / VC8 Express `Release|Win32` rebuild has not been run in this environment.
-- Runtime behavior has not been manually checked after this step.
+- Full `docs/verification.md` checklist has not been completed.
 
 ## Risks / Unknowns
 
