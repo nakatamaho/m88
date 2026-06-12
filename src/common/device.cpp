@@ -4,8 +4,7 @@
 // ---------------------------------------------------------------------------
 //	$Id: device.cpp,v 1.21 2000/06/20 23:53:03 cisc Exp $
 
-#include "headers.h"
-#pragma hdrstop
+#include "core_headers.h"
 
 #include "device.h"
 #include "device_i.h"

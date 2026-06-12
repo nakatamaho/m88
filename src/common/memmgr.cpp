@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------
 //	$Id: memmgr.cpp,v 1.4 1999/12/28 10:33:53 cisc Exp $
 
-#include "headers.h"
+#include "core_headers.h"
 #include "memmgr.h"
 #include "diag.h"
 

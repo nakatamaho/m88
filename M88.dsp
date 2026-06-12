@@ -155,6 +155,7 @@ SOURCE=.\src\Win32\pch.cpp
 # Begin Source File
 
 SOURCE=.\src\common\device.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 
@@ -198,6 +199,7 @@ SOURCE=.\src\common\lz77d.h
 # Begin Source File
 
 SOURCE=.\src\common\memmgr.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 
@@ -210,6 +212,7 @@ SOURCE=.\src\common\misc.h
 # Begin Source File
 
 SOURCE=.\src\common\schedule.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 

@@ -8,6 +8,7 @@
 
 #pragma once
 
+#include "if_platform.h"
 #include "types.h"
 
 #ifndef IFCALL
