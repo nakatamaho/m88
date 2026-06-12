@@ -76,6 +76,24 @@ rg -n "core_types\\.h" M88_2008.vcproj M88.dsp src
 - Phase 0 inventory was rerun after staging:
   - include case mismatch count: `0`.
   - vcproj missing references: `2` (`m88dev.html`, `memo.txt`, unchanged).
+- VS2008 / VC8 Express rebuild:
+  - Configuration: `Release|Win32`.
+  - Projects: `cdif`, `diskdrv`, `M88`.
+  - Result: success.
+  - Summary: `3` succeeded, `0` failed, `0` skipped.
+  - `cdif`: errors `0`, warnings `0`.
+  - `diskdrv`: errors `0`, warnings `0`.
+  - `M88`: errors `0`, warnings `6`.
+  - Post-build `writetag`: success.
+  - Reported CRC: `21e2a91c`.
+
+## Remaining Warnings
+
+- `src/common/srcbuf.cpp`: C4244 x4.
+- `src/pc88/crtc.cpp`: C4003 x1.
+- `src/pc88/crtc.cpp`: C4018 x1.
+
+These warnings match the known baseline warning pattern and were not introduced by the `core_types.h` split.
 
 ## Behavior Preserved
 
@@ -90,7 +108,6 @@ rg -n "core_types\\.h" M88_2008.vcproj M88.dsp src
 
 ## Not Verified
 
-- VS2008 / VC8 Express `Release|Win32` rebuild has not been run in this environment.
 - Runtime behavior has not been manually checked after this step.
 
 ## Risks / Unknowns
