@@ -9,6 +9,8 @@
 #ifndef Win32_CriticalSection_h
 #define Win32_CriticalSection_h
 
+#include <windows.h>
+
 class CriticalSection
 {
 public:

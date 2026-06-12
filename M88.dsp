@@ -221,6 +221,7 @@ SOURCE=.\src\common\schedule.h
 # Begin Source File
 
 SOURCE=.\src\common\sndbuf2.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 
@@ -229,6 +230,7 @@ SOURCE=.\src\common\sndbuf2.h
 # Begin Source File
 
 SOURCE=.\src\common\soundbuf.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 
@@ -241,6 +243,7 @@ SOURCE=.\src\common\soundsrc.h
 # Begin Source File
 
 SOURCE=.\src\common\srcbuf.cpp
+# SUBTRACT CPP /YX /Yc /Yu
 # End Source File
 # Begin Source File
 

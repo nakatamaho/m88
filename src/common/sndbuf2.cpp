@@ -1,6 +1,6 @@
 //	$Id: sndbuf2.cpp,v 1.2 2003/05/12 22:26:34 cisc Exp $
 
-#include "headers.h"
+#include "core_headers.h"
 #include "sndbuf2.h"
 #include "misc.h"
 
