@@ -8,7 +8,11 @@
 
 #if !defined(_WINDEF_) && !defined(_BASETSD_H_)
 	#if defined(_WIN64)
-		typedef __int64 LONG_PTR;
+		#if defined(_MSC_VER)
+			typedef __int64 LONG_PTR;
+		#else
+			typedef long long LONG_PTR;
+		#endif
 	#else
 		typedef long LONG_PTR;
 	#endif
