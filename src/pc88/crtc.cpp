@@ -14,7 +14,7 @@
 #include "schedule.h"
 #include "draw.h"
 #include "misc.h"
-#include "file.h"
+#include "fileio.h"
 #include "error.h"
 #include "status.h"
 

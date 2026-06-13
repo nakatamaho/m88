@@ -9,7 +9,7 @@
 //	MemoryPage size should be equal to or less than 0x400.
 
 #include "headers.h"
-#include "file.h"
+#include "fileio.h"
 #include "device.h"
 #include "device_i.h"
 #include "memmgr.h"
