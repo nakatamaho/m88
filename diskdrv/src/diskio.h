@@ -7,7 +7,7 @@
 #pragma once
 
 #include "device.h"
-#include "file.h"
+#include "fileio.h"
 
 namespace PC8801
 {
