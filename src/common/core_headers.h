@@ -18,7 +18,6 @@
 #include <utility>
 #include <vector>
 
-#include "core_abi.h"
 #include "types.h"
 
 using namespace std;
