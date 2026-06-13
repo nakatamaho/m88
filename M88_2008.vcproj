@@ -783,6 +783,10 @@
 				>
 			</File>
 			<File
+				RelativePath="src\common\fileio.h"
+				>
+			</File>
+			<File
 				RelativePath="src\common\draw.h"
 				>
 			</File>

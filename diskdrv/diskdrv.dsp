@@ -114,6 +114,10 @@ SOURCE=..\src\win32\file.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=..\src\common\fileio.h
+# End Source File
+# Begin Source File
+
 SOURCE=..\src\Win32\File.h
 # End Source File
 # Begin Source File

@@ -175,6 +175,10 @@ SOURCE=.\src\common\core_types.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\common\fileio.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\common\draw.h
 # End Source File
 # Begin Source File

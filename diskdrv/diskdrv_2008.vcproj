@@ -583,6 +583,10 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\common\fileio.h"
+			>
+		</File>
+		<File
 			RelativePath="..\src\Win32\File.h"
 			>
 		</File>
