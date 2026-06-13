@@ -6,7 +6,7 @@
 
 #include "headers.h"
 #include "tapemgr.h"
-#include "file.h"
+#include "fileio.h"
 #include "status.h"
 #include "misc.h"
 

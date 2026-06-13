@@ -8,7 +8,7 @@
 #include "device.h"
 #include "device_i.h"
 #include "subsys.h"
-#include "file.h"
+#include "fileio.h"
 #include "status.h"
 #include "memmgr.h"
 
