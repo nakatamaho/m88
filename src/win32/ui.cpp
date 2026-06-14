@@ -1843,7 +1843,7 @@ void WinUI::SaveSnapshot(int n)
 {
 	char name[MAX_PATH];
 	GetSnapshotName(name, n);
-	bool r = vmops ? vmops->SaveSnapshot(name) : core.SaveShapshot(name);
+	bool r = vmops ? vmops->SaveSnapshot(name) : false;
 	if (r)
 		statusdisplay.Show(80, 3000, "%s ‚É•Û‘¶‚µ‚Ü‚µ‚½", name);
 	else
@@ -1863,11 +1863,11 @@ void WinUI::LoadSnapshot(int n)
 	if (diskinfo[0].filename && diskmgr->GetNumDisks(0) >= 2)
 	{
 		OpenDiskImage(1, diskinfo[0].filename, diskinfo[0].readonly, 1, false);
-		r = vmops ? vmops->LoadSnapshot(name, diskinfo[0].filename) : core.LoadShapshot(name, diskinfo[0].filename);
+		r = vmops ? vmops->LoadSnapshot(name, diskinfo[0].filename) : false;
 	}
 	else
 	{
-		r = vmops ? vmops->LoadSnapshot(name, 0) : core.LoadShapshot(name, 0);
+		r = vmops ? vmops->LoadSnapshot(name, 0) : false;
 	}
 
 	if (r)
