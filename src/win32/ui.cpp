@@ -986,7 +986,10 @@ void WinUI::ApplyConfig()
 		config.flag2 &= ~(Config::mask0 | Config::mask1 | Config::mask2);
 	}
 		
-	core.ApplyConfig(&config);
+	if (vmops)
+		vmops->ApplyConfig(&config);
+	else
+		core.ApplyConfig(&config);
 	keyif.ApplyConfig(&config);
 	draw.SetPriorityLow((config.flags & Config::drawprioritylow) != 0);
 
