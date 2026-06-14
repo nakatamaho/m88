@@ -183,6 +183,10 @@ SOURCE=.\src\common\fileio.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\common\timekeeper.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\common\draw.h
 # End Source File
 # Begin Source File

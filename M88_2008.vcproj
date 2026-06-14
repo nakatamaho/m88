@@ -791,6 +791,10 @@
 				>
 			</File>
 			<File
+				RelativePath="src\common\timekeeper.h"
+				>
+			</File>
+			<File
 				RelativePath="src\common\draw.h"
 				>
 			</File>
