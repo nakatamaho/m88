@@ -10,6 +10,7 @@
 
 #include "types.h"
 #include "wincore.h"
+#include "vmops.h"
 #include "windraw.h"
 #include "WinKeyIF.h"
 #include "88config.h"
@@ -126,6 +127,7 @@ private:
 	uint mousebutton;
 	
 	WinCore core;
+	VMOperations* vmops;
 	WinDraw draw;
 	PC8801::WinKeyIF keyif;
 	PC8801::Config config;

@@ -41,7 +41,7 @@ using namespace PC8801;
 //
 WinUI::WinUI(HINSTANCE hinstance)
 : hinst(hinstance), hwnd(0), diskmgr(0), tapemgr(0),
-  fullscreen(false)
+  vmops(0), fullscreen(false)
 {
 	timerid = 0;
 	point.x = point.y = 0;
