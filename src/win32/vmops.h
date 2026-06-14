@@ -45,6 +45,7 @@ public:
 
 	bool SaveSnapshot(const char* path);
 	bool LoadSnapshot(const char* path, const char* diskPath);
+	void SetVolume(PC8801::Config* config);
 
 	PC8801::WinSound* GetSound();
 	long GetExecCount();

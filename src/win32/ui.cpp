@@ -1521,8 +1521,8 @@ LRESULT WinUI::WmExitMenuLoop(HWND, WPARAM wp, LPARAM)
 //
 LRESULT WinUI::M88ChangeVolume(HWND, WPARAM c, LPARAM)
 {
-	if (c)
-		core.SetVolume((PC8801::Config*) c);
+	if (c && vmops)
+		vmops->SetVolume((PC8801::Config*) c);
 	return 0;
 }
 

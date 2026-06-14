@@ -138,6 +138,12 @@ bool VMOperations::LoadSnapshot(const char* path, const char* diskPath)
 	return core ? core->LoadShapshot(path, diskPath) : false;
 }
 
+void VMOperations::SetVolume(PC8801::Config* config)
+{
+	if (core)
+		core->SetVolume(config);
+}
+
 PC8801::WinSound* VMOperations::GetSound()
 {
 	return core ? core->GetSound() : 0;
