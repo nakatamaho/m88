@@ -103,6 +103,19 @@ Then verify:
 - clean shutdown
 - no new warning dialog or crash
 
+## User-Side Verification Result
+
+User-side verification passed after commit:
+
+- `ae65dd3` `Route WinUI config apply through VM operations`
+
+Verified:
+
+- VS2008 / VC8 Express `Release|Win32` rebuild: OK
+- config-related light runtime check: OK
+- game launch / run: OK
+- snapshot save/load: OK
+
 ## Next Safe Step
 
 After user-side verification, the next small step is:
@@ -115,4 +128,3 @@ ask-before-reset dialog、keyif.ApplyConfig、WinCore/VMOperations 実装、
 disk/tape/snapshot/config/sound/monitor 呼び出し元変更は禁止。
 fallback は維持し、完了後 report を出せ。
 ```
-
