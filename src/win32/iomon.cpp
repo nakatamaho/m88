@@ -11,7 +11,6 @@
 #include "iomon.h"
 #include "misc.h"
 #include "device_i.h"
-#include "file.h"
 #include "winvars.h"
 #include "if/ifguid.h"
 
