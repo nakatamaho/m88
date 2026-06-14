@@ -169,6 +169,16 @@ bool VMOperations::IsSoundDumping()
 	return sound ? sound->IsDumping() : false;
 }
 
+int VMOperations::GetCPU1DumpState()
+{
+	return core ? core->GetCPU1()->GetDumpState() : -1;
+}
+
+int VMOperations::GetCPU2DumpState()
+{
+	return core ? core->GetCPU2()->GetDumpState() : -1;
+}
+
 void VMOperations::Lock()
 {
 	if (core)

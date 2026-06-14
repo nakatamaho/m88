@@ -52,6 +52,8 @@ public:
 	bool IsN80V2Supported();
 	bool IsCDSupported();
 	bool IsSoundDumping();
+	int GetCPU1DumpState();
+	int GetCPU2DumpState();
 	void Lock();
 	void Unlock();
 	void* QueryIF(REFIID iid);

@@ -910,10 +910,10 @@ LRESULT WinUI::WmInitMenu(HWND hwnd, WPARAM wp, LPARAM lp)
 	CheckMenuItem(hmenu, IDM_IOMON, iomon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_RECORDPCM, (vmops ? vmops->IsSoundDumping() : core.GetSound()->IsDumping()) ? MF_CHECKED : MF_UNCHECKED);
 	
-	EnableMenuItem(hmenu, IDM_DUMPCPU1, core.GetCPU1()->GetDumpState() == -1 ? MF_GRAYED : MF_ENABLED);
-	CheckMenuItem(hmenu, IDM_DUMPCPU1, core.GetCPU1()->GetDumpState() == 1 ? MF_CHECKED : MF_UNCHECKED);
-	EnableMenuItem(hmenu, IDM_DUMPCPU2, core.GetCPU2()->GetDumpState() == -1 ? MF_GRAYED : MF_ENABLED);
-	CheckMenuItem(hmenu, IDM_DUMPCPU2, core.GetCPU2()->GetDumpState() == 1 ? MF_CHECKED : MF_UNCHECKED);
+	EnableMenuItem(hmenu, IDM_DUMPCPU1, (vmops ? vmops->GetCPU1DumpState() : core.GetCPU1()->GetDumpState()) == -1 ? MF_GRAYED : MF_ENABLED);
+	CheckMenuItem(hmenu, IDM_DUMPCPU1, (vmops ? vmops->GetCPU1DumpState() : core.GetCPU1()->GetDumpState()) == 1 ? MF_CHECKED : MF_UNCHECKED);
+	EnableMenuItem(hmenu, IDM_DUMPCPU2, (vmops ? vmops->GetCPU2DumpState() : core.GetCPU2()->GetDumpState()) == -1 ? MF_GRAYED : MF_ENABLED);
+	CheckMenuItem(hmenu, IDM_DUMPCPU2, (vmops ? vmops->GetCPU2DumpState() : core.GetCPU2()->GetDumpState()) == 1 ? MF_CHECKED : MF_UNCHECKED);
 	
 	if (hmenudbg)
 	{
