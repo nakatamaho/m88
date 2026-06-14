@@ -946,6 +946,14 @@ SOURCE=.\src\win32\version.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\win32\vmops.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\src\win32\vmops.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\win32\wincfg.cpp
 # End Source File
 # Begin Source File
