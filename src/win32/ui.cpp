@@ -152,7 +152,7 @@ bool WinUI::InitM88(const char* cmdline)
 
 	//	エミュレーション開始
 	LOG1("%d\temulation begin\n", timeGetTime());
-	core.Wait(false);
+	vmops ? vmops->Start() : core.Wait(false);
 	active = true;
 	fullscreen = false;
 
