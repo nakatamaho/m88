@@ -6,7 +6,7 @@
 
 #include "headers.h"
 #include "ui.h"
-#include "file.h"
+#include <crtdbg.h>
 
 // ---------------------------------------------------------------------------
 
