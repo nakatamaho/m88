@@ -100,6 +100,26 @@ Results:
 - `IsN80V2Supported` and `IsCDSupported` remain direct to `core`.
 - Local MSVC/VC8 build was not run because this WSL environment does not provide Visual Studio.
 
+## User-Side Verification
+
+User-side verification after commit `bf16107`:
+
+```text
+VS2008 / VC8 Express Release|Win32 build: passed
+```
+
+Runtime smoke:
+
+- M88 launch: passed
+- menu open: passed
+- N80 mode enable/gray state: same as before
+- D88 game launch: passed
+- disk access: passed
+- sound: passed
+- snapshot save/load: passed
+- clean shutdown: passed
+- new warning/dialog/crash: none
+
 ## User-Side Verification Request
 
 Recommended:
