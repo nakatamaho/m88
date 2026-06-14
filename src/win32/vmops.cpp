@@ -12,7 +12,7 @@
 // ---------------------------------------------------------------------------
 
 VMOperations::VMOperations()
-: diskmgr(0), tapemgr(0)
+: core(0), diskmgr(0), tapemgr(0)
 {
 }
 
@@ -20,38 +20,56 @@ VMOperations::~VMOperations()
 {
 }
 
-bool VMOperations::Init
-(WinUI* ui, HWND hwnd, Draw* draw, DiskManager* disk,
- PC8801::WinKeyIF* keyb, IConfigPropBase* cpb, TapeManager* tape)
+void VMOperations::Bind(WinCore* c, DiskManager* disk, TapeManager* tape)
 {
+	core = c;
 	diskmgr = disk;
 	tapemgr = tape;
-	return core.Init(ui, hwnd, draw, disk, keyb, cpb, tape);
+}
+
+void VMOperations::Unbind()
+{
+	core = 0;
+	diskmgr = 0;
+	tapemgr = 0;
+}
+
+bool VMOperations::Init
+(WinUI*, HWND, Draw*, DiskManager* disk,
+ PC8801::WinKeyIF*, IConfigPropBase*, TapeManager* tape)
+{
+	Bind(0, disk, tape);
+	return false;
 }
 
 bool VMOperations::Cleanup()
 {
-	return core.Cleanup();
+	Unbind();
+	return true;
 }
 
 void VMOperations::Start()
 {
-	core.Wait(false);
+	if (core)
+		core->Wait(false);
 }
 
 void VMOperations::Stop()
 {
-	core.Wait(true);
+	if (core)
+		core->Wait(true);
 }
 
 void VMOperations::Reset()
 {
-	core.Reset();
+	if (core)
+		core->Reset();
 }
 
 void VMOperations::ApplyConfig(PC8801::Config* config)
 {
-	core.ApplyConfig(config);
+	if (core)
+		core->ApplyConfig(config);
 }
 
 bool VMOperations::MountDisk
@@ -112,35 +130,37 @@ bool VMOperations::IsTapeOpen()
 
 bool VMOperations::SaveSnapshot(const char* path)
 {
-	return core.SaveShapshot(path);
+	return core ? core->SaveShapshot(path) : false;
 }
 
 bool VMOperations::LoadSnapshot(const char* path, const char* diskPath)
 {
-	return core.LoadShapshot(path, diskPath);
+	return core ? core->LoadShapshot(path, diskPath) : false;
 }
 
 PC8801::WinSound* VMOperations::GetSound()
 {
-	return core.GetSound();
+	return core ? core->GetSound() : 0;
 }
 
 long VMOperations::GetExecCount()
 {
-	return core.GetExecCount();
+	return core ? core->GetExecCount() : 0;
 }
 
 void VMOperations::Lock()
 {
-	core.Lock();
+	if (core)
+		core->Lock();
 }
 
 void VMOperations::Unlock()
 {
-	core.Unlock();
+	if (core)
+		core->Unlock();
 }
 
 void* VMOperations::QueryIF(REFIID iid)
 {
-	return core.QueryIF(iid);
+	return core ? core->QueryIF(iid) : 0;
 }

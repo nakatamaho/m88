@@ -16,6 +16,10 @@ public:
 	VMOperations();
 	~VMOperations();
 
+	void Bind(WinCore* core, DiskManager* diskmgr, TapeManager* tapemgr);
+	void Unbind();
+	bool IsBound() const { return core != 0; }
+
 	bool Init(WinUI* ui, HWND hwnd, Draw* draw, DiskManager* diskmgr,
 			  PC8801::WinKeyIF* keyb, IConfigPropBase* cpb,
 			  TapeManager* tapemgr);
@@ -52,7 +56,7 @@ private:
 	VMOperations(const VMOperations&);
 	VMOperations& operator=(const VMOperations&);
 
-	WinCore core;
+	WinCore* core;
 	DiskManager* diskmgr;
 	TapeManager* tapemgr;
 };
