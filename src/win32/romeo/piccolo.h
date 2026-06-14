@@ -4,7 +4,7 @@
 #define incl_romeo_piccolo_h
 
 #include "types.h"
-#include "timekeep.h"
+#include "timekeeper.h"
 #include "CritSect.h"
 
 //	遅延送信対応 ROMEO ドライバ

@@ -10,7 +10,7 @@
 
 #include "types.h"
 #include "CritSect.h"
-#include "timekeep.h"
+#include "timekeeper.h"
 
 class PC88;
 
