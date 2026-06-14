@@ -133,14 +133,17 @@ bool WinUI::InitM88(const char* cmdline)
 	
 	//	debug 用クラス初期化
 	LOG1("%d\tmonitors\n", timeGetTime());
-	opnmon.Init(core.GetOPN1(), core.GetSound());
+	opnmon.Init(vmops ? vmops->GetOPN1() : core.GetOPN1(),
+			vmops ? vmops->GetSound() : core.GetSound());
 	memmon.Init(&core);
 	codemon.Init(&core);
 	basmon.Init(&core);
 	regmon.Init(&core);
 	loadmon.Init();
 	iomon.Init(&core);
-	core.GetSound()->SetSoundMonitor(&opnmon);
+	PC8801::WinSound* sound = vmops ? vmops->GetSound() : core.GetSound();
+	if (sound)
+		sound->SetSoundMonitor(&opnmon);
 
 	//	実行ファイル改変チェック
 	LOG1("%d\tself test\n", timeGetTime());
