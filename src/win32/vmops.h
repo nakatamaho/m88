@@ -20,7 +20,7 @@ public:
 	void Unbind();
 	bool IsBound() const { return core != 0; }
 
-	bool Init(WinUI* ui, HWND hwnd, Draw* draw, DiskManager* diskmgr,
+	bool Init(WinCore* core, WinUI* ui, HWND hwnd, Draw* draw, DiskManager* diskmgr,
 			  PC8801::WinKeyIF* keyb, IConfigPropBase* cpb,
 			  TapeManager* tapemgr);
 	bool Cleanup();

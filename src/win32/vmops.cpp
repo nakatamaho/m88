@@ -35,11 +35,14 @@ void VMOperations::Unbind()
 }
 
 bool VMOperations::Init
-(WinUI*, HWND, Draw*, DiskManager* disk,
- PC8801::WinKeyIF*, IConfigPropBase*, TapeManager* tape)
+(WinCore* pcore, WinUI* ui, HWND hwnd, Draw* draw, DiskManager* disk,
+ PC8801::WinKeyIF* keyb, IConfigPropBase* cpb, TapeManager* tape)
 {
-	Bind(0, disk, tape);
-	return false;
+	if (!pcore || !pcore->Init(ui, hwnd, draw, disk, keyb, cpb, tape))
+		return false;
+
+	Bind(pcore, disk, tape);
+	return true;
 }
 
 bool VMOperations::Cleanup()

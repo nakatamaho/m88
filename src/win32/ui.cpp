@@ -126,9 +126,8 @@ bool WinUI::InitM88(const char* cmdline)
 	if (!keyif.Init(hwnd))
 		return false;
 	LOG1("%d\tcore\n", timeGetTime());
-	if (!core.Init(this, hwnd, &draw, diskmgr, &keyif, &winconfig, tapemgr))
+	if (!vmops->Init(&core, this, hwnd, &draw, diskmgr, &keyif, &winconfig, tapemgr))
 		return false;
-	vmops->Bind(&core, diskmgr, tapemgr);
 
 	
 	//	debug 用クラス初期化
@@ -152,7 +151,7 @@ bool WinUI::InitM88(const char* cmdline)
 
 	//	エミュレーション開始
 	LOG1("%d\temulation begin\n", timeGetTime());
-	vmops ? vmops->Start() : core.Wait(false);
+	vmops->Start();
 	active = true;
 	fullscreen = false;
 
@@ -165,7 +164,7 @@ bool WinUI::InitM88(const char* cmdline)
 	
 	//	リセット
 	LOG1("%d\treset\n", timeGetTime());
-	vmops ? vmops->Reset() : core.Reset();
+	vmops->Reset();
 
 	// あとごちゃごちゃしたもの
 	LOG1("%d\tetc\n", timeGetTime());
@@ -190,8 +189,6 @@ void WinUI::CleanupM88()
 		delete vmops;
 		vmops = 0;
 	}
-	else
-		core.Cleanup();
 	delete diskmgr; diskmgr = 0;
 	delete tapemgr; tapemgr = 0;
 }
