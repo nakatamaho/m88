@@ -44,6 +44,9 @@ bool VMOperations::Init
 
 bool VMOperations::Cleanup()
 {
+	if (core)
+		core->Cleanup();
+
 	Unbind();
 	return true;
 }

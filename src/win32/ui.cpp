@@ -186,11 +186,12 @@ void WinUI::CleanupM88()
 	PC8801::SaveConfig(&cfg, m88ini, true);
 	if (vmops)
 	{
-		vmops->Unbind();
+		vmops->Cleanup();
 		delete vmops;
 		vmops = 0;
 	}
-	core.Cleanup();
+	else
+		core.Cleanup();
 	delete diskmgr; diskmgr = 0;
 	delete tapemgr; tapemgr = 0;
 }
