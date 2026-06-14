@@ -3,33 +3,52 @@
 ## Scope
 
 - Migrate `WinUI::WmInitMenu` read-only capability/state queries from fallback forms to `VMOperations`-oriented access.
-- Preserve menu behavior (`MF_ENABLED` / `MF_CHECKED`) semantics.
-- Keep snapshot/load/save, config/apply, lifecycle, monitor and mutating sound paths unchanged.
+- Keep snapshot/load/save, config/apply, lifecycle, monitor, and mutating sound paths unchanged.
+- Small implementation scope: no project-file changes.
 
 ## Baseline
 
-- Wm menu still had read-only calls reachable through `core.*` fallback combinations.
-- `VMOperations` already had wrappers and lifecycle ownership for the moved paths.
+- `WinUI::WmInitMenu` still had read-only menu-state reads via `core.*` fallback.
+- `VMOperations` already had wrappers available for the moved paths.
 - Local MSVC/VC8 build is not available in this WSL environment.
+- Existing untracked generated directories were left untouched:
+  - `cdif/debug/`
+  - `diskdrv/debug/`
 
 ## Changes
 
 In `src/win32/ui.cpp`:
 
-- `WinUI::WmInitMenu` capability/state read queries were updated to direct `vmops` wrapper calls:
-  - `vmops->IsN80Supported()`
-  - `vmops->IsN80V2Supported()`
-  - `vmops->IsCDSupported()`
-  - `vmops->IsSoundDumping()`
-  - `vmops->GetCPU1DumpState()`
-  - `vmops->GetCPU2DumpState()`
-- `WinUI::WmTimer` readout remains guard-safe with `vmops ? vmops->GetExecCount() : 0`.
+- `WinUI::WmTimer`
+  - `int icount = vmops ? vmops->GetExecCount() : core.GetExecCount();`
+  - changed to `int icount = vmops ? vmops->GetExecCount() : 0;`
+- `WinUI::WmInitMenu`
+  - Removed remaining `core` fallback by routing to `vmops` wrappers:
+    - `vmops->IsN80Supported()`
+    - `vmops->IsN80V2Supported()`
+    - `vmops->IsCDSupported()`
+    - `vmops->IsSoundDumping()`
+    - `vmops->GetCPU1DumpState()`
+    - `vmops->GetCPU2DumpState()`
 
 No other behavior or call paths were modified.
 
-## Verification Notes
+## Preserved / Intentionally Not Changed
 
-- `rg -n "core\.IsN80Supported|core\.IsN80V2Supported|core\.IsCDSupported|core\.GetSound\(\)->IsDumping|core\.GetCPU[12]\(\)->GetDumpState" src/win32/ui.cpp`
-  - expected: no matches remaining in `WmInitMenu`.
-- `git diff --check` expected to be clean for the touched ranges.
-- Runtime/build verification not executed in this environment.
+- snapshot save/load, `core.Init`, `core.Reset`, `core.Cleanup`
+- monitor initialization/wiring and mutating sound paths (`DumpBegin`, `DumpEnd`, `SetVolume`)
+- `WinCore` implementation and `VMOperations` implementation
+
+## Runtime Verification
+
+- Command: `tools\\windows\\build_vc2008.cmd Release`
+- Result:
+  - writetag CRC: output present
+  - M88 起動: OK
+  - メニュー open: OK
+  - D88ゲーム / disk access: OK
+  - 音: OK
+  - snapshot save/load: OK
+  - clean shutdown: OK
+  - 新規 warning/dialog/crash: none
+- Final: **all green**
