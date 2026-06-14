@@ -133,15 +133,15 @@ bool WinUI::InitM88(const char* cmdline)
 	
 	//	debug —pƒNƒ‰ƒX‰Šú‰»
 	LOG1("%d\tmonitors\n", timeGetTime());
-	opnmon.Init(vmops ? vmops->GetOPN1() : core.GetOPN1(),
-			vmops ? vmops->GetSound() : core.GetSound());
+	PC8801::OPNIF* opn1 = vmops ? vmops->GetOPN1() : 0;
+	PC8801::WinSound* sound = vmops ? vmops->GetSound() : 0;
+	opnmon.Init(opn1, sound);
 	memmon.Init(&core);
 	codemon.Init(&core);
 	basmon.Init(&core);
 	regmon.Init(&core);
 	loadmon.Init();
 	iomon.Init(&core);
-	PC8801::WinSound* sound = vmops ? vmops->GetSound() : core.GetSound();
 	if (sound)
 		sound->SetSoundMonitor(&opnmon);
 
@@ -322,7 +322,7 @@ int WinUI::Main(const char* cmdline)
 		DispatchMessage(&msg);
 	}
 
-	OPNIF* opn = vmops ? vmops->GetOPN1() : core.GetOPN1();
+	OPNIF* opn = vmops ? vmops->GetOPN1() : 0;
 	if (opn)
 		opn->Reset();
 	CleanupM88();
