@@ -149,6 +149,11 @@ PC8801::WinSound* VMOperations::GetSound()
 	return core ? core->GetSound() : 0;
 }
 
+PC8801::OPNIF* VMOperations::GetOPN1()
+{
+	return core ? core->GetOPN1() : 0;
+}
+
 long VMOperations::GetExecCount()
 {
 	return core ? core->GetExecCount() : 0;

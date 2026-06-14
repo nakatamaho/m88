@@ -318,7 +318,7 @@ int WinUI::Main(const char* cmdline)
 		DispatchMessage(&msg);
 	}
 
-	OPNIF* opn = core.GetOPN1();
+	OPNIF* opn = vmops ? vmops->GetOPN1() : core.GetOPN1();
 	if (opn)
 		opn->Reset();
 	CleanupM88();

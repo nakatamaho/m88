@@ -48,6 +48,7 @@ public:
 	void SetVolume(PC8801::Config* config);
 
 	PC8801::WinSound* GetSound();
+	PC8801::OPNIF* GetOPN1();
 	long GetExecCount();
 	bool IsN80Supported();
 	bool IsN80V2Supported();
