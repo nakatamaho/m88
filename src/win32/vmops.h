@@ -50,6 +50,7 @@ public:
 	long GetExecCount();
 	bool IsN80Supported();
 	bool IsN80V2Supported();
+	bool IsCDSupported();
 	void Lock();
 	void Unlock();
 	void* QueryIF(REFIID iid);

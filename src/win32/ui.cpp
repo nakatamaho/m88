@@ -893,7 +893,7 @@ LRESULT WinUI::WmInitMenu(HWND hwnd, WPARAM wp, LPARAM lp)
 	EnableMenuItem(hmenu, IDM_N80V2MODE, vmops ? (vmops->IsN80V2Supported() ? MF_ENABLED : MF_GRAYED) : (core.IsN80V2Supported() ? MF_ENABLED : MF_GRAYED));
 	
 	CheckMenuItem(hmenu, IDM_N88V2CD, (config.basicmode == Config::N88V2CD) ? MF_CHECKED : MF_UNCHECKED);
-	EnableMenuItem(hmenu, IDM_N88V2CD, core.IsCDSupported() ? MF_ENABLED : MF_GRAYED);
+	EnableMenuItem(hmenu, IDM_N88V2CD, vmops ? (vmops->IsCDSupported() ? MF_ENABLED : MF_GRAYED) : (core.IsCDSupported() ? MF_ENABLED : MF_GRAYED));
 
 	CheckMenuItem(hmenu, IDM_CPU_BURST, (config.flags & Config::cpuburst) ? MF_CHECKED : MF_UNCHECKED);
 
