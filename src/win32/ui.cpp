@@ -674,11 +674,12 @@ LRESULT WinUI::WmCommand(HWND hwnd, WPARAM wparam, LPARAM lparam)
 	case IDM_RECORDPCM:
 		if (!core.GetSound()->IsDumping())
 		{
-			char buf[16];
+			char buf[MAX_PATH];
 			SYSTEMTIME t;
 
 			GetLocalTime(&t);
-			wsprintf(buf, "%.2d%.2d%.2d%.2d.wav", t.wDay, t.wHour, t.wMinute, t.wSecond);
+			wsprintf(buf, "%s%.4d%.2d%.2d%.2d%.2d%.2d.wav",
+				m88dir, t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond);
 			core.GetSound()->DumpBegin(buf);
 		}
 		else
