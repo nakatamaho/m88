@@ -83,6 +83,25 @@ Results:
 - Source diff is limited to `WinUI::InitM88` and `WinUI::CleanupM88`.
 - Local MSVC/VC8 build was not run because this WSL environment does not provide Visual Studio.
 
+## User-Side Verification
+
+User-side verification after commit `11cce20`:
+
+```text
+VS2008 / VC8 Express Release|Win32 build: passed
+```
+
+Runtime smoke:
+
+- writetag CRC: appeared
+- M88 launch: passed
+- D88 game launch: passed
+- disk access: passed
+- sound: passed
+- snapshot save/load: passed
+- clean shutdown: passed
+- new warning/dialog/crash: none
+
 ## User-Side Verification Request
 
 Recommended:
