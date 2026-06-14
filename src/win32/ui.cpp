@@ -672,19 +672,25 @@ LRESULT WinUI::WmCommand(HWND hwnd, WPARAM wparam, LPARAM lparam)
 		break;
 
 	case IDM_RECORDPCM:
-		if (!core.GetSound()->IsDumping())
 		{
-			char buf[MAX_PATH];
-			SYSTEMTIME t;
+			PC8801::WinSound* sound = vmops ? vmops->GetSound() : 0;
+			if (sound)
+			{
+				if (!sound->IsDumping())
+				{
+					char buf[MAX_PATH];
+					SYSTEMTIME t;
 
-			GetLocalTime(&t);
-			wsprintf(buf, "%s%.4d%.2d%.2d%.2d%.2d%.2d.wav",
-				m88dir, t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond);
-			core.GetSound()->DumpBegin(buf);
-		}
-		else
-		{
-			core.GetSound()->DumpEnd();
+					GetLocalTime(&t);
+					wsprintf(buf, "%s%.4d%.2d%.2d%.2d%.2d%.2d.wav",
+						m88dir, t.wYear, t.wMonth, t.wDay, t.wHour, t.wMinute, t.wSecond);
+					sound->DumpBegin(buf);
+				}
+				else
+				{
+					sound->DumpEnd();
+				}
+			}
 		}
 		break;
 
