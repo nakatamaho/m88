@@ -10,7 +10,7 @@
 #include "memmon.h"
 #include "misc.h"
 #include "device_i.h"
-#include "file.h"
+#include "fileio.h"
 #include "winvars.h"
 #include "if/ifguid.h"
 
