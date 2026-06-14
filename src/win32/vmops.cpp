@@ -153,6 +153,11 @@ bool VMOperations::IsN80Supported()
 	return core ? core->IsN80Supported() : false;
 }
 
+bool VMOperations::IsN80V2Supported()
+{
+	return core ? core->IsN80V2Supported() : false;
+}
+
 void VMOperations::Lock()
 {
 	if (core)

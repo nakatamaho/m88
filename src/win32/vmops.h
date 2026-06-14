@@ -49,6 +49,7 @@ public:
 	PC8801::WinSound* GetSound();
 	long GetExecCount();
 	bool IsN80Supported();
+	bool IsN80V2Supported();
 	void Lock();
 	void Unlock();
 	void* QueryIF(REFIID iid);
