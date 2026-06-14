@@ -22,8 +22,9 @@ SDL2対応そのものはまだ実装していません。現在は、既存のW
 | FileIO / FileFinder境界 | 一部完了 | `FileIO`宣言を`src/common/fileio.h`へ分離し、`FileFinder`は`src/win32/filefinder.h`へ分けました。 |
 | CriticalSection境界 | 一部完了 | `src/common/core_critsect.h`を追加し、既存のWin32実装を維持したままinclude境界を作りました。 |
 | TimeKeeper境界 | 一部完了 | `TimeKeeper`宣言を`src/common/timekeeper.h`へ移し、Win32実装は従来通り維持しています。 |
-| WinCore / WinUI操作境界 | 進行中 | `VMOperations`を追加し、低リスクなread-only操作からWinUIの直接依存を少しずつ移しています。 |
-| 動作確認 | 継続中 | 起動、D88ゲーム、disk access、音、snapshot save/load、clean shutdownを都度確認しています。 |
+| WinCore / WinUI操作境界 | 一部完了 | `VMOperations`を追加し、`WmInitMenu`の低リスクなread-only状態取得を移しました。N80/N80V2/CD対応判定、PCM録音状態、CPU dump menu状態はVMOperations経由です。 |
+| PCM録音 | 一部改善 | 録音ファイルは`M88.exe`と同じディレクトリへ`YYYYMMDDhhmmss.wav`形式で作成するようにしました。 |
+| 動作確認 | 継続中 | 起動、D88ゲーム、disk access、音、PCM録音、snapshot save/load、clean shutdownを都度確認しています。 |
 
 以下は、rururutan氏による変更点です。
 
