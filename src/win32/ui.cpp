@@ -1854,7 +1854,8 @@ void WinUI::SaveSnapshot(int n)
 {
 	char name[MAX_PATH];
 	GetSnapshotName(name, n);
-	if (core.SaveShapshot(name))
+	bool r = vmops ? vmops->SaveSnapshot(name) : core.SaveShapshot(name);
+	if (r)
 		statusdisplay.Show(80, 3000, "%s ‚É•Û‘¶‚µ‚Ü‚µ‚½", name);
 	else
 		statusdisplay.Show(80, 3000, "%s ‚É•Û‘¶‚Å‚«‚Ü‚¹‚ñ", name);
