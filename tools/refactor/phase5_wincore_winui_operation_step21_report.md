@@ -98,6 +98,24 @@ Then verify:
 - clean shutdown
 - no new warning dialog or crash
 
+## User-Side Verification Result
+
+User-side verification after commit:
+
+- `892ca77` `Route WinUI snapshot save through VM operations`
+
+Verified:
+
+- VS2008 / VC8 Express `Release|Win32` rebuild: OK
+- snapshot save/load runtime check: OK
+
+Note:
+
+- A temporary beep sound anomaly was observed.
+- Reproducibility is unconfirmed.
+- This step did not change sound paths, but the observation should be kept in
+  the report before proceeding further into sound-related boundaries.
+
 ## Next Safe Step
 
 After user-side verification, the next small snapshot step is:
@@ -110,4 +128,3 @@ OpenDiskImage、diskinfo、status display、currentsnapshot、
 WinCore/VMOperations 実装、disk/tape/sound/lifecycle/monitor 変更は禁止。
 fallback は維持し、完了後 report を出せ。
 ```
-
