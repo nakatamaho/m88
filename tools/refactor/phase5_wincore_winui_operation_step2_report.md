@@ -139,6 +139,26 @@ Results:
 - `vmops.cpp` and `vmops.h` are referenced by both `M88_2008.vcproj` and `M88.dsp`.
 - Local MSVC/VC8 build was not run because this WSL environment does not provide Visual Studio.
 
+## User-Side Verification
+
+User-side verification after commit `1160f16`:
+
+```text
+VS2008 / VC8 Express Release|Win32 build: passed
+M88 build result: errors 0, warnings 6
+writetag CRC: e7e35ae9
+```
+
+Runtime smoke:
+
+- M88 launch: passed
+- D88 game launch: passed
+- disk access: passed
+- sound: passed
+- snapshot save/load: passed
+- clean shutdown: passed
+- new warning/dialog/crash: none
+
 ## User-Side Verification Request
 
 Recommended:
