@@ -7,6 +7,24 @@
 
 中田による変更部分のライセンスは、rururutan氏の追加部分と同じく2条項BSDライセンスです。
 
+## 移植ステータス
+
+SDL2対応そのものはまだ実装していません。現在は、既存のWindows版の挙動を保ったまま、Linux、Windows MinGW、macOS向けの移植に必要な境界を少しずつ作っている段階です。
+
+| 項目 | 現在の状態 | 備考 |
+|---|---|---|
+| 既存Windows版 | 維持 | Visual Studio 2008 / VC8 Express の Release Win32 ビルドと実行確認を継続しながら作業しています。 |
+| SDL2 backend | 未実装 | まずWin32依存を整理し、後からSDL2実装を追加できる構造にする方針です。 |
+| Linux / macOS | 未対応 | まだビルド対象ではありません。include境界、型定義、FileIO、TimeKeeperなどを段階的に整理中です。 |
+| Windows MinGW | 未対応 | `core_abi.h` などでMinGWを見据えた下準備を進めていますが、MinGWビルドはまだ成立していません。 |
+| 文字コード整理 | 保留 | VS2008がBOMなしUTF-8を誤読して壊れるため、CP932維持かBOM付きUTF-8化かは別判断にしています。 |
+| ファイル名・include整理 | 一部完了 | renameは避け、まずinclude文字列を実ファイル名に合わせる作業を進めました。 |
+| FileIO / FileFinder境界 | 一部完了 | `FileIO`宣言を`src/common/fileio.h`へ分離し、`FileFinder`は`src/win32/filefinder.h`へ分けました。 |
+| CriticalSection境界 | 一部完了 | `src/common/core_critsect.h`を追加し、既存のWin32実装を維持したままinclude境界を作りました。 |
+| TimeKeeper境界 | 一部完了 | `TimeKeeper`宣言を`src/common/timekeeper.h`へ移し、Win32実装は従来通り維持しています。 |
+| WinCore / WinUI操作境界 | 進行中 | `VMOperations`を追加し、低リスクなread-only操作からWinUIの直接依存を少しずつ移しています。 |
+| 動作確認 | 継続中 | 起動、D88ゲーム、disk access、音、snapshot save/load、clean shutdownを都度確認しています。 |
+
 以下は、rururutan氏による変更点です。
 
 * 最近のコンパイラでビルドできる様に修正。
