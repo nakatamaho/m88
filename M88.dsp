@@ -738,6 +738,10 @@ SOURCE=.\src\Win32\File.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\win32\filefinder.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\win32\filetest.cpp
 # End Source File
 # Begin Source File

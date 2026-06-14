@@ -4581,6 +4581,10 @@
 				>
 			</File>
 			<File
+				RelativePath="src\win32\filefinder.h"
+				>
+			</File>
+			<File
 				RelativePath="src\win32\filetest.cpp"
 				>
 				<FileConfiguration
