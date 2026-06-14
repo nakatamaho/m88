@@ -1040,8 +1040,14 @@ void WinUI::Reset()
 			return;
 	}
 	keyif.ApplyConfig(&config);
-	core.ApplyConfig(&config);
-	core.Reset();
+	if (vmops)
+		vmops->ApplyConfig(&config);
+	else
+		core.ApplyConfig(&config);
+	if (vmops)
+		vmops->Reset();
+	else
+		core.Reset();
 }
 
 
