@@ -907,7 +907,7 @@ LRESULT WinUI::WmInitMenu(HWND hwnd, WPARAM wp, LPARAM lp)
 	CheckMenuItem(hmenu, IDM_BASMON, basmon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_LOADMON, loadmon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_IOMON, iomon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
-	CheckMenuItem(hmenu, IDM_RECORDPCM, core.GetSound()->IsDumping() ? MF_CHECKED : MF_UNCHECKED);
+	CheckMenuItem(hmenu, IDM_RECORDPCM, (vmops ? vmops->IsSoundDumping() : core.GetSound()->IsDumping()) ? MF_CHECKED : MF_UNCHECKED);
 	
 	EnableMenuItem(hmenu, IDM_DUMPCPU1, core.GetCPU1()->GetDumpState() == -1 ? MF_GRAYED : MF_ENABLED);
 	CheckMenuItem(hmenu, IDM_DUMPCPU1, core.GetCPU1()->GetDumpState() == 1 ? MF_CHECKED : MF_UNCHECKED);

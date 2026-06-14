@@ -163,6 +163,12 @@ bool VMOperations::IsCDSupported()
 	return core ? core->IsCDSupported() : false;
 }
 
+bool VMOperations::IsSoundDumping()
+{
+	PC8801::WinSound* sound = core ? core->GetSound() : 0;
+	return sound ? sound->IsDumping() : false;
+}
+
 void VMOperations::Lock()
 {
 	if (core)

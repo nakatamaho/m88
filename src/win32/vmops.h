@@ -51,6 +51,7 @@ public:
 	bool IsN80Supported();
 	bool IsN80V2Supported();
 	bool IsCDSupported();
+	bool IsSoundDumping();
 	void Lock();
 	void Unlock();
 	void* QueryIF(REFIID iid);
