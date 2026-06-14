@@ -111,6 +111,32 @@ Then verify:
 - clean shutdown
 - no new warning dialog or crash
 
+## User-Side Verification Result
+
+User-side verification passed after commit:
+
+- `1fc838e` `Route CPU dump menu state through VM operations`
+
+Verified:
+
+- VS2008 / VC8 Express `Release|Win32` rebuild: OK
+- writetag CRC appears: OK
+- M88 launch: OK
+- open menu: OK
+- `Dump CPU1`: gray, same as before
+- `Dump CPU2`: gray, same as before
+- gray reason:
+  - `Release|Win32` uses the `Z80_x86` backend.
+  - `Z80_x86::GetDumpState()` returns `-1`.
+  - `-1` means dump unsupported, so the menu item is disabled/gray.
+- result: pass because this matches the previous behavior
+- D88 game launch: OK
+- disk access: OK
+- sound: OK
+- snapshot save/load: OK
+- clean shutdown: OK
+- new warning dialog or crash: none
+
 ## Next Safe Step
 
 After this, the low-risk `WmInitMenu` read-only `core.*` migrations are effectively complete.
