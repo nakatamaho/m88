@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CritSect.h"
+#include "core_critsect.h"
 #include "soundsrc.h"
 
 

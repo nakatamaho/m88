@@ -171,6 +171,10 @@ SOURCE=.\src\common\core_abi.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\src\common\core_critsect.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\src\common\core_types.h
 # End Source File
 # Begin Source File

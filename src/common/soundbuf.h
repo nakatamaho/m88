@@ -7,7 +7,7 @@
 #pragma once
 
 #include "types.h"
-#include "CritSect.h"
+#include "core_critsect.h"
 #include "if/ifcommon.h"
 
 // ---------------------------------------------------------------------------
