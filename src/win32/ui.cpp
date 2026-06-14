@@ -889,12 +889,12 @@ LRESULT WinUI::WmInitMenu(HWND hwnd, WPARAM wp, LPARAM lp)
 	CheckMenuItem(hmenu, IDM_N88V2, (config.basicmode == Config::N88V2) ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_NMODE, (config.basicmode == Config::N80)   ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_N80MODE, (config.basicmode == Config::N802)? MF_CHECKED : MF_UNCHECKED);
-	EnableMenuItem(hmenu, IDM_N80MODE, vmops ? (vmops->IsN80Supported() ? MF_ENABLED : MF_GRAYED) : (core.IsN80Supported() ? MF_ENABLED : MF_GRAYED));
+	EnableMenuItem(hmenu, IDM_N80MODE, vmops->IsN80Supported() ? MF_ENABLED : MF_GRAYED);
 	CheckMenuItem(hmenu, IDM_N80V2MODE, (config.basicmode == Config::N80V2)? MF_CHECKED : MF_UNCHECKED);
-	EnableMenuItem(hmenu, IDM_N80V2MODE, vmops ? (vmops->IsN80V2Supported() ? MF_ENABLED : MF_GRAYED) : (core.IsN80V2Supported() ? MF_ENABLED : MF_GRAYED));
+	EnableMenuItem(hmenu, IDM_N80V2MODE, vmops->IsN80V2Supported() ? MF_ENABLED : MF_GRAYED);
 	
 	CheckMenuItem(hmenu, IDM_N88V2CD, (config.basicmode == Config::N88V2CD) ? MF_CHECKED : MF_UNCHECKED);
-	EnableMenuItem(hmenu, IDM_N88V2CD, vmops ? (vmops->IsCDSupported() ? MF_ENABLED : MF_GRAYED) : (core.IsCDSupported() ? MF_ENABLED : MF_GRAYED));
+	EnableMenuItem(hmenu, IDM_N88V2CD, vmops->IsCDSupported() ? MF_ENABLED : MF_GRAYED);
 
 	CheckMenuItem(hmenu, IDM_CPU_BURST, (config.flags & Config::cpuburst) ? MF_CHECKED : MF_UNCHECKED);
 
@@ -908,12 +908,12 @@ LRESULT WinUI::WmInitMenu(HWND hwnd, WPARAM wp, LPARAM lp)
 	CheckMenuItem(hmenu, IDM_BASMON, basmon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_LOADMON, loadmon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_IOMON, iomon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
-	CheckMenuItem(hmenu, IDM_RECORDPCM, (vmops ? vmops->IsSoundDumping() : core.GetSound()->IsDumping()) ? MF_CHECKED : MF_UNCHECKED);
+	CheckMenuItem(hmenu, IDM_RECORDPCM, (vmops->IsSoundDumping()) ? MF_CHECKED : MF_UNCHECKED);
 	
-	EnableMenuItem(hmenu, IDM_DUMPCPU1, (vmops ? vmops->GetCPU1DumpState() : core.GetCPU1()->GetDumpState()) == -1 ? MF_GRAYED : MF_ENABLED);
-	CheckMenuItem(hmenu, IDM_DUMPCPU1, (vmops ? vmops->GetCPU1DumpState() : core.GetCPU1()->GetDumpState()) == 1 ? MF_CHECKED : MF_UNCHECKED);
-	EnableMenuItem(hmenu, IDM_DUMPCPU2, (vmops ? vmops->GetCPU2DumpState() : core.GetCPU2()->GetDumpState()) == -1 ? MF_GRAYED : MF_ENABLED);
-	CheckMenuItem(hmenu, IDM_DUMPCPU2, (vmops ? vmops->GetCPU2DumpState() : core.GetCPU2()->GetDumpState()) == 1 ? MF_CHECKED : MF_UNCHECKED);
+	EnableMenuItem(hmenu, IDM_DUMPCPU1, vmops->GetCPU1DumpState() == -1 ? MF_GRAYED : MF_ENABLED);
+	CheckMenuItem(hmenu, IDM_DUMPCPU1, vmops->GetCPU1DumpState() == 1 ? MF_CHECKED : MF_UNCHECKED);
+	EnableMenuItem(hmenu, IDM_DUMPCPU2, vmops->GetCPU2DumpState() == -1 ? MF_GRAYED : MF_ENABLED);
+	CheckMenuItem(hmenu, IDM_DUMPCPU2, vmops->GetCPU2DumpState() == 1 ? MF_CHECKED : MF_UNCHECKED);
 	
 	if (hmenudbg)
 	{
@@ -1874,11 +1874,11 @@ void WinUI::LoadSnapshot(int n)
 	if (diskinfo[0].filename && diskmgr->GetNumDisks(0) >= 2)
 	{
 		OpenDiskImage(1, diskinfo[0].filename, diskinfo[0].readonly, 1, false);
-		r = core.LoadShapshot(name, diskinfo[0].filename);
+		r = vmops ? vmops->LoadSnapshot(name, diskinfo[0].filename) : core.LoadShapshot(name, diskinfo[0].filename);
 	}
 	else
 	{
-		r = core.LoadShapshot(name, 0);
+		r = vmops ? vmops->LoadSnapshot(name, 0) : core.LoadShapshot(name, 0);
 	}
 
 	if (r)
