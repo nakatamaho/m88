@@ -91,6 +91,18 @@ Results:
 - `diskmgr->*`, `tapemgr->*`, snapshot, and config call sites remain unchanged.
 - Local MSVC/VC8 build was not run because this WSL environment does not provide Visual Studio.
 
+## User-Side Verification
+
+User-side verification after commit `559bc91`:
+
+```text
+VS2008 / VC8 Express Release|Win32 build: passed
+```
+
+Runtime smoke:
+
+- window title fps/MHz update: passed
+
 ## User-Side Verification Request
 
 Recommended:
