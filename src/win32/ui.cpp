@@ -984,8 +984,6 @@ void WinUI::ApplyConfig()
 		
 	if (vmops)
 		vmops->ApplyConfig(&config);
-	else
-		core.ApplyConfig(&config);
 	keyif.ApplyConfig(&config);
 	draw.SetPriorityLow((config.flags & Config::drawprioritylow) != 0);
 
@@ -1036,14 +1034,10 @@ void WinUI::Reset()
 			return;
 	}
 	keyif.ApplyConfig(&config);
-	if (vmops)
+	if (vmops) {
 		vmops->ApplyConfig(&config);
-	else
-		core.ApplyConfig(&config);
-	if (vmops)
 		vmops->Reset();
-	else
-		core.Reset();
+	}
 }
 
 
