@@ -148,6 +148,11 @@ long VMOperations::GetExecCount()
 	return core ? core->GetExecCount() : 0;
 }
 
+bool VMOperations::IsN80Supported()
+{
+	return core ? core->IsN80Supported() : false;
+}
+
 void VMOperations::Lock()
 {
 	if (core)
