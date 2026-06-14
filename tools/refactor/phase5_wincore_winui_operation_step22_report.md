@@ -2,23 +2,16 @@
 
 ## Scope
 
-- Route only `WinUI::LoadSnapshot()` to `VMOperations` via fallback form.
-- Keep logic and behavior unchanged for:
-  - disk handling and multi-disk selection
-  - status output
-  - snapshot bookkeeping
-  - WinCore/VMOperations internals
-- Do not touch `project` files.
+- Route only `WinUI::LoadSnapshot()` calls to `VMOperations` through fallback form.
+- Keep behavior unchanged for snapshot bookkeeping, error display, disk/image selection, and core/vmops implementations.
+- Do not touch project files.
 
 ## Baseline
 
-- Previous pushed commit before this step:
-  - `1754ad9` `Record snapshot save/load verification`
-- Previous local state:
-  - `src/win32/ui.cpp` already had `SaveSnapshot` through `VMOperations` with core fallback.
-  - `LoadSnapshot` still used direct `core.LoadShapshot(...)` in 2 places.
-- Local MSVC/VC8 build is not available in this environment.
-- Existing untracked generated dirs left untouched:
+- Snapshot save path had already been routed to `VMOperations`.
+- `WinUI::LoadSnapshot()` still had two direct `core.LoadShapshot(...)` calls.
+- Local MSVC/VC8 build is not available in this WSL environment.
+- Existing untracked generated directories were left untouched:
   - `cdif/debug/`
   - `diskdrv/debug/`
 
@@ -26,18 +19,18 @@
 
 In `src/win32/ui.cpp`, inside `WinUI::LoadSnapshot(int n)`:
 
-- `r = core.LoadShapshot(name, diskinfo[0].filename);`
-- `r = core.LoadShapshot(name, 0);`
+- `r = core.LoadShapshot(name, diskinfo[0].filename)`
+- `r = core.LoadShapshot(name, 0)`
 
-were replaced with:
+were changed to:
 
-- `r = vmops ? vmops->LoadSnapshot(name, diskinfo[0].filename) : core.LoadShapshot(name, diskinfo[0].filename);`
-- `r = vmops ? vmops->LoadSnapshot(name, 0) : core.LoadShapshot(name, 0);`
+- `r = vmops ? vmops->LoadSnapshot(name, diskinfo[0].filename) : core.LoadShapshot(name, diskinfo[0].filename)`
+- `r = vmops ? vmops->LoadSnapshot(name, 0) : core.LoadShapshot(name, 0)`
 
-No other statements were modified.
+No other `WinUI` logic changed.
 
 ## Verification Notes
 
-- `rg -n "LoadShapshot\(" src/win32/ui.cpp` now shows only the two fallback forms above.
-- `git diff --check` expected to be clean for whitespace/content-formatting.
-- No runtime/build verification executed in this environment.
+- `rg -n "LoadShapshot\(" src/win32/ui.cpp` now shows only routing through `vmops` with fallback to `core`.
+- No `git diff --check` issues in this step.
+- Runtime/build verification not executed in this environment (VC build is external).

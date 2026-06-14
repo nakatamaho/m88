@@ -833,7 +833,7 @@ LRESULT WinUI::WmTimer(HWND hwnd, WPARAM wparam, LPARAM lparam)
 	{
 		// 実効周波数,表示フレーム数を取得
 		int	fcount = draw.GetDrawCount();
-		int	icount = vmops ? vmops->GetExecCount() : core.GetExecCount();
+		int		icount = vmops ? vmops->GetExecCount() : 0;
 		
 		// レポートする場合はタイトルバーを更新
 		if (report)
@@ -909,21 +909,10 @@ LRESULT WinUI::WmInitMenu(HWND hwnd, WPARAM wp, LPARAM lp)
 	CheckMenuItem(hmenu, IDM_LOADMON, loadmon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_IOMON, iomon.IsOpen() ? MF_CHECKED : MF_UNCHECKED);
 	CheckMenuItem(hmenu, IDM_RECORDPCM, (vmops->IsSoundDumping()) ? MF_CHECKED : MF_UNCHECKED);
-	
 	EnableMenuItem(hmenu, IDM_DUMPCPU1, vmops->GetCPU1DumpState() == -1 ? MF_GRAYED : MF_ENABLED);
 	CheckMenuItem(hmenu, IDM_DUMPCPU1, vmops->GetCPU1DumpState() == 1 ? MF_CHECKED : MF_UNCHECKED);
 	EnableMenuItem(hmenu, IDM_DUMPCPU2, vmops->GetCPU2DumpState() == -1 ? MF_GRAYED : MF_ENABLED);
 	CheckMenuItem(hmenu, IDM_DUMPCPU2, vmops->GetCPU2DumpState() == 1 ? MF_CHECKED : MF_UNCHECKED);
-	
-	if (hmenudbg)
-	{
-		CheckMenuItem(hmenudbg, IDM_DEBUG_TEXT, (config.flags & Config::specialpalette) ? MF_CHECKED : MF_UNCHECKED);
-		int mask = (config.flag2 / Config::mask0) & 7;
-		CheckMenuItem(hmenudbg, IDM_DEBUG_GVRAM0, (mask & 1) ? MF_CHECKED : MF_UNCHECKED);
-		CheckMenuItem(hmenudbg, IDM_DEBUG_GVRAM1, (mask & 2) ? MF_CHECKED : MF_UNCHECKED);
-		CheckMenuItem(hmenudbg, IDM_DEBUG_GVRAM2, (mask & 4) ? MF_CHECKED : MF_UNCHECKED);
-	}
-
 	MakeSnapshotMenu();
 	return 0;
 }
