@@ -121,6 +121,20 @@ Then verify:
 - clean shutdown
 - no new warning dialog or crash
 
+## User-Side Verification Result
+
+User-side verification passed after commit:
+
+- `bac3fed` `Route WinUI reset through VM operations`
+
+Verified:
+
+- VS2008 / VC8 Express `Release|Win32` rebuild: OK
+- config-related light runtime check: OK
+- reset path light runtime check: OK
+- game launch / run: OK
+- snapshot save/load: OK
+
 ## Next Safe Step
 
 After user-side verification, the remaining direct `core.*` calls in `WinUI`
@@ -140,4 +154,3 @@ WinUI に残る snapshot save/load、sound mutating、lifecycle、monitor initia
 core.* 呼び出しを再確認し、次に実装してよい低リスク候補を report しろ。
 実装はするな。
 ```
-
