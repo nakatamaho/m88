@@ -120,6 +120,31 @@ Then verify:
 - clean shutdown
 - no new warning dialog or crash
 
+## User-Side Verification Result
+
+User-side verification passed after commits:
+
+- `8099f28` `Route PCM dump menu state through VM operations`
+- `530b3b2` `Write PCM dumps beside M88 executable`
+
+Verified:
+
+- writetag CRC appears
+- M88 launch: OK
+- D88 game launch: OK
+- sound: OK
+- PCM recording output file is created: OK
+- PCM recording output location: same directory as `M88.exe`
+- PCM recording output filename format: `YYYYMMDDhhmmss.wav`
+- menu while PCM recording is not active:
+  - `Record PCM` is unchecked
+- menu while PCM recording is active:
+  - `Record PCM` is checked
+- PCM recording stop: OK
+- snapshot save/load: OK
+- clean shutdown: OK
+- new warning dialog or crash: none
+
 ## Next Safe Step
 
 If this builds and runs, the next isolated read-only migration can be CPU dump menu state:
