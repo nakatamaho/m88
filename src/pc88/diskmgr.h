@@ -9,7 +9,7 @@
 #include "floppy.h"
 #include "fileio.h"
 #include "fdu.h"
-#include "CritSect.h"
+#include "core_critsect.h"
 
 namespace D88
 {

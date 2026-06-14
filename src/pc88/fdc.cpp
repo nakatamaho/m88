@@ -11,7 +11,7 @@
 #include "fdc.h"
 #include "fdu.h"
 #include "misc.h"
-#include "CritSect.h"
+#include "core_critsect.h"
 #include "diskmgr.h"
 #include "status.h"
 #include "config.h"
