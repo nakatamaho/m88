@@ -52,3 +52,19 @@ No other command branches were changed.
   - clean shutdown
   - 新規 warning/dialog/crash なし
 
+
+## Runtime Verification
+
+- Command: `tools\\windows\\build_vc2008.cmd Release`
+- Result:
+  - writetag CRC: 出力あり
+  - M88 起動: OK
+  - メニュー open: OK
+  - D88ゲーム起動 / disk access: OK
+  - snapshot save/load: OK
+  - 音: OK
+  - PCM録音開始/停止（Record PCM チェック状態）: OK
+  - clean shutdown: OK
+  - 新規 warning/dialog/crash: なし
+
+最終判定: **all green**
