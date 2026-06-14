@@ -165,7 +165,7 @@ bool WinUI::InitM88(const char* cmdline)
 	
 	//	ƒŠƒZƒbƒg
 	LOG1("%d\treset\n", timeGetTime());
-	core.Reset();
+	vmops ? vmops->Reset() : core.Reset();
 
 	// ‚ ‚Æ‚²‚¿‚á‚²‚¿‚á‚µ‚½‚à‚Ì
 	LOG1("%d\tetc\n", timeGetTime());
