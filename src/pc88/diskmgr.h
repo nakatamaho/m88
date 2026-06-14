@@ -7,7 +7,7 @@
 #pragma once
 
 #include "floppy.h"
-#include "file.h"
+#include "fileio.h"
 #include "fdu.h"
 #include "CritSect.h"
 
