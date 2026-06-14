@@ -832,7 +832,7 @@ LRESULT WinUI::WmTimer(HWND hwnd, WPARAM wparam, LPARAM lparam)
 	{
 		// 実効周波数,表示フレーム数を取得
 		int	fcount = draw.GetDrawCount();
-		int	icount = core.GetExecCount();
+		int	icount = vmops ? vmops->GetExecCount() : core.GetExecCount();
 		
 		// レポートする場合はタイトルバーを更新
 		if (report)
